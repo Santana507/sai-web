@@ -1149,11 +1149,16 @@ h2 em { font-weight: 500; }
 
 /* Fotografías en la columna libre de las introducciones editoriales. */
 .interior-intro__visual { min-width: 0; }
-.interior-intro__photo { display: block; width: 100%; height: auto; margin-top: 32px; }
+.interior-intro__gallery { display: grid; gap: 18px; margin-top: 32px; }
+.interior-intro__photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.interior-intro__gallery--wide .interior-intro__photo { aspect-ratio: 1280 / 853; }
+.interior-intro__gallery--portrait { display: block; }
+.interior-intro__gallery--portrait .interior-intro__photo:first-child { aspect-ratio: 4 / 5; }
+.interior-intro__gallery--portrait .interior-intro__photo:last-child { position: relative; width: 72%; margin: -16% -5% 0 auto; border: 6px solid var(--cream); aspect-ratio: 1280 / 853; }
 @media (max-width: 1000px) {
-  .interior-intro__visual { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 28px; }
-  .interior-intro__photo { margin-top: 0; }
-}
-@media (max-width: 600px) {
-  .interior-intro__visual { grid-template-columns: 1fr; gap: 24px; }
+  .interior-intro__gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .interior-intro__gallery .interior-intro__photo,
+  .interior-intro__gallery--portrait .interior-intro__photo:first-child,
+  .interior-intro__gallery--portrait .interior-intro__photo:last-child { width: 100%; margin: 0; border: 0; aspect-ratio: 4 / 3; }
+  .interior-intro__gallery--portrait .interior-intro__photo:first-child { object-position: center top; }
 }

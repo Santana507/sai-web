@@ -1,12 +1,12 @@
 # Fotografías en las introducciones
 
-El cambio consiste únicamente en ocupar con una fotografía la columna libre bajo el pequeño identificador de las introducciones de Nosotros, Misión y valores, Currículo, Actividades, Admisión y Visión.
+La columna libre bajo el pequeño identificador de las introducciones de Nosotros, Misión y valores, Currículo, Actividades, Admisión y Visión contiene una composición de dos fotografías que aprovecha mejor su altura en escritorio.
 
 Los títulos y párrafos se mantienen visibles y conservan la composición editorial original. Las tarjetas inferiores son las originales, con sus textos completos y comportamiento previo. La portada y `js/main.js` coinciden con la versión base `67bfdf21399c687c99197ebbb323c1a65ad97f10`. Se corrigió únicamente un cierre de párrafo sobrante en Nosotros.
 
 ## Imágenes
 
-Son fotografías reales de Drive, seleccionadas visualmente en la revisión del proyecto. Se conservan como WebP locales, a 1280 × 853 px, con dimensiones explícitas, carga diferida y sin recortes ni deformaciones.
+Son fotografías reales de Drive, seleccionadas visualmente en la revisión del proyecto. Se conservan como WebP locales, a 1280 × 853 px, con dimensiones explícitas y carga diferida. Los encuadres 4:3 usan `object-fit: cover`; las composiciones más cortas mantienen la proporción completa. Actividades también reutiliza el retrato vertical local `culture.png` (1080 × 1350).
 
 | Página | Archivo | Original de Drive / contenido observado |
 |---|---|---|
@@ -17,11 +17,21 @@ Son fotografías reales de Drive, seleccionadas visualmente en la revisión del 
 | Admisión | `entrada.webp` | [IMG_9370.JPG](https://drive.google.com/file/d/1q1M3t1oFeVaXYcUbERGLO6P8-89nFrV-/view), acceso al colegio |
 | Visión | `preescolar.webp` | [IMG_9410.JPG](https://drive.google.com/file/d/1w-YX6zfmIaUTRps18YOKoU2rJu0ie0Vz/view), niños y docente en el aula |
 
-Las seis imágenes están en `assets/media/cards/` y pesan aproximadamente 568 KB en conjunto. No se necesitan enlaces temporales de Drive ni dependencias adicionales.
+Fotografías complementarias:
+
+| Archivo | Original / contenido observado | Uso |
+|---|---|---|
+| `secundaria.webp` | [IMG_9521.JPG](https://drive.google.com/file/d/18v-2nqpQfmfIgrtRNGx5vgn6RXhbiSZG/view), estudiantes trabajando en clase | Nosotros y Visión |
+| `matematicas.webp` | [IMG_9582.JPG](https://drive.google.com/file/d/1dRoJmFOsSFUv_JBjGXeamTWz_eQGtSzu/view), operaciones en la pizarra | Currículo |
+| `patio.webp` | [IMG_9388.JPG](https://drive.google.com/file/d/1RMUH5aUmKzM5qil0yj9-sNfcjo0WdFim/view), instalaciones y recreación | Admisión |
+| `convivencia.webp` | Original documentado arriba | Segunda fotografía de Misión y valores |
+| `culture.png` | Archivo local existente, estudiantes con vestimenta tradicional | Retrato principal de Actividades, acompañado por `ciencia.webp` |
+
+Los nueve WebP están en `assets/media/cards/` y pesan aproximadamente 942 KB en conjunto. No se necesitan enlaces temporales de Drive ni dependencias adicionales.
 
 ## Presentación
 
-`interior-intro__visual` agrupa el identificador y la imagen, ocupando la primera columna de la cuadrícula existente. `interior-intro__photo` mantiene ancho fluido y altura proporcional. Por debajo de 1000 px el identificador y la foto comparten una fila; por debajo de 600 px se apilan. Las reglas se limitan a estos dos elementos nuevos.
+`interior-intro__visual` agrupa el identificador y `interior-intro__gallery`, ocupando la primera columna de la cuadrícula existente. En escritorio las fotografías se apilan en formato 4:3; Currículo y Admisión usan una variante con escenas completas 3:2. Actividades muestra un retrato 4:5 y una foto menor de proyecto superpuesta a su borde inferior, sin cubrir rostros. Por debajo de 1000 px las dos fotografías se colocan lado a lado, sin superposición, bajo el identificador. El encuadre del retrato cultural se ajusta para conservar ambos rostros.
 
 El ajuste no introduce animaciones, controles expandibles ni JavaScript. Las URLs de CSS de las seis páginas incluyen una versión nueva para actualizar la caché.
 
