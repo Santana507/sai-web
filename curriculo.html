@@ -9,8 +9,8 @@
   <meta property="og:description" content="Un currículo integral que une formación cristiana, excelencia académica, tecnología, ciencia, cultura e idiomas para comprender y transformar el mundo.">
   <meta property="og:image" content="assets/og.png">
   <link rel="icon" href="assets/favicon.svg?v=20260828-2" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=20260828-3">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=20260902-cards">
+  <script src="js/main.js?v=20260902-cards" defer></script>
 </head>
 <body>
 <main>
@@ -57,46 +57,74 @@
 
   <div id="contenido">
 
-    <section class="interior-intro section-pad">
-      <span class="section-number">Conoce nuestra propuesta</span>
-      <div>
-        <h2>Un plan amplio, exigente y humano.</h2>
-        <p>Las áreas se conectan con experiencias prácticas para desarrollar criterio, comunicación e investigación. Buscamos que cada estudiante no solo adquiera conocimientos, sino que aprenda a utilizarlos con responsabilidad, disciplina, creatividad y sentido de servicio.</p>
-        <p>La formación académica se complementa con principios cristianos que promueven el amor al prójimo, la honestidad, la solidaridad, el respeto, la perseverancia y el compromiso con la comunidad. De esta manera, el aprendizaje se convierte en una herramienta para crecer personalmente y aportar positivamente a los demás.</p>
+    <section class="discovery-section discovery-section--curriculum section-pad" id="explorar" aria-labelledby="curriculo-heading">
+      <div class="discovery-heading"><span class="section-number">Conoce nuestra propuesta</span>
+        <h2 id="curriculo-heading">Currículo</h2><p>Conocimiento que se convierte en acción.</p>
+        <details class="discovery-context"><summary>Un plan amplio, exigente y humano.<span aria-hidden="true"> +</span></summary><div><p>Las áreas se conectan con experiencias prácticas para desarrollar criterio, comunicación e investigación. Buscamos que cada estudiante no solo adquiera conocimientos, sino que aprenda a utilizarlos con responsabilidad, disciplina, creatividad y sentido de servicio.</p>
+<p>La formación académica se complementa con principios cristianos que promueven el amor al prójimo, la honestidad, la solidaridad, el respeto, la perseverancia y el compromiso con la comunidad. De esta manera, el aprendizaje se convierte en una herramienta para crecer personalmente y aportar positivamente a los demás.</p></div></details>
       </div>
+      <div class="discovery-group discovery-group--curriculum" data-discovery aria-label="Currículo">
+<details class="discovery-card" data-discovery-card>
+      <summary role="button" class="discovery-card__trigger" id="curriculo-1-trigger" aria-controls="curriculo-1-panel">
+        <span class="discovery-card__number">01</span>
+        <h3 class="discovery-card__title">Tecnología</h3>
+        <span class="discovery-card__brief">Innovación y creatividad.</span>
+        <span class="discovery-card__action" aria-hidden="true"><span class="discovery-card__open-label">Explorar</span><span class="discovery-card__close-label">Cerrar</span><i>+</i></span>
+      </summary>
+      <div class="discovery-card__reveal" id="curriculo-1-panel" role="region" aria-labelledby="curriculo-1-trigger">
+        <div class="discovery-card__clip"><div class="discovery-card__body">
+          <img class="discovery-card__image" src="assets/media/cards/informatica.webp" alt="Estudiantes trabajando en las computadoras del aula de informática." width="1280" height="853" loading="lazy" decoding="async"><div class="discovery-card__copy"><p>Innovación para resolver problemas reales. Desarrollamos el pensamiento creativo y las habilidades necesarias para utilizar la tecnología de manera responsable, comprender nuevas herramientas y buscar soluciones a situaciones concretas.</p>
+<p>El aprendizaje tecnológico también abre espacios para la programación, la robótica, la experimentación y el trabajo colaborativo, fortaleciendo la capacidad de analizar, crear y mejorar ideas.</p></div>
+        </div></div>
+      </div>
+    </details>
+<details class="discovery-card" data-discovery-card>
+      <summary role="button" class="discovery-card__trigger" id="curriculo-2-trigger" aria-controls="curriculo-2-panel">
+        <span class="discovery-card__number">02</span>
+        <h3 class="discovery-card__title">Cultura</h3>
+        <span class="discovery-card__brief">Nuestras raíces, nuestra identidad.</span>
+        <span class="discovery-card__action" aria-hidden="true"><span class="discovery-card__open-label">Explorar</span><span class="discovery-card__close-label">Cerrar</span><i>+</i></span>
+      </summary>
+      <div class="discovery-card__reveal" id="curriculo-2-panel" role="region" aria-labelledby="curriculo-2-trigger">
+        <div class="discovery-card__clip"><div class="discovery-card__body">
+          <img class="discovery-card__image" src="assets/media/culture.png" alt="Estudiantes con vestimenta tradicional en una actividad cultural." width="1080" height="1350" loading="lazy" decoding="async"><div class="discovery-card__copy"><p>Civismo y respeto por nuestras raíces. Conocer nuestra historia, nuestra sociedad y nuestras expresiones culturales ayuda a formar estudiantes conscientes de su identidad y capaces de valorar la diversidad.</p>
+<p>La formación cultural se relaciona con valores como el respeto, la responsabilidad, la convivencia y el compromiso con la comunidad, promoviendo ciudadanos capaces de participar de manera positiva en su entorno.</p></div>
+        </div></div>
+      </div>
+    </details>
+<details class="discovery-card" data-discovery-card>
+      <summary role="button" class="discovery-card__trigger" id="curriculo-3-trigger" aria-controls="curriculo-3-panel">
+        <span class="discovery-card__number">03</span>
+        <h3 class="discovery-card__title">Ciencia y matemáticas</h3>
+        <span class="discovery-card__brief">Preguntar, investigar, comprender.</span>
+        <span class="discovery-card__action" aria-hidden="true"><span class="discovery-card__open-label">Explorar</span><span class="discovery-card__close-label">Cerrar</span><i>+</i></span>
+      </summary>
+      <div class="discovery-card__reveal" id="curriculo-3-panel" role="region" aria-labelledby="curriculo-3-trigger">
+        <div class="discovery-card__clip"><div class="discovery-card__body">
+          <img class="discovery-card__image" src="assets/media/cards/matematicas.webp" alt="Estudiantes resolviendo operaciones matemáticas en la pizarra." width="1280" height="853" loading="lazy" decoding="async"><div class="discovery-card__copy"><p>Pensamiento lógico e investigación aplicada. Estas áreas fortalecen la capacidad de observar, formular preguntas, analizar información, comprobar ideas y encontrar soluciones mediante el razonamiento.</p>
+<p>A través de experiencias prácticas y proyectos, los estudiantes desarrollan curiosidad, precisión, perseverancia y pensamiento crítico, comprendiendo cómo el conocimiento científico y matemático puede aplicarse a situaciones de la vida cotidiana.</p></div>
+        </div></div>
+      </div>
+    </details>
+<details class="discovery-card" data-discovery-card>
+      <summary role="button" class="discovery-card__trigger" id="curriculo-4-trigger" aria-controls="curriculo-4-panel">
+        <span class="discovery-card__symbol" aria-hidden="true">Aa</span><span class="discovery-card__number">04</span>
+        <h3 class="discovery-card__title">Inglés</h3>
+        <span class="discovery-card__brief">Conectarnos con el mundo.</span>
+        <span class="discovery-card__action" aria-hidden="true"><span class="discovery-card__open-label">Explorar</span><span class="discovery-card__close-label">Cerrar</span><i>+</i></span>
+      </summary>
+      <div class="discovery-card__reveal" id="curriculo-4-panel" role="region" aria-labelledby="curriculo-4-trigger">
+        <div class="discovery-card__clip"><div class="discovery-card__body discovery-card__body--text">
+          <div class="discovery-card__copy"><p>Habilidades comunicativas para un mundo conectado. El aprendizaje del inglés permite ampliar las oportunidades académicas, culturales y profesionales, fortaleciendo la comunicación y la confianza para interactuar en diferentes contextos.</p>
+<p>La práctica constante busca desarrollar comprensión, expresión y vocabulario, preparando a los estudiantes para acceder a nuevos conocimientos y comunicarse con personas de diferentes lugares.</p></div>
+        </div></div>
+      </div>
+    </details>
+</div>
+      <p class="discovery-hint">Abre una tarjeta para descubrir más. Vuelve a seleccionarla para cerrar.</p>
     </section>
 
-    <section class="interior-grid section-pad">
 
-      <article>
-        <span>01</span>
-        <h3>Tecnología</h3>
-        <p>Innovación para resolver problemas reales. Desarrollamos el pensamiento creativo y las habilidades necesarias para utilizar la tecnología de manera responsable, comprender nuevas herramientas y buscar soluciones a situaciones concretas.</p>
-        <p>El aprendizaje tecnológico también abre espacios para la programación, la robótica, la experimentación y el trabajo colaborativo, fortaleciendo la capacidad de analizar, crear y mejorar ideas.</p>
-      </article>
-
-      <article>
-        <span>02</span>
-        <h3>Cultura</h3>
-        <p>Civismo y respeto por nuestras raíces. Conocer nuestra historia, nuestra sociedad y nuestras expresiones culturales ayuda a formar estudiantes conscientes de su identidad y capaces de valorar la diversidad.</p>
-        <p>La formación cultural se relaciona con valores como el respeto, la responsabilidad, la convivencia y el compromiso con la comunidad, promoviendo ciudadanos capaces de participar de manera positiva en su entorno.</p>
-      </article>
-
-      <article>
-        <span>03</span>
-        <h3>Ciencia y matemáticas</h3>
-        <p>Pensamiento lógico e investigación aplicada. Estas áreas fortalecen la capacidad de observar, formular preguntas, analizar información, comprobar ideas y encontrar soluciones mediante el razonamiento.</p>
-        <p>A través de experiencias prácticas y proyectos, los estudiantes desarrollan curiosidad, precisión, perseverancia y pensamiento crítico, comprendiendo cómo el conocimiento científico y matemático puede aplicarse a situaciones de la vida cotidiana.</p>
-      </article>
-
-      <article>
-        <span>04</span>
-        <h3>Inglés</h3>
-        <p>Habilidades comunicativas para un mundo conectado. El aprendizaje del inglés permite ampliar las oportunidades académicas, culturales y profesionales, fortaleciendo la comunicación y la confianza para interactuar en diferentes contextos.</p>
-        <p>La práctica constante busca desarrollar comprensión, expresión y vocabulario, preparando a los estudiantes para acceder a nuevos conocimientos y comunicarse con personas de diferentes lugares.</p>
-      </article>
-
-    </section>
 
     <section class="interior-cta section-pad">
       <div>

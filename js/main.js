@@ -5,6 +5,97 @@
   // Eliminar clase fallback
   document.documentElement.classList.remove('no-js');
 
+  // Native details remain usable without JavaScript. Enhancement adds coordinated
+  // hover previews and animated closing without hiding focused content.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hoverCards = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('[data-discovery]').forEach(function (group) {
+    const cards = Array.from(group.querySelectorAll('[data-discovery-card]'));
+    let active = null;
+    let pinned = null;
+    let enterTimer;
+    let leaveTimer;
+    const closing = new Map();
+
+    function setCard(card, open) {
+      window.clearTimeout(closing.get(card));
+      closing.delete(card);
+      const trigger = card.querySelector('summary');
+      const panel = card.querySelector('.discovery-card__reveal');
+      trigger.setAttribute('aria-expanded', String(open));
+      panel.inert = !open;
+      if (open) {
+        card.open = true;
+        // Establish the collapsed frame before revealing newly displayed content.
+        card.getBoundingClientRect();
+        card.classList.add('is-open');
+      } else {
+        if (panel.contains(document.activeElement)) trigger.focus({ preventScroll: true });
+        card.classList.remove('is-open');
+        closing.set(card, window.setTimeout(function () {
+          card.open = false;
+          closing.delete(card);
+        }, reducedMotion.matches ? 0 : 560));
+      }
+    }
+
+    function show(card) {
+      if (active && active !== card) setCard(active, false);
+      active = card;
+      if (card) setCard(card, true);
+    }
+
+    function dismiss() {
+      window.clearTimeout(enterTimer);
+      window.clearTimeout(leaveTimer);
+      pinned = null;
+      if (active) setCard(active, false);
+      active = null;
+    }
+
+    cards.forEach(function (card) {
+      const trigger = card.querySelector('summary');
+      card.dataset.enhanced = '';
+      trigger.setAttribute('aria-expanded', String(card.open));
+      card.querySelector('.discovery-card__reveal').inert = !card.open;
+      if (card.open) { card.classList.add('is-open'); active = card; }
+
+      trigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        window.clearTimeout(enterTimer);
+        window.clearTimeout(leaveTimer);
+        if (active === card) dismiss();
+        else { pinned = card; show(card); }
+      });
+
+      card.addEventListener('pointerenter', function (event) {
+        window.clearTimeout(leaveTimer);
+        if (event.pointerType !== 'mouse' || !hoverCards.matches || pinned || group.contains(document.activeElement)) return;
+        window.clearTimeout(enterTimer);
+        enterTimer = window.setTimeout(function () { show(card); }, 180);
+      });
+      card.addEventListener('pointerleave', function () { window.clearTimeout(enterTimer); });
+      card.addEventListener('focusin', function () {
+        window.clearTimeout(leaveTimer);
+        if (active === card) pinned = card;
+      });
+    });
+
+    // Leaving a preview gives the pointer time to reach the revealed panel.
+    group.addEventListener('pointerleave', function () {
+      window.clearTimeout(enterTimer);
+      if (!pinned && !group.contains(document.activeElement)) leaveTimer = window.setTimeout(dismiss, 240);
+    });
+    group.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && active) {
+        const trigger = active.querySelector('summary');
+        dismiss();
+        trigger.focus({ preventScroll: true });
+        event.preventDefault();
+      }
+    });
+  });
+
   // Elementos principales del DOM
   const menuButton = document.querySelector('[data-menu-button]');
   const menuPanel = document.querySelector('[data-menu-panel]');
