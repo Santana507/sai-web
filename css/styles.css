@@ -1146,3 +1146,14 @@ h2 em { font-weight: 500; }
   .hero-slide:nth-child(3) > img,
   .hero-slide:nth-child(4) > img { object-position: 58% 18%; }
 }
+
+/* Fotografías en la columna libre de las introducciones editoriales. */
+.interior-intro__visual { min-width: 0; }
+.interior-intro__photo { display: block; width: 100%; height: auto; margin-top: 32px; }
+@media (max-width: 1000px) {
+  .interior-intro__visual { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 28px; }
+  .interior-intro__photo { margin-top: 0; }
+}
+@media (max-width: 600px) {
+  .interior-intro__visual { grid-template-columns: 1fr; gap: 24px; }
+}
