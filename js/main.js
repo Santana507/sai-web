@@ -245,4 +245,32 @@
     });
   });
 
+  // --- Control de Videos Secundarios (No en loop: inician y paran al terminar) ---
+  const nonLoopVideos = document.querySelectorAll('video:not([loop])');
+  if ('IntersectionObserver' in window && nonLoopVideos.length > 0) {
+    const videoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.dataset.hasFinished) {
+            video.play().catch(function() {});
+          }
+        } else {
+          if (!video.dataset.hasFinished) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+
+    nonLoopVideos.forEach(function(video) {
+      video.removeAttribute('loop');
+      video.addEventListener('ended', function() {
+        video.dataset.hasFinished = 'true';
+        video.pause();
+      });
+      videoObserver.observe(video);
+    });
+  }
+
 }());

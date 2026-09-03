@@ -312,8 +312,8 @@ em { font-style: italic; font-weight: 500; }
 .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; color: #9ce4df; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--orange); }
 h1, h2 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.02em; }
-h1 { margin: 0; font-size: clamp(56px, 7.4vw, 108px); line-height: .94; }
-h1 em { color: var(--orange); }
+h1, .slide-heading { margin: 0; font-size: clamp(56px, 7.4vw, 108px); line-height: .94; }
+h1 em, .slide-heading em { color: var(--orange); }
 .hero-copy { max-width: 560px; margin: 28px 0 0; color: rgb(255 255 255 / 84%); font-size: clamp(16px, 1.2vw, 19px); line-height: 1.7; }
 .hero-actions { display: flex; align-items: center; gap: 24px; margin: 32px 0 0; }
 
@@ -712,7 +712,7 @@ footer {
 }
 
 .interior-hero { position: relative; display: grid; place-items: center; min-height: 74svh; overflow: hidden; color: white; background: var(--deep); }
-.interior-hero > img, .interior-hero__wash { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.interior-hero > img, .interior-hero > video, .interior-hero__wash { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .interior-hero__wash { background: linear-gradient(0deg, rgb(3 28 49 / 78%), rgb(3 28 49 / 30%)), linear-gradient(90deg, rgb(3 28 49 / 40%), transparent 72%); }
 .interior-hero__content { position: relative; z-index: 2; width: min(980px, calc(100% - 48px)); padding-top: 88px; text-align: center; }
 .interior-hero__content > span { color: #9ce4df; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
@@ -826,6 +826,7 @@ footer {
 .staff { background: var(--paper); }
 .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .staff-grid article { padding-bottom: 24px; border-bottom: 1px solid var(--navy); }
+.staff-grid article img { width: 100%; aspect-ratio: 4 / 4.5; object-fit: cover; border-radius: 8px; margin-bottom: 22px; border: 1px solid var(--line); display: block; }
 .staff-photo { 
   display: grid; 
   place-items: center; 
@@ -948,7 +949,7 @@ footer {
   .menu-panel__contact { flex-direction: column; gap: 9px; }
   .hero { min-height: 700px; }
   .hero-content { width: calc(100% - 44px); margin-left: 22px; padding-top: 168px; }
-  h1 { font-size: clamp(48px, 14vw, 72px); }
+  h1, .slide-heading { font-size: clamp(48px, 14vw, 72px); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; }
   .hero-controls { left: 22px; }
   .hero-side-note { display: none; }
@@ -1183,20 +1184,4 @@ h2 em { font-weight: 500; }
   .hero-slide:nth-child(2) > img,
   .hero-slide:nth-child(3) > img,
   .hero-slide:nth-child(4) > img { object-position: 58% 18%; }
-}
-
-/* Fotografías en la columna libre de las introducciones editoriales. */
-.interior-intro__visual { min-width: 0; }
-.interior-intro__gallery { display: grid; gap: 18px; margin-top: 32px; }
-.interior-intro__photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
-.interior-intro__gallery--wide .interior-intro__photo { aspect-ratio: 1280 / 853; }
-.interior-intro__gallery--portrait { display: block; }
-.interior-intro__gallery--portrait .interior-intro__photo:first-child { aspect-ratio: 4 / 5; }
-.interior-intro__gallery--portrait .interior-intro__photo:last-child { position: relative; width: 72%; margin: -16% -5% 0 auto; border: 6px solid var(--cream); aspect-ratio: 1280 / 853; }
-@media (max-width: 1000px) {
-  .interior-intro__gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-  .interior-intro__gallery .interior-intro__photo,
-  .interior-intro__gallery--portrait .interior-intro__photo:first-child,
-  .interior-intro__gallery--portrait .interior-intro__photo:last-child { width: 100%; margin: 0; border: 0; aspect-ratio: 4 / 3; }
-  .interior-intro__gallery--portrait .interior-intro__photo:first-child { object-position: center top; }
 }
