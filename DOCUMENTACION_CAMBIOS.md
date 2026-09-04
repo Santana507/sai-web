@@ -67,7 +67,7 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 
 ## Sesión #3, Cambio #1 — Optimización Multimedia (WebP/Video), Accesibilidad Alt, Jerarquía H1/H2 y Recorte de Logo
 - **Creación de Sesión #3**: Rama y carpeta independiente para la nueva fase de optimizaciones y producción.
-- **Conversión de Medios a WebP**: Todas las imágenes PNG y JPG/JPEG (`culture.png`, `early-learning.png`, `science-action.png`, `science-student.jpeg`, `achievement.jpg`, `recognition.jpg`, etc.) convertidas a formato `.webp` de última generación con compresión de alta calidad (-q 85), reduciendo el peso de imágenes en más de un 75%.
+- **Conversión de Medios a WebP**: Todas las imágenes PNG y JPG/JPEG (`culture.webp`, `early-learning.webp`, `science-action.webp`, `science-student.webp`, `achievement.webp`, `recognition.webp`, etc.) convertidas a formato `.webp` de última generación con compresión de alta calidad (-q 85), reduciendo el peso de imágenes en más de un 75%.
 - **Recorte y Optimización de Videos**:
   - `hero-campus.mp4`: Recortado de 61s a 12s para ajustarse a la duración del primer slide, pista de audio innecesaria eliminada (`-an`), recomprimido con libx264 (CRF 23) y atom `moov` movido al inicio (`+faststart`) para streaming instantáneo. Peso reducido de 8.94 MB a 2.17 MB (reducción del 76%).
   - Videos complementarios (`school-life-1.mp4`, `school-life-2.mp4`) optimizados con faststart.
@@ -78,7 +78,7 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 ---
 
 ## Sesión #3, Cambio #2 — Fusión de Nuevas Imágenes y Videos Multimedia, Restauración de Logo #2 y Preservación del Menú
-- **Restauración del Logo Original de Sesión #2**: Se restituyó el archivo `bpvda-logo-white.png` original proveniente de la carpeta `#2`, restableciendo la altura CSS a `68px` (y `48px` en scroll) manteniendo el sombreado `drop-shadow(0 3px 8px rgba(0,0,0,0.5))` para garantizar perfecta visibilidad y proporciones.
+- **Restauración del Logo Original de Sesión #2**: Se restituyó el archivo `bpvda-logo-white.webp` original proveniente de la carpeta `#2`, restableciendo la altura CSS a `68px` (y `48px` en scroll) manteniendo el sombreado `drop-shadow(0 3px 8px rgba(0,0,0,0.5))` para garantizar perfecta visibilidad y proporciones.
 - **Fusión de Nuevo Contenido Multimedia**: Se integraron todos los archivos multimedia aportados por el equipo de texto y multimedia:
   - `activities.mp4` (optimizado a ~998 KB con `+faststart`) implementado como video de fondo en el hero de `actividades.html`.
   - `curriculum.mp4` (optimizado a ~838 KB con `+faststart`) implementado como video de fondo en el hero de `curriculo.html`.

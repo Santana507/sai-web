@@ -6,7 +6,7 @@ Los títulos y párrafos se mantienen visibles y conservan la composición edito
 
 ## Imágenes
 
-Son fotografías reales de Drive, seleccionadas visualmente en la revisión del proyecto. Se conservan como WebP locales, a 1280 × 853 px, con dimensiones explícitas y carga diferida. Los encuadres 4:3 usan `object-fit: cover`; las composiciones más cortas mantienen la proporción completa. Actividades también reutiliza el retrato vertical local `culture.png` (1080 × 1350).
+Son fotografías reales de Drive, seleccionadas visualmente en la revisión del proyecto. Se conservan como WebP locales, a 1280 × 853 px, con dimensiones explícitas y carga diferida. Los encuadres 4:3 usan `object-fit: cover`; las composiciones más cortas mantienen la proporción completa. Actividades también reutiliza el retrato vertical local `culture.webp` (1080 × 1350).
 
 | Página | Archivo | Original de Drive / contenido observado |
 |---|---|---|
@@ -25,7 +25,7 @@ Fotografías complementarias:
 | `matematicas.webp` | [IMG_9582.JPG](https://drive.google.com/file/d/1dRoJmFOsSFUv_JBjGXeamTWz_eQGtSzu/view), operaciones en la pizarra | Currículo |
 | `patio.webp` | [IMG_9388.JPG](https://drive.google.com/file/d/1RMUH5aUmKzM5qil0yj9-sNfcjo0WdFim/view), instalaciones y recreación | Admisión |
 | `convivencia.webp` | Original documentado arriba | Segunda fotografía de Misión y valores |
-| `culture.png` | Archivo local existente, estudiantes con vestimenta tradicional | Retrato principal de Actividades, acompañado por `ciencia.webp` |
+| `culture.webp` | Archivo local existente, estudiantes con vestimenta tradicional | Retrato principal de Actividades, acompañado por `ciencia.webp` |
 
 Los nueve WebP están en `assets/media/cards/` y pesan aproximadamente 942 KB en conjunto. No se necesitan enlaces temporales de Drive ni dependencias adicionales.
 

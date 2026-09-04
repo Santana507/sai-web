@@ -18,7 +18,7 @@ BPVDA-Boceto-Final-HTML/
 |   |-- brand/
 |   |-- media/
 |   |-- favicon.svg
-|   `-- og.png
+|   `-- og.webp
 |-- docs/referencias/
 |-- tools/generate-pages.mjs
 |-- agente.md

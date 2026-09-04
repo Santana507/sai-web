@@ -5,6 +5,6 @@
   </defs>
   <rect width="64" height="64" rx="14" fill="#06243b" />
   <g clip-path="url(#icon-crop)" filter="url(#white-mark)">
-    <image href="brand/bpvda-logo.png" x="-2" y="-17" width="178" height="100" preserveAspectRatio="none" />
+    <image href="brand/bpvda-logo.webp" x="-2" y="-17" width="178" height="100" preserveAspectRatio="none" />
   </g>
 </svg>

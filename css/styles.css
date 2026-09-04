@@ -1091,9 +1091,9 @@ h2 em { font-weight: 500; }
 .hero-slide:nth-child(4) > img { object-position: 50% 22%; }
 .hero-slide:nth-child(5) > img { object-position: 50% 46%; }
 
-.interior-hero > img[src$="science-student.jpeg"],
-.interior-hero > img[src$="culture.png"],
-.interior-hero > img[src$="recognition.jpg"] { object-position: 50% 22%; }
+.interior-hero > img[src$="science-student.webp"],
+.interior-hero > img[src$="culture.webp"],
+.interior-hero > img[src$="recognition.webp"] { object-position: 50% 22%; }
 
 .mosaic-main img,
 .feature-image img,
