@@ -23,7 +23,6 @@
     
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-    menuButton.querySelector('span').textContent = open ? 'Cerrar' : 'Menú';
     
     menuPanel.classList.toggle('is-open', open);
     menuPanel.setAttribute('aria-hidden', String(!open));
@@ -75,11 +74,22 @@
     });
   }
 
-  // --- Scroll Header y Back to Top ---
+  // --- Scroll Header, Modo Libre y Back to Top ---
+  const heroSlider = document.querySelector('[data-slider]');
+
   function onScroll() {
     const scrollY = window.scrollY;
+    
+    // En index: se activa al pasar la mitad del slider horizontal
+    // En las demás páginas: se activa apenas baja un poco (> 40px)
+    let triggerDistance = 40;
+    if (heroSlider) {
+      triggerDistance = Math.max(Math.round(heroSlider.offsetHeight * 0.55), 260);
+    }
+
     if (header) {
-      header.classList.toggle('is-scrolled', scrollY > 24);
+      header.classList.toggle('is-scrolled', scrollY > 20);
+      header.classList.toggle('is-scrolled-free', scrollY > triggerDistance);
     }
     if (backToTopButton) {
       backToTopButton.classList.toggle('is-visible', scrollY > 600);
@@ -234,5 +244,33 @@
       }
     });
   });
+
+  // --- Control de Videos Secundarios (No en loop: inician y paran al terminar) ---
+  const nonLoopVideos = document.querySelectorAll('video:not([loop])');
+  if ('IntersectionObserver' in window && nonLoopVideos.length > 0) {
+    const videoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.dataset.hasFinished) {
+            video.play().catch(function() {});
+          }
+        } else {
+          if (!video.dataset.hasFinished) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+
+    nonLoopVideos.forEach(function(video) {
+      video.removeAttribute('loop');
+      video.addEventListener('ended', function() {
+        video.dataset.hasFinished = 'true';
+        video.pause();
+      });
+      videoObserver.observe(video);
+    });
+  }
 
 }());
