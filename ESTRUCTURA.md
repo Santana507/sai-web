@@ -1,29 +1,27 @@
-# Estructura
+# Estructura del proyecto
 
 ```text
-BPVDA-Boceto-Final-HTML/
-|-- index.html
-|-- nosotros.html
-|-- mision.html
-|-- vision.html
-|-- curriculo.html
-|-- actividades.html
-|-- admision.html
-|-- contacto.html
-|-- css/
-|   `-- styles.css
-|-- js/
-|   `-- main.js
-|-- assets/
-|   |-- brand/
-|   |-- media/
-|   |-- favicon.svg
-|   `-- og.webp
-|-- docs/referencias/
-|-- tools/generate-pages.mjs
-|-- agente.md
-|-- README.md
-|-- DOCUMENTACION_CAMBIOS.md
-`-- VERIFICACION.md
+sai-web/
+|-- AGENTS.md                         # Contexto operativo principal
+|-- README.md                         # Entrada general del proyecto
+|-- docs/
+|   |-- constitution.md               # Principios y límites
+|   |-- validation.md                 # Validación automatizada y manual
+|   `-- referencias/                  # Briefs y material aprobado
+|-- specs/001-site-quality/
+|   |-- spec.md                       # Requisitos y alcance
+|   |-- clarifications.md             # Decisiones y dudas
+|   |-- plan.md                       # Arquitectura y estrategia
+|   `-- tasks.md                      # Roadmap priorizado
+|-- index.html ... contacto.html     # Sitio estático multipágina
+|-- css/styles.css                    # Estilos compartidos
+|-- js/main.js                        # Interacciones compartidas
+|-- assets/                           # Recursos visuales
+|-- tools/generate-pages.mjs          # Generación de páginas
+|-- DOCUMENTACION_CAMBIOS.md          # Historial de cambios
+`-- VERIFICACION.md                   # Verificación existente
 ```
 
+## Regla de organización
+
+AGENTS.md es el contexto operativo principal. La spec activa define el alcance de cada mejora; tasks.md concentra el trabajo pendiente. Los documentos históricos y las referencias no sustituyen esas reglas.
