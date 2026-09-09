@@ -1,6 +1,9 @@
 /* Hoja autocontenida: no requiere Tailwind ni preprocesador. */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
 
+/* ========================================= 
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL 
+   ========================================= */
 :root {
   --navy: #072b49;
   --deep: #031c31;
@@ -14,9 +17,17 @@
   --font-sans: "Montserrat", "Segoe UI", system-ui, sans-serif;
 }
 
+/* ========================================= 
+   2. RESET Y ESTILOS BASE 
+   ========================================= */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  /* Prevenir desbordamiento de texto en móviles */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   margin: 0;
   overflow-x: hidden;
   background: var(--paper);
@@ -56,6 +67,9 @@ em { font-style: italic; font-weight: 500; }
   background: currentColor;
 }
 
+/* ========================================= 
+   3. NAVEGACIÓN (HEADER & NAV) 
+   ========================================= */
 .site-header { 
   position: fixed; 
   z-index: 30; 
@@ -295,6 +309,9 @@ em { font-style: italic; font-weight: 500; }
 .reveal-stagger > *:nth-child(4) { transition-delay: .3s; }
 .reveal-stagger > *:nth-child(5) { transition-delay: .4s; }
 
+/* ========================================= 
+   4. HERO COMPONENT (VIDEO E INICIO) 
+   ========================================= */
 .hero { position: relative; height: 100svh; min-height: 680px; overflow: hidden; background: var(--deep); color: white; }
 .hero-track { display: flex; width: 100%; height: 100%; transition: transform .8s cubic-bezier(.77,0,.18,1); }
 .hero-slide { position: relative; flex: 0 0 100%; height: 100%; overflow: hidden; }
@@ -398,6 +415,9 @@ h1 em, .slide-heading em { color: var(--orange); }
   color: var(--gray);
 }
 
+/* ========================================= 
+   5. SECCIONES DE CONTENIDO 
+   ========================================= */
 .statement { background: var(--cream); }
 .statement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
 .statement-col-left { display: flex; flex-direction: column; gap: 24px; }
@@ -1091,9 +1111,9 @@ h2 em { font-weight: 500; }
 .hero-slide:nth-child(4) > img { object-position: 50% 22%; }
 .hero-slide:nth-child(5) > img { object-position: 50% 46%; }
 
-.interior-hero > img[src$="science-student.jpeg"],
-.interior-hero > img[src$="culture.png"],
-.interior-hero > img[src$="recognition.jpg"] { object-position: 50% 22%; }
+.interior-hero > img[src$="science-student.webp"],
+.interior-hero > img[src$="culture.webp"],
+.interior-hero > img[src$="recognition.webp"] { object-position: 50% 22%; }
 
 .mosaic-main img,
 .feature-image img,
@@ -1185,3 +1205,4 @@ h2 em { font-weight: 500; }
   .hero-slide:nth-child(3) > img,
   .hero-slide:nth-child(4) > img { object-position: 58% 18%; }
 }
+
