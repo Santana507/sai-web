@@ -645,30 +645,90 @@ h1 em, .slide-heading em { color: var(--orange); }
 footer {
   display: flex;
   flex-direction: column;
-  padding: 56px 6vw 36px;
+  padding: 68px 6vw 36px;
   color: white;
   background: var(--deep);
   border-top: 1px solid rgb(255 255 255 / 10%);
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1.1fr;
-  gap: clamp(32px, 5vw, 64px);
-  padding-bottom: 44px;
-  border-bottom: 1px solid rgb(255 255 255 / 10%);
+  grid-template-columns: 1.35fr 1fr 1.15fr;
+  gap: clamp(36px, 5vw, 64px);
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+.footer-col {
+  position: relative;
+}
+@media (min-width: 900px) {
+  .footer-col + .footer-col::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * clamp(18px, 2.5vw, 32px));
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
+  }
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.footer-pastor-logo {
+  height: 64px;
+  width: auto;
+  max-width: 64px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+.footer-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.footer-school-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+.footer-school-sub {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--turquoise);
 }
 .footer-col h4 {
-  margin: 0 0 16px;
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 600;
-  color: white;
+  margin: 0 0 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-col h4::after {
+  content: '';
+  display: inline-block;
+  height: 2px;
+  width: 22px;
+  background: var(--orange);
+  border-radius: 2px;
 }
 .footer-col p {
-  margin: 0 0 10px;
-  color: rgb(255 255 255 / 75%);
-  font-size: 14.5px;
-  line-height: 1.6;
+  margin: 0 0 12px;
+  color: rgb(255 255 255 / 80%);
+  font-size: 15px;
+  line-height: 1.65;
 }
 .footer-col a {
   color: inherit;
@@ -677,47 +737,84 @@ footer {
 .footer-col a:hover {
   color: var(--orange);
 }
-.footer-brand-logo {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  margin-bottom: 16px;
-  display: block;
+.footer-phone {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: .02em;
+}
+.footer-phone a:hover {
+  color: var(--turquoise) !important;
+}
+.footer-phone-sep {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 4px;
+  font-weight: 400;
+}
+.footer-phone-wa {
+  color: #25d366 !important;
+  transition: opacity .2s ease !important;
+}
+.footer-phone-wa:hover {
+  opacity: 0.85;
+}
+.footer-email {
+  margin-top: 14px !important;
+  font-size: 15px !important;
+}
+.footer-email a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(16, 184, 176, 0.5);
+  text-underline-offset: 4px;
+}
+.footer-email a:hover {
+  color: var(--turquoise) !important;
+  text-decoration-color: var(--turquoise);
 }
 .footer-location {
-  max-width: 320px;
-  line-height: 1.55;
-  color: rgb(255 255 255 / 70%);
+  max-width: 340px;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 82%);
+  font-size: 15px;
 }
-.footer-subheading {
-  margin-top: 14px !important;
-  font-weight: 600;
-  color: var(--turquoise) !important;
-  font-size: 13px !important;
+.footer-hours-block {
+  margin-top: 12px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(16, 184, 176, 0.4);
+}
+.footer-hours-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  color: var(--turquoise);
+  margin-bottom: 2px;
 }
 .footer-hours {
-  color: rgb(255 255 255 / 85%) !important;
-  font-size: 14px !important;
+  color: rgb(255 255 255 / 90%) !important;
+  font-size: 15px !important;
+  font-weight: 500;
+  margin: 0 !important;
 }
-
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 28px;
+  padding-top: 32px;
 }
 .footer-copy {
   margin: 0;
-  color: rgb(255 255 255 / 55%);
-  font-size: 12.5px;
+  color: rgb(255 255 255 / 65%);
+  font-size: 13px;
   letter-spacing: .06em;
+  font-weight: 500;
 }
 .footer-socials {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 .social-link {
   display: inline-flex;
