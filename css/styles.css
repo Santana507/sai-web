@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
 
 /* ========================================= 
-   1. VARIABLES Y CONFIGURACIÓN GLOBAL 
+   1. VARIABLES Y CONFIGURACIï¿½N GLOBAL 
    ========================================= */
 :root {
   --navy: #072b49;
@@ -23,7 +23,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  /* Prevenir desbordamiento de texto en móviles */
+  /* Prevenir desbordamiento de texto en mï¿½viles */
   overflow-wrap: break-word;
   word-wrap: break-word;
   -webkit-hyphens: auto;
@@ -68,7 +68,7 @@ em { font-style: italic; font-weight: 500; }
 }
 
 /* ========================================= 
-   3. NAVEGACIÓN (HEADER & NAV) 
+   3. NAVEGACIï¿½N (HEADER & NAV) 
    ========================================= */
 .site-header { 
   position: fixed; 
@@ -213,7 +213,19 @@ em { font-style: italic; font-weight: 500; }
 }
 .menu-panel.is-open { opacity: 1 !important; visibility: visible !important; transform: translateY(0) scale(1) !important; pointer-events: auto !important; }
 .menu-panel__main { display: grid; grid-template-columns: .88fr 1.35fr; gap: 5vw; flex: 1; min-height: 0; align-items: center; }
-.menu-panel__intro { display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 0; padding: 12px 0; }
+.menu-panel__intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  height: 100%;
+  min-height: 0;
+  padding: 12px 0;
+}
+.menu-panel__photo {
+  display: none !important;
+}
 .menu-panel__kicker { color: var(--turquoise); font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; display: block; margin-bottom: 12px; }
 .menu-panel__intro h2 { max-width: 420px; margin: 0 0 8px; font-family: var(--font-serif); font-size: clamp(34px, 4.2vw, 56px); font-weight: 500; line-height: .98; letter-spacing: -.02em; }
 .menu-panel__intro p { max-width: 390px; color: rgb(255 255 255 / 65%); line-height: 1.5; margin: 0 0 16px; font-size: 14px; }
@@ -718,10 +730,18 @@ footer {
   color: white;
   transition: all .25s ease;
 }
-.social-link svg {
+.social-link svg,
+.social-link img,
+.social-link .social-icon-img {
   width: 20px;
   height: 20px;
+  object-fit: contain;
+  display: block;
   transition: transform .2s ease;
+}
+.social-link img,
+.social-link .social-icon-img {
+  filter: brightness(0) invert(1);
 }
 .social-link:hover {
   background: var(--orange);
@@ -729,8 +749,39 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgb(255 107 44 / 40%);
 }
-.social-link:hover svg {
+.social-link:hover svg,
+.social-link:hover img,
+.social-link:hover .social-icon-img {
   transform: scale(1.08);
+}
+
+/* Enlace "Ver en Google Maps" en el footer y pÃ¡ginas */
+.footer-maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--turquoise);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+.footer-maps-link:hover {
+  color: var(--orange);
+  transform: translateX(2px);
+}
+.footer-maps-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+}
+.footer-maps-link:hover .footer-maps-icon {
+  opacity: 1;
 }
 
 .interior-hero { position: relative; display: grid; place-items: center; min-height: 74svh; overflow: hidden; color: white; background: var(--deep); }
