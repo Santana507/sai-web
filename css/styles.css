@@ -90,16 +90,18 @@ em { font-style: italic; font-weight: 500; }
   align-items: center;
   gap: 24px;
   padding: 0 4vw;
-  border-bottom: 1px solid rgb(255 255 255 / 16%);
-  background: rgb(3 28 49 / 18%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: height .35s ease, background 0.6s cubic-bezier(.22,1,.36,1), border-color 0.6s ease, box-shadow 0.6s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(6, 36, 59, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: height .35s ease, background 0.6s cubic-bezier(.22,1,.36,1), border-color 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease, -webkit-backdrop-filter 0.6s ease;
 }
 .site-header.is-scrolled .header-bar {
   height: 64px;
-  background: rgb(3 28 49 / 88%);
-  border-bottom-color: rgb(16 184 176 / 30%);
+  background: rgba(6, 36, 59, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom-color: rgba(16, 184, 176, 0.3);
 }
 .brand { display: inline-flex; align-items: center; flex-shrink: 0; transition: opacity .25s ease, visibility .25s ease; }
 .brand-logo-img { 
@@ -1028,11 +1030,19 @@ footer {
 
 .site-header:not(.is-scrolled-free) .header-bar {
   height: 78px;
-  background: #06243b;
-  border-bottom-color: rgb(255 255 255 / 12%);
-  backdrop-filter: none;
-  box-shadow: 0 8px 26px rgb(3 28 49 / 18%);
-  transition: background 0.6s cubic-bezier(.22,1,.36,1), border-color 0.6s ease, box-shadow 0.6s ease, height 0.35s ease;
+  background: rgba(6, 36, 59, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 26px rgba(3, 28, 49, 0.22);
+  transition: background 0.6s cubic-bezier(.22,1,.36,1), border-color 0.6s ease, box-shadow 0.6s ease, height 0.35s ease, backdrop-filter 0.6s ease, -webkit-backdrop-filter 0.6s ease;
+}
+
+.site-header.is-scrolled:not(.is-scrolled-free) .header-bar {
+  background: rgba(6, 36, 59, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom-color: rgba(16, 184, 176, 0.3);
 }
 
 .site-header.is-scrolled { height: 78px; }
