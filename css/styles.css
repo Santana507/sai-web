@@ -343,9 +343,9 @@ em { font-style: italic; font-weight: 500; }
 .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; color: #9ce4df; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--orange); }
 h1, h2 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.02em; }
-h1, .slide-heading { margin: 0; font-size: clamp(48px, 6.2vw, 92px); line-height: .96; }
+h1, .slide-heading { margin: 0; font-size: clamp(52px, 6.8vw, 100px); line-height: .95; }
 h1 em, .slide-heading em { color: var(--orange); }
-.hero-copy { max-width: 520px; margin: 24px 0 0; color: rgb(255 255 255 / 84%); font-size: clamp(14px, 1.05vw, 17px); line-height: 1.65; }
+.hero-copy { max-width: 550px; margin: 26px 0 0; color: rgb(255 255 255 / 84%); font-size: clamp(15px, 1.15vw, 18px); line-height: 1.68; }
 .hero-actions {
   position: absolute;
   z-index: 5;
@@ -363,6 +363,8 @@ h1 em, .slide-heading em { color: var(--orange); }
   width: 254px;
   justify-content: space-between;
   box-sizing: border-box;
+  border-radius: 999px;
+  padding-inline: 24px;
 }
 
 .primary-btn { 
@@ -376,7 +378,7 @@ h1 em, .slide-heading em { color: var(--orange); }
   font-weight: 700; 
   letter-spacing: .1em; 
   text-transform: uppercase; 
-  border-radius: 4px;
+  border-radius: 999px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
   transition: all .3s cubic-bezier(.22,1,.36,1);
 }
