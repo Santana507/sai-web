@@ -273,4 +273,16 @@
     });
   }
 
+  // Secuencia de imágenes con fundido estable para Propósito BPVDA.
+  const purposeImages = Array.from(document.querySelectorAll('.purpose-fade__images img'));
+  if (purposeImages.length > 1) {
+    let purposeIndex = purposeImages.findIndex(function(image) { return image.classList.contains('is-active'); });
+    if (purposeIndex < 0) purposeIndex = 0;
+    window.setInterval(function() {
+      purposeImages[purposeIndex].classList.remove('is-active');
+      purposeIndex = (purposeIndex + 1) % purposeImages.length;
+      purposeImages[purposeIndex].classList.add('is-active');
+    }, 6000);
+  }
+
 }());
