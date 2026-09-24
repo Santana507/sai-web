@@ -285,4 +285,22 @@
     }, 6000);
   }
 
+  // Los iconos usan los recursos oficiales disponibles en la carpeta de marca.
+  // Así se conserva la misma presencia visual en el footer y en el menú global.
+  const socialMarkup = '<a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Correo electrónico" class="social-link"><img src="assets/brand/email.png" alt=""></a><a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link"><img src="assets/brand/facebook.png" alt=""></a><a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link"><img src="assets/brand/instagram.png" alt=""></a><a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link"><img src="assets/icons/whatsapp-icon.png" alt=""></a>';
+
+  document.querySelectorAll('.footer-socials').forEach(function(socials) {
+    socials.innerHTML = socialMarkup;
+  });
+
+  document.querySelectorAll('.menu-panel__foot').forEach(function(foot) {
+    if (!foot.querySelector('.menu-panel__socials')) {
+      const socials = document.createElement('div');
+      socials.className = 'menu-panel__socials';
+      socials.setAttribute('aria-label', 'Redes sociales');
+      socials.innerHTML = socialMarkup;
+      foot.appendChild(socials);
+    }
+  });
+
 }());
