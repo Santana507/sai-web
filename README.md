@@ -6,19 +6,39 @@ Esta entrega funciona con HTML, CSS y JavaScript estándar. No requiere React, N
 
 Abre `index.html` en un navegador moderno. Para desarrollo local también puedes servir la carpeta con cualquier servidor HTTP estático.
 
-## Archivos principales
+## Archivos principales (16 páginas organizadas en 5 pilares)
 
-- `index.html`: portada y slider institucional.
-- `nosotros.html`: comunidad y propósito.
-- `mision.html`: misión y valores.
-- `vision.html`: visión y niveles educativos.
-- `curriculo.html`: áreas curriculares.
-- `actividades.html`: vida estudiantil.
-- `admision.html`: proceso y preguntas frecuentes.
-- `contacto.html`: datos, espacios para el equipo y formulario por correo.
-- `css/styles.css`: diseño completo y responsive.
-- `js/main.js`: menú, slider automático y controles de accesibilidad.
-- `assets/`: logo, imágenes, videos, favicon y tarjeta social.
+### 01 Nuestra Escuela
+- `quienes-somos.html`: comunidad, propósito e historia institucional.
+- `filosofia.html`: misión, visión y principios formativos.
+- `instalaciones.html`: infraestructura y espacios escolares.
+- `plantel.html`: cuerpo docente y educadores.
+
+### 02 Enfoque Educativo
+- `sai.html`: plataforma del Sistema de Aprendizaje Integral.
+- `vida-estudiantil.html`: proyectos, cultura escolar, robótica y logros.
+- `ecosistema-digital.html`: herramientas y alianzas pedagógicas (Edvoice, Progrentis, etc.).
+
+### 03 Familia y Comunidad
+- `admisiones.html`: proceso de admisión, matrícula y preguntas frecuentes (FAQs).
+- `portal-padres.html`: accesos y canales directos para familias y acudientes.
+- `contacto.html`: canales de atención, ubicación y mapa interactivo.
+
+### 04 Primaria
+- `prekinder.html`: desarrollo temprano, juego y descubrimiento.
+- `kinder.html`: autonomía, creatividad y lenguaje.
+- `primaria.html`: pensamiento activo, lectura y proyectos colaborativos.
+
+### 05 Secundaria y Bachilleres
+- `secundaria.html`: habilidades analíticas y formación integral.
+- `bachilleres.html`: bachilleratos especializados y proyección vocacional.
+
+### Recursos compartidos
+- `index.html`: portada principal con Hero Slider dinámico (video campus y narrativas).
+- `css/styles.css`: diseño completo, variables de color y comportamiento responsive.
+- `js/main.js`: menú accesible (focus trap), slider táctil, animaciones y video observers.
+- `tools/generate-pages.mjs`: generador de plantillas e inyector de consistencia.
+- `assets/`: identidad gráfica, iconos, videos e imágenes optimizadas en WebP.
 
 ## Nota editorial
 

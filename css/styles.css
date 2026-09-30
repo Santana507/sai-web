@@ -1,6 +1,20 @@
 /* Hoja autocontenida: no requiere Tailwind ni preprocesador. */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
 
+/* ==========================================================================
+   ARQUITECTURA DE ESTILOS BPVDA (PREPARADO PARA TEMA WORDPRESS)
+   --------------------------------------------------------------------------
+   01. VARIABLES & CONFIGURACIÓN GLOBAL   --> wp-theme: assets/css/base.css
+   02. RESET Y ESTILOS BASE              --> wp-theme: assets/css/reset.css
+   03. NAVEGACIÓN (HEADER, NAV, MENÚ)    --> wp-theme: template-parts/header/
+   04. HERO COMPONENT (PORTADA & SLIDER) --> wp-theme: template-parts/hero/
+   05. COMPONENTES Y TARJETAS            --> wp-theme: template-parts/cards/
+   06. MÓDULOS EDITORIALES Y PILARES     --> wp-theme: template-parts/pillars/
+   07. PÁGINAS DE NIVEL ACADÉMICO        --> wp-theme: page-templates/levels/
+   08. PROPÓSITO Y FILOSOFÍA             --> wp-theme: page-templates/purpose/
+   09. PIE DE PÁGINA (FOOTER ENRIQUECIDO)--> wp-theme: template-parts/footer/
+   ========================================================================== */
+
 /* ========================================= 
    1. VARIABLES Y CONFIGURACI�N GLOBAL 
    ========================================= */

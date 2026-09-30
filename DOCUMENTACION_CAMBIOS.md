@@ -1,4 +1,4 @@
-﻿# Documentación de Cambios — BPVDA Web
+# Documentación de Cambios — BPVDA Web
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
@@ -97,3 +97,18 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
   - Se eliminó el atributo `loop` de los videos secundarios: `school-life-1.mp4` (`index.html`), `activities.mp4` (`actividades.html`) y `curriculum.mp4` (`curriculo.html`).
 - **Control Inteligente de Reproducción en `main.js`**: Implementado `IntersectionObserver` para videos secundarios que inicia la reproducción cuando entran en pantalla y se detiene automáticamente en el último fotograma al terminar el video (`ended`), sin reiniciar el bucle.
 - **Resolución de Conflictos de Git**: Sincronización limpia y resolución de conflictos entre ramas de trabajo para unificación completa en `origin/main`.
+
+---
+
+## Sesión #4 — Modernización Estructural, Modularización de Plantillas y Limpieza de Assets
+- **Actualización y Saneamiento de Documentación**:
+  - `ESTRUCTURA.md` y `README.md` actualizados con la arquitectura vigente de 16 páginas estáticas estructuradas bajo los 5 pilares institucionales (Nuestra Escuela, Enfoque Educativo, Familia y Comunidad, Primaria, Secundaria y Bachilleres).
+- **Modularización del Generador de Plantillas**:
+  - Creación de `tools/templates/header.html` y `tools/templates/footer.html` como fragmentos HTML limpios, legibles e independientes.
+  - Refactorización de `tools/generate-pages.mjs` para eliminar cadenas ofuscadas de una sola línea, permitiendo mantenimiento ágil de componentes compartidos.
+- **Higiene y Reducción de Peso de Multimedia**:
+  - Creación de `assets/raw-originals/` para resguardar archivos `.JPG` y `.PNG` en crudo que ya no se usan directamente en producción, aligerando el directorio `assets/media/` con un 100% de archivos optimizados WebP y videos H.264.
+- **Arquitectura de Estilos y Preparación para WordPress**:
+  - Inclusión de índice canónico y mapeo de temas dinámicos en la cabecera de `css/styles.css` (`header.php`, `footer.php`, `page-templates/`).
+- **Herramienta Automatizada de Verificación**:
+  - Creación y ejecución de `tools/verify-integrity.mjs`, validando la ausencia total de enlaces rotos o recursos multimedia faltantes en las 16 páginas.
