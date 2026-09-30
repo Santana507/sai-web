@@ -1,32 +1,44 @@
 # Control de Calidad y Comparación con Especificaciones Codex
 
-Este documento detalla el análisis del código actual en comparación con el prompt original de especificaciones elaborado con Codex. El objetivo es identificar qué se ha logrado satisfactoriamente y qué elementos podrían seguir perfeccionándose en futuras optimizaciones (Tarea 3), manteniendo la filosofía de diseño establecida.
+Este documento audita el estado del código actual respecto a las especificaciones originales de diseño inspiradas en Codex, *The Walker School* y *The Dunham School*, integrando los principios de la metodología **Spec-Driven Development (SDD)**.
 
-## 🔴 Áreas de Oportunidad (Para futuras optimizaciones)
+---
 
-1. **Menú Desplegable (Cubre gran parte de la página)**:
-   *   **Filosofía original**: Que el menú desplegable no cubra el 100% de la pantalla para evitar que los usuarios (como adultos mayores) pierdan el contexto de la página principal en la que se encuentran.
-   *   **Estado actual**: Técnicamente se ha añadido un margen (`left: 14px`, `right: 14px`), pero para que la separación sea más evidente, se podría acentuar este espaciado lateral o inferior, haciendo sentir al menú como un elemento verdaderamente "flotante" sobre el contenido principal.
+## 🟢 Elementos Cumplidos Satisfactoriamente
 
-## 🟢 Elementos cumplidos satisfactoriamente
+1. **Arquitectura y Segmentación Canónica (16 Páginas en 5 Pilares)**:
+   * El proyecto superó la segmentación básica inicial de 8 páginas para desplegar una estructura completa de 16 páginas agrupadas en los 5 pilares institucionales (Nuestra Escuela, Enfoque Educativo, Familia y Comunidad, Primaria, Secundaria y Bachilleres). Cumple con el objetivo de ofrecer una experiencia inmersiva, profunda y escalable.
 
-1. **Arquitectura y Segmentación de Páginas**:
-   *   El proyecto ahora cuenta con una estructura bien segmentada (separando index, contacto, visión, misión, etc.). Esto cumple el requisito principal de tomar el atractivo visual e inyectarle una experiencia mucho más profunda, inmersiva y organizada.
+2. **Uso Exclusivo de Multimedia Real (No IA)**:
+   * **100% de autenticidad**: Cero imágenes generadas sintéticamente. Todo el contenido gráfico corresponde al alumnado, personal e instalaciones de BPVDA.
+   * **Optimización de formatos**: Medios en producción servidos en `.webp` y `.mp4` con `faststart`. Las fotos pesadas en crudo (`.JPG`/`.PNG` de 10 MB) se encuentran aisladas en `assets/raw-originals/`.
 
-2. **Uso Exclusivo de Multimedia Provista**:
-   *   No se generaron imágenes con IA. Todas las fotos utilizadas pertenecen al material del colegio (ej. `achievement.webp`, `campus-entry.JPG`). Además, priorizan el rostro humano.
-
-3. **Duración del Video Hero**:
-   *   **Especificación**: El video inicial debe durar un mínimo de 10 segundos como enganche visual.
-   *   **Estado actual**: El video `hero-campus.mp4` fue optimizado previamente y recortado a ~12 segundos de duración, cumpliendo exactamente con la pauta y mejorando el tiempo de carga.
+3. **Duración y Calidad del Video Hero**:
+   * El video ambiental `hero-campus.mp4` está recortado a ~12 segundos, con compresión H.264 optimizada (reducción del 76% en peso), cumpliendo con el umbral mínimo obligatorio de 10 segundos como enganche visual inmersivo.
 
 4. **Comportamiento del Slider Horizontal**:
-   *   El lema obligatorio *"Forjando Espíritus Nuevos"* encabeza el primer apartado.
-   *   La Misión y la Visión están correctamente jerarquizadas dentro de los elementos dinámicos.
-   *   El llamado a la acción final invita a la admisión (`"Inicia tu admisión" / "Ver admisiones"`), dirigiendo el flujo eficientemente a `admision.html`.
+   * Encabezado por el lema institucional obligatorio *"Forjando Espíritus Nuevos"*.
+   * Jerarquía de encabezados semánticos de SEO: un único `<h1>` en el slide 1 y `<h2>` estilizados en los slides sucesivos.
+   * Avance automático sincronizado (10s en slide 1, 7s en siguientes), soporte de pausa interactiva (`Ⅱ`/`▶`) y gestos táctiles de deslizamiento (*swipe*).
+   * Llamado a la acción que conduce directamente a `admisiones.html`.
 
-5. **Tarjetas Dinámicas**:
-   *   Fuera del *slider* principal, se incluyeron composiciones o *cards* para áreas específicas (Bachillerato, Preescolar, Primaria), acatando la directriz de contar con elementos visuales atractivos tipo tarjeta.
+5. **Composiciones en Tarjetas (Cards y Mosaicos)**:
+   * Cuadrículas modulares específicas para cada etapa: stacks de fotos en Prekínder, cápsulas en Kínder, mosaicos en Primaria y cuadrícula docente en Plantel.
 
-6. **Conservación de la Sección de Contactos**:
-   *   Se mantiene firme el bloque final para información y contacto en la página de contactos, preservando el espacio para futuras imágenes del equipo.
+6. **Pie de Página Enriquecido (Footer de 3 Columnas)**:
+   * Ubicación física oficial con enlace directo y verificado a Google Maps.
+   * Desglose claro de horarios (regular y verano) y canales de secretaría.
+   * Enlaces directos a PBX, WhatsApp interactivo y redes sociales con iconos oficiales.
+
+7. **Modularización y Mantenibilidad del Código**:
+   * Componentes comunes desacoplados en `tools/templates/header.html` y `tools/templates/footer.html`.
+   * Herramienta de auditoría automática `tools/verify-integrity.mjs` que certifica 0 enlaces rotos en las 16 páginas.
+
+---
+
+## 🟡 Puntos de Atención y Filosofía del Menú Flotante
+
+1. **Equilibrio entre Cobertura de Pantalla y Contexto de Fondo**:
+   * **Directriz**: El menú flotante debe mantener visibles los márgenes laterales e inferiores (`inset: 0 14px 14px 14px; border-radius: 0 0 16px 16px;`) para conservar la sensación de tarjeta modal superpuesta sin desorientar al usuario.
+   * **Accesibilidad**: Se integró gestión rigurosa de foco (*Focus Trap* para usuarios que navegan con teclado), cierre inmediato con la tecla `Escape` y ocultamiento automático del logo institucional (`opacity: 0`) para evitar empalmes gráficos.
+   * **Legibilidad Editorial**: El menú distribuye los 5 pilares en columnas limpias sin cortes de palabras, con contraste contrastado sobre fondo azul noche (`--deep`).

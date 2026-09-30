@@ -112,3 +112,16 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
   - Inclusión de índice canónico y mapeo de temas dinámicos en la cabecera de `css/styles.css` (`header.php`, `footer.php`, `page-templates/`).
 - **Herramienta Automatizada de Verificación**:
   - Creación y ejecución de `tools/verify-integrity.mjs`, validando la ausencia total de enlaces rotos o recursos multimedia faltantes en las 16 páginas.
+
+---
+
+## Sesión #5 — Adopción de Spec-Driven Development (MoureDev) y Documentación Exhaustiva
+- **Creación de `spec.md` (Especificación Canónica)**:
+  - Redacción integral de la especificación técnica bajo la metodología Spec-Driven Development (SDD) promovida por Brais Moure (@mouredev/hello-sdd).
+  - Incluye: Contexto y objetivos, 5 actores clave, 7 historias de usuario (H-01 a H-07), 21 requisitos funcionales con sintaxis formal EARS (RF-01 a RF-21), 6 requisitos no funcionales (RNF), casos límite (EDGE-01 a EDGE-04), fuera de alcance (Out of Scope) y definición de terminado (DoD).
+- **Alineación de `AGENTS.md` y `agente.md`**:
+  - `AGENTS.md` reformulado con la estructura profesional de SDD: visión del proyecto, tabla de comandos indispensables, estándares de código por lenguaje (HTML, CSS, JS), reglas innegociables consolidadas y protocolo agéntico estricto.
+  - `agente.md` sincronizado como referencia rápida de mantenimiento y gobernanza.
+- **Ampliación Integral de la Documentación**:
+  - `README.md` ampliado con guía de inicio rápido, comandos, estructura visual de 16 páginas y tabla de pilares.
+  - `ESTRUCTURA.md` y `COMPARACION_CODEX.md` enriquecidos con análisis cualitativo y referencias a `spec.md`.
