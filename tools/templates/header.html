@@ -1,29 +1,42 @@
-﻿<header class="site-header">
+<header class="site-header">
+  <!-- Barra de Navegación Superior Fija (Header Bar) -->
   <div class="header-bar">
+    <!-- Logotipo Institucional Principal con enlace a Portada -->
     <a class="brand" href="index.html" aria-label="Inicio">
       <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
     </a>
+
+    <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
     <nav class="essential-nav" aria-label="Navegación esencial">
       <a href="filosofia.html">Filosofía</a>
       <a href="admisiones.html">Admisiones</a>
       <a href="contacto.html">Contacto</a>
     </nav>
+
+    <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
     <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
       <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
       <img src="assets/icons/close.png" alt="" class="icon-close-img">
     </button>
   </div>
+
+  <!-- Panel del Menú Modal Desplegable (5 Pilares de Navegación) -->
   <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
     <div class="menu-panel__main">
+      <!-- Título de Bienvenida e Introducción Editorial del Menú -->
       <div class="menu-panel__title">
         <span>BUEN PASTOR VOZ DE ALERTA</span>
         <h2>Encuentra tu camino.</h2>
         <p>Explora cada etapa de la comunidad BPVDA.</p>
       </div>
+
+      <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
       <div class="menu-panel__groups">
         {{MENU_GROUPS}}
       </div>
     </div>
+
+    <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
     <div class="menu-panel__foot">
       <div class="menu-panel__contact">
         <span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span>

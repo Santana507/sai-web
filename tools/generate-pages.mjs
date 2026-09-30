@@ -159,14 +159,27 @@ const special = (file) => {
 // 5. Generación de Páginas Interiores Estándar
 for (const [file, title, eyebrow, hero, image, intro] of data.filter(entry => entry[0] !== 'filosofia.html')) {
   const body = `
-<section class="split-feature">
-  <img src="${image}" alt="">
-  <div>
-    <span class="section-number">${eyebrow}</span>
-    <h2>${title}</h2>
-    <p>${intro} En esta sección se añadirá la información institucional definitiva cuando sea aprobada.</p>
-  </div>
-</section>${cards(title)}${special(file)}`;
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
+    <!-- ============================================================ -->
+    <section class="split-feature">
+      <img src="${image}" alt="">
+      <div>
+        <span class="section-number">${eyebrow}</span>
+        <h2>${title}</h2>
+        <p>${intro} En esta sección se añadirá la información institucional definitiva cuando sea aprobada.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: TARJETAS FORMATIVAS Y CARRUSEL EDITORIAL            -->
+    <!-- ============================================================ -->
+    ${cards(title)}
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: COMPONENTES ESPECIALES SEGÚN MÓDULO                 -->
+    <!-- ============================================================ -->
+    ${special(file)}`;
 
   const pageHtml = `<!doctype html>
 <html lang="es">
@@ -179,9 +192,15 @@ for (const [file, title, eyebrow, hero, image, intro] of data.filter(entry => en
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <!-- Enlace accesible para lectores de pantalla y navegación por teclado -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal de 5 Pilares -->
   ${visualHeader}
+
+  <!-- Contenedor Principal de la Página -->
   <main id="contenido">
+    <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
       <img src="${image}" alt="">
       <div class="interior-hero__wash"></div>
@@ -191,9 +210,14 @@ for (const [file, title, eyebrow, hero, image, intro] of data.filter(entry => en
         <p>${intro}</p>
       </div>
     </section>
+
     ${body}
   </main>
+
+  <!-- Pie de Página Institucional Enriquecido en 3 Columnas -->
   ${richFooter}
+
+  <!-- Botón Flotante para Volver al Inicio de la Página -->
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 </body>
 </html>`;
@@ -213,9 +237,14 @@ const filosofiaHtml = `<!doctype html>
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <!-- Enlace accesible para lectores de pantalla -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
   ${visualHeader}
+
   <main id="contenido">
+    <!-- Hero Interactivo con Secuencia de Fundido Fotográfico (Crossfade) -->
     <section class="purpose-fade">
       <div class="purpose-fade__images">
         <img class="is-active" src="assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA con uniforme">
@@ -228,10 +257,14 @@ const filosofiaHtml = `<!doctype html>
         <p>Formamos personas con valores, conocimiento y una mirada generosa hacia los demás.</p>
       </div>
     </section>
+
+    <!-- Declaración Introductoria de Propósito -->
     <section class="purpose-intro">
       <span>PROPÓSITO BPVDA</span>
       <p>Creemos en una educación integral que impulsa el desarrollo académico, personal y espiritual de niños y jóvenes, fundamentada en la fe, la excelencia y el servicio.</p>
     </section>
+
+    <!-- Pilares Formativos: 01 Valores, 02 Misión y 03 Visión -->
     <section class="purpose-pillars">
       <article class="purpose-pillar purpose-pillar--values">
         <img src="assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA">
@@ -259,7 +292,11 @@ const filosofiaHtml = `<!doctype html>
       </article>
     </section>
   </main>
+
+  <!-- Pie de Página Institucional Enriquecido -->
   ${richFooter}
+
+  <!-- Botón Volver Arriba -->
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 </body>
 </html>`;
@@ -279,9 +316,14 @@ const levelPage = (file, title, hero, lead, photos, body) => {
   <script src="js/main.js" defer></script>
 </head>
 <body class="level-page level-page--${file.replace('.html', '')}">
+  <!-- Enlace accesible de salto al contenido -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
   ${visualHeader}
+
   <main id="contenido">
+    <!-- Hero Específico del Nivel con Imagen de Fondo y Llamado a la Acción -->
     <section class="level-hero">
       <img src="${photos[0]}" alt="Estudiantes BPVDA">
       <div>
@@ -291,9 +333,15 @@ const levelPage = (file, title, hero, lead, photos, body) => {
         <a href="#experiencias">Descubre la etapa <b>↓</b></a>
       </div>
     </section>
+
+    <!-- Composición Específica de la Etapa Formativa -->
     ${body}
   </main>
+
+  <!-- Pie de Página Institucional Enriquecido -->
   ${richFooter}
+
+  <!-- Botón Volver Arriba -->
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 </body>
 </html>`;

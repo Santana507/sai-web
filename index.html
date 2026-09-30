@@ -20,31 +20,44 @@
 <!-- 1. ENCABEZADO Y NAVEGACIÓN PRINCIPAL -->
 <!-- ========================================== -->
 <header class="site-header">
+  <!-- Barra de Navegación Superior Fija (Header Bar) -->
   <div class="header-bar">
+    <!-- Logotipo Institucional Principal con enlace a Portada -->
     <a class="brand" href="index.html" aria-label="Inicio">
       <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
     </a>
+
+    <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
     <nav class="essential-nav" aria-label="Navegación esencial">
       <a href="filosofia.html">Filosofía</a>
       <a href="admisiones.html">Admisiones</a>
       <a href="contacto.html">Contacto</a>
     </nav>
+
+    <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
     <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
       <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
       <img src="assets/icons/close.png" alt="" class="icon-close-img">
     </button>
   </div>
+
+  <!-- Panel del Menú Modal Desplegable (5 Pilares de Navegación) -->
   <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
     <div class="menu-panel__main">
+      <!-- Título de Bienvenida e Introducción Editorial del Menú -->
       <div class="menu-panel__title">
         <span>BUEN PASTOR VOZ DE ALERTA</span>
         <h2>Encuentra tu camino.</h2>
         <p>Explora cada etapa de la comunidad BPVDA.</p>
       </div>
+
+      <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
       <div class="menu-panel__groups">
         <section><span>01 NUESTRA ESCUELA</span><a href="quienes-somos.html">¿Quiénes somos?<b>↗</b></a><a href="filosofia.html">Propósito BPVDA<b>↗</b></a><a href="instalaciones.html">Instalaciones<b>↗</b></a><a href="plantel.html">Plantel docente<b>↗</b></a></section><section><span>02 ENFOQUE EDUCATIVO</span><a href="sai.html">SAI BPVDA<b>↗</b></a><a href="vida-estudiantil.html">Vida estudiantil<b>↗</b></a><a href="ecosistema-digital.html">Ecosistema digital<b>↗</b></a></section><section><span>03 FAMILIA Y COMUNIDAD</span><a href="admisiones.html">Admisiones y matrícula<b>↗</b></a><a href="portal-padres.html">Portal de padres<b>↗</b></a><a href="contacto.html">Contacto y atención<b>↗</b></a></section><section><span>04 PRIMARIA</span><a href="prekinder.html">Prekínder<b>↗</b></a><a href="kinder.html">Kínder<b>↗</b></a><a href="primaria.html">Primaria<b>↗</b></a></section><section><span>05 SECUNDARIA Y BACHILLERES</span><a href="secundaria.html">Secundaria<b>↗</b></a><a href="bachilleres.html">Bachilleres<b>↗</b></a></section>
       </div>
     </div>
+
+    <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
     <div class="menu-panel__foot">
       <div class="menu-panel__contact">
         <span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span>
@@ -54,12 +67,16 @@
     </div>
   </div>
 </header>
-  <!-- Slider principal: el primer estado dura 10 segundos. -->
-<!-- ========================================== -->
-  <!-- 2. SECCIÓN PRINCIPAL (HERO / SLIDER) -->
-  <!-- ========================================== -->
+
+  <!-- ============================================================ -->
+  <!-- 2. SECCIÓN PRINCIPAL: HERO SLIDER HORIZONTAL               -->
+  <!-- ============================================================ -->
+  <!-- Slider inmersivo multipantalla con autoplay adaptativo.      -->
+  <!-- Primer slide dura 10s (video apertura); siguientes duran 6s. -->
+  <!-- Incluye soporte táctil (swipe), teclado y control de foco.   -->
   <section class="hero" id="inicio" aria-label="Presentación destacada" data-slider>
     <div class="hero-track" data-slider-track>
+      <!-- Diapositiva 01: Video Hero de Apertura (Duración 10 segundos) -->
       <article class="hero-slide" data-slide aria-hidden="false">
         <video autoplay muted loop playsinline tabindex="-1"><source src="assets/media/hero-campus.mp4" type="video/mp4"></video>
         <div class="hero-wash"></div>
@@ -126,7 +143,9 @@
       </article>
     </div>
 
+    <!-- Controles de Navegación del Slider: Anterior, Contador/Progreso y Siguiente -->
     <div class="hero-controls"><button type="button" data-prev aria-label="Historia anterior">←</button><div class="hero-progress" aria-label="Progreso del slider"><span data-current>01</span><i><b data-progress style="width:20%"></b></i><span data-total>05</span></div><button type="button" data-next aria-label="Historia siguiente">→</button></div>
+    <!-- Leyenda Lateral Vertical de Identidad Institucional -->
     <div class="hero-side-note">Formando con fe desde Panamá</div>
   </section>
 
@@ -159,6 +178,7 @@
         </div>
       </div>
 
+      <!-- Mosaico Fotográfico Asimétrico (Aprender Haciendo + Fe/Conocimiento/Acción) -->
       <div class="mosaic">
         <figure class="mosaic-main">
           <img src="assets/media/science-student.webp" alt="Estudiante en una experiencia de laboratorio">
@@ -172,6 +192,9 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 02: OFERTA ACADÉMICA Y RUTAS POR ETAPA FORMATIVA     -->
+    <!-- ============================================================ -->
     <section class="programs section-pad" id="niveles">
       <div class="section-heading light">
         <div><span class="section-number">02 — Oferta académica</span><h2>Un camino para<br>cada <em>etapa.</em></h2></div>
@@ -209,6 +232,9 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 03: APRENDIZAJE ACTIVO Y MÉTRICAS FORMATIVAS         -->
+    <!-- ============================================================ -->
     <section class="feature section-pad">
       <div class="feature-image"><img src="assets/media/science-action.webp" alt="Estudiantes desarrollando una experiencia científica"><span>En acción</span></div>
       <div class="feature-copy">
@@ -220,6 +246,9 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 04: TALENTO QUE TRASCIENDE (LOGROS Y RETOS)          -->
+    <!-- ============================================================ -->
     <section class="achievements section-pad" id="logros">
       <div class="achievement-intro">
         <span class="section-number">04 — Talento que trasciende</span>
@@ -247,6 +276,9 @@
       </article>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 05: SOMOS COMUNIDAD (VIDEO INMERSIVO Y ENLACES)      -->
+    <!-- ============================================================ -->
     <section class="community" id="comunidad">
       <video autoplay muted playsinline tabindex="-1"><source src="assets/media/school-life-1.mp4" type="video/mp4"></video>
       <div class="community-wash"></div>
@@ -258,6 +290,9 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN GUÍA: EXPLORA BPVDA (RUTAS EDITORIALES RÁPIDAS)      -->
+    <!-- ============================================================ -->
     <section class="guide section-pad">
       <div class="guide-title">
         <span>Explora BPVDA</span>
@@ -272,6 +307,9 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- SECCIÓN CONTACTO: EL SIGUIENTE PASO (LLAMADO A LA ACCIÓN)    -->
+    <!-- ============================================================ -->
     <section class="contact section-pad" id="contacto">
       <div class="contact-photo"><img src="assets/media/campus-entry.webp" alt="Entrada del Colegio Buen Pastor Voz de Alerta"></div>
       <div class="contact-copy">
@@ -326,6 +364,7 @@
       </div>
     </div>
 
+<!-- Bloque Inferior del Footer: Derechos Reservados y Redes Sociales Institucionales -->
     <div class="footer-bottom">
       <p class="footer-copy">&copy; 2026 BUEN PASTOR VOZ DE ALERTA</p>
       <div class="footer-socials">

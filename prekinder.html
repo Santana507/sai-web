@@ -9,33 +9,49 @@
   <script src="js/main.js" defer></script>
 </head>
 <body class="level-page level-page--prekinder">
+  <!-- Enlace accesible de salto al contenido -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
   <header class="site-header">
+  <!-- Barra de Navegación Superior Fija (Header Bar) -->
   <div class="header-bar">
+    <!-- Logotipo Institucional Principal con enlace a Portada -->
     <a class="brand" href="index.html" aria-label="Inicio">
       <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
     </a>
+
+    <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
     <nav class="essential-nav" aria-label="Navegación esencial">
       <a href="filosofia.html">Filosofía</a>
       <a href="admisiones.html">Admisiones</a>
       <a href="contacto.html">Contacto</a>
     </nav>
+
+    <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
     <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
       <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
       <img src="assets/icons/close.png" alt="" class="icon-close-img">
     </button>
   </div>
+
+  <!-- Panel del Menú Modal Desplegable (5 Pilares de Navegación) -->
   <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
     <div class="menu-panel__main">
+      <!-- Título de Bienvenida e Introducción Editorial del Menú -->
       <div class="menu-panel__title">
         <span>BUEN PASTOR VOZ DE ALERTA</span>
         <h2>Encuentra tu camino.</h2>
         <p>Explora cada etapa de la comunidad BPVDA.</p>
       </div>
+
+      <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
       <div class="menu-panel__groups">
         <section><span>01 NUESTRA ESCUELA</span><a href="quienes-somos.html">¿Quiénes somos?<b>↗</b></a><a href="filosofia.html">Propósito BPVDA<b>↗</b></a><a href="instalaciones.html">Instalaciones<b>↗</b></a><a href="plantel.html">Plantel docente<b>↗</b></a></section><section><span>02 ENFOQUE EDUCATIVO</span><a href="sai.html">SAI BPVDA<b>↗</b></a><a href="vida-estudiantil.html">Vida estudiantil<b>↗</b></a><a href="ecosistema-digital.html">Ecosistema digital<b>↗</b></a></section><section><span>03 FAMILIA Y COMUNIDAD</span><a href="admisiones.html">Admisiones y matrícula<b>↗</b></a><a href="portal-padres.html">Portal de padres<b>↗</b></a><a href="contacto.html">Contacto y atención<b>↗</b></a></section><section><span>04 PRIMARIA</span><a href="prekinder.html">Prekínder<b>↗</b></a><a href="kinder.html">Kínder<b>↗</b></a><a href="primaria.html">Primaria<b>↗</b></a></section><section><span>05 SECUNDARIA Y BACHILLERES</span><a href="secundaria.html">Secundaria<b>↗</b></a><a href="bachilleres.html">Bachilleres<b>↗</b></a></section>
       </div>
     </div>
+
+    <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
     <div class="menu-panel__foot">
       <div class="menu-panel__contact">
         <span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span>
@@ -45,7 +61,9 @@
     </div>
   </div>
 </header>
+
   <main id="contenido">
+    <!-- Hero Específico del Nivel con Imagen de Fondo y Llamado a la Acción -->
     <section class="level-hero">
       <img src="assets/new/levels/prekinder/IMG_9410.webp" alt="Estudiantes BPVDA">
       <div>
@@ -55,6 +73,8 @@
         <a href="#experiencias">Descubre la etapa <b>↓</b></a>
       </div>
     </section>
+
+    <!-- Composición Específica de la Etapa Formativa -->
     <section id="experiencias" class="level-welcome">
   <div>
     <span>PREKÍNDER</span>
@@ -75,8 +95,12 @@
   </div>
 </section>
   </main>
+
+  <!-- Pie de Página Institucional Enriquecido -->
   <footer>
+  <!-- Contenedor Superior del Footer Dividido en 3 Columnas Principales -->
   <div class="footer-top">
+    <!-- Columna 1: Marca Institucional, Dirección Física y Enlace a Google Maps -->
     <div class="footer-col footer-col--brand">
       <div class="footer-brand">
         <img src="assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo">
@@ -91,6 +115,8 @@
         <span>Ver en Google Maps</span>
       </a>
     </div>
+
+    <!-- Columna 2: Teléfono de Oficina Central y Desglose de Horarios -->
     <div class="footer-col">
       <h4>Oficina</h4>
       <p class="footer-phone"><a href="tel:+5073915811">391-5811</a></p>
@@ -103,12 +129,16 @@
         <p class="footer-hours">8:00 a.m. - 2:00 p.m.</p>
       </div>
     </div>
+
+    <!-- Columna 3: Atención al Cliente, WhatsApp Oficial y Correo Electrónico -->
     <div class="footer-col">
       <h4>Atención al cliente</h4>
       <p class="footer-phone"><a href="tel:+5073915811">391-5811</a> <span class="footer-phone-sep">/</span> <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="footer-phone-wa">6744-1351</a></p>
       <p class="footer-email"><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></p>
     </div>
   </div>
+
+  <!-- Barra Inferior del Footer: Derechos de Autor y Botones de Redes Sociales -->
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 BUEN PASTOR VOZ DE ALERTA</p>
     <div class="footer-socials">
@@ -119,6 +149,8 @@
     </div>
   </div>
 </footer>
+
+  <!-- Botón Volver Arriba -->
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 </body>
 </html>
