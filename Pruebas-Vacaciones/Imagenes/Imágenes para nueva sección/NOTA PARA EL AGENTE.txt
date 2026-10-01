@@ -1,0 +1,2 @@
+Hola.
+Aquí están las imágenes completas que se tomaron en una ocasión. Como son muchas, NO quiero que hagas Push de TODO. solo selecciona las imágenes que más te gusten y ésas colócalas en "Imágenes seleccionadas para Push" que va ser la carpeta que va a estar con todo el archivo. Las demás las puedes ignorar. Esto incluye todas las carpetas que estén aquí, ya sea de imágenes o videos, las que selecciones son las que vas a guardar, las que no, no las dejes en push
