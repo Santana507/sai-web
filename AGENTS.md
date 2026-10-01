@@ -1,6 +1,6 @@
 # AGENTS.md — Colegio Buen Pastor Voz de Alerta (BPVDA)
 
-> **Metodología**: Spec-Driven Development (SDD) — Estándar MoureDev.  
+> **Metodología**: Spec-Driven Development (SDD).  
 > **Propósito**: Manual de instrucciones, directrices y reglas innegociables para agentes de inteligencia artificial y desarrolladores en este repositorio.
 
 ---
@@ -9,7 +9,7 @@
 * **Qué es**: Sitio web institucional de alto nivel para el **Colegio Buen Pastor Voz de Alerta (BPVDA)**, ubicado en 24 de Diciembre, Ciudad de Panamá.
 * **Arquitectura**: Sitio estático multipágina estructurado en **16 páginas** agrupadas bajo **5 pilares institucionales**.
 * **Tecnologías**: HTML5 semántico puro, CSS3 autocontenido (con variables globales y diseño responsive sin preprocesadores) y JavaScript nativo (Vanilla JS, modularizado en IIFE). Sin dependencias de compilación en el navegador ni frameworks como Tailwind, React o Vue.
-* **Inspiración**: *The Walker School* (dinamismo, slider horizontal, composiciones en tarjetas) y *The Dunham School* (estructura de contenidos y jerarquías).
+* **Estilo y Composición**: Dinamismo visual superior, slider horizontal multipantalla, composiciones asimétricas en tarjetas y jerarquía editorial estructurada.
 * **Meta Futura**: Preparado para una conversión directa y modular a plantilla dinámica (*Theme*) de **WordPress**.
 
 ---

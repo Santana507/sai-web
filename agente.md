@@ -12,7 +12,7 @@
 ---
 
 ## 2. Reglas de Mantenimiento e Inmutabilidad
-1. **Preservar la Identidad Visual**: Mantener la estética superior inspirada en *The Walker School* y *The Dunham School*.
+1. **Preservar la Identidad Visual**: Mantener la estética superior, moderna, inmersiva e institucional del colegio.
 2. **Duración del Video Hero**: El video inicial en `index.html` debe permanecer un mínimo de 10 segundos antes del siguiente slide.
 3. **Contenido del Slider**: Misión, visión, valores y llamado a admisión deben mantenerse activos y accesibles.
 4. **Comportamiento del Menú**: Panel flotante con margen exterior visible, esquinas redondeadas y cierre automático con la tecla `Escape`.

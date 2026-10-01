@@ -1,6 +1,6 @@
 # Control de Calidad y Comparación con Especificaciones Codex
 
-Este documento audita el estado del código actual respecto a las especificaciones originales de diseño inspiradas en Codex, *The Walker School* y *The Dunham School*, integrando los principios de la metodología **Spec-Driven Development (SDD)**.
+Este documento audita el estado del código actual respecto a las especificaciones de diseño y requerimientos de calidad técnica, integrando los principios de la metodología **Spec-Driven Development (SDD)**.
 
 ---
 

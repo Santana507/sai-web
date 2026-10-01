@@ -28,7 +28,7 @@ sai-web/
 |-- docs/
 |   `-- referencias/
 |-- spec.md                        # Fuente canónica de verdad (Especificación SDD en EARS)
-|-- AGENTS.md                      # Manual del agente y reglas innegociables (MoureDev SDD)
+|-- AGENTS.md                      # Manual del agente y reglas innegociables (SDD)
 |-- agente.md                      # Guía rápida del agente e inmutabilidad
 |-- README.md                      # Documentación general y comandos
 |-- DOCUMENTACION_CAMBIOS.md       # Bitácora cronológica de sesiones de trabajo

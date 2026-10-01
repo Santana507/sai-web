@@ -115,9 +115,9 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 
 ---
 
-## Sesión #5 — Adopción de Spec-Driven Development (MoureDev) y Documentación Exhaustiva
+## Sesión #5 — Adopción de Spec-Driven Development (SDD) y Documentación Exhaustiva
 - **Creación de `spec.md` (Especificación Canónica)**:
-  - Redacción integral de la especificación técnica bajo la metodología Spec-Driven Development (SDD) promovida por Brais Moure (@mouredev/hello-sdd).
+  - Redacción integral de la especificación técnica bajo la metodología Spec-Driven Development (SDD).
   - Incluye: Contexto y objetivos, 5 actores clave, 7 historias de usuario (H-01 a H-07), 21 requisitos funcionales con sintaxis formal EARS (RF-01 a RF-21), 6 requisitos no funcionales (RNF), casos límite (EDGE-01 a EDGE-04), fuera de alcance (Out of Scope) y definición de terminado (DoD).
 - **Alineación de `AGENTS.md` y `agente.md`**:
   - `AGENTS.md` reformulado con la estructura profesional de SDD: visión del proyecto, tabla de comandos indispensables, estándares de código por lenguaje (HTML, CSS, JS), reglas innegociables consolidadas y protocolo agéntico estricto.

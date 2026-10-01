@@ -2,7 +2,7 @@
  * ==============================================================================
  * BPVDA — JavaScript Institucional Modular (Vanilla JS)
  * ==============================================================================
- * Metodología: Spec-Driven Development (SDD) — Estándar MoureDev.
+ * Metodología: Spec-Driven Development (SDD).
  * Arquitectura: IIFE (Immediately Invoked Function Expression) auto-ejecutable.
  * Dependencias: Ninguna (0 frameworks, 0 polyfills pesados).
  * Accesibilidad: Conforme a WCAG 2.1 Nivel AA (Focus Trap, ARIA, Teclado).

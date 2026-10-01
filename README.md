@@ -2,7 +2,7 @@
 
 Sitio web estático institucional de alto impacto visual y rendimiento optimizado para el **Colegio Buen Pastor Voz de Alerta (BPVDA)**, ubicado en 24 de Diciembre, Ciudad de Panamá.
 
-Desarrollado bajo la metodología **Spec-Driven Development (SDD)** promovida por [MoureDev](https://github.com/mouredev/hello-sdd), donde [spec.md](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/spec.md) actúa como la fuente canónica de verdad (*Single Source of Truth*) y [AGENTS.md](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/AGENTS.md) rige el comportamiento y directrices técnicas.
+Desarrollado bajo la metodología **Spec-Driven Development (SDD)**, donde [spec.md](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/spec.md) actúa como la fuente canónica de verdad (*Single Source of Truth*) y [AGENTS.md](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/AGENTS.md) rige el comportamiento y directrices técnicas.
 
 ---
 

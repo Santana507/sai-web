@@ -1,6 +1,6 @@
-﻿# SPEC-001 — Especificación Técnica Integral del Sitio Web BPVDA
+# SPEC-001 — Especificación Técnica Integral del Sitio Web BPVDA
 
-> **Metodología**: Spec-Driven Development (SDD) — Estándar MoureDev.  
+> **Metodología**: Spec-Driven Development (SDD).  
 > **Estado**: Aprobado / Fuente Canónica de Verdad (*Single Source of Truth*).  
 > **Proyecto**: Colegio Buen Pastor Voz de Alerta (BPVDA).  
 > **Versión**: 2.0 (Arquitectura de 16 páginas en 5 pilares).
@@ -9,7 +9,7 @@
 
 ## 1. Contexto y Objetivo del Proyecto
 
-El **Colegio Buen Pastor Voz de Alerta (BPVDA)**, ubicado en el Corregimiento 24 de Diciembre (Ciudad de Panamá), requiere una plataforma web de nivel profesional que proyecte una identidad digital superior, compitiendo con los más altos estándares de instituciones educativas privadas (referencias de diseño: *The Walker School* y *The Dunham School*).
+El **Colegio Buen Pastor Voz de Alerta (BPVDA)**, ubicado en el Corregimiento 24 de Diciembre (Ciudad de Panamá), requiere una plataforma web de nivel profesional que proyecte una identidad digital superior, compitiendo con los más altos estándares de instituciones educativas privadas.
 
 El objetivo es proveer una experiencia web inmersiva, accesible y de alto rendimiento que:
 1. Refleje la excelencia académica, los valores cristianos y la calidez comunitaria del colegio.
