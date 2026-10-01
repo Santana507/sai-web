@@ -4919,3 +4919,37 @@ select.form-control {
     max-width: 120px !important;
   }
 }
+
+/* ============================================================
+   FIX FOR MENU PANEL ON MOBILE (OVERRIDING GRID-AUTO-FLOW)
+   ============================================================ */
+@media (max-width: 900px) {
+  .menu-panel__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-flow: row !important; /* Critical fix: stops forcing 5 columns */
+    height: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-panel__groups {
+    grid-template-columns: 1fr !important;
+    grid-auto-flow: row !important;
+  }
+  
+  .menu-panel__groups section {
+    padding: 15px !important;
+    min-height: auto !important;
+  }
+  
+  .menu-panel__groups section > span {
+    font-size: 11px !important;
+    margin-bottom: 5px !important;
+    min-height: auto !important;
+  }
+  
+  .menu-panel__groups a {
+    padding: 8px 0 !important;
+    font-size: 14px !important;
+  }
+}
