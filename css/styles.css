@@ -4680,3 +4680,122 @@ select.form-control {
 .adm-quick-btn:hover { background: var(--turquoise, #0cb4ab); color: #031c31; }
 @media (max-width: 768px) { .adm-main-form { grid-template-columns: 1fr; } .adm-pricing-block__head { flex-direction: column; align-items: flex-start; } }
 
+
+/* ============================================================
+   MODULE: Ultimate Form Usability & Accessibility Enhancements
+   ============================================================ */
+
+/* 1. Clearer, more readable labels */
+.form-label, 
+.form-group label {
+  font-size: 0.95rem; /* Larger than before */
+  font-weight: 700;
+  color: #1e293b; /* Darker for higher contrast */
+  margin-bottom: 0.6rem;
+  display: block;
+  letter-spacing: 0;
+}
+
+/* Optional helper text under labels */
+.form-help, .hint {
+  display: block;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* 2. Larger, easier to tap/click inputs */
+.form-control,
+.form-group input:not([type='radio']):not([type='checkbox']):not([type='file']),
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px; /* Softer edges */
+  padding: 1.1rem 1.25rem; /* Taller touch targets */
+  font-size: 1.05rem; /* Highly readable text */
+  color: #0f172a;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.form-control::placeholder,
+.form-group input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* Stronger visual focus */
+.form-control:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--turquoise);
+  box-shadow: 0 0 0 4px rgba(16, 184, 176, 0.15);
+  background-color: #ffffff;
+}
+
+/* 3. Improved Select Dropdowns */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* 4. Superior Radio & Checkbox selection (Cards) */
+.radio-group label,
+.checkbox-wrapper, 
+.form-checkbox-item {
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+/* Visually obvious checked states */
+.radio-group label:has(input:checked),
+.checkbox-wrapper:has(input:checked),
+.form-checkbox-item:has(input:checked) {
+  background-color: #f0fdfc;
+  border-color: var(--turquoise);
+  box-shadow: 0 4px 12px rgba(16, 184, 176, 0.08);
+}
+
+/* Larger radio/checkbox native inputs */
+.radio-group input[type='radio'],
+.checkbox-wrapper input[type='checkbox'], 
+.form-checkbox-item input[type='checkbox'] {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.8rem;
+  cursor: pointer;
+}
+
+/* 5. Breathing room between fields */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Block Title separation */
+.form-block-title {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Grid Gap increase for spaciousness */
+.form-grid-2, .form-grid-3, .form-grid-4 {
+  gap: 1.8rem;
+}
