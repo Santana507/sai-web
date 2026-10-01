@@ -1,0 +1,437 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admisiones y matrícula | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+  <style>
+    /* ---- FORMULARIO DE ADMISIÓN ---- */
+    .admission-form-section {
+      padding: clamp(60px, 8vw, 120px) max(5vw, 24px);
+      background: #f7f8fa;
+    }
+    .admission-form-section .section-tag {
+      display: block;
+      color: var(--turquoise, #0cb4ab);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .admission-form-section h2 {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 800;
+      color: var(--navy, #031c31);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .admission-form-section .form-intro {
+      color: #555;
+      font-size: 17px;
+      margin-bottom: 44px;
+      max-width: 560px;
+    }
+    .adm-form {
+      max-width: 820px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .adm-form .full { grid-column: 1 / -1; }
+    .adm-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .adm-field label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy, #031c31);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .adm-field label .req { color: var(--turquoise, #0cb4ab); margin-left: 2px; }
+    .adm-field input,
+    .adm-field select,
+    .adm-field textarea {
+      border: 1.5px solid #d0d5dd;
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-size: 16px;
+      font-family: inherit;
+      color: #111;
+      background: #fff;
+      transition: border-color .2s;
+      outline: none;
+    }
+    .adm-field input:focus,
+    .adm-field select:focus,
+    .adm-field textarea:focus {
+      border-color: var(--turquoise, #0cb4ab);
+      box-shadow: 0 0 0 3px rgba(12,180,171,.12);
+    }
+    .adm-field textarea { resize: vertical; min-height: 110px; }
+
+    /* Upload zone */
+    .upload-zone {
+      border: 2px dashed #c2ccd8;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--turquoise, #0cb4ab);
+      background: #f0fffe;
+    }
+    .upload-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0;
+    }
+    .upload-zone .upload-icon { font-size: 32px; margin-bottom: 8px; }
+    .upload-zone p { font-size: 14px; color: #666; margin: 0; }
+    .upload-zone strong { color: var(--turquoise, #0cb4ab); }
+    .file-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #eaf9f8;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #031c31;
+    }
+    .file-item span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-item button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #c00;
+      font-size: 16px;
+      line-height: 1;
+      padding: 0 4px;
+    }
+
+    /* Submit button */
+    .adm-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--navy, #031c31);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      margin-top: 8px;
+    }
+    .adm-submit:hover { background: var(--turquoise, #0cb4ab); transform: translateY(-2px); }
+    .adm-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* Feedback messages */
+    .adm-feedback {
+      display: none;
+      margin-top: 20px;
+      padding: 18px 24px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .adm-feedback.success {
+      background: #e6faf9;
+      color: #0a6b66;
+      border: 1.5px solid #0cb4ab;
+    }
+    .adm-feedback.error {
+      background: #fff0f0;
+      color: #a00;
+      border: 1.5px solid #e55;
+    }
+
+    /* Progress bar */
+    .adm-progress {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #555;
+    }
+    .adm-progress.visible { display: flex; }
+    .adm-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: #ddd;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .adm-bar { height: 100%; width: 0%; background: var(--turquoise, #0cb4ab); transition: width .3s; }
+
+    @media (max-width: 640px) {
+      .adm-form { grid-template-columns: 1fr; }
+      .adm-form .full { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="header-bar"><a class="brand" href="index.html" aria-label="Inicio"><img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img"></a><nav class="essential-nav" aria-label="Navegación esencial"><a href="filosofia.html">Filosofía</a><a href="admisiones.html">Admisiones</a><a href="contacto.html">Contacto</a></nav><button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú"><img src="assets/icons/menu.png" alt="" class="icon-menu-img"><img src="assets/icons/close.png" alt="" class="icon-close-img"></button></div><div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true"><div class="menu-panel__main"><div class="menu-panel__title"><span>BUEN PASTOR VOZ DE ALERTA</span><h2>Encuentra tu camino.</h2><p>Explora cada etapa de la comunidad BPVDA.</p></div><div class="menu-panel__groups"><section><span>01 NUESTRA ESCUELA</span><a href="quienes-somos.html">¿Quiénes somos?<b>↗</b></a><a href="filosofia.html">Propósito BPVDA<b>↗</b></a><a href="instalaciones.html">Instalaciones<b>↗</b></a><a href="plantel.html">Plantel docente<b>↗</b></a></section><section><span>02 ENFOQUE EDUCATIVO</span><a href="sai.html">SAI BPVDA<b>↗</b></a><a href="vida-estudiantil.html">Vida estudiantil<b>↗</b></a><a href="ecosistema-digital.html">Ecosistema digital<b>↗</b></a></section><section><span>03 FAMILIA Y COMUNIDAD</span><a href="admisiones.html">Admisiones y matrícula<b>↗</b></a><a href="portal-padres.html">Portal de padres<b>↗</b></a><a href="contacto.html">Contacto y atención<b>↗</b></a></section><section><span>04 PRIMARIA</span><a href="prekinder.html">Prekínder<b>↗</b></a><a href="kinder.html">Kínder<b>↗</b></a><a href="primaria.html">Primaria<b>↗</b></a></section><section><span>05 SECUNDARIA Y BACHILLERES</span><a href="secundaria.html">Secundaria<b>↗</b></a><a href="bachilleres.html">Bachilleres<b>↗</b></a></section></div></div><div class="menu-panel__foot"><div class="menu-panel__contact"><span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span><a href="tel:+5073915811">391-5811</a><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></div></div></div></header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="interior-hero">
+    <img src="assets/media/admision-main.webp" alt="">
+    <div class="interior-hero__wash"></div>
+    <div class="interior-hero__content">
+      <span>03 FAMILIA Y COMUNIDAD</span>
+      <h1>El primer paso hacia una educación con <mark>propósito</mark>.</h1>
+      <p>Conoce el proceso de admisión y recibe orientación directa de nuestro equipo.</p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="admission-form-section" id="formulario">
+    <span class="section-tag">Solicitud de ingreso</span>
+    <h2>Completa tu solicitud de admisión.</h2>
+    <p class="form-intro">Llena el formulario con los datos del estudiante y adjunta los documentos solicitados. Nos pondremos en contacto contigo en breve.</p>
+
+    <form class="adm-form" id="admForm" novalidate>
+
+      <!-- Datos del estudiante -->
+      <div class="adm-field">
+        <label for="estudiante">Nombre completo del estudiante <span class="req">*</span></label>
+        <input type="text" id="estudiante" name="estudiante" placeholder="Ej. Juan García" required>
+      </div>
+
+      <div class="adm-field">
+        <label for="nivel">Nivel al que aplica <span class="req">*</span></label>
+        <select id="nivel" name="nivel" required>
+          <option value="" disabled selected>Selecciona un nivel</option>
+          <option value="Prekínder">Prekínder</option>
+          <option value="Kínder">Kínder</option>
+          <option value="1° Primaria">1° Primaria</option>
+          <option value="2° Primaria">2° Primaria</option>
+          <option value="3° Primaria">3° Primaria</option>
+          <option value="4° Primaria">4° Primaria</option>
+          <option value="5° Primaria">5° Primaria</option>
+          <option value="6° Primaria">6° Primaria</option>
+          <option value="7° Secundaria">7° Secundaria</option>
+          <option value="8° Secundaria">8° Secundaria</option>
+          <option value="9° Secundaria">9° Secundaria</option>
+          <option value="10° Bachillerato">10° Bachillerato</option>
+          <option value="11° Bachillerato">11° Bachillerato</option>
+          <option value="12° Bachillerato">12° Bachillerato</option>
+        </select>
+      </div>
+
+      <!-- Datos del acudiente -->
+      <div class="adm-field">
+        <label for="acudiente">Nombre del padre / acudiente <span class="req">*</span></label>
+        <input type="text" id="acudiente" name="acudiente" placeholder="Ej. María García" required>
+      </div>
+
+      <div class="adm-field">
+        <label for="telefono">Teléfono de contacto <span class="req">*</span></label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej. 6000-0000" required>
+      </div>
+
+      <div class="adm-field full">
+        <label for="email">Correo electrónico <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Ej. familia@correo.com" required>
+      </div>
+
+      <div class="adm-field full">
+        <label for="mensaje">Mensaje adicional (opcional)</label>
+        <textarea id="mensaje" name="mensaje" placeholder="¿Tienes alguna consulta o información adicional que quieras compartir?"></textarea>
+      </div>
+
+      <!-- Subida de documentos -->
+      <div class="adm-field full">
+        <label>Documentos adjuntos <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#666;">(cédula, boletín, fotos — máx. 5 archivos)</span></label>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" multiple accept="image/*,.pdf">
+          <div class="upload-icon">📎</div>
+          <p><strong>Arrastra tus archivos aquí</strong> o haz clic para seleccionarlos</p>
+          <p>Imágenes o PDF · Máximo 5 archivos</p>
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </div>
+
+      <!-- Submit -->
+      <div class="full">
+        <button type="submit" class="adm-submit" id="submitBtn">
+          Enviar solicitud <span>→</span>
+        </button>
+        <div class="adm-progress" id="admProgress">
+          <span id="progressLabel">Enviando...</span>
+          <div class="adm-bar-wrap"><div class="adm-bar" id="admBar"></div></div>
+        </div>
+        <div class="adm-feedback" id="admFeedback"></div>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+<footer><div class="footer-top"><div class="footer-col footer-col--brand"><div class="footer-brand"><img src="assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo"><div class="footer-brand-meta"><span class="footer-school-name">Colegio Buen Pastor</span><span class="footer-school-sub">Voz de Alerta</span></div></div><p class="footer-location">Calle San José, Urb. Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá</p><a href="https://maps.app.goo.gl/r5Arxesjc7P2Uzew7" target="_blank" rel="noopener noreferrer" class="footer-maps-link"><img src="assets/icons/place-icon.png" alt="" class="footer-maps-icon"><span>Ver en Google Maps</span></a></div><div class="footer-col"><h4>Oficina</h4><p class="footer-phone"><a href="tel:+5073915811">391-5811</a></p><div class="footer-hours-block"><span class="footer-hours-tag">Horario regular</span><p class="footer-hours">7:30 a.m. - 2:00 p.m.</p></div><div class="footer-hours-block"><span class="footer-hours-tag">Horario de verano</span><p class="footer-hours">8:00 a.m. - 2:00 p.m.</p></div></div><div class="footer-col"><h4>Atención al cliente</h4><p class="footer-phone"><a href="tel:+5073915811">391-5811</a> <span class="footer-phone-sep">/</span> <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="footer-phone-wa">6744-1351</a></p><p class="footer-email"><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></p></div></div><div class="footer-bottom"><p class="footer-copy">© 2026 BUEN PASTOR VOZ DE ALERTA</p><div class="footer-socials"></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+
+<script>
+(function () {
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGgjDQiMCtI9TJ9WgDltGLf3dBKmoUcIcY7t8u3lwq2WgtEXVkhR-1YWAbliOnH1Cf_g/exec';
+  var MAX_FILES  = 5;
+  var selectedFiles = [];
+
+  // ---- Drag & drop ----
+  var zone  = document.getElementById('uploadZone');
+  var input = document.getElementById('fileInput');
+  var list  = document.getElementById('fileList');
+
+  zone.addEventListener('dragover',  function(e){ e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', function()  { zone.classList.remove('drag-over'); });
+  zone.addEventListener('drop',      function(e){ e.preventDefault(); zone.classList.remove('drag-over'); addFiles(e.dataTransfer.files); });
+  input.addEventListener('change',   function()  { addFiles(input.files); input.value=''; });
+
+  function addFiles(fileList) {
+    Array.from(fileList).forEach(function(f) {
+      if (selectedFiles.length >= MAX_FILES) return;
+      if (selectedFiles.find(function(x){ return x.name === f.name && x.size === f.size; })) return;
+      selectedFiles.push(f);
+    });
+    renderFileList();
+  }
+
+  function renderFileList() {
+    list.innerHTML = '';
+    selectedFiles.forEach(function(f, i) {
+      var item = document.createElement('div');
+      item.className = 'file-item';
+      item.innerHTML = '<span>📄 ' + f.name + ' (' + (f.size/1024).toFixed(1) + ' KB)</span>'
+        + '<button type="button" aria-label="Eliminar archivo" data-i="' + i + '">✕</button>';
+      list.appendChild(item);
+    });
+    list.querySelectorAll('button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        selectedFiles.splice(Number(this.dataset.i), 1);
+        renderFileList();
+      });
+    });
+  }
+
+  // ---- Convertir archivo a base64 ----
+  function toBase64(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload  = function() { resolve(reader.result.split(',')[1]); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ---- Progreso visual simulado ----
+  function setProgress(pct, label) {
+    document.getElementById('admBar').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = label;
+  }
+
+  // ---- Envío ----
+  document.getElementById('admForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    var btn      = document.getElementById('submitBtn');
+    var progress = document.getElementById('admProgress');
+    var feedback = document.getElementById('admFeedback');
+
+    // Validación básica
+    var required = ['estudiante','nivel','acudiente','telefono','email'];
+    var valid = true;
+    required.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el.value.trim()) { el.style.borderColor='#e55'; valid=false; }
+      else { el.style.borderColor=''; }
+    });
+    if (!valid) {
+      feedback.className = 'adm-feedback error';
+      feedback.style.display = 'block';
+      feedback.textContent = 'Por favor completa todos los campos obligatorios.';
+      return;
+    }
+
+    btn.disabled = true;
+    feedback.style.display = 'none';
+    progress.classList.add('visible');
+    setProgress(10, 'Preparando archivos...');
+
+    // Convertir archivos
+    var archivos = [];
+    for (var i = 0; i < selectedFiles.length; i++) {
+      try {
+        setProgress(10 + Math.round((i / selectedFiles.length) * 50), 'Cargando archivo ' + (i+1) + ' de ' + selectedFiles.length + '...');
+        var b64 = await toBase64(selectedFiles[i]);
+        archivos.push({ nombre: selectedFiles[i].name, tipo: selectedFiles[i].type, contenido: b64 });
+      } catch(err) {
+        console.error('Error al leer archivo:', err);
+      }
+    }
+
+    setProgress(70, 'Enviando datos...');
+
+    var payload = {
+      estudiante: document.getElementById('estudiante').value.trim(),
+      nivel:      document.getElementById('nivel').value,
+      acudiente:  document.getElementById('acudiente').value.trim(),
+      telefono:   document.getElementById('telefono').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      mensaje:    document.getElementById('mensaje').value.trim(),
+      archivos:   archivos
+    };
+
+    try {
+      var res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      var json = await res.json();
+      setProgress(100, 'Completado');
+
+      if (json.status === 'ok') {
+        feedback.className = 'adm-feedback success';
+        feedback.innerHTML = '✅ <strong>¡Solicitud enviada con éxito!</strong> Nos pondremos en contacto contigo pronto. Se guardaron ' + json.archivos + ' archivo(s).';
+        document.getElementById('admForm').reset();
+        selectedFiles = [];
+        renderFileList();
+      } else {
+        throw new Error('Respuesta inesperada del servidor.');
+      }
+    } catch(err) {
+      feedback.className = 'adm-feedback error';
+      feedback.innerHTML = '❌ <strong>Ocurrió un error al enviar.</strong> Por favor intenta de nuevo o contáctanos directamente.<br><small>' + err.message + '</small>';
+    }
+
+    feedback.style.display = 'block';
+    btn.disabled = false;
+    setTimeout(function(){ progress.classList.remove('visible'); setProgress(0,''); }, 2000);
+  });
+})();
+</script>
+</body>
+</html>
