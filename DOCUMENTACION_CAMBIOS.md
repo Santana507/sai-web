@@ -170,3 +170,16 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
     - *09. PIE DE PÁGINA Y MEDIA QUERIES*: Footer en 3 columnas y consultas responsive adaptativas (1000px, 800px, 700px, 600px y prefers-reduced-motion).
 - **Verificación de Calidad**:
   - `node tools/verify-integrity.mjs` ejecutado con éxito total: 0 enlaces rotos y 0 recursos multimedia faltantes.
+## [2026-09-30] - Rediseño Profesional de Formularios de Admisiones y Validaciones (SDD)
+- **Archivos principales**: orm-preingreso.html, orm-nuevo-ingreso.html, css/styles.css
+- **Reescritura de Formularios**: Se reconstruyeron ambas páginas con una estructura oficial, separada en bloques lógicos.
+- **Validación del lado del cliente (JS Vanilla)**:
+  - Validación en tiempo real (al salir del campo - blur).
+  - Verificación estricta de formato de cédula (con guiones obligatorios).
+  - Validación de correo, tamaño de archivos (máx 10 MB) y fechas lógicas.
+  - Checkboxes de compromisos institucionales obligatorios.
+  - Lógica condicional (ej. Ficha Médica) y auto-llenado inteligente del Acudiente Legal.
+- **Premium Form Redesign (CSS)**:
+  - Se eliminaron por completo todos los emojis para un aspecto 100% corporativo y profesional.
+  - Se añadieron estilos limpios para alertas, campos de texto interactivos (soft shadows), tarjetas de selección y modales emergentes centralizados con iconos SVG minimalistas.
+  - Se corrigió la cuadrícula (orm-grid-2, orm-grid-3) para Nuevo Ingreso.

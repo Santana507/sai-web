@@ -1,4 +1,29 @@
-<!doctype html>
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const root = join(__dirname, '..');
+
+const indexPath = join(root, 'index.html');
+const indexHtml = readFileSync(indexPath, 'utf8');
+
+const headerStart = indexHtml.indexOf('<header class="site-header">');
+const headerEnd = indexHtml.indexOf('</header>') + 9;
+const footerStart = indexHtml.indexOf('<footer class="site-footer">');
+const footerEnd = indexHtml.indexOf('</footer>') + 9;
+
+const header = indexHtml.substring(headerStart, headerEnd);
+let footer = indexHtml.substring(footerStart, footerEnd);
+if (footerStart === -1) {
+  const fallbackFooterStart = indexHtml.indexOf('<footer>');
+  const fallbackFooterEnd = indexHtml.indexOf('</footer>') + 9;
+  footer = indexHtml.substring(fallbackFooterStart, fallbackFooterEnd);
+}
+
+const admisionesHtml = `<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -11,55 +36,7 @@
 <body class="admisiones-page">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <header class="site-header">
-  <!-- Barra de Navegación Superior Fija (Header Bar) -->
-  <div class="header-bar">
-    <!-- Logotipo Institucional Principal con enlace a Portada -->
-    <a class="brand" href="index.html" aria-label="Inicio">
-      <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
-    </a>
-
-    <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
-    <nav class="essential-nav" aria-label="Navegación esencial">
-      <a href="filosofia.html">Filosofía</a>
-      <a href="admisiones.html">Admisiones</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="admisiones.html" class="btn-matriculate">MATRICULATE AQUÍ</a>
-    </nav>
-
-    <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
-    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
-      <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
-      <img src="assets/icons/close.png" alt="" class="icon-close-img">
-    </button>
-  </div>
-
-  <!-- Panel del Menú Modal Desplegable (5 Pilares de Navegación) -->
-  <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
-    <div class="menu-panel__main">
-      <!-- Título de Bienvenida e Introducción Editorial del Menú -->
-      <div class="menu-panel__title">
-        <span>BUEN PASTOR VOZ DE ALERTA</span>
-        <h2>Encuentra tu camino.</h2>
-        <p>Explora cada etapa de la comunidad BPVDA.</p>
-      </div>
-
-      <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
-      <div class="menu-panel__groups">
-        <section><span>01 NUESTRA ESCUELA</span><a href="quienes-somos.html">¿Quiénes somos?<b>↗</b></a><a href="filosofia.html">Propósito BPVDA<b>↗</b></a><a href="instalaciones.html">Instalaciones<b>↗</b></a><a href="plantel.html">Plantel docente<b>↗</b></a></section><section><span>02 ENFOQUE EDUCATIVO</span><a href="sai.html">SAI BPVDA<b>↗</b></a><a href="vida-estudiantil.html">Vida estudiantil<b>↗</b></a><a href="ecosistema-digital.html">Ecosistema digital<b>↗</b></a></section><section><span>03 FAMILIA Y COMUNIDAD</span><a href="admisiones.html">Admisiones y matrícula<b>↗</b></a><a href="portal-padres.html">Portal de padres<b>↗</b></a><a href="contacto.html">Contacto y atención<b>↗</b></a></section><section><span>04 PRIMARIA</span><a href="prekinder.html">Prekínder<b>↗</b></a><a href="kinder.html">Kínder<b>↗</b></a><a href="primaria.html">Primaria<b>↗</b></a></section><section><span>05 SECUNDARIA Y BACHILLERES</span><a href="secundaria.html">Secundaria<b>↗</b></a><a href="bachilleres.html">Bachilleres<b>↗</b></a></section>
-      </div>
-    </div>
-
-    <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
-    <div class="menu-panel__foot">
-      <div class="menu-panel__contact">
-        <span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span>
-        <a href="tel:+5073915811">391-5811</a>
-        <a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a>
-      </div>
-    </div>
-  </div>
-</header>
+  ${header}
 
   <main id="contenido">
     <!-- 1. HERO SECTION -->
@@ -507,68 +484,7 @@
 
   </main>
 
-  <footer>
-    <div class="footer-top">
-      <div class="footer-col footer-col--brand">
-        <div class="footer-brand">
-          <img src="assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo">
-          <div class="footer-brand-meta">
-            <span class="footer-school-name">Colegio Buen Pastor</span>
-            <span class="footer-school-sub">Voz de Alerta</span>
-          </div>
-        </div>
-        <p class="footer-location">Calle San José, Urb. Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá</p>
-        <a href="https://maps.app.goo.gl/r5Arxesjc7P2Uzew7" target="_blank" rel="noopener noreferrer" class="footer-maps-link">
-          <img src="assets/icons/place-icon.png" alt="" class="footer-maps-icon">
-          <span>Ver en Google Maps</span>
-        </a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Oficina</h4>
-        <p class="footer-phone"><a href="tel:+5073915811">391-5811</a></p>
-        <div class="footer-hours-block">
-          <span class="footer-hours-tag">Horario Regular</span>
-          <p class="footer-hours">7:30 a.m. - 2:00 p.m.</p>
-        </div>
-        <div class="footer-hours-block">
-          <span class="footer-hours-tag">Horario de Verano</span>
-          <p class="footer-hours">8:00 a.m. - 2:00 p.m.</p>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>AtenciÓn al cliente</h4>
-        <p class="footer-phone">
-          <a href="tel:+5073915811">391-5811</a>
-          <span class="footer-phone-sep">/</span>
-          <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="footer-phone-wa">
-            6744-1351
-          </a>
-        </p>
-        <p class="footer-email"><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></p>
-      </div>
-    </div>
-
-<!-- Bloque Inferior del Footer: Derechos Reservados y Redes Sociales Institucionales -->
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 BUEN PASTOR VOZ DE ALERTA</p>
-      <div class="footer-socials">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Enviar correo por Gmail" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/?locale=de_DE" target="_blank" rel="noopener noreferrer" aria-label="Facebook BPVDA" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram BPVDA" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp BPVDA" class="social-link">
-          <img src="assets/icons/whatsapp-icon.png" alt="WhatsApp" class="social-icon-img">
-        </a>
-      </div>
-    </div>
-  </footer>
+  ${footer}
 
   <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
 
@@ -598,4 +514,11 @@
     }
   </script>
 </body>
-</html>
+</html>`;
+
+// 1. Escribimos Admisiones HTML
+writeFileSync(join(root, 'admisiones.html'), admisionesHtml);
+console.log('Se generó admisiones.html correctamente.');
+
+// 2. Invocar generación de formularios completos
+import('./generate-forms.mjs');
