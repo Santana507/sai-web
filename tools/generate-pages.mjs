@@ -52,9 +52,12 @@ const groups = [
 // 2. Construcción de Grupos de Menú
 const menuGroupsHtml = groups
   .map(([title, links]) =>
-    `<section><span>${title}</span>` +
-    links.map(([name, url]) => `<a href="${url}">${name}<b>↗</b></a>`).join('') +
-    `</section>`
+    `<div class="menu-group">
+      <span class="menu-group-title">${title}</span>
+      <ul class="menu-list">` +
+    links.map(([name, url]) => `<li><a href="${url}" class="menu-link"><span>${name}</span> <i class="menu-chevron">↗</i></a></li>`).join('') +
+    `</ul>
+    </div>`
   )
   .join('');
 

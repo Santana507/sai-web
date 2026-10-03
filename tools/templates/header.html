@@ -3,7 +3,7 @@
   <div class="header-bar">
     <!-- Logotipo Institucional Principal con enlace a Portada -->
     <a class="brand" href="index.html" aria-label="Inicio">
-      <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
+      <img decoding="async" src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
     </a>
 
     <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
@@ -16,8 +16,8 @@
 
     <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
     <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
-      <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
-      <img src="assets/icons/close.png" alt="" class="icon-close-img">
+      <img decoding="async" src="assets/icons/menu.png" alt="" class="icon-menu-img">
+      <img decoding="async" src="assets/icons/close.png" alt="" class="icon-close-img">
     </button>
   </div>
 
@@ -32,9 +32,11 @@
       </div>
 
       <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
-      <div class="menu-panel__groups">
-        {{MENU_GROUPS}}
-      </div>
+      <nav class="menu-nav" aria-label="Navegación principal">
+        <div class="menu-panel__groups">
+          {{MENU_GROUPS}}
+        </div>
+      </nav>
     </div>
 
     <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->

@@ -183,3 +183,91 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
   - Se eliminaron por completo todos los emojis para un aspecto 100% corporativo y profesional.
   - Se añadieron estilos limpios para alertas, campos de texto interactivos (soft shadows), tarjetas de selección y modales emergentes centralizados con iconos SVG minimalistas.
   - Se corrigió la cuadrícula (orm-grid-2, orm-grid-3) para Nuevo Ingreso.
+
+---
+
+## Animaciones Cinematograficas y Mejora Visual Global (2026-10-02)
+
+### Archivos modificados
+- `css/styles.css` — Tokens de animacion, reveal system, hero cascade, microinteracciones, menu cascade, accesibilidad.
+- `js/main.js` — Re-disparo de animaciones en slider, IntersectionObserver mejorado con stagger dinamico.
+
+### Cambios realizados
+
+#### 1. Tokens de Animacion en `:root`
+- Nuevas variables CSS: `--ease-out-expo`, `--ease-in-out-smooth`, `--ease-spring`, `--ease-out-quint`.
+- Duraciones estandarizadas: `--dur-fast` (0.22s), `--dur-normal` (0.45s), `--dur-slow` (0.7s), `--dur-reveal` (0.85s).
+
+#### 2. Scroll Reveal Cinematografico
+- `.reveal`, `.reveal-left`, `.reveal-right`: ahora incluyen `filter: blur(5px)` y `translate3d` para desenfoque de movimiento y aceleracion GPU.
+- Nueva clase `.reveal-scale`: zoom sutil de `scale(0.92)` a `scale(1)` con blur.
+- `will-change: opacity, transform, filter` para prioridad de renderizado GPU.
+- Stagger children extendidos hasta `nth-child(8)`.
+
+#### 3. Hero Slider - Entrada Editorial de Textos
+- Nuevo `@keyframes slideTextIn`: entrada con blur y translate3d.
+- Los textos de cada slide (`.eyebrow`, `h1`, `.hero-copy`, `.hero-actions`) entran en cascada escalonada (0.15s a 0.65s de delay).
+- JS: Re-disparo de animaciones al cambiar de slide mediante reset de `animation: none` + reflow forzado.
+
+#### 4. Microinteracciones Mejoradas
+- `.primary-btn`: transiciones individuales por propiedad, hover con sombra de resplandor turquesa, icono/flecha se desplaza `translateX(5px)`.
+- `.card:hover`: elevacion `translateY(-8px) scale(1.01)` con sombra multicapa y borde turquesa sutil.
+- `.editorial-card img`: transicion con easing exponencial.
+- `.hero-controls button`: hover con `scale(1.08)`.
+- Barra de progreso del hero: transicion elastica de 0.6s.
+
+#### 5. Menu Modal de 5 Pilares - Cascada
+- `@keyframes menuColIn`: entrada con blur y translate3d.
+- Las 5 columnas entran escalonadas con delays de 0.06s a 0.30s.
+- Pie del menu con transicion de opacidad retardada.
+- Enlaces con subrayado animado `::after` de izquierda a derecha al hover.
+
+#### 6. Boton Volver Arriba
+- Transicion refinada con `translateY(12px)` a `translateY(0)` + hover `translateY(-3px)`.
+
+#### 7. Accesibilidad (prefers-reduced-motion)
+- `@media (prefers-reduced-motion: reduce)`: deshabilita todas las animaciones y transiciones.
+- Todos los elementos reveal, hero text y menu sections se muestran con opacidad completa.
+
+#### 8. JavaScript - IntersectionObserver Mejorado
+- `rootMargin: '0px 0px -60px 0px'` y `threshold: 0.12` para activacion ligeramente anticipada.
+- Stagger dinamico: `transitionDelay = (index * 60) + 'ms'` asignado via JS para cascada organica.
+- Soporte para nueva clase `.reveal-scale`.
+
+### Verificacion
+- `node tools/verify-integrity.mjs`: 0 enlaces rotos, 0 recursos faltantes.
+
+---
+
+## Optimizacion de Rendimiento y Cero Lag (2026-10-02)
+
+### Archivos modificados
+- `css/styles.css` — Propiedades de contencion (CSS Containment) y sugerencias de aceleracion de hardware.
+- `js/main.js` — Optimizacion de eventos de scroll (requestAnimationFrame).
+- `tools/templates/*.html` — Atributos de decodificacion de imagenes asincrona.
+
+### Cambios realizados
+
+#### 1. Aislamiento y Contencion CSS (CSS Containment)
+- Se aplico `contain: layout` y `contain: content` a secciones criticas como `.site-header` y `.hero` para evitar que los cambios en estas areas fuercen recálculos de diseno (Reflow) en todo el DOM.
+- Se implemento `contain: layout style` en tarjetas (`.card`, `.editorial-card`, etc.) para aislar su renderizado.
+- Se anadio `will-change: transform` estrictamente a elementos interactivos, y `transform: translateZ(0)` junto a `backface-visibility: hidden` en elementos animados (`.reveal`, `img`, `video`) para forzar la creacion de capas compuestas en la GPU sin agotar la memoria.
+
+#### 2. Optimizacion JavaScript (Scroll Handler)
+- Se reescribio la funcion `onScroll` en `js/main.js`. En lugar de ejecutar cambios sincronos en el DOM por cada pixel de desplazamiento, ahora lee el estado y delega la escritura (cambios de clases del header y boton volver arriba) a `window.requestAnimationFrame`. 
+- Esto elimina por completo el Layout Thrashing (forzar el layout sincrono), garantizando 60 FPS consistentes al hacer scroll.
+- El calculo de `heroSlider.offsetHeight` ahora esta cacheado y solo se vuelve a evaluar cuando se dispara el evento `resize` de la ventana.
+
+#### 3. Decodificacion Asincrona de Imagenes (HTML)
+- Se inyecto el atributo `decoding="async"` en las etiquetas `<img>` dentro de las plantillas base. Esto permite al navegador decodificar imagenes fuera del hilo principal (Main Thread), liberandolo para que las animaciones de UI y el scroll sigan siendo fluidos.
+- Se reconstruyo todo el sitio web ejecutando `generate-pages.mjs` para propagar la mejora a los 16 archivos HTML finales.
+
+### Verificacion
+- `node tools/verify-integrity.mjs`: Validacion exitosa sin enlaces ni recursos rotos.
+
+### Rediseño del Menú Modal "Encuentra tu camino" (Octubre 2026)
+* **Semántica HTML**: Se reescribió la estructura dinámica en `tools/generate-pages.mjs` y `tools/templates/header.html` envolviendo los pilares en una etiqueta `<nav>` e implementando listas `<ul>` y `<li>` para mejor accesibilidad y semántica.
+* **Layout Responsive**: 
+  * Se transformó el layout a 5 columnas alineadas horizontalmente en Desktop (`min-width: 1024px`).
+  * Se implementó una vista de 1 columna limpia en móvil (`max-width: 639px`) con un área táctil mínima recomendada (>44px).
+* **Microinteracciones**: Se implementaron transiciones sutiles en Vanilla CSS (hover/focus) simulando la fluidez de un framework, cambiando el fondo a `bg-white/10` y deslizando el chevron direccional (`↗`) 4px a la derecha. Todo utilizando variables institucionales, respetando el `AGENTS.md`.

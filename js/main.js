@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ==============================================================================
  * BPVDA — JavaScript Institucional Modular (Vanilla JS)
  * ==============================================================================
@@ -126,33 +126,51 @@
    * - En páginas interiores: Pasa a "Modo Libre" tras bajar 40px, desvaneciendo el fondo
    *   y texto pero manteniendo estables el logo oficial y el botón de menú.
    */
-  const heroSlider = document.querySelector('[data-slider]');
+    const heroSlider = document.querySelector('[data-slider]');
+  
+  // Variables cacheadas para optimizacion
+  let triggerDistance = 40;
+  let isScrolling = false;
+  let latestScrollY = 0;
 
-  function onScroll() {
-    const scrollY = window.scrollY;
-    
-    // Distancia umbral para activar el "Modo Libre"
-    let triggerDistance = 40;
+  function calculateTriggerDistance() {
     if (heroSlider) {
-      // En index se activa a la mitad del slider de portada (~55% de la altura o mín. 260px)
+      // En index se activa a la mitad del slider de portada (~55% de la altura o min. 260px)
       triggerDistance = Math.max(Math.round(heroSlider.offsetHeight * 0.55), 260);
     }
+  }
 
+  // Recalcular solo al inicio o al cambiar tamano de pantalla, no en cada scroll
+  calculateTriggerDistance();
+  window.addEventListener('resize', calculateTriggerDistance, { passive: true });
+
+  function updateScroll() {
     // Cabecera compacta y desvanecimiento a modo libre
     if (header) {
-      header.classList.toggle('is-scrolled', scrollY > 20);
-      header.classList.toggle('is-scrolled-free', scrollY > triggerDistance);
+      header.classList.toggle('is-scrolled', latestScrollY > 20);
+      header.classList.toggle('is-scrolled-free', latestScrollY > triggerDistance);
     }
 
-    // Botón flotante 'Volver Arriba': visible a partir de 600px de scroll
+    // Boton flotante 'Volver Arriba': visible a partir de 600px de scroll
     if (backToTopButton) {
-      backToTopButton.classList.toggle('is-visible', scrollY > 600);
+      backToTopButton.classList.toggle('is-visible', latestScrollY > 600);
+    }
+    
+    isScrolling = false;
+  }
+
+  function onScroll() {
+    latestScrollY = window.scrollY;
+    // requestAnimationFrame evita Layout Thrashing y bloqueos del hilo principal
+    if (!isScrolling) {
+      window.requestAnimationFrame(updateScroll);
+      isScrolling = true;
     }
   }
   
   // Escucha pasiva para optimizar el rendimiento del hilo principal (60 FPS)
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  onScroll(); // Disparo inicial
 
   // Clic en botón "Volver Arriba": desplazamiento suave al inicio del documento
   if (backToTopButton) {
@@ -208,6 +226,14 @@
         // Deshabilitar navegación por tabulador en slides ocultos
         slide.querySelectorAll('a, button').forEach(function (element) {
           element.tabIndex = isActive ? 0 : -1;
+        });
+
+        // Re-disparar animaciones CSS de texto al activar un slide
+        var animatedEls = slide.querySelectorAll('.eyebrow, h1, .slide-heading, .hero-copy, .hero-actions');
+        animatedEls.forEach(function (el) {
+          el.style.animation = 'none';
+          el.offsetHeight; // Forzar reflow para reiniciar la animación CSS
+          el.style.animation = '';
         });
 
         // Reproduce el video si el slide está activo, o lo pausa si está inactivo
@@ -287,8 +313,8 @@
   if ('IntersectionObserver' in window) {
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.15 // Se activa al mostrar el 15% del elemento
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.12 // Se activa al mostrar el 12% del elemento (ligeramente antes)
     };
 
     // Observador para elementos individuales
@@ -301,15 +327,18 @@
       });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
       revealObserver.observe(el);
     });
 
     // Observador para contenedores escalonados (stagger reveal para tarjetas hijas)
+    // Asigna dinámicamente transition-delay a cada hijo para una cascada orgánica
+    var staggerDelay = 60; // milisegundos entre cada hijo
     const staggerObserver = new IntersectionObserver(function(entries, observer) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          Array.from(entry.target.children).forEach(function(child) {
+          Array.from(entry.target.children).forEach(function(child, i) {
+            child.style.transitionDelay = (i * staggerDelay) + 'ms';
             child.classList.add('is-visible');
           });
           observer.unobserve(entry.target);

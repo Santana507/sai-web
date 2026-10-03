@@ -18,7 +18,7 @@
   <div class="header-bar">
     <!-- Logotipo Institucional Principal con enlace a Portada -->
     <a class="brand" href="index.html" aria-label="Inicio">
-      <img src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
+      <img decoding="async" src="assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
     </a>
 
     <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
@@ -31,8 +31,8 @@
 
     <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
     <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
-      <img src="assets/icons/menu.png" alt="" class="icon-menu-img">
-      <img src="assets/icons/close.png" alt="" class="icon-close-img">
+      <img decoding="async" src="assets/icons/menu.png" alt="" class="icon-menu-img">
+      <img decoding="async" src="assets/icons/close.png" alt="" class="icon-close-img">
     </button>
   </div>
 
@@ -47,9 +47,26 @@
       </div>
 
       <!-- Cuadrícula Dinámica de los 5 Pilares Institucionales -->
-      <div class="menu-panel__groups">
-        <section><span>01 NUESTRA ESCUELA</span><a href="quienes-somos.html">¿Quiénes somos?<b>↗</b></a><a href="filosofia.html">Propósito BPVDA<b>↗</b></a><a href="instalaciones.html">Instalaciones<b>↗</b></a><a href="plantel.html">Plantel docente<b>↗</b></a></section><section><span>02 ENFOQUE EDUCATIVO</span><a href="sai.html">SAI BPVDA<b>↗</b></a><a href="vida-estudiantil.html">Vida estudiantil<b>↗</b></a><a href="ecosistema-digital.html">Ecosistema digital<b>↗</b></a></section><section><span>03 FAMILIA Y COMUNIDAD</span><a href="admisiones.html">Admisiones y matrícula<b>↗</b></a><a href="portal-padres.html">Portal de padres<b>↗</b></a><a href="contacto.html">Contacto y atención<b>↗</b></a></section><section><span>04 PRIMARIA</span><a href="prekinder.html">Prekínder<b>↗</b></a><a href="kinder.html">Kínder<b>↗</b></a><a href="primaria.html">Primaria<b>↗</b></a></section><section><span>05 SECUNDARIA Y BACHILLERES</span><a href="secundaria.html">Secundaria<b>↗</b></a><a href="bachilleres.html">Bachilleres<b>↗</b></a></section>
-      </div>
+      <nav class="menu-nav" aria-label="Navegación principal">
+        <div class="menu-panel__groups">
+          <div class="menu-group">
+      <span class="menu-group-title">01 NUESTRA ESCUELA</span>
+      <ul class="menu-list"><li><a href="quienes-somos.html" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li><li><a href="filosofia.html" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li><li><a href="instalaciones.html" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li><li><a href="plantel.html" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
+      <ul class="menu-list"><li><a href="sai.html" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li><li><a href="vida-estudiantil.html" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li><li><a href="ecosistema-digital.html" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
+      <ul class="menu-list"><li><a href="admisiones.html" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li><li><a href="portal-padres.html" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li><li><a href="contacto.html" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">04 PRIMARIA</span>
+      <ul class="menu-list"><li><a href="prekinder.html" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li><li><a href="kinder.html" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li><li><a href="primaria.html" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">05 SECUNDARIA Y BACHILLERES</span>
+      <ul class="menu-list"><li><a href="secundaria.html" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li><li><a href="bachilleres.html" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div>
+        </div>
+      </nav>
     </div>
 
     <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
@@ -124,7 +141,7 @@
     <!-- Columna 1: Marca Institucional, Dirección Física y Enlace a Google Maps -->
     <div class="footer-col footer-col--brand">
       <div class="footer-brand">
-        <img src="assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo">
+        <img decoding="async" src="assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo">
         <div class="footer-brand-meta">
           <span class="footer-school-name">Colegio Buen Pastor</span>
           <span class="footer-school-sub">Voz de Alerta</span>
@@ -132,7 +149,7 @@
       </div>
       <p class="footer-location">Calle San José, Urb. Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá</p>
       <a href="https://maps.app.goo.gl/r5Arxesjc7P2Uzew7" target="_blank" rel="noopener noreferrer" class="footer-maps-link">
-        <img src="assets/icons/place-icon.png" alt="" class="footer-maps-icon">
+        <img decoding="async" src="assets/icons/place-icon.png" alt="" class="footer-maps-icon">
         <span>Ver en Google Maps</span>
       </a>
     </div>
@@ -163,10 +180,10 @@
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 BUEN PASTOR VOZ DE ALERTA</p>
     <div class="footer-socials">
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Gmail" class="social-link">✉</a>
-      <a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link">f</a>
-      <a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">◎</a>
-      <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link"><img src="assets/icons/whatsapp-icon.png" alt=""></a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Gmail" class="social-link"><img decoding="async" src="assets/icons/icn-social-a.svg?v=3" alt=""></a>
+      <a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link"><img decoding="async" src="assets/icons/icn-social-b.svg?v=3" alt=""></a>
+      <a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link"><img decoding="async" src="assets/icons/icn-social-c.svg?v=3" alt=""></a>
+      <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link"><img decoding="async" src="assets/icons/whatsapp-icon.png" alt=""></a>
     </div>
   </div>
 </footer>
