@@ -622,8 +622,26 @@
     });
   }
 
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzadIYg4CdWgyDqkw0m7M3SMCyHZLvvTmOxI3GWoLAGpc_VXyfBBOTK2MHMDfupoPtn5A/exec';
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve(null);
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve({
+          nombre: file.name,
+          tipo: file.type || 'application/octet-stream',
+          contenido: reader.result.split(',')[1]
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
   // Validación On Submit
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     let isFormValid = true;
@@ -687,26 +705,107 @@
     // Ocultar banner de error si todo está bien
     errorBanner.style.display = 'none';
 
-    // Rellenar Modal de Éxito
-    const name1 = document.getElementById('est-nombre1').value;
-    const ape1 = document.getElementById('est-ape1').value;
-    document.getElementById('modal-nuevo-name').textContent = `${name1} ${ape1}`;
-    document.getElementById('modal-nuevo-id').textContent = document.getElementById('est-cedula').value;
-    
-    const nivelSelect = document.getElementById('doc-nivel');
-    document.getElementById('modal-nuevo-grade').textContent = nivelSelect.options[nivelSelect.selectedIndex].text;
-    
-    document.getElementById('modal-nuevo-acudiente').textContent = document.getElementById('acu-nombre').value;
-    
-    // Dynamic date
-    const today = new Date();
-    const dateStr = today.toLocaleDateString('es-PA', { year: 'numeric', month: 'long', day: 'numeric' });
-    document.getElementById('modal-nuevo-date').textContent = dateStr;
+    const submitBtn = document.getElementById('btn-submit');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Enviando solicitud y archivos a Google Drive... ⏳';
 
-    // Mostrar Modal
-    const modal = document.getElementById('nuevo-success-modal');
-    modal.classList.add('is-active');
-    modal.setAttribute('aria-hidden', 'false');
+    try {
+      const fileComprobanteInput = document.getElementById('doc-comprobante');
+      const fileInformeInput = document.getElementById('doc-informe');
+
+      const docComprobanteFile = fileComprobanteInput && fileComprobanteInput.files.length > 0
+        ? await fileToBase64(fileComprobanteInput.files[0])
+        : null;
+
+      const docInformeFile = fileInformeInput && fileInformeInput.files.length > 0
+        ? await fileToBase64(fileInformeInput.files[0])
+        : null;
+
+      const payload = {
+        tipo_tramite: "nuevo_ingreso",
+        est_cedula: document.getElementById('est-cedula').value.trim(),
+        est_nac: document.getElementById('est-nac').value.trim(),
+        est_nombre1: document.getElementById('est-nombre1').value.trim(),
+        est_nombre2: document.getElementById('est-nombre2').value.trim(),
+        est_ape1: document.getElementById('est-ape1').value.trim(),
+        est_ape2: document.getElementById('est-ape2').value.trim(),
+        est_fecha_nac: document.getElementById('est-fecha-nac').value.trim(),
+        est_ingreso: document.getElementById('est-ingreso').value.trim(),
+        est_dir: document.getElementById('est-dir').value.trim(),
+        med_sangre: document.getElementById('med-sangre').value.trim(),
+        med_lateral: document.getElementById('med-lateral').value.trim(),
+        med_alergias: document.getElementById('med-alergias').value.trim(),
+        med_discapacidad: document.getElementById('med-discapacidad').value.trim(),
+        med_discapacidad_detalle: document.getElementById('med-discapacidad-detalle').value.trim(),
+        padre_nombre: document.getElementById('padre-nombre').value.trim(),
+        padre_cedula: document.getElementById('padre-cedula').value.trim(),
+        padre_nac: document.getElementById('padre-nac').value.trim(),
+        padre_ocupacion: document.getElementById('padre-ocupacion').value.trim(),
+        padre_celular: document.getElementById('padre-celular').value.trim(),
+        padre_relacion: (form.querySelector('input[name="padre_relacion"]:checked') || {}).value || "",
+        madre_nombre: document.getElementById('madre-nombre').value.trim(),
+        madre_cedula: document.getElementById('madre-cedula').value.trim(),
+        madre_nac: document.getElementById('madre-nac').value.trim(),
+        madre_ocupacion: document.getElementById('madre-ocupacion').value.trim(),
+        madre_celular: document.getElementById('madre-celular').value.trim(),
+        madre_relacion: (form.querySelector('input[name="madre_relacion"]:checked') || {}).value || "",
+        acu_seleccion: document.getElementById('acu-seleccion').value.trim(),
+        acu_nombre: document.getElementById('acu-nombre').value.trim(),
+        acu_cedula: document.getElementById('acu-cedula').value.trim(),
+        acu_parentesco: document.getElementById('acu-parentesco').value.trim(),
+        acu_celular: document.getElementById('acu-celular').value.trim(),
+        acu_correo: document.getElementById('acu-correo').value.trim(),
+        acu_ocupacion: document.getElementById('acu-ocupacion').value.trim(),
+        doc_nivel: (document.getElementById('doc-nivel').options[document.getElementById('doc-nivel').selectedIndex] || {}).text || "",
+        doc_comprobante: docComprobanteFile,
+        doc_informe: docInformeFile,
+        comp_padres: document.getElementById('comp-padres').checked,
+        comp_pagos: document.getElementById('comp-pagos').checked,
+        comp_sai: document.getElementById('comp-sai').checked,
+        comp_verano: document.getElementById('comp-verano').checked,
+        comp_reglamento: document.getElementById('comp-reglamento').checked
+      };
+
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+
+      const resData = await response.json().catch(() => ({ status: 'ok' }));
+      if (resData.status !== 'ok') {
+        throw new Error(resData.message || 'Error desconocido al registrar en Google Sheets');
+      }
+
+      // Rellenar Modal de Éxito
+      const name1 = document.getElementById('est-nombre1').value;
+      const ape1 = document.getElementById('est-ape1').value;
+      document.getElementById('modal-nuevo-name').textContent = `${name1} ${ape1}`;
+      document.getElementById('modal-nuevo-id').textContent = document.getElementById('est-cedula').value;
+      
+      const nivelSelect = document.getElementById('doc-nivel');
+      document.getElementById('modal-nuevo-grade').textContent = nivelSelect.options[nivelSelect.selectedIndex].text;
+      
+      document.getElementById('modal-nuevo-acudiente').textContent = document.getElementById('acu-nombre').value;
+      
+      // Dynamic date
+      const today = new Date();
+      const dateStr = today.toLocaleDateString('es-PA', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('modal-nuevo-date').textContent = dateStr;
+
+      // Mostrar Modal
+      const modal = document.getElementById('nuevo-success-modal');
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert('Ocurrió un error al enviar el formulario: ' + err.message + '\nPor favor verifica tu conexión e inténtalo de nuevo.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+    }
   });
   
   // Close modal listeners are assumed to be handled in main.js, 

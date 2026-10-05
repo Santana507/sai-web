@@ -608,8 +608,26 @@
     });
   });
 
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzadIYg4CdWgyDqkw0m7M3SMCyHZLvvTmOxI3GWoLAGpc_VXyfBBOTK2MHMDfupoPtn5A/exec';
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve(null);
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve({
+          nombre: file.name,
+          tipo: file.type || 'application/octet-stream',
+          contenido: reader.result.split(',')[1]
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
   // Form submit
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     let isValid = true;
@@ -644,25 +662,91 @@
 
     summaryError.style.display = 'none';
 
-    // Populate modal
-    const studentName = document.getElementById('est-nombre1').value.trim() + ' ' + document.getElementById('est-apellido1').value.trim();
-    const acudienteName = document.getElementById('acudiente-nombre').value.trim();
-    const acudienteId = document.getElementById('acudiente-cedula').value.trim();
-    const gradeSelect = document.getElementById('est-grado');
-    const gradeText = gradeSelect.options[gradeSelect.selectedIndex].text;
-    const now = new Date();
-    const dateStr = now.toLocaleDateString('es-PA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    const submitBtn = form.querySelector('.form-submit-button');
+    const originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Enviando información y archivos a Drive... ⏳</span>';
 
-    document.getElementById('modal-student-name').textContent = studentName;
-    document.getElementById('modal-acudiente-name').textContent = acudienteName;
-    document.getElementById('modal-acudiente-id').textContent = acudienteId;
-    document.getElementById('modal-student-grade').textContent = gradeText;
-    document.getElementById('modal-date').textContent = dateStr;
+    try {
+      const fileContratoInput = document.getElementById('file-contrato');
+      const filePagoInput = document.getElementById('file-pago');
 
-    // Show modal
-    const modal = document.getElementById('success-modal');
-    modal.classList.add('is-active');
-    modal.setAttribute('aria-hidden', 'false');
+      const fileContratoObj = fileContratoInput && fileContratoInput.files.length > 0
+        ? await fileToBase64(fileContratoInput.files[0])
+        : null;
+
+      const filePagoObj = filePagoInput && filePagoInput.files.length > 0
+        ? await fileToBase64(filePagoInput.files[0])
+        : null;
+
+      const payload = {
+        tipo_tramite: "preingreso",
+        acudiente_email: document.getElementById('acudiente-email').value.trim(),
+        acudiente_nombre: document.getElementById('acudiente-nombre').value.trim(),
+        acudiente_cedula: document.getElementById('acudiente-cedula').value.trim(),
+        acudiente_parentesco: document.getElementById('acudiente-parentesco').value.trim(),
+        acudiente_telefono: document.getElementById('acudiente-telefono').value.trim(),
+        acudiente_telefono2: document.getElementById('acudiente-telefono2').value.trim(),
+        estudiante_grado: (document.getElementById('est-grado').options[document.getElementById('est-grado').selectedIndex] || {}).text || "",
+        estudiante_nombre1: document.getElementById('est-nombre1').value.trim(),
+        estudiante_nombre2: document.getElementById('est-nombre2').value.trim(),
+        estudiante_apellido1: document.getElementById('est-apellido1').value.trim(),
+        estudiante_apellido2: document.getElementById('est-apellido2').value.trim(),
+        estudiante_cedula: document.getElementById('est-cedula').value.trim(),
+        estudiante_direccion: document.getElementById('est-direccion').value.trim(),
+        estudiante_condiciones: document.getElementById('est-condiciones').value.trim(),
+        file_contrato: fileContratoObj,
+        file_pago: filePagoObj,
+        comp_escuela_padres: (form.querySelector('input[name="comp_escuela_padres"]') || {}).checked,
+        comp_fechas_pago: (form.querySelector('input[name="comp_fechas_pago"]') || {}).checked,
+        comp_sai: (form.querySelector('input[name="comp_sai"]') || {}).checked,
+        comp_libros: (form.querySelector('input[name="comp_libros"]') || {}).checked,
+        comp_requisito: (form.querySelector('input[name="comp_requisito"]') || {}).checked,
+        comp_reglamento: (form.querySelector('input[name="comp_reglamento"]') || {}).checked
+      };
+
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+
+      const resData = await response.json().catch(() => ({ status: 'ok' }));
+      if (resData.status !== 'ok') {
+        throw new Error(resData.message || 'Error desconocido al registrar en Google Sheets');
+      }
+
+      // Populate modal
+      const studentName = document.getElementById('est-nombre1').value.trim() + ' ' + document.getElementById('est-apellido1').value.trim();
+      const acudienteName = document.getElementById('acudiente-nombre').value.trim();
+      const acudienteId = document.getElementById('acudiente-cedula').value.trim();
+      const gradeSelect = document.getElementById('est-grado');
+      const gradeText = gradeSelect.options[gradeSelect.selectedIndex].text;
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('es-PA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+      document.getElementById('modal-student-name').textContent = studentName;
+      document.getElementById('modal-acudiente-name').textContent = acudienteName;
+      document.getElementById('modal-acudiente-id').textContent = acudienteId;
+      document.getElementById('modal-student-grade').textContent = gradeText;
+      document.getElementById('modal-date').textContent = dateStr;
+
+      // Show modal
+      const modal = document.getElementById('success-modal');
+      modal.classList.add('is-active');
+      modal.setAttribute('aria-hidden', 'false');
+
+      form.reset();
+      const nameContrato = document.getElementById('name-contrato');
+      if (nameContrato) nameContrato.textContent = 'Ningún archivo seleccionado';
+      const namePago = document.getElementById('name-pago');
+      if (namePago) namePago.textContent = 'Ningún archivo seleccionado';
+    } catch (err) {
+      console.error(err);
+      alert('Ocurrió un error al enviar el formulario: ' + err.message + '\nPor favor verifica tu conexión e inténtalo de nuevo.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
+    }
   });
 
 })();
