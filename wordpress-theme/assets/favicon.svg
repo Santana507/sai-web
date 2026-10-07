@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="icon-crop"><rect x="7" y="5" width="42" height="54" rx="10" /></clipPath>
+    <filter id="white-mark"><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" /></filter>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#06243b" />
+  <g clip-path="url(#icon-crop)" filter="url(#white-mark)">
+    <image href="brand/bpvda-logo.png" x="-2" y="-17" width="178" height="100" preserveAspectRatio="none" />
+  </g>
+</svg>
