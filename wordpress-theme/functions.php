@@ -172,3 +172,47 @@ function bpvda_create_pages() {
     update_option( 'bpvda_pages_version', '3' );
 }
 add_action( 'init', 'bpvda_create_pages', 20 );
+/**
+ * Carga el contenido de la portada en Paginas > Inicio como bloques editables.
+ * Solo se hace si la pagina esta vacia (no pisa tus ediciones).
+ * Para volver a cargar el original: vaciar la pagina Inicio y borrar la opcion bpvda_home_seeded.
+ */
+function bpvda_seed_home() {
+    if ( get_option( 'bpvda_home_seeded' ) === '1' ) {
+        return;
+    }
+    $page = get_page_by_path( 'inicio' );
+    $file = get_template_directory() . '/inc/home-blocks.html';
+    if ( ! $page || ! file_exists( $file ) ) {
+        return;
+    }
+    if ( trim( $page->post_content ) !== '' ) {
+        update_option( 'bpvda_home_seeded', '1' );
+        return;
+    }
+    $content = str_replace(
+        array( '{{THEME}}', '{{HOME}}' ),
+        array( untrailingslashit( get_template_directory_uri() ), untrailingslashit( home_url() ) ),
+        file_get_contents( $file )
+    );
+    kses_remove_filters();
+    wp_update_post( wp_slash( array( 'ID' => $page->ID, 'post_content' => $content ) ) );
+    kses_init_filters();
+    update_option( 'bpvda_home_seeded', '1' );
+}
+add_action( 'init', 'bpvda_seed_home', 30 );
+
+/**
+ * Los bloques de imagen añaden un <figure>; se neutraliza para no alterar el diseno original.
+ */
+function bpvda_block_fixes() {
+    wp_add_inline_style( 'bpvda-styles', '.wp-block-image{margin:0}' );
+}
+add_action( 'wp_enqueue_scripts', 'bpvda_block_fixes', 20 );
+/**
+ * Sin contenedor interno en los grupos: mantiene la estructura HTML original (selectores CSS hijo directo).
+ */
+function bpvda_no_group_inner_container() {
+    remove_filter( 'render_block_core/group', 'wp_restore_group_inner_container', 10 );
+}
+add_action( 'init', 'bpvda_no_group_inner_container', 5 );

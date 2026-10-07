@@ -20,6 +20,7 @@ function Convert-Links([string]$html) {
 $files = Get-ChildItem $src -Filter '*.html'
 foreach ($f in $files) {
     $slug = $f.BaseName
+    if ($slug -eq 'index') { continue }  # la portada se edita con bloques (build-home-blocks.php)
     $text = [System.IO.File]::ReadAllText($f.FullName, $utf8)
     if ($text -notmatch '(?is)<main[^>]*>.*?</main>') { Write-Host "SIN <main>: $($f.Name)"; continue }
     $main = $Matches[0]
