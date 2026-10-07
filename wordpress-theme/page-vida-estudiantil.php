@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla vida-estudiantil
+ * Pagina: vida-estudiantil (copia fiel de vida-estudiantil.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7544.JPG" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7544.JPG" alt="">
       <div class="interior-hero__wash"></div>
       <div class="interior-hero__content">
         <span>02 ENFOQUE EDUCATIVO</span>
@@ -21,7 +21,7 @@ get_header(); ?>
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
     <!-- ============================================================ -->
     <section class="split-feature">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7544.JPG" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7544.JPG" alt="">
       <div>
         <span class="section-number">02 ENFOQUE EDUCATIVO</span>
         <h2>Vida estudiantil</h2>
@@ -44,7 +44,7 @@ get_header(); ?>
     <p>Desliza o pasa el cursor para explorar una selección visual de nuestra comunidad.</p>
   </div>
   <div class="editorial-track">
-    <article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7544.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7549.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7550.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7544.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7549.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/achievements/IMG_7550.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
+    <article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7544.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7549.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7550.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7544.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7549.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/achievements/IMG_7550.JPG" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
   </div>
 </section>
 
@@ -55,5 +55,3 @@ get_header(); ?>
   </main>
 
 <?php get_footer(); ?>
-
-

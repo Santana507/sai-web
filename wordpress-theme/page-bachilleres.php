@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla bachilleres
+ * Pagina: bachilleres (copia fiel de bachilleres.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Específico del Nivel con Imagen de Fondo y Llamado a la Acción -->
     <section class="level-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/media/science-action.webp" alt="Estudiantes BPVDA">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/science-action.webp" alt="Estudiantes BPVDA">
       <div>
         <span>04 PRIMARIA</span>
         <h1>Preparación para decidir con <mark>propósito</mark>.</h1>
@@ -27,5 +27,3 @@ get_header(); ?>
   </main>
 
 <?php get_footer(); ?>
-
-

@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla ecosistema-digital
+ * Pagina: ecosistema-digital (copia fiel de ecosistema-digital.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Edvoice1.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Edvoice1.webp" alt="">
       <div class="interior-hero__wash"></div>
       <div class="interior-hero__content">
         <span>02 ENFOQUE EDUCATIVO</span>
@@ -21,7 +21,7 @@ get_header(); ?>
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
     <!-- ============================================================ -->
     <section class="split-feature">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Edvoice1.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Edvoice1.webp" alt="">
       <div>
         <span class="section-number">02 ENFOQUE EDUCATIVO</span>
         <h2>Ecosistema digital</h2>
@@ -44,7 +44,7 @@ get_header(); ?>
     <p>Desliza o pasa el cursor para explorar una selección visual de nuestra comunidad.</p>
   </div>
   <div class="editorial-track">
-    <article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Canva1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Edvoice1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Progrentis1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Canva1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Edvoice1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Progrentis1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
+    <article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Canva1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Edvoice1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Progrentis1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Canva1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Edvoice1.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Progrentis1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
   </div>
 </section>
 
@@ -53,11 +53,9 @@ get_header(); ?>
     <!-- ============================================================ -->
     <section class="alliance-marquee">
   <div>
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/SAI logo oficial.jpg" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Edvoice1.webp" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Progrentis1.png" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Matific1.png" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Kingscorner.png" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Canva1.webp" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Academia 24 - 1.png" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/kahoot1.webp" alt="Plataforma educativa"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/alliances/Moodle1.png" alt="Plataforma educativa">
+    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/SAI logo oficial.jpg" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Edvoice1.webp" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Progrentis1.png" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Matific1.png" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Kingscorner.png" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Canva1.webp" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Academia 24 - 1.png" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/kahoot1.webp" alt="Plataforma educativa"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/alliances/Moodle1.png" alt="Plataforma educativa">
   </div>
 </section>
   </main>
 
 <?php get_footer(); ?>
-
-

@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla primaria
+ * Pagina: primaria (copia fiel de primaria.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Específico del Nivel con Imagen de Fondo y Llamado a la Acción -->
     <section class="level-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/levels/primaria/IMG_9484.webp" alt="Estudiantes BPVDA">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/levels/primaria/IMG_9484.webp" alt="Estudiantes BPVDA">
       <div>
         <span>04 PRIMARIA</span>
         <h1>Aprender para comprender y <mark>transformar</mark>.</h1>
@@ -25,16 +25,14 @@ get_header(); ?>
   <p>En primaria, cada experiencia invita a pensar, colaborar y desarrollar autonomía. Aquí se incorporará la descripción institucional de metodologías, áreas y proyectos.</p>
 </section>
 <section class="primary-mosaic">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/new/levels/primaria/IMG_9494.webp" alt="">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/new/levels/primaria/IMG_9538.webp" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/levels/primaria/IMG_9494.webp" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/levels/primaria/IMG_9538.webp" alt="">
   <div>
     <h2>Aprender juntos abre nuevas posibilidades.</h2>
     <p>Retos, lectura, creatividad y experiencias que conectan con la vida.</p>
   </div>
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/new/levels/primaria/IMG_1605.JPG" alt="">
+  <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/levels/primaria/IMG_1605.JPG" alt="">
 </section>
   </main>
 
 <?php get_footer(); ?>
-
-

@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla plantel
+ * Pagina: plantel (copia fiel de plantel.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/IMG_9538.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/IMG_9538.webp" alt="">
       <div class="interior-hero__wash"></div>
       <div class="interior-hero__content">
         <span>01 NUESTRA ESCUELA</span>
@@ -21,7 +21,7 @@ get_header(); ?>
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
     <!-- ============================================================ -->
     <section class="split-feature">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/new/IMG_9538.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/IMG_9538.webp" alt="">
       <div>
         <span class="section-number">01 NUESTRA ESCUELA</span>
         <h2>Plantel docente</h2>
@@ -44,7 +44,7 @@ get_header(); ?>
     <p>Desliza o pasa el cursor para explorar una selección visual de nuestra comunidad.</p>
   </div>
   <div class="editorial-track">
-    <article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/2.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/3.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/2.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/3.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
+    <article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/2.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/3.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/1.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/2.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/3.png" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
   </div>
 </section>
 
@@ -54,11 +54,9 @@ get_header(); ?>
     <section class="teacher-section section-pad">
   <h2>Personas que hacen del aprendizaje una experiencia cercana.</h2>
   <div class="teacher-grid">
-    <article><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/1.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/2.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/3.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo get_template_directory_uri(); ?>/assets/new/teachers/4.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article>
+    <article><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/1.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/2.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/3.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article><article><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/teachers/4.png" alt="Retrato de docente BPVDA"><div><span>DOCENTE BPVDA</span><h3>Nombre del educador</h3><p>Área, trayectoria y cita inspiradora por confirmar.</p></div></article>
   </div>
 </section>
   </main>
 
 <?php get_footer(); ?>
-
-

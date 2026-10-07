@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla form-nuevo-ingreso
+ * Pagina: form-nuevo-ingreso (copia fiel de form-nuevo-ingreso.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     
 <div class="form-container">
-  <a href="admisiones.html" class="form-nav-back">
+  <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>" class="form-nav-back">
     <span aria-hidden="true">←</span> Volver a la Guía de Admisiones
   </a>
 
@@ -397,7 +397,7 @@ get_header(); ?>
     </p>
 
     <div style="display: flex; gap: 1rem; justify-content: center;">
-      <a href="index.html" class="btn btn-primary" style="padding: 0.8rem 1.6rem; width: 100%; border-radius: 6px; text-decoration: none; display: inline-block;">Volver al Inicio</a>
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn-primary" style="padding: 0.8rem 1.6rem; width: 100%; border-radius: 6px; text-decoration: none; display: inline-block;">Volver al Inicio</a>
     </div>
   </div>
 </div>
@@ -770,5 +770,3 @@ get_header(); ?>
   </main>
 
 <?php get_footer(); ?>
-
-

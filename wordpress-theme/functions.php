@@ -116,3 +116,59 @@ function bpvda_register_patterns() {
     }
 }
 add_action( 'init', 'bpvda_register_patterns' );
+
+/**
+ * Crea automaticamente las paginas del sitio (una por cada HTML original)
+ * y define la portada. Se ejecuta una sola vez por version.
+ */
+function bpvda_create_pages() {
+    if ( get_option( 'bpvda_pages_version' ) === '3' ) {
+        return;
+    }
+    $pages = array(
+        'quienes-somos'       => '¿Quiénes somos?',
+        'filosofia'           => 'Filosofía',
+        'instalaciones'       => 'Instalaciones',
+        'plantel'             => 'Plantel docente',
+        'sai'                 => 'SAI BPVDA',
+        'vida-estudiantil'    => 'Vida estudiantil',
+        'ecosistema-digital'  => 'Ecosistema digital',
+        'admisiones'          => 'Admisiones',
+        'portal-padres'       => 'Portal de padres',
+        'contacto'            => 'Contacto',
+        'prekinder'           => 'Prekínder',
+        'kinder'              => 'Kínder',
+        'primaria'            => 'Primaria',
+        'secundaria'          => 'Secundaria',
+        'bachilleres'         => 'Bachilleres',
+        'form-nuevo-ingreso'  => 'Formulario nuevo ingreso',
+        'form-preingreso'     => 'Formulario preingreso',
+    );
+    foreach ( $pages as $slug => $title ) {
+        if ( ! get_page_by_path( $slug ) ) {
+            wp_insert_post( array(
+                'post_title'  => $title,
+                'post_name'   => $slug,
+                'post_status' => 'publish',
+                'post_type'   => 'page',
+            ) );
+        }
+    }
+    $home = get_page_by_path( 'inicio' );
+    if ( ! $home ) {
+        $id = wp_insert_post( array(
+            'post_title'  => 'Inicio',
+            'post_name'   => 'inicio',
+            'post_status' => 'publish',
+            'post_type'   => 'page',
+        ) );
+    } else {
+        $id = $home->ID;
+    }
+    update_option( 'show_on_front', 'page' );
+    update_option( 'page_on_front', $id );
+    update_option( 'permalink_structure', '/%postname%/' );
+    flush_rewrite_rules();
+    update_option( 'bpvda_pages_version', '3' );
+}
+add_action( 'init', 'bpvda_create_pages', 20 );

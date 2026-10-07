@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 /**
- * Template Name: Plantilla contacto
+ * Pagina: contacto (copia fiel de contacto.html)
  */
 get_header(); ?>
 
 <main id="contenido">
     <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-exterior.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-exterior.webp" alt="">
       <div class="interior-hero__wash"></div>
       <div class="interior-hero__content">
         <span>03 FAMILIA Y COMUNIDAD</span>
@@ -21,7 +21,7 @@ get_header(); ?>
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
     <!-- ============================================================ -->
     <section class="split-feature">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-exterior.webp" alt="">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-exterior.webp" alt="">
       <div>
         <span class="section-number">03 FAMILIA Y COMUNIDAD</span>
         <h2>Contacto y atención</h2>
@@ -44,7 +44,7 @@ get_header(); ?>
     <p>Desliza o pasa el cursor para explorar una selección visual de nuestra comunidad.</p>
   </div>
   <div class="editorial-track">
-    <article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-exterior.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-restzone.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/client-atention.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-exterior.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/campus-restzone.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/client-atention.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
+    <article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-exterior.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-restzone.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/client-atention.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-exterior.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-restzone.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article><article class="editorial-card"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/client-atention.webp" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>
   </div>
 </section>
 
@@ -62,5 +62,3 @@ get_header(); ?>
   </main>
 
 <?php get_footer(); ?>
-
-
