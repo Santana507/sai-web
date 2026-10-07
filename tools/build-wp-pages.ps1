@@ -22,7 +22,12 @@ foreach ($f in $files) {
     $slug = $f.BaseName
     $text = [System.IO.File]::ReadAllText($f.FullName, $utf8)
     if ($text -notmatch '(?is)<main[^>]*>.*?</main>') { Write-Host "SIN <main>: $($f.Name)"; continue }
-    $main = Convert-Links $Matches[0]
+    $main = $Matches[0]
+    # header.php y footer.php ya aportan cabecera y pie: quitar los anidados en <main>
+    if ($slug -eq 'index') { $main = [regex]::Replace($main, '(?is)<header class="site-header">.*?</header>', '') }
+    if ($slug -eq 'index') { $main = [regex]::Replace($main, '(?is)<footer>.*?</footer>', '') }
+    $main = [regex]::Replace($main, '(?i)<main>', '<main id="contenido">')
+    $main = Convert-Links $main
     if ($slug -eq 'index') {
         $out = Join-Path $theme 'front-page.php'
         $head = "<?php`n/**`n * Portada (copia fiel de index.html)`n */`nget_header(); ?>`n`n"
@@ -45,6 +50,15 @@ $t = [regex]::Replace($t, "home_url\( '/#([\w-]+)' \)", {
 })
 [System.IO.File]::WriteAllText($h, $t, $utf8)
 
+# Header: usar la cabecera original exacta (menu incluido) de quienes-somos.html
+$orig = [System.IO.File]::ReadAllText((Join-Path $src 'quienes-somos.html'), $utf8)
+if ($orig -match '(?is)<header class="site-header">.*?</header>') {
+    $hdr = Convert-Links $Matches[0]
+    $hdr = $hdr.Replace('href="<?php echo esc_url( home_url( ''/'' ) ); ?>" aria-label', 'href="<?php echo esc_url( home_url( ''/'' ) ); ?>" aria-label')
+    $t = [System.IO.File]::ReadAllText($h, $utf8)
+    $t = [regex]::Replace($t, '(?is)<header class="site-header">.*?</header>', { param($m) $hdr })
+    [System.IO.File]::WriteAllText($h, $t, $utf8)
+}
 # Quitar BOM de todos los PHP
 Get-ChildItem $theme -Filter '*.php' -Recurse | ForEach-Object {
     $c = [System.IO.File]::ReadAllText($_.FullName, $utf8)
