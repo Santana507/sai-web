@@ -33,16 +33,11 @@ const groups = [
     ]
   ],
   [
-    '04 PRIMARIA',
+    '04 NIVELES ACADÉMICOS',
     [
       ['Prekínder', 'prekinder.html'],
       ['Kínder', 'kinder.html'],
-      ['Primaria', 'primaria.html']
-    ]
-  ],
-  [
-    '05 SECUNDARIA Y BACHILLERES',
-    [
+      ['Primaria', 'primaria.html'],
       ['Secundaria', 'secundaria.html'],
       ['Bachilleres', 'bachilleres.html']
     ]
