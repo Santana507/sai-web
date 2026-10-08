@@ -66,49 +66,146 @@ const headerTemplate = readFileSync(join(templatesDir, 'header.html'), 'utf8');
 const visualHeader = headerTemplate.replace('{{MENU_GROUPS}}', menuGroupsHtml).trim();
 const richFooter = readFileSync(join(templatesDir, 'footer.html'), 'utf8').trim();
 
-// 4. Catálogo de Datos para Páginas Interiores
+// 4. Catálogo de Datos para Páginas Interiores (heroImage, splitImage)
 const data = [
-  ['quienes-somos.html', '¿Quiénes somos?', '01 NUESTRA ESCUELA', 'Una comunidad que educa con <mark>propósito</mark>.', 'assets/new/IMG_9370.webp', 'Conoce la historia, el compromiso y la comunidad que hacen posible BPVDA.'],
-  ['filosofia.html', 'Propósito BPVDA', '01 NUESTRA ESCUELA', 'Valores que orientan cada <mark>decisión</mark>.', 'assets/media/mission.webp', 'Misión, visión y principios cristianos que sostienen nuestra propuesta educativa.'],
-  ['instalaciones.html', 'Instalaciones', '01 NUESTRA ESCUELA', 'Espacios para aprender, convivir y <mark>crecer</mark>.', 'assets/new/IMG_9413.webp', 'Conoce los espacios que reciben diariamente a nuestra comunidad escolar.'],
-  ['plantel.html', 'Plantel docente', '01 NUESTRA ESCUELA', 'Educadores que inspiran y <mark>guían</mark>.', 'assets/new/IMG_9538.webp', 'Un equipo comprometido con acompañar los procesos y talentos de cada estudiante.'],
-  ['sai.html', 'SAI BPVDA', '02 ENFOQUE EDUCATIVO', 'Todo el aprendizaje, en un mismo <mark>lugar</mark>.', 'assets/new/alliances/SAI logo oficial.jpg', 'SAI centraliza las herramientas, actividades y comunicaciones importantes para nuestra comunidad.'],
-  ['vida-estudiantil.html', 'Vida estudiantil', '02 ENFOQUE EDUCATIVO', 'Talentos que se convierten en <mark>experiencias</mark>.', 'assets/new/achievements/IMG_7544.JPG', 'Proyectos, actividades, cultura, deporte y logros que enriquecen la vida escolar.'],
-  ['ecosistema-digital.html', 'Ecosistema digital', '02 ENFOQUE EDUCATIVO', 'Herramientas para aprender sin <mark>límites</mark>.', 'assets/new/alliances/Edvoice1.webp', 'Una red de plataformas que acompaña el aprendizaje dentro y fuera del aula.'],
-  ['portal-padres.html', 'Portal de padres', '03 FAMILIA Y COMUNIDAD', 'Información escolar al alcance de tu <mark>familia</mark>.', 'assets/new/sai/Captura de pantalla 2026-09-12 135920.png', 'Accesos directos a las plataformas donde las familias consultan información académica.'],
-  ['contacto.html', 'Contacto y atención', '03 FAMILIA Y COMUNIDAD', 'Estamos aquí para <mark>orientarte</mark>.', 'assets/media/campus-exterior.webp', 'Canales directos para conversar, visitar y conocer la comunidad BPVDA.'],
-  ['secundaria.html', 'Secundaria y Bachilleres', '05 SECUNDARIA Y BACHILLERES', 'Preparación para los retos que <mark>vienen</mark>.', 'assets/media/science-student.webp', 'Secundaria y bachillerato para impulsar habilidades, propósito y futuro.']
+  ['quienes-somos.html', '¿Quiénes somos?', '01 NUESTRA ESCUELA', 'Una comunidad que educa con <mark>propósito</mark>.', 'assets/fotos/institucional/community.webp', 'assets/fotos/institucional/culture-main.webp', 'Conoce la historia, el compromiso y la comunidad que hacen posible BPVDA.'],
+  ['filosofia.html', 'Propósito BPVDA', '01 NUESTRA ESCUELA', 'Valores que orientan cada <mark>decisión</mark>.', 'assets/fotos/institucional/mission.webp', 'assets/fotos/institucional/mission.webp', 'Misión, visión y principios cristianos que sostienen nuestra propuesta educativa.'],
+  ['instalaciones.html', 'Instalaciones', '01 NUESTRA ESCUELA', 'Espacios para aprender, convivir y <mark>crecer</mark>.', 'assets/fotos/exterior/IMG_9374.webp', 'assets/fotos/exterior/campus-restzone.webp', 'Conoce los espacios que reciben diariamente a nuestra comunidad escolar.'],
+  ['plantel.html', 'Plantel docente', '01 NUESTRA ESCUELA', 'Educadores que inspiran y <mark>guían</mark>.', 'assets/fotos/primaria-preescolar/IMG_9484.webp', 'assets/fotos/primaria-preescolar/IMG_9489.webp', 'Un equipo comprometido con acompañar los procesos y talentos de cada estudiante.'],
+  ['sai.html', 'SAI BPVDA', '02 ENFOQUE EDUCATIVO', 'Todo el aprendizaje, en un mismo <mark>lugar</mark>.', 'assets/new/alliances/SAI logo oficial.jpg', 'assets/new/sai/Captura de pantalla 2026-09-12 135920.png', 'SAI centraliza las herramientas, actividades y comunicaciones importantes para nuestra comunidad.'],
+  ['vida-estudiantil.html', 'Vida estudiantil', '02 ENFOQUE EDUCATIVO', 'Talentos que se convierten en <mark>experiencias</mark>.', 'assets/fotos/secundaria/IMG_9585.webp', 'assets/fotos/secundaria/IMG_9575.webp', 'Proyectos, actividades, cultura, deporte y logros que enriquecen la vida escolar.'],
+  ['ecosistema-digital.html', 'Ecosistema digital', '02 ENFOQUE EDUCATIVO', 'Herramientas para aprender sin <mark>límites</mark>.', 'assets/fotos/secundaria/IMG_9514.webp', 'assets/fotos/secundaria/IMG_9511.webp', 'Una red de plataformas que acompaña el aprendizaje dentro y fuera del aula.'],
+  ['portal-padres.html', 'Portal de padres', '03 FAMILIA Y COMUNIDAD', 'Información escolar al alcance de tu <mark>familia</mark>.', 'assets/new/alliances/Edvoice1.webp', 'assets/fotos/institucional/client-atention.webp', 'Accesos directos a las plataformas donde las familias consultan información académica.'],
+  ['contacto.html', 'Contacto y atención', '03 FAMILIA Y COMUNIDAD', 'Estamos aquí para <mark>orientarte</mark>.', 'assets/fotos/exterior/campus-exterior.webp', 'assets/fotos/institucional/client-atention.webp', 'Canales directos para conversar, visitar y conocer la comunidad BPVDA.'],
+  ['secundaria.html', 'Secundaria y Bachilleres', '05 SECUNDARIA Y BACHILLERES', 'Preparación para los retos que <mark>vienen</mark>.', 'assets/fotos/secundaria/IMG_9504.webp', 'assets/fotos/secundaria/IMG_9510.webp', 'Secundaria y bachillerato para impulsar habilidades, propósito y futuro.']
 ];
 
 const visualSets = {
-  '¿Quiénes somos?': ['assets/media/community.webp', 'assets/new/IMG_9370.webp', 'assets/new/IMG_9413.webp'],
-  'Propósito BPVDA': ['assets/media/mission.webp', 'assets/media/culture.webp', 'assets/media/learn-mind.webp'],
-  'Instalaciones': ['assets/new/IMG_9413.webp', 'assets/new/IMG_9484.webp', 'assets/new/IMG_9538.webp'],
-  'Plantel docente': ['assets/new/teachers/1.png', 'assets/new/teachers/2.png', 'assets/new/teachers/3.png'],
-  'SAI BPVDA': ['assets/new/sai/Captura de pantalla 2026-09-12 135528.png', 'assets/new/sai/Captura de pantalla 2026-09-12 135545.png', 'assets/new/sai/Captura de pantalla 2026-09-12 135920.png'],
-  'Vida estudiantil': ['assets/new/achievements/IMG_7544.JPG', 'assets/new/achievements/IMG_7549.JPG', 'assets/new/achievements/IMG_7550.JPG'],
-  'Ecosistema digital': ['assets/new/alliances/Canva1.webp', 'assets/new/alliances/Edvoice1.webp', 'assets/new/alliances/Progrentis1.png'],
-  'Admisiones y matrícula': ['assets/media/admision-main.webp', 'assets/media/campus-entry.webp', 'assets/media/client-atention.webp'],
-  'Portal de padres': ['assets/new/sai/Captura de pantalla 2026-09-12 135920.png', 'assets/new/alliances/Edvoice1.webp', 'assets/new/alliances/Moodle1.png'],
-  'Contacto y atención': ['assets/media/campus-exterior.webp', 'assets/media/campus-restzone.webp', 'assets/media/client-atention.webp'],
-  'Secundaria y Bachilleres': ['assets/media/science-student.webp', 'assets/media/robotics-1.webp', 'assets/media/robotics-2.webp']
+  '¿Quiénes somos?': [
+    'assets/fotos/institucional/learn-mind.webp',
+    'assets/fotos/exterior/IMG_9379.webp',
+    'assets/fotos/institucional/mission.webp',
+    'assets/fotos/exterior/IMG_9372.webp',
+    'assets/fotos/secundaria/IMG_9509.webp',
+    'assets/fotos/primaria-preescolar/IMG_9480.webp'
+  ],
+  'Propósito BPVDA': [
+    'assets/fotos/institucional/mission.webp',
+    'assets/fotos/institucional/culture.webp',
+    'assets/fotos/institucional/learn-mind.webp',
+    'assets/fotos/institucional/achievement.webp',
+    'assets/fotos/institucional/recognition.webp',
+    'assets/fotos/institucional/community.webp'
+  ],
+  'Instalaciones': [
+    'assets/fotos/exterior/campus-main.webp',
+    'assets/fotos/exterior/IMG_9370.webp',
+    'assets/fotos/exterior/IMG_9377.webp',
+    'assets/fotos/exterior/IMG_9380.webp',
+    'assets/fotos/exterior/IMG_9386.webp',
+    'assets/fotos/exterior/IMG_9402.webp'
+  ],
+  'Plantel docente': [
+    'assets/fotos/secundaria/IMG_9515.webp',
+    'assets/fotos/primaria-preescolar/IMG_9462.webp',
+    'assets/fotos/secundaria/IMG_9530.webp',
+    'assets/fotos/primaria-preescolar/IMG_9430.webp',
+    'assets/fotos/secundaria/IMG_9570.webp',
+    'assets/fotos/primaria-preescolar/IMG_9471.webp'
+  ],
+  'SAI BPVDA': [
+    'assets/new/sai/Captura de pantalla 2026-09-12 135528.png',
+    'assets/new/sai/Captura de pantalla 2026-09-12 135545.png',
+    'assets/new/alliances/Moodle1.png',
+    'assets/new/alliances/Progrentis1.png',
+    'assets/new/alliances/Matific1.png',
+    'assets/new/alliances/Canva1.webp'
+  ],
+  'Vida estudiantil': [
+    'assets/fotos/secundaria/IMG_9582.webp',
+    'assets/fotos/secundaria/IMG_9586.webp',
+    'assets/fotos/secundaria/IMG_9580.webp',
+    'assets/fotos/secundaria/IMG_9574.webp',
+    'assets/fotos/secundaria/IMG_9590.webp',
+    'assets/fotos/secundaria/IMG_9593.webp'
+  ],
+  'Ecosistema digital': [
+    'assets/fotos/secundaria/IMG_9506.webp',
+    'assets/fotos/secundaria/IMG_9517.webp',
+    'assets/fotos/secundaria/IMG_9522.webp',
+    'assets/fotos/secundaria/IMG_9533.webp',
+    'assets/fotos/secundaria/IMG_9549.webp',
+    'assets/fotos/secundaria/IMG_9562.webp'
+  ],
+  'Admisiones y matrícula': [
+    'assets/fotos/institucional/admision-main.webp',
+    'assets/fotos/exterior/campus-entry.webp',
+    'assets/fotos/institucional/client-atention.webp',
+    'assets/fotos/institucional/admision.webp',
+    'assets/fotos/exterior/campus-exterior.webp',
+    'assets/fotos/institucional/community.webp'
+  ],
+  'Portal de padres': [
+    'assets/new/sai/Captura de pantalla 2026-09-12 135920.png',
+    'assets/fotos/institucional/admision.webp',
+    'assets/new/alliances/Matific1.png',
+    'assets/new/alliances/Progrentis1.png',
+    'assets/new/alliances/Moodle1.png',
+    'assets/new/alliances/Canva1.webp'
+  ],
+  'Contacto y atención': [
+    'assets/fotos/exterior/IMG_9378.webp',
+    'assets/fotos/exterior/IMG_9373.webp',
+    'assets/fotos/exterior/IMG_9381.webp',
+    'assets/fotos/exterior/IMG_9375.webp',
+    'assets/fotos/exterior/IMG_9388.webp',
+    'assets/fotos/exterior/IMG_9390.webp'
+  ],
+  'Secundaria y Bachilleres': [
+    'assets/fotos/secundaria/robotics-1.webp',
+    'assets/fotos/secundaria/IMG_9518.webp',
+    'assets/fotos/secundaria/IMG_9528.webp',
+    'assets/fotos/secundaria/IMG_9550.webp',
+    'assets/fotos/secundaria/science-team.webp',
+    'assets/fotos/secundaria/IMG_9565.webp'
+  ]
 };
 
 const cards = (title) => {
-  const images = (visualSets[title] || visualSets['¿Quiénes somos?']).concat(visualSets[title] || visualSets['¿Quiénes somos?']);
+  const images = visualSets[title] || visualSets['¿Quiénes somos?'];
   return `
 <section class="content-cards section-pad">
   <article><h3>Una propuesta con propósito</h3><p>Aquí se incorporará el contenido institucional final de ${title}.</p></article>
   <article><h3>Experiencias que acompañan</h3><p>Este espacio está preparado para explicar los procesos, recursos y oportunidades de la comunidad BPVDA.</p></article>
   <article><h3>Una comunidad cercana</h3><p>Familias, estudiantes y educadores construyen juntos cada etapa del aprendizaje.</p></article>
 </section>
-<section class="editorial-flow">
-  <div class="editorial-flow__head">
+<section class="carousel-v3">
+  <div class="carousel-v3__head">
     <h2>Momentos que inspiran.</h2>
-    <p>Desliza o pasa el cursor para explorar una selección visual de nuestra comunidad.</p>
+    <p>Desliza para explorar la riqueza visual de nuestra comunidad educativa.</p>
   </div>
-  <div class="editorial-track">
-    ${images.map(img => `<article class="editorial-card"><img src="${img}" alt=""><div><h3>BPVDA</h3><p>Una experiencia que acompaña cada etapa.</p></div></article>`).join('')}
+  <div class="carousel-v3__track-container">
+    <div class="carousel-v3__track">
+      ${images.map((img, i) => {
+        const captions = [
+          "Un entorno diseñado para descubrir.",
+          "Cada paso es un logro alcanzado.",
+          "Una comunidad que te respalda.",
+          "Innovación presente en cada aula.",
+          "Formando a los líderes del mañana.",
+          "Creciendo juntos cada día."
+        ];
+        return `
+        <article class="carousel-v3__card">
+          <img src="${img}" alt="Momento BPVDA" loading="lazy">
+          <div class="carousel-v3__overlay">
+            <span class="carousel-v3__tag">BPVDA</span>
+            <h3>${captions[i % captions.length]}</h3>
+          </div>
+        </article>
+        `;
+      }).join('')}
+    </div>
   </div>
 </section>`;
 };
@@ -159,13 +256,13 @@ const special = (file) => {
 };
 
 // 5. Generación de Páginas Interiores Estándar
-for (const [file, title, eyebrow, hero, image, intro] of data.filter(entry => entry[0] !== 'filosofia.html')) {
+for (const [file, title, eyebrow, hero, heroImage, splitImage, intro] of data.filter(entry => entry[0] !== 'filosofia.html')) {
   const body = `
     <!-- ============================================================ -->
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
     <!-- ============================================================ -->
     <section class="split-feature">
-      <img src="${image}" alt="">
+      <img src="${splitImage}" alt="">
       <div>
         <span class="section-number">${eyebrow}</span>
         <h2>${title}</h2>
@@ -204,7 +301,7 @@ for (const [file, title, eyebrow, hero, image, intro] of data.filter(entry => en
   <main id="contenido">
     <!-- Hero Interior con Imagen de Fondo, Wash de Contraste y Titular -->
     <section class="interior-hero">
-      <img src="${image}" alt="">
+      <img src="${heroImage}" alt="">
       <div class="interior-hero__wash"></div>
       <div class="interior-hero__content">
         <span>${eyebrow}</span>
@@ -269,7 +366,7 @@ const filosofiaHtml = `<!doctype html>
     <!-- Pilares Formativos: 01 Valores, 02 Misión y 03 Visión -->
     <section class="purpose-pillars">
       <article class="purpose-pillar purpose-pillar--values">
-        <img src="assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA">
+        <img src="assets/new/purpose/IMG_1715.JPG" alt="Estudiantes BPVDA en formación de valores">
         <div>
           <span>01</span>
           <h2>Valores</h2>
@@ -282,10 +379,10 @@ const filosofiaHtml = `<!doctype html>
           <h2>Misión</h2>
           <p>Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.</p>
         </div>
-        <img src="assets/new/purpose/IMG_1966.JPG" alt="Estudiante BPVDA">
+        <img src="assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
       </article>
       <article class="purpose-pillar purpose-pillar--vision">
-        <img src="assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA">
+        <img src="assets/new/purpose/IMG_1655.JPG" alt="Estudiante BPVDA">
         <div>
           <span>03</span>
           <h2>Visión</h2>
@@ -355,7 +452,7 @@ levelPage(
   'Prekínder',
   'Un lugar seguro para <mark>comenzar</mark>.',
   'Juego, afecto y descubrimiento acompañan los primeros pasos de cada niño.',
-  ['assets/new/levels/prekinder/IMG_9410.webp', 'assets/new/levels/prekinder/IMG_9417.webp', 'assets/new/levels/prekinder/IMG_9400.webp', 'assets/new/levels/prekinder/IMG_1694.JPG'],
+  ['assets/fotos/primaria-preescolar/IMG_9410.webp', 'assets/fotos/primaria-preescolar/IMG_9417.webp', 'assets/fotos/primaria-preescolar/IMG_9421.webp', 'assets/fotos/primaria-preescolar/IMG_9423.webp'],
   `<section id="experiencias" class="level-welcome">
   <div>
     <span>PREKÍNDER</span>
@@ -363,12 +460,12 @@ levelPage(
     <p>Un entorno preparado para explorar, crear vínculos y descubrir el mundo a través del juego. Aquí se incorporará la propuesta pedagógica final de Prekínder.</p>
   </div>
   <div class="level-photo-stack">
-    <img src="assets/new/levels/prekinder/IMG_9417.webp" alt="">
-    <img src="assets/new/levels/prekinder/IMG_9400.webp" alt="">
+    <img src="assets/fotos/primaria-preescolar/IMG_9417.webp" alt="Estudiantes en actividades de prekínder">
+    <img src="assets/fotos/primaria-preescolar/IMG_9421.webp" alt="Primeras experiencias formativas en BPVDA">
   </div>
 </section>
 <section class="level-moments">
-  <img src="assets/new/levels/prekinder/IMG_1694.JPG" alt="">
+  <img src="assets/fotos/primaria-preescolar/IMG_9423.webp" alt="Rutinas y juegos en preescolar">
   <div>
     <span>UN DÍA PARA DESCUBRIR</span>
     <h2>Movimiento, imaginación y compañía.</h2>
@@ -382,14 +479,14 @@ levelPage(
   'Kínder',
   'La curiosidad encuentra su <mark>voz</mark>.',
   'Una etapa para preguntar, imaginar y construir aprendizajes con entusiasmo.',
-  ['assets/new/levels/kinder/IMG_9434.webp', 'assets/new/levels/kinder/IMG_9454.webp', 'assets/new/levels/kinder/IMG_9408.webp', 'assets/new/levels/kinder/IMG_1695.JPG'],
+  ['assets/fotos/primaria-preescolar/IMG_9454.webp', 'assets/fotos/primaria-preescolar/IMG_9425.webp', 'assets/fotos/primaria-preescolar/IMG_9428.webp', 'assets/fotos/primaria-preescolar/IMG_9431.webp'],
   `<section id="experiencias" class="kinder-journey">
   <div class="kinder-journey__copy">
     <span>KÍNDER</span>
     <h2>Ideas pequeñas, descubrimientos enormes.</h2>
     <p>La experiencia de Kínder conecta juego, lenguaje, exploración y convivencia. Este espacio recibirá los contenidos oficiales del programa.</p>
   </div>
-  <img class="kinder-journey__main" src="assets/new/levels/kinder/IMG_9454.webp" alt="">
+  <img class="kinder-journey__main" src="assets/fotos/primaria-preescolar/IMG_9425.webp" alt="Estudiantes en el aula de kínder">
   <div class="kinder-journey__facts">
     <article><b>01</b><p>Explorar</p></article>
     <article><b>02</b><p>Crear</p></article>
@@ -397,8 +494,8 @@ levelPage(
   </div>
 </section>
 <section class="kinder-gallery">
-  <img src="assets/new/levels/kinder/IMG_9408.webp" alt="">
-  <img src="assets/new/levels/kinder/IMG_1695.JPG" alt="">
+  <img src="assets/fotos/primaria-preescolar/IMG_9428.webp" alt="Aprendizaje en kínder">
+  <img src="assets/fotos/primaria-preescolar/IMG_9431.webp" alt="Descubrimiento en kínder">
   <div>
     <h2>Aprender también es imaginar.</h2>
     <p>Un ambiente cercano para desarrollar autonomía y disfrutar cada logro.</p>
@@ -411,7 +508,7 @@ levelPage(
   'Primaria',
   'Aprender para comprender y <mark>transformar</mark>.',
   'Una formación que fortalece hábitos, conocimiento, colaboración y propósito.',
-  ['assets/new/levels/primaria/IMG_9484.webp', 'assets/new/levels/primaria/IMG_9494.webp', 'assets/new/levels/primaria/IMG_9538.webp', 'assets/new/levels/primaria/IMG_1605.JPG'],
+  ['assets/fotos/primaria-preescolar/IMG_9494.webp', 'assets/fotos/primaria-preescolar/IMG_9538.webp', 'assets/fotos/primaria-preescolar/IMG_9540.webp', 'assets/fotos/primaria-preescolar/IMG_9542.webp'],
   `<section id="experiencias" class="primary-statement">
   <div>
     <span>PRIMARIA</span>
@@ -420,13 +517,13 @@ levelPage(
   <p>En primaria, cada experiencia invita a pensar, colaborar y desarrollar autonomía. Aquí se incorporará la descripción institucional de metodologías, áreas y proyectos.</p>
 </section>
 <section class="primary-mosaic">
-  <img src="assets/new/levels/primaria/IMG_9494.webp" alt="">
-  <img src="assets/new/levels/primaria/IMG_9538.webp" alt="">
+  <img src="assets/fotos/primaria-preescolar/IMG_9538.webp" alt="Estudiantes en proyectos de primaria">
+  <img src="assets/fotos/primaria-preescolar/IMG_9540.webp" alt="Actividades académicas de primaria">
   <div>
     <h2>Aprender juntos abre nuevas posibilidades.</h2>
     <p>Retos, lectura, creatividad y experiencias que conectan con la vida.</p>
   </div>
-  <img src="assets/new/levels/primaria/IMG_1605.JPG" alt="">
+  <img src="assets/fotos/primaria-preescolar/IMG_9542.webp" alt="Compañerismo y aprendizaje en primaria">
 </section>`
 );
 
@@ -435,7 +532,7 @@ levelPage(
   'Bachilleres',
   'Preparación para decidir con <mark>propósito</mark>.',
   'Página preparada para la propuesta específica de Bachilleres.',
-  ['assets/media/science-action.webp'],
+  ['assets/fotos/secundaria/IMG_9505.webp'],
   `<section class="primary-statement">
   <div>
     <span>05 BACHILLERES</span>

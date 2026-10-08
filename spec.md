@@ -98,9 +98,15 @@ El objetivo es proveer una experiencia web inmersiva, accesible y de alto rendim
 ## 5. Requisitos No Funcionales (RNF)
 
 * **RNF-01 (Pureza y Cero Dependencias)**: El código debe ejecutarse de forma estática en cualquier servidor web estándar o abriendo los archivos directamente en el navegador sin intermediación de compiladores, Node.js en producción, ni librerías externas de JS/CSS.
-* **RNF-02 (Rendimiento Multimedia)**:
-  * Todas las imágenes de producción deben servirse en formato WebP con compresión optimizada (-q 85).
-  * Los videos deben estar codificados en H.264 / AAC con el atom `moov` al inicio (`+faststart`) para garantizar reproducción inmediata sin esperar a la descarga total.
+* **RNF-02 (Rendimiento, Organización y Coherencia Multimedia)**:
+  * **Taxonomía Canónica**:
+    * `assets/fotos/exterior/`: Fachada, campus, áreas recreativas e infraestructura física.
+    * `assets/fotos/primaria-preescolar/`: Momentos formativos, aulas y alumnos de maternal, prekínder, kínder y primaria.
+    * `assets/fotos/secundaria/`: Dinámicas de secundaria, premedia, bachilleres, laboratorio de ciencias y talleres de robótica.
+    * `assets/fotos/institucional/`: Filosofía, misión, valores, admisiones, atención a padres y eventos comunitarios.
+    * `assets/videos/`: Videos optimizados web (`hero-campus.mp4`, `activities.mp4`, `curriculum.mp4`, `school-life-*.mp4`, `mvi-*.mp4`).
+  * **Regla de Coherencia Temática Contextual (Selección Estricta)**: Cada página y componente debe nutrirse exclusivamente de la carpeta correspondiente a su sección temática (e.g., páginas de Secundaria deben tomar fotos de `assets/fotos/secundaria/` y no de `exterior` ni `primaria-preescolar`, salvo petición expresa del usuario).
+  * **Optimización Técnica**: Imágenes 100% en formato WebP con compresión optimizada (-q 85). Videos en MP4 H.264 / AAC con el atom `moov` al inicio (`+faststart`) para streaming instantáneo.
 * **RNF-03 (Paleta Institucional Restricta)**: Uso estricto de variables CSS:
   * Azul Navy Primario: `--navy: #072b49`
   * Azul Profundo Hero/Fondo: `--deep: #031c31`
@@ -144,5 +150,6 @@ El objetivo es proveer una experiencia web inmersiva, accesible y de alto rendim
 
 1. **Integridad 100%**: `node tools/verify-integrity.mjs` reporta 0 enlaces rotos y 0 recursos multimedia faltantes.
 2. **Generación Sincronizada**: `node tools/generate-pages.mjs` genera las 16 páginas sin errores de sintaxis a partir de las plantillas en `tools/templates/`.
-3. **Cero Dependencias**: Ninguna dependencia en `package.json` requerida para abrir y navegar la web.
-4. **Fidelidad Estética**: Preservación rigurosa del video hero de 10s+, la paleta de color y el comportamiento del menú flotante sin alterar el diseño aprobado.
+3. **Coherencia Temática Multimedia**: Ninguna sección contiene fotografías o videos fuera de contexto (sin cruzar niveles académicos ni exteriores indebidamente).
+4. **Cero Dependencias**: Ninguna dependencia en `package.json` requerida para abrir y navegar la web.
+5. **Fidelidad Estética**: Preservación rigurosa del video hero de 10s+, la paleta de color y el comportamiento del menú flotante sin alterar el diseño aprobado.

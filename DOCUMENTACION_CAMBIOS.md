@@ -271,3 +271,181 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
   * Se transformó el layout a 5 columnas alineadas horizontalmente en Desktop (`min-width: 1024px`).
   * Se implementó una vista de 1 columna limpia en móvil (`max-width: 639px`) con un área táctil mínima recomendada (>44px).
 * **Microinteracciones**: Se implementaron transiciones sutiles en Vanilla CSS (hover/focus) simulando la fluidez de un framework, cambiando el fondo a `bg-white/10` y deslizando el chevron direccional (`↗`) 4px a la derecha. Todo utilizando variables institucionales, respetando el `AGENTS.md`.
+
+---
+
+## Consolidación y Migración Total de Multimedia (`assets/media/` a `assets/fotos/` y `assets/videos/`) (2026-10-08)
+
+### Estructura final consolidada
+- Se desmanteló y eliminó por completo el directorio `assets/media/`, consolidando el 100% de los recursos multimedia en las carpetas estructuradas `assets/fotos/` y `assets/videos/`.
+- **Fotografías (`assets/fotos/` - 229 fotos `.webp` en total)**:
+  - `assets/fotos/exterior/` (44 fotos): Campus, fachadas, accesos y zonas de descanso.
+  - `assets/fotos/primaria-preescolar/` (90 fotos): Actividades, aulas y estudiantes de preescolar y primaria.
+  - `assets/fotos/secundaria/` (85 fotos): Dinámicas de secundaria, proyectos, ciencias y talleres de robótica.
+  - `assets/fotos/institucional/` (10 fotos): Filosofía, misión, reconocimientos, admisiones y atención a familias.
+- **Videos (`assets/videos/` - 8 videos `.mp4` en total)**:
+  - `hero-campus.mp4` (video principal de portada en loop)
+  - `school-life-1.mp4`, `school-life-2.mp4`
+  - `activities.mp4`, `curriculum.mp4`
+  - `mvi-9572.mp4`, `mvi-9573.mp4`, `mvi-9577.mp4` (nuevas tomas institucionales)
+
+### Sincronización de código y enlaces
+- Se actualizaron todas las referencias `src` en:
+  - `index.html`, `admisiones.html`, `bachilleres.html`, `contacto.html`, `quienes-somos.html`, `secundaria.html`.
+  - `tools/generate-pages.mjs` y `tools/build-admisiones.mjs`.
+  - `Pruebas-Vacaciones/Prueba-Admision/admisiones.html` e `index.html`.
+- Se re-generaron las páginas con `node tools/generate-pages.mjs`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes** en los 18 archivos HTML del sitio.
+
+---
+
+## Actualización de Directrices de Inteligencia Artificial y Especificación Canónica (2026-10-08)
+
+### Archivos modificados
+- `AGENTS.md`: Nueva regla innegociable #5 ("Coherencia Temática y Selección Contextual Obligatoria") y paso #2 en el Flujo SDD ("Inspección de Medios").
+- `agente.md`: Regla #6 con instrucción explícita de lectura previa de carpetas y prohibición de cruzar categorías multimedia.
+- `spec.md`: Actualización de RNF-02 y adición del Criterio de Finalización #3 (Coherencia Temática Multimedia).
+
+### Directiva establecida
+- La IA debe obligatoriamente inspeccionar/leer la carpeta específica antes de insertar recursos (`assets/fotos/{sección}/` o `assets/videos/`).
+- Se prohíbe terminantemente usar fotografías de otras carpetas (ej. fotos de exteriores o de primaria en apartados de secundaria) a menos que el usuario lo solicite expresamente.
+
+---
+
+## Integración de Imagen de Fondo en Hero de Admisiones (2026-10-08)
+
+### Archivos modificados
+- `admisiones.html`: Inserción de `assets/fotos/institucional/admision-main.webp` como fondo inmersivo con capa `.interior-hero__wash`.
+- `tools/build-admisiones.mjs`: Sincronización de la plantilla modular generadora de admisiones.
+- `css/styles.css`: Estilos de cobertura responsiva (`object-fit: cover; object-position: center 30%;`), gradiente *wash* bicapa de alto contraste y corrección de contraste para `mark.alt`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: 0 enlaces rotos y 0 recursos multimedia faltantes.
+
+---
+
+## Eliminación de Imágenes Duplicadas y Asignación Contextual Estricta (2026-10-08)
+
+### Diagnóstico Realizado
+- **Causa raíz de duplicados**: `tools/generate-pages.mjs` duplicaba artificialmente las 3 imágenes de cada carrusel con `.concat()` para alcanzar 6 tarjetas, repitiendo exactamente cada foto.
+- Adicionalmente, las imágenes de cabecera (`heroImage`) y del bloque destacado (`splitImage`) compartían el mismo archivo en cada página.
+- En `index.html` y `admisiones.html`, se detectaron repeticiones puntuales entre tarjetas y secciones de contacto.
+
+### Soluciones y Mejoras Implementadas
+1. **Carruseles Editoriales Únicos**:
+   - Se reestructuró `visualSets` en `tools/generate-pages.mjs` para proporcionar **6 fotografías distintas e independientes por sección temática**, eliminando la duplicación por concatenación.
+   - Cada foto se seleccionó de acuerdo a su taxonomía canónica:
+     - **Primaria y Preescolar**: Fotos 100% exclusivas de `assets/fotos/primaria-preescolar/`.
+     - **Secundaria y Bachilleres**: Fotos de robótica, informática, ciencias y aulas de `assets/fotos/secundaria/`.
+     - **Filosofía y Misión/Visión/Valores**: Fotos de graduación y actos cívicos/valores de `assets/fotos/institucional/`.
+     - **Ecosistema Digital**: Fotos reales del aula de informática (`IMG_9506.webp`, `IMG_9517.webp`, `IMG_9522.webp`, etc.).
+     - **Instalaciones y Vida Estudiantil**: Tomas exteriores y de campus de `assets/fotos/exterior/`.
+2. **Diferenciación Hero vs. Split**:
+   - Cada una de las 10 páginas interiores cuenta ahora con un `heroImage` y un `splitImage` totalmente distintos y contextualmente afines.
+3. **Página de Inicio (`index.html`)**:
+   - Slide 4 actualizado a `assets/fotos/institucional/culture.webp` (evitando repetir `recognition.webp`).
+   - Sección de contacto actualizada a `assets/fotos/exterior/campus-exterior.webp` (evitando repetir `campus-entry.webp`).
+4. **Página de Admisiones (`admisiones.html` y `tools/build-admisiones.mjs`)**:
+   - Tarjetas de información actualizadas con imágenes únicas (`client-atention.webp` y `IMG_9376.webp`).
+5. **Ajuste y Adaptación Visual**:
+   - Todas las imágenes mantienen el encuadre responsivo proporcional (`object-fit: cover`) sin distorsión tipográfica o desbordamientos.
+
+### Verificación
+- Script de escaneo comprobó **0 imágenes duplicadas internamente por página**.
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes** en los 18 archivos HTML del sitio.
+
+---
+
+## Optimización de Adaptación Visual, Encuadre Fotográfico y Reemplazo de Imágenes (2026-10-08)
+
+### Diagnóstico de Adaptación Visual
+- Se analizó la orientación geométrica (relación de aspecto ancho/alto) y la resolución de cada recurso en su contenedor real.
+- **Incompatibilidades detectadas**:
+  1. **Slide 4 en Inicio (`index.html`)**: Utilizaba una foto vertical (`culture.webp`, relación 0.80) estirándose en un Hero horizontal multipantalla panorámico (`min-height: 84svh`), provocando recorte de sujetos.
+  2. **Hero de Bachilleres (`bachilleres.html`)**: Utilizaba una foto vertical (`science-action.webp`) en un banner horizontal.
+  3. **Páginas de Niveles Formativos (`prekinder.html`, `kinder.html`, `primaria.html`)**: Mantenían referencias a archivos crudos en `assets/new/levels/` y `IMG_1605/1694/1695`, varios con orientación vertical forzados en contenedores anchos.
+  4. **Página de Filosofía (`filosofia.html`)**: Contenía imágenes crudas de `assets/new/purpose/` en el crossfade y pilares.
+  5. **Carruseles Editoriales**: Contaban con fotos verticales aisladas (`IMG_9460`, `IMG_9475`, `IMG_9371`, `IMG_7549`, `IMG_7550`) que descompensaban la proporción horizontal de las tarjetas 310x360px.
+
+### Acciones Realizadas
+1. **Reemplazo por Imágenes Horizontales Nativas (6000x4000px)**:
+   - **Slide 4 de Inicio**: Reemplazada por `assets/fotos/secundaria/IMG_9581.webp` (horizontal nativa de alta resolución de actividades formativas y estudiantes).
+   - **Bachilleres (`bachilleres.html`)**: Reemplazada por `assets/fotos/secundaria/IMG_9505.webp` (toma horizontal de estudiantes de secundaria en aula).
+   - **Prekínder (`prekinder.html`)**: Reemplazadas por `assets/fotos/primaria-preescolar/IMG_9410.webp`, `IMG_9417.webp`, `IMG_9421.webp` e `IMG_9423.webp`.
+   - **Kínder (`kinder.html`)**: Reemplazadas por `assets/fotos/primaria-preescolar/IMG_9454.webp`, `IMG_9425.webp`, `IMG_9428.webp` e `IMG_9431.webp`.
+   - **Primaria (`primaria.html`)**: Reemplazadas por `assets/fotos/primaria-preescolar/IMG_9494.webp`, `IMG_9538.webp`, `IMG_9540.webp` e `IMG_9542.webp`.
+   - **Filosofía (`filosofia.html`)**: Reemplazadas por fotos institucionales optimizadas `mission.webp`, `learn-mind.webp`, `culture-main.webp`, `culture.webp`, `achievement.webp` y `recognition.webp`.
+   - **Carrusel Plantel Docente**: Reemplazadas fotos verticales por `IMG_9462.webp` e `IMG_9471.webp`.
+   - **Carrusel Contacto y Atención**: Reemplazada foto vertical por `assets/fotos/exterior/IMG_9378.webp`.
+   - **Carrusel Vida Estudiantil**: Reemplazadas fotos crudas por `IMG_9582.webp` e `IMG_9586.webp`.
+2. **Refinamiento de Reglas CSS (`css/styles.css`)**:
+   - Se actualizaron las propiedades `object-position` para alinear los puntos de interés hacia el tercio superior (`center 25%` a `center 35%`), asegurando que rostros y detalles nunca queden cortados en pantallas de escritorio, tabletas o móviles.
+
+### Verificación
+- **0 imágenes verticales en posiciones horizontales/Hero**.
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes** en los 18 archivos HTML del sitio.
+
+---
+
+## Restauración de Imágenes Anteriores en Sección Filosofía (2026-10-08)
+
+### Solicitud del Usuario
+- Restaurar las imágenes originales específicas de la sección de Filosofía / Propósito BPVDA ([filosofia.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/filosofia.html)) a las que estaban previamente asignadas.
+
+### Acciones Realizadas
+- En [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs):
+  - **Hero Interactivo (Crossfade)**: Restauradas las imágenes originales de estudiantes con uniforme (`assets/new/purpose/IMG_1963.JPG`, `assets/new/purpose/IMG_1966.JPG`, `assets/new/purpose/IMG_1991.JPG`).
+  - **Pilares Formativos (Valores, Misión, Visión)**: Restauradas las imágenes originales específicas (`assets/new/purpose/IMG_1567.JPG`, `assets/new/purpose/IMG_1627.JPG`, `assets/new/purpose/IMG_1655.JPG`).
+- Se re-compilaron las páginas con `node tools/generate-pages.mjs`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes** en los 18 archivos HTML.
+
+---
+
+## Cambio Puntual de Imagen en Pilar "01 Valores" de Filosofía (2026-10-08)
+
+### Solicitud del Usuario
+- Modificar exclusivamente la imagen del pilar **01 Valores** en [filosofia.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/filosofia.html) (`IMG_1567.JPG`), reemplazándola por una nueva fotografía no utilizada previamente (sin revertir a `culture.webp`).
+
+### Acciones Realizadas
+- Se reemplazó en [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs) la imagen de `IMG_1567.JPG` por `assets/new/purpose/IMG_1715.JPG` (fotografía representativa en alta resolución del entorno de valores formativos de la comunidad estudiantil).
+- Se conservaron intactas las imágenes del hero crossfade (`IMG_1963.JPG`, `IMG_1966.JPG`, `IMG_1991.JPG`) y de los pilares de Misión (`IMG_1627.JPG`) y Visión (`IMG_1655.JPG`).
+- Se re-compiló [filosofia.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/filosofia.html).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Ajuste de Encuadre Visual en Hero de Filosofía (2026-10-08)
+
+### Diagnóstico de las Imágenes del Hero Crossfade
+- En el hero de [filosofia.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/filosofia.html), la secuencia fotográfica de los estudiantes (`IMG_1963.JPG`, `IMG_1966.JPG`, `IMG_1991.JPG`) se mostraba centrada por defecto al 50% vertical, lo que provocaba que los ojos y frentes de los estudiantes quedaran cortados por el límite superior y tapados por el título central.
+
+### Soluciones Aplicadas en CSS (`css/styles.css`)
+1. **Reubicación del Foco Visual (`object-position`)**:
+   - Se configuró `.purpose-fade__images img { object-position: center 15%; }`, asegurando que las caras, ojos y sonrisas completas de los niños permanezcan visibles en el tercio superior de la pantalla.
+2. **Rebalanceo de Contenido**:
+   - Se aplicó `margin-top: auto` a `.purpose-fade__content` para que el texto descanse naturalmente hacia la zona inferior y media sin superponerse a los rostros de los estudiantes.
+3. **Optimización del Gradiente de Contraste (`.purpose-fade:after`)**:
+   - Se calibró la capa de contraste con un degradado vertical suave (`rgba(3,28,49,.35) 0%`, `rgba(3,28,49,.1) 35%`, `rgba(3,28,49,.9) 100%`) y un gradiente lateral que mantiene legible el titular sin oscurecer los rostros.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Integración de Formularios con Google Apps Script (2026-10-08)
+
+### Solicitud del Usuario
+- Implementar los cambios realizados por el colaborador (rama Pruebas-Smith) sobre la conexión del formulario de admisiones (Nuevo Ingreso y Preingreso) con Google Drive y Google Sheets.
+
+### Acciones Realizadas
+- Se extrajo la lógica en JavaScript para la integración con \etch\ y envío de carga útil (con archivos en base64) mediante el endpoint de Google Apps Script.
+- Se actualizó el script generador de formularios \	ools/generate-forms.mjs\ incrustando la nueva lógica de envío y reemplazando las simulaciones de UI originales.
+- Se ejecutó \
+ode tools/generate-pages.mjs\ para regenerar y aplicar estos cambios dinámicamente en los archivos \orm-nuevo-ingreso.html\ y \orm-preingreso.html\.
+
