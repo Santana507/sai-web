@@ -5713,3 +5713,20 @@ img, video {
   }
 }
 
+
+/* ==========================================================================
+   05. FILOSOFÍA: SLIDER CENTRADO EN LOS OJOS
+   Las fotos son verticales (2:3) y el hero es horizontal, por lo que se recorta
+   arriba/abajo. object-position calcula el desplazamiento exacto para dejar la
+   línea de los ojos en el centro del hero (76vh) en cualquier tamaño de pantalla.
+   Altura de imagen = 150vw. Posición de los ojos (fracción de alto): 31.5% / 24.5% / 26%.
+   ========================================================================== */
+.purpose-fade__images img[src*="IMG_1963"] { object-position: 50% 24%; }
+.purpose-fade__images img[src*="IMG_1966"] { object-position: 50% 14%; }
+.purpose-fade__images img[src*="IMG_1991"] { object-position: 50% 17%; }
+
+@supports (object-position: 50% clamp(0px, 1vw, 2px)) {
+  .purpose-fade__images img[src*="IMG_1963"] { object-position: 50% clamp(min(0px, calc(76vh - 150vw)), calc(38vh - 47.2vw), 0px); }
+  .purpose-fade__images img[src*="IMG_1966"] { object-position: 50% clamp(min(0px, calc(76vh - 150vw)), calc(38vh - 36.7vw), 0px); }
+  .purpose-fade__images img[src*="IMG_1991"] { object-position: 50% clamp(min(0px, calc(76vh - 150vw)), calc(38vh - 39vw), 0px); }
+}
