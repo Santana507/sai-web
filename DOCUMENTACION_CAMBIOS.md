@@ -2,6 +2,40 @@
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
+## Sesión #29 — Rediseño Minimalista y Editorial de la Sección Primaria (`primaria.html`)
+- **Objetivo**: Corregir la repetición de fotografías burst (`IMG_9538.webp` y `IMG_9540.webp`), eliminar el hueco en blanco asimétrico en la cuadrícula y renovar el diseño con una estética minimalista, armónica, natural y sin tono genérico de IA.
+- **Cambios Estructurales en HTML y Plantillas (`tools/generate-pages.mjs` y `primaria.html`)**:
+  - **Reemplazo Fotográfico Real**: Sustitución de las imágenes repetidas por fotografías auténticas y no duplicadas del plantel: `IMG_9468.webp` (estudiantes en aula interactiva con tabletas educativas) y `IMG_9544.webp` (docente y alumnos dialogando en el patio bajo los árboles).
+  - **Declaración y Pilares No-Imagen (`.primary-statement--enriched`)**: Encabezado editorial con tipografía limpia y franja de 3 pilares clave (`01 Lectura y Pensamiento`, `02 Entorno Digital Guiado`, `03 Convivencia y Valores`).
+  - **Mosaico Balanceado 2x2 (`.primary-mosaic`)**: Cuadrícula de 4 elementos completamente ocupados (sin huecos ni columnas colapsadas):
+    - Celda 1: Fotografía de aprendizaje activo en aula digital (`IMG_9468.webp`) con pie flotante sutil.
+    - Celda 2: Tarjeta azul marino institucional (`var(--navy)`) con enfoque de autonomía, lectura comprensiva y retos aplicados.
+    - Celda 3: Tarjeta turquesa institucional (`#0e827b`) enfocada en vida escolar, valores cristianos y acompañamiento.
+    - Celda 4: Fotografía de convivencia al aire libre (`IMG_9544.webp`) con pie flotante sutil.
+- **Estilos CSS (`css/styles.css`)**:
+  - Nuevas clases `.primary-statement--enriched`, `.primary-pillars`, `.primary-pillar`, `.primary-mosaic`, `.primary-mosaic__item`, `.primary-mosaic__caption`, `.primary-card__tag`, `.primary-card__list`.
+  - Grid simétrico `repeat(2, minmax(0, 1fr))` que se adapta a 1 columna fluida en pantallas `<= 900px` y móviles `<= 600px` sin desbordamientos.
+- **Sincronización y Validación**:
+  - Compilación automática con `node tools/generate-pages.mjs`.
+  - Sincronización del tema WordPress con `tools/build-wp-pages.ps1` (`wordpress-theme/page-primaria.php`).
+  - Verificación con `node tools/verify-integrity.mjs`: 0 enlaces rotos y 0 recursos multimedia faltantes en 18 archivos HTML.
+
+---
+
+## Sesión #28 — Laboratorio de Plantillas y Diseños Alternativos (`/pruebas/`)
+- **Objetivo**: Atender la retroalimentación de repetición estructural en secciones del sitio, proporcionando al menos 6 variantes de diseño frescas y asimétricas que respetan al 100% el manual de estilo, colores institucionales y fotos reales de BPVDA.
+- **Creación de Carpeta `/pruebas/`**:
+  - `pruebas/index.html`: Catálogo interactivo central con menú flotante, navegación anclada, selector de código modal con un solo clic y visualización en vivo de cada una de las 6 plantillas.
+  - `pruebas/plantilla-1-bento.html`: Mosaico Editorial Asimétrico (Bento Grid) de 12 columnas con tarjeta hero de alto impacto, tarjeta métrica oscura y microtarjetas de acción.
+  - `pruebas/plantilla-2-split-tabs.html`: Showcase Dividido con Pestañas Interactivas (`Split Tabs`) para explorar niveles académicos o áreas formativas sin scroll excesivo.
+  - `pruebas/plantilla-3-timeline-steps.html`: Proceso Escalonado en Zigzag con conectores e hitos numerados, ideal para admisiones y rutas de aprendizaje.
+  - `pruebas/plantilla-4-testimonios-comunidad.html`: Muro de Testimonios y Prueba Social con diseño editorial, avatares con anillo turquesa y tipografía de citas.
+  - `pruebas/plantilla-5-metricas-comparativa.html`: Franja de contadores estadísticos institucionales combinada con matriz comparativa entre modelo tradicional y modelo BPVDA.
+  - `pruebas/plantilla-6-explorador-inmersivo.html`: Galería fotográfica panorámica con barra de filtros por categoría (Académico, Campus, Convivencia).
+  - `pruebas/plantillas.css` & `pruebas/plantillas.js`: Estilos autocontenidos y scripts interactivos para filtros, tabs y modal de código.
+  - `pruebas/README.md`: Documentación explicativa para el usuario con guía de adaptación hacia las páginas de producción.
+- **Verificación**: Integridad de recursos y rutas validada sin errores ni enlaces rotos.
+
 ---
 
 ## Sesión #1 — Ajustes de Navegación, Header y Menú
