@@ -446,6 +446,417 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 ### Acciones Realizadas
 - Se extrajo la lógica en JavaScript para la integración con \etch\ y envío de carga útil (con archivos en base64) mediante el endpoint de Google Apps Script.
 - Se actualizó el script generador de formularios \	ools/generate-forms.mjs\ incrustando la nueva lógica de envío y reemplazando las simulaciones de UI originales.
-- Se ejecutó \
-ode tools/generate-pages.mjs\ para regenerar y aplicar estos cambios dinámicamente en los archivos \orm-nuevo-ingreso.html\ y \orm-preingreso.html\.
+- Se ejecutó `node tools/generate-pages.mjs` para regenerar y aplicar estos cambios dinámicamente en los archivos `form-nuevo-ingreso.html` y `form-preingreso.html`.
+
+---
+
+## Ajuste de Imagen y Eliminación de Franja Naranja en Sección de Contacto (2026-10-11)
+
+### Solicitud del Usuario
+- Acomodar la imagen de la sección de contacto en la portada (`index.html`) para eliminar el espacio naranja sobrante visible debajo de la imagen.
+
+### Diagnóstico
+- En la sección `#contacto` (`.contact`), el contenedor tiene fondo institucional naranja (`background: var(--orange)`).
+- La columna derecha de contenido (`.contact-copy`) supera los 700px de altura debido al titular, textos explicativos, botones y padding (`padding: 72px 8vw`).
+- La columna izquierda (`.contact-photo img`) tenía una altura rígida de `height: 620px;`, dejando una franja inferior visible descubierta con el fondo naranja de la sección.
+
+### Soluciones Aplicadas
+1. **Ajuste en `css/styles.css`**:
+   - Se configuró `.contact-photo` con `height: 100%; display: flex;` para que ocupe todo el alto asignado a la fila de la cuadrícula.
+   - Se configuró `.contact-photo img` y `.contact-photo figure` con `width: 100%; height: 100%; object-fit: cover; display: block;` para cubrir el 100% vertical y horizontal del bloque sin dejar ningún margen o espacio naranja debajo.
+   - En la consulta responsiva para móviles (`max-width: 700px`), se aseguró `.contact-photo { height: auto; }` y `.contact-photo img { height: 340px; }` para mantener un encuadre fluido.
+2. **Sincronización con Tema WordPress (`wordpress-theme/style.css`)**:
+   - Se replicaron las mismas reglas en el tema de WordPress para mantener consistencia absoluta entre el sitio estático y la plantilla dinámica.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Rediseño Editorial de Tarjetas de Contenido y Canales de Contacto (2026-10-11)
+
+### Solicitud del Usuario
+- Mejorar el diseño de las tarjetas en la página de Contacto (`contacto.html`) para que luzcan modernas, sofisticadas y no se vean planas ni simples, sin incluir imágenes fotográficas.
+
+### Diagnóstico
+- Las tarjetas de contenido (`.content-cards article`) y los canales directos (`.contact-direct div`) utilizaban bloques rectangulares oscuros y planos con bordes rígidos (8px), sin íconos, sin jerarquía editorial ni profundidad visual.
+
+### Soluciones Aplicadas
+1. **Rediseño de Tarjetas de Contenido (`.content-cards`, `.content-card`)**:
+   - **Gradiente y Profundidad**: Fondo con degradado institucional (`linear-gradient(160deg, #083050 0%, #031c31 100%)`), borde sutil translúcido (`border: 1px solid rgba(16, 184, 176, 0.22)`), esquinas refinadas (`border-radius: 16px`) y sombras suaves (`box-shadow`).
+   - **Línea de Acento Superior**: Borde superior dinámico de 4px con degradados institucionales (`var(--turquoise)` y `var(--orange)`).
+   - **Íconos Vectoriales SVG Inline (Sin Imágenes)**: Se crearon emblemas vectoriales discretos en contenedores redondeados con brillo turquesa y ámbar para representar Propósito, Acompañamiento y Comunidad.
+   - **Etiquetas y Microinteracciones**: Pills con numeración institucional (`01 · Propósito`, `02 · Acompañamiento`, `03 · Comunidad`) y pie de tarjeta con indicador interactivo y flecha (`→`) animada al pasar el cursor.
+   - **Elevación al Hover**: Microanimación fluida con desplazamiento hacia arriba (`translateY(-8px)`), brillo de borde y sombra profunda.
+2. **Rediseño de Canales Directos (`.contact-direct`)**:
+   - Estructuración con íconos vectoriales para Secretaría (teléfono), WhatsApp (chat) y Correo (sobre).
+   - Tipografía escalada, badges identificadores y enlaces amplios con ajuste de texto responsivo (`word-break: break-all`).
+3. **Automatización y Sincronización**:
+   - Actualizado [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs) y ejecutada la compilación de todas las páginas interiores.
+   - Replicadas las reglas en [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Ejecutado `tools/build-wp-pages.ps1` para sincronizar las plantillas de WordPress.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Optimización de Espacio y Formato Compacto en Sección de Contacto (2026-10-11)
+
+### Solicitud del Usuario
+- Corregir el diseño de las tarjetas de contacto que ocupaban demasiado espacio vertical en pantalla.
+
+### Diagnóstico
+1. **Regla Selectora Anidada**: La regla CSS `.contact-direct div` se aplicaba a los divs hijos internos (`.contact-direct__head`, `.contact-direct__icon`), duplicando paddings de 32px y generando cajas gigantes anidadas dentro de otras.
+2. **Orientación Vertical Excesiva**: Los canales de atención tenían disposición vertical en bloque ocupando ~350px de altura cada uno.
+3. **Paddings de Sección Amplios**: Las tarjetas formativas (`.content-cards`) tenían paddings y márgenes elevados para un flujo de contacto.
+
+### Soluciones Aplicadas
+1. **Rediseño Compacto y Horizontal de Canales Directos (`.contact-direct__card`)**:
+   - Se convirtió cada tarjeta en un enlace directo horizontal de fila (`flex-direction: row`, `align-items: center`, `height ~76px`).
+   - Distribución lineal limpia: `[Ícono 42px] [Tag + Número/Email + Subtexto] [↗ Indicador]`.
+   - Se redujo el padding de la sección `.contact-direct.section-pad` a `clamp(24px, 3vw, 36px)`.
+   - Interacción fluida en toda la tarjeta (ahora todo el bloque es clickable directamente hacia teléfono, WhatsApp o correo).
+2. **Compactación de Tarjetas Formativas (`.content-cards`)**:
+   - Padding reducido a `24px 22px` con radio redondeado de 14px.
+   - Íconos reducidos a 38px y espaciados de cabecera y párrafos ajustados a proporciones más estilizadas y densas sin perder legibilidad.
+3. **Sincronización Total**:
+   - Actualizado generador [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs) y recompiladas las 16 páginas del sitio estático.
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Reconstruidas las plantillas del tema WordPress mediante `tools/build-wp-pages.ps1`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Galería Dinámica con Movimiento Continuo (Auto-Marquee) y Renovación Visual de Tarjetas (2026-10-11)
+
+### Solicitud del Usuario
+- Cambiar las tarjetas de la sección "Momentos que inspiran" (carrusel fotográfico) y añadirles movimiento automático lateral continuo para que se desplacen solas.
+
+### Diagnóstico
+1. **Contenido Repetitivo**: En `contacto.html`, el carrusel mostraba 6 fotografías casi idénticas del portón/reja exterior del colegio (`IMG_9378`, `IMG_9373`, `IMG_9381`...), sin reflejar la calidez comunitaria, áreas del campus ni atención de la sede.
+2. **Proporciones Rígidas y Dispares**: Las tarjetas tenían anchos asimétricos desmedidos (hasta 620px) y altura de 500px, estirando las fotos y copando la pantalla.
+3. **Comportamiento Estático**: El carrusel requería scroll horizontal manual por parte del usuario, sin dinamismo visual propio.
+
+### Soluciones Aplicadas
+1. **Renovación Visual de Tarjetas (`.carousel-v3__card`)**:
+   - **Selección de Fotografías Contextuales**: En `contacto.html`, se reemplazaron las tomas del portón por imágenes de comunidad institucional (`community.webp`), áreas principales del campus (`campus-main.webp`), orientación/atención (`admision.webp`), formación en valores (`culture.webp`), zonas de descanso/convivencia (`campus-restzone.webp`) y logros (`achievement.webp`).
+   - **Proporciones Armoniosas**: Dimensiones uniformes optimizadas a `360px` de ancho por `440px` de altura (`290x380px` en móviles), evitando distorsiones de imagen.
+   - **Estilizado Editorial**: Bordes sutiles translúcidos con microanimación hover de elevación (`translateY(-8px)`), brillo turquesa y zoom fotográfico suave (`scale(1.06)`).
+   - **Pills de Categoría con Punto Luminoso**: Cada tarjeta incluye una insignia (`COMUNIDAD`, `CAMPUS`, `ATENCIÓN`, `VALORES`, `CONVIVENCIA`, `FUTURO`) con punto pulsante.
+2. **Movimiento Continuo Automático (Infinite Auto-Marquee)**:
+   - **Estructura en Doble Grupo**: `.carousel-v3__track` ahora contiene dos grupos idénticos (`.carousel-v3__group` original y clon con `aria-hidden="true"`).
+   - **Animación Fluida por Hardware**: Desplazamiento lineal infinito (`@keyframes carousel-marquee`) a 38s con aceleración GPU (`will-change: transform`).
+   - **Bucle Perfecto sin Saltos**: Al llegar a `-100%`, el reinicio a `0` es milimétricamente imperceptible.
+   - **Pausa Inteligente (Pause on Hover/Touch)**: Al colocar el cursor sobre el carrusel o presionar una tarjeta, la animación se pausa automáticamente (`animation-play-state: paused`) para lectura cómoda, y se reanuda al salir.
+   - **Máscara de Desvanecimiento**: Bordes laterales con `mask-image` de gradiente suave para un efecto visual de alta gama.
+   - **Insignia "GALERÍA DINÁMICA"**: Indicador visual pulsante en la cabecera.
+3. **Sincronización Total**:
+   - Compiladas las páginas con [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs).
+   - Estilos sincronizados en [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Plantillas de WordPress actualizadas con `tools/build-wp-pages.ps1`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Remoción de Insignia "Galería Dinámica" (2026-10-11)
+
+### Solicitud del Usuario
+- Eliminar la etiqueta/insignia superior "Galería Dinámica" en la cabecera de la sección "Momentos que inspiran".
+
+### Soluciones Aplicadas
+- **Eliminación del Elemento**: Se removió el bloque `.carousel-v3__badge` de la plantilla modular en [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs), dejando la cabecera limpia directamente con el título `<h2>` "Momentos que inspiran." y su texto descriptivo.
+- **Sincronización Total**:
+  - Recompiladas las páginas interiores con `node tools/generate-pages.mjs`.
+  - Reconstruidas las plantillas del tema WordPress mediante `tools/build-wp-pages.ps1`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Centrado Vertical Equilibrado de Canales de Contacto (2026-10-11)
+
+### Solicitud del Usuario
+- Centrar verticalmente las tarjetas de contacto (WhatsApp, correo y teléfono) para que el espacio en blanco superior e inferior quede perfectamente simétrico con respecto al carrusel arriba y el mapa abajo.
+
+### Diagnóstico
+- La sección superior `.carousel-v3` tenía un `padding-bottom` de hasta 110px que, sumado al `padding-top` de `.contact-direct` (36px), creaba una brecha de ~146px arriba de las tarjetas. En contraste, debajo de las tarjetas solo existía un `padding-bottom` de 36px antes del mapa, generando un fuerte desbalance visual.
+
+### Soluciones Aplicadas
+- **Equilibrio de Espacios**:
+  - Se redujo el `padding-bottom` de `.carousel-v3` a `clamp(28px, 3vw, 36px)`.
+  - Se aumentó el `padding-bottom` de `.contact-direct.section-pad` a `clamp(52px, 6vw, 72px)`.
+  - Con esta proporción, la distancia visual superior (`~64px`) coincide milimétricamente con la distancia visual inferior hacia el mapa (`~64px`), logrando un centrado vertical impecable.
+- **Sincronización Total**:
+  - Estilos sincronizados en [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Actualización de Ubicación Exacta con Coordenadas en Mapa de Contacto (2026-10-11)
+
+### Solicitud del Usuario
+- El mapa no señalaba el punto exacto del colegio. Se proporcionaron las coordenadas exactas de la sede (`9.106901321318759, -79.36663973009655`) para que muestre el marcador/pin en el lugar preciso.
+
+### Soluciones Aplicadas
+- **Configuración de Coordenadas Geográficas Precisas**:
+  - Se actualizó el `iframe` en [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs) y [contacto.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/contacto.html) reemplazando la búsqueda genérica de calle por el parámetro de coordenadas exactas:
+    `https://www.google.com/maps?q=9.106901321318759,-79.36663973009655&hl=es&z=17&output=embed`
+  - Ahora Google Maps coloca el marcador rojo (pin) directamente sobre las instalaciones del colegio y centra la vista en zoom 17.
+- **Sincronización Total**:
+  - Recompiladas las páginas interiores con `node tools/generate-pages.mjs`.
+  - Reconstruidas las plantillas del tema WordPress mediante `tools/build-wp-pages.ps1` ([wordpress-theme/page-contacto.php](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/page-contacto.php)).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Actualización de Fotografía en Sección "¿Quiénes somos?" (2026-10-11)
+
+### Solicitud del Usuario
+- Cambiar la imagen de la presentación editorial (`.split-feature`) en la página `quienes-somos.html`.
+
+### Diagnóstico
+- La imagen previa (`culture-main.webp`) mostraba a estudiantes con vestidos folclóricos de pollera con abanicos, la cual se adecuaba más a actividades culturales de vida estudiantil que a la presentación institucional central de "¿Quiénes somos?".
+
+### Soluciones Aplicadas
+- **Sustitución Contextual y Exclusiva**:
+  - A petición del usuario de contar con una imagen inédita que no se hubiese empleado en las secciones principales ni en la portada, y con una composición perfectamente adaptada al contenedor vertical/panorámico (`.split-feature`), se seleccionó:
+    `assets/fotos/institucional/recognition.webp`
+  - La fotografía muestra a estudiantes con su uniforme oficial de polo BPVDA sosteniendo con orgullo su reconocimiento oficial: *"RECONOCIMIENTO - COLEGIO BUEN PASTOR VOZ DE ALERTA - Por su destacada participación en el III Concurso Regional de Emprendimiento Juvenil Edición 2025"*.
+  - Proporción nativa de 4:5 (1170x1463px) con encuadre centrado que se adapta limpiamente con `object-fit: cover` sin recortes indeseados en rostros ni en el documento.
+  - No está repetida en el hero de ninguna página ni en el carrusel de ¿Quiénes somos?.
+- **Sincronización Total**:
+  - Recompiladas las páginas interiores con `node tools/generate-pages.mjs`.
+  - Reconstruidas las plantillas del tema WordPress mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-quienes-somos.php`).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Optimización de Fotografía de Fondo en Hero de Filosofía / Propósito (2026-10-11)
+
+### Solicitud del Usuario
+- En la sección hero de `filosofia.html` ("Una educación con propósito"), cambiar las 3 imágenes de fondo que rotaban con fundido cruzado (`.purpose-fade`) debido a que no se veían bien (encuadres demasiado cerrados con rostros recortados y orientación inadecuada).
+- El usuario ofreció la opción de dejar una imagen fija institucional de alta calidad en lugar de una secuencia rotativa con temporizador.
+
+### Diagnóstico
+- Las imágenes previas (`IMG_1963.JPG`, `IMG_1966.JPG`, `IMG_1991.JPG` en `assets/new/purpose/`) eran archivos JPEG crudos de cámara sin compilar a WebP y guardados en orientación horizontal con datos de sensor vertical, provocando que `object-fit: cover` con `object-position: center 15%` hiciera un zoom extremo sobre los lentes y rostros de los niños de preescolar, obstaculizando la legibilidad del titular.
+- La rotación continua de fondos generaba saltos de luminancia y distracción visual detrás del manifiesto formativo.
+
+### Soluciones Aplicadas
+- **Selección de Imagen Institucional de Alta Calidad**:
+  - Se sustituyó la secuencia por una imagen fija oficial de máxima resolución y encuadre horizontal:
+    `assets/fotos/institucional/mission.webp` (2976×1984px, WebP optimizado).
+  - La fotografía retrata a un estudiante con el uniforme oficial BPVDA en el auditorio del colegio mirando hacia el escenario iluminado con tecnología.
+  - La paleta lumínica de la imagen combina los tonos azul marino (`--deep` #031c31) y turquesa (`--turquoise` #10b8b0), en perfecta sintonía con la identidad de marca del colegio.
+- **Ajustes de Maquetación y CSS**:
+  - En `css/styles.css`, se ajustó `.purpose-fade__images img` a `object-position: center center !important;` para que el sujeto y el auditorio queden centrados con equilibrio.
+  - La capa `:after` con degradado oscuro (`linear-gradient`) proporciona contraste absoluto para el texto blanco y el subtítulo, manteniendo visible el escenario de fondo.
+  - Al contar con una sola imagen con la clase `.is-active`, el script en `js/main.js` no dispara temporizadores innecesarios en segundo plano, mejorando el rendimiento y la estabilidad.
+- **Sincronización Total**:
+  - Actualizado [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs).
+  - Recompilado [filosofia.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/filosofia.html).
+  - Sincronizadas las plantillas del tema de WordPress con `tools/build-wp-pages.ps1` ([wordpress-theme/page-filosofia.php](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/page-filosofia.php)).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Rediseño Profesional del Menú Modal y Reordenamiento de Pilares (2026-10-11)
+
+### Solicitud del Usuario
+- Mejorar el diseño del menú desplegable modal y su orden para que luzca con el más alto nivel de profesionalismo institucional.
+
+### Diagnóstico
+1. **Desorden y Desconexión Pedagógica**:
+   - En el menú anterior, la oferta académica estaba dispersa al final (`04 PRIMARIA` y `05 SECUNDARIA Y BACHILLERES`), situando `03 FAMILIA Y COMUNIDAD` antes de las etapas escolares.
+   - La sección de `04 PRIMARIA` contenía erróneamente Prekínder y Kínder, que pertenecen al nivel inicial/preescolar y no a primaria.
+   - La columna 05 contenía únicamente 2 enlaces, generando un vacío visual asimétrico en la esquina inferior derecha.
+2. **Diseño Visual Plano y Desprovisto de Contención**:
+   - Las columnas flotaban como listas de texto simples sobre un fondo oscuro uniforme sin tarjetas, bordes ni profundidad.
+   - Los títulos tenían un subrayado naranja delgado de 1px que restaba sofisticación.
+   - La cabecera y el pie de página carecían de detalles editoriales y microiconos de soporte.
+
+### Soluciones Aplicadas
+1. **Nuevo Orden Pedagógico Secuencial de 5 Pilares**:
+   - **01 NUESTRA ESCUELA** (*Identidad y Valores*): ¿Quiénes somos?, Propósito BPVDA, Instalaciones, Plantel docente.
+   - **02 PREESCOLAR Y PRIMARIA** (*Bases Formativas*): Prekínder, Kínder, Primaria.
+   - **03 SECUNDARIA Y BACHILLERES** (*Educación Media*): Secundaria, Bachilleres + bloque destacado institucional (*Bachillerato Integral: Ciencias y Humanidades*).
+   - **04 ENFOQUE EDUCATIVO** (*Innovación y Vida Escolar*): SAI BPVDA (Badge `Portal`), Vida estudiantil, Ecosistema digital.
+   - **05 FAMILIA Y COMUNIDAD** (*Admisiones y Atención*): Admisiones y matrícula (Badge `2026`), Portal de padres, Contacto y atención.
+2. **Diseño Visual Premium (Glassmorphism & Jerarquía)**:
+   - **Tarjetas Modulares**: Cada pilar ahora reside en una tarjeta con fondo traslúcido (`rgba(255, 255, 255, 0.035)`), borde sutil (`rgba(255, 255, 255, 0.08)`), esquinas redondeadas (`12px`) y elevación en hover con borde turquesa y sombra profunda.
+   - **Encabezados con Chips Numéricos**: Cada columna cuenta con un badge numérico distintivo (`01` al `05`), título en mayúsculas con espaciado editorial y subtítulo temático.
+   - **Fondo Atmosférico**: Degradado radial y lineal con brillo sutil en el tope (`radial-gradient` + `linear-gradient`), preservando el diseño flotante de bordes redondeados (`inset: 0 14px 14px 14px; border-radius: 0 0 16px 16px;`).
+   - **Microinteracciones en Enlaces**: Filas interactivas con esquinas redondeadas, desplazamiento fluido del texto, iconos chevron `↗` animados en hover con color naranja institucional, y badges visuales para "Admisiones 2026" y "Portal SAI".
+   - **Pie Institucional Completo**: Datos de contacto con microiconos SVG nítidos (Ubicación física, PBX clickeable, Correo oficial) y botones circulares de redes sociales con hover interactivo.
+   - **Microinteracción en Cierre**: Efecto de rotación y feedback cromático en el botón `✕` al cerrarse.
+3. **Sincronización Total de Plantillas y WordPress**:
+   - Actualizado [tools/templates/header.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/templates/header.html).
+   - Actualizado [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs) y recompiladas todas las 16 páginas (incluyendo [index.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/index.html) y [admisiones.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/admisiones.html)).
+   - Actualizadas las hojas de estilo [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Ejecutado `tools/build-wp-pages.ps1` sincronizando las plantillas de WordPress (`header.php` y `page-*.php`).
+   - Actualizados [spec.md](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/spec.md) (RF-08) y [tools/migrate-wordpress.php](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/migrate-wordpress.php).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Sesión #2, Cambio #8.1 — Evolución Visual: Menú Modal Natural, Nítido y Sobrio
+
+### Diagnóstico de Retroalimentación
+- La primera iteración con cajas translúcidas (*glassmorphism*), badges de colores ("2026", "Portal") y bordes discontinuos generaba una percepción recargada y artificial, poco adecuada para la sobriedad y prestigio de un colegio institucional cristiano.
+- Se requería una composición **natural, nítida y puramente profesional**, de corte editorial suizo/nórdico.
+
+### Soluciones Aplicadas
+1. **Arquitectura Editorial Limpia (Sin Cajas Artificiales ni Glassmorphism)**:
+   - Se eliminaron las cajas translúcidas flotantes, badges de colores sintéticos y recuadros punteados.
+   - Las 5 columnas ahora se organizan como una cuadrícula editorial limpia sobre fondo oscuro uniforme y elegante (`var(--deep)`: `#031c31`), con bordes divisores tenues de 1px (`rgba(255, 255, 255, 0.12)`).
+2. **Jerarquía Tipográfica Nítida**:
+   - Cabecera: Kicker institucional discreto `BUEN PASTOR VOZ DE ALERTA` en turquesa sobrio (`var(--turquoise)`), titular `Encuentra tu camino.` en tipografía serifa sobria y subtítulo limpio.
+   - Columnas: Prefijo numérico nítido (`01`, `02`, etc.) en turquesa seguido del título del pilar en mayúsculas sobrias.
+   - Enlaces: Tipografía blanca con opacidad armónica (`rgba(255, 255, 255, 0.8)`), borde inferior tenue y microinteracción natural: al pasar el cursor, el texto pasa a blanco puro y la flecha `↗` toma el naranja corporativo (`var(--orange)`) con un microdesplazamiento sutil.
+3. **Pie Institucional Minimalista y Elegante**:
+   - Dirección física, teléfono PBX y correo oficial alineados en una sola línea fluida separados por puntos sutiles (`·`).
+   - Accesos a redes sociales con iconos vectoriales limpios y botón de cierre `✕` transparente y nítido.
+4. **Sincronización Total de Plantillas y WordPress**:
+   - Sincronizados [tools/templates/header.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/templates/header.html) y [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs).
+   - Recompiladas las 16 páginas y actualizados [index.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/index.html) y [admisiones.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/admisiones.html).
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Ejecutado `tools/build-wp-pages.ps1` actualizando `wordpress-theme/header.php` y todas las plantillas `page-*.php`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Sesión #2, Cambio #8.2 — Centrado Vertical Armónico, Despeje del Nav y Corrección de Truncamiento
+
+### Diagnóstico de Retroalimentación
+1. **Colisión con la Barra Superior (`header-bar`)**:
+   - El panel modal tenía un `padding-top: 80px`, inferior a los 88px de altura del `header-bar`. Esto ocasionaba que el título (`BUEN PASTOR VOZ DE ALERTA` / `Encuentra tu camino.`) quedara pegado o colisionando contra el borde inferior de la barra de navegación superior.
+2. **Falta de Centrado Vertical**:
+   - El contenedor `.menu-panel__main` estaba alineado rígidamente arriba sin `margin: auto` ni `justify-content: center`, dejando un espacio vacío desproporcionado en el tercio inferior del modal.
+3. **Corte y Truncamiento de Texto en Columna 03**:
+   - El título del pilar 03 (`SECUNDARIA Y BACHILLERES`) se recortaba con puntos suspensivos (`SECUNDARIA Y BACHILLER..`) debido a la regla `white-space: nowrap` y `text-overflow: ellipsis`.
+
+### Soluciones Aplicadas
+1. **Despeje y Adaptación del Nav**:
+   - Se aumentó el espaciado superior a `clamp(100px, 12vh, 126px)`, garantizando una separación cómoda y elegante entre la barra fija y la cabecera editorial del menú.
+   - Se integró visualmente la cabecera cuando el menú está abierto (`.menu-is-open .header-bar { background: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: none; }`), fundiéndose orgánicamente en el fondo azul marino del modal sin generar cortes visuales.
+2. **Centrado Vertical Armónico (`margin: auto` & `justify-content: center`)**:
+   - `.menu-panel__main` ahora utiliza `margin: auto` y `justify-content: center`, logrando una distribución perfectamente equilibrada tanto vertical como horizontalmente entre la barra superior y el pie de contacto.
+   - El pie institucional (`.menu-panel__foot`) utiliza `margin-top: auto` para anclarse suavemente en la base sin invadir el bloque de contenido.
+3. **Eliminación del Truncamiento en Títulos de Pilares**:
+   - Se configuró `.menu-group-title` con `white-space: normal` y un tamaño escalado fluido `clamp(11px, 0.82vw, 12px)`, garantizando que ningún texto institucional se recorte (`SECUNDARIA Y BACHILLERES` se visualiza completo e íntegro).
+   - Se estableció `min-height: 38px` en `.menu-group-header` para que todos los separadores horizontales compartan exactamente la misma línea base visual en las 5 columnas.
+4. **Modo Altura Reducida (`@media (max-height: 750px)`)**:
+   - Reglas específicas para pantallas de baja altura, adaptando paddings y tamaños de fuente para que todo el contenido sea visible sin apretarse.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Sesión #2, Cambio #8.3 — Calibración Tipográfica: Mayor Legibilidad, Presencia y Escala Visual
+
+### Diagnóstico de Retroalimentación
+- El usuario reportó que las letras se visualizaban demasiado pequeñas en pantallas de escritorio, perdiendo protagonismo e impacto visual dentro del amplio lienzo del menú modal.
+
+### Soluciones Aplicadas
+1. **Escalado Tipográfico en Enlaces y Pilares**:
+   - **Enlaces de Páginas (`.menu-link`)**: Aumentados de `14.5px` a un escalado fluido `clamp(15.5px, 1.1vw, 17px)` con `font-weight: 500`, mayor contraste (`rgba(255, 255, 255, 0.88)`) y mayor padding vertical (`12px`), haciéndolos claros, cómodos y destacados.
+   - **Títulos de los 5 Pilares (`.menu-group-title`)**: Aumentados de `11-12px` a `clamp(12.5px, 0.92vw, 14px)` con `font-weight: 700` y `letter-spacing: 0.08em`, logrando un encabezado firme y legible en mayúsculas institucionales.
+   - **Identificadores Numéricos (`.menu-group-num`)**: Aumentados de `11px` a `13px` con peso negrita `700`.
+   - **Flecha Chevron (`.menu-chevron`)**: Aumentada a `15px` con transición fluida en hover.
+2. **Jerarquía en Cabecera y Pie**:
+   - **Kicker (`.menu-panel__kicker`)**: Aumentado de `11.5px` a `13px` con `letter-spacing: 0.22em`.
+   - **Titular Principal `h2`**: Aumentado de `28-38px` a `clamp(34px, 3.2vw, 46px)` con `line-height: 1.12`.
+   - **Párrafo Descriptivo `p`**: Aumentado de `14.5px` a `clamp(15px, 1.1vw, 17px)` con opacidad `0.75`.
+   - **Contacto en Pie (`.menu-panel__contact`)**: Aumentado a `14px` con separación armónica de `14px`.
+3. **Sincronización Total**:
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Sesión #2, Cambio #8.4 — Elevación Óptica: Calibración Vertical Superior con Distancia de Seguridad al Nav
+
+### Diagnóstico de Retroalimentación
+- Tras aumentar los tamaños tipográficos, el bloque de navegación se sentía situado ligeramente abajo en pantallas grandes debido al centrado automático (`margin: auto`).
+- El usuario solicitó subir la composición un poco más arriba, pero asegurando expresamente que **no colisione ni choque con la barra superior de navegación**.
+
+### Soluciones Aplicadas
+1. **Calibración de Espaciado Superior (`padding-top: clamp(98px, 11vh, 112px)`)**:
+   - Con la barra de navegación fija en 88px, este espaciado proporciona una holgura limpia y constante de 18px a 24px entre el borde inferior del nav y el kicker superior del menú.
+2. **Elevación Controlada de la Cuadrícula (`.menu-panel__main`)**:
+   - Se ajustó el margen superior a `clamp(4px, 1.2vh, 14px)`, permitiendo que el titular y las 5 columnas asciendan de forma natural hacia la mitad superior del lienzo modal sin quedar apretadas contra el nav.
+   - Margen inferior del titular optimizado a `clamp(20px, 2.8vh, 32px)`.
+3. **Sincronización Total**:
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Sesión #2, Cambio #8.5 — Adaptación y Optimización Responsive Integral (Mobile & Tablet)
+
+### Solicitud del Usuario
+- Adaptar exhaustivamente el diseño responsive antes de subir todos los cambios al repositorio remoto en GitHub.
+
+### Soluciones Aplicadas
+1. **Calibración en Tablets Landscape (769px a 1100px)**:
+   - Configuración de la cuadrícula de los 5 pilares en 6 columnas (`grid-template-columns: repeat(6, 1fr)`).
+   - Fila 1: Grupos 01, 02 y 03 abarcan 2 columnas cada uno (`span 2`).
+   - Fila 2: Grupos 04 y 05 ocupan las columnas 2-3 y 4-5 respectivamente (`grid-column: 2 / span 2` y `4 / span 2`), centrándose de forma natural y simétrica sin dejar huecos vacíos a la derecha.
+2. **Calibración en Tablets Portrait (581px a 768px)**:
+   - Cuadrícula de 2 columnas balanceada para los 4 primeros pilares.
+   - Pilar 05 (`FAMILIA Y COMUNIDAD`) abarca 2 columnas (`grid-column: span 2`) con sus enlaces distribuidos en subcuadrícula responsive (`grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))`), logrando una ocupación equilibrada del ancho disponible.
+   - Pie de contacto en fila fluida (`flex-direction: row; justify-content: space-between; flex-wrap: wrap`).
+3. **Optimización en Smartphones y Dispositivos Móviles (<= 580px y <= 380px)**:
+   - Incorporación de `-webkit-overflow-scrolling: touch` para desplazamiento nativo suave con inercia en iOS/Safari.
+   - Transición limpia a 1 columna con espaciados optimizados (`gap: 16px`).
+   - Reset de altura de encabezado en columnas individuales (`min-height: auto`), evitando espacios muertos verticales innecesarios.
+   - Párrafo descriptivo del titular adaptado con tipografía fluida y márgenes compactos.
+   - Enlaces de navegación con área táctil cómoda (`10px 0`, `font-size: 15px`).
+   - Contacto en pie estructurado en 3 líneas limpias (`flex-direction: column`) con ocultación de puntos separadores (`.menu-sep { display: none }`) para evitar saltos de línea desordenados.
+4. **Pantallas de Altura Reducida (@media (max-height: 750px))**:
+   - Reducción de paddings verticales (`clamp(74px, 11vh, 84px)` arriba, `14px` abajo).
+   - Ocultación del párrafo descriptivo secundario en cabecera para ganar más de 35px útiles de pantalla.
+   - Enlaces compactados a 13.5px para visualización cómoda sin saturar el scroll.
+5. **Responsividad en Carrusel Continuo (.carousel-v3)**:
+   - Breakpoints dedicados para 768px y 480px adaptando dimensiones de tarjetas (260x340px en tablet, 230x310px en móvil pequeño), escalando el titular `h2` con `clamp(28px, 6vw, 42px)` y reduciendo tags para evitar desbordamientos.
+6. **Sincronización Total con WordPress**:
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Recompiladas las plantillas del tema mediante `tools/build-wp-pages.ps1`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+
+
+
+
+
+
+
+
+
+
+
 
