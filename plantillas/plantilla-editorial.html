@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plantilla Editorial e Institucional | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="../assets/favicon.svg">
+  <!-- Hojas de estilo institucional y sistema de plantillas modulares -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="plantillas.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body class="template-page template-editorial">
+  <!-- Enlace accesible de salto al contenido -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ========================================================================= -->
+  <!-- CABECERA INSTITUCIONAL GLOBAL (HEADER)                                     -->
+  <!-- ========================================================================= -->
+  <header class="site-header">
+    <div class="header-bar">
+      <!-- Logotipo Institucional Principal -->
+      <a class="brand" href="../index.html" aria-label="Inicio">
+        <img decoding="async" src="../assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
+      </a>
+
+      <!-- Navegación Esencial Superior -->
+      <nav class="essential-nav" aria-label="Navegación esencial">
+        <a href="../filosofia.html">Filosofía</a>
+        <a href="../admisiones.html">Admisiones</a>
+        <a href="../contacto.html">Contacto</a>
+        <a href="../admisiones.html" class="btn-matriculate">MATRICULATE AQUÍ</a>
+      </nav>
+
+      <!-- Botón Disparador del Menú Modal -->
+      <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <img decoding="async" src="../assets/icons/menu.png" alt="" class="icon-menu-img">
+        <img decoding="async" src="../assets/icons/close.png" alt="" class="icon-close-img">
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Modal Institucional (4 Bloques) -->
+    <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
+      <div class="menu-panel__main">
+        <div class="menu-panel__title">
+          <span>BUEN PASTOR VOZ DE ALERTA</span>
+          <h2>Encuentra tu camino.</h2>
+          <p>Explora cada etapa y recurso de la comunidad BPVDA.</p>
+        </div>
+
+        <nav class="menu-nav" aria-label="Navegación principal">
+          <div class="menu-panel__groups">
+            <div class="menu-group">
+              <span class="menu-group-title">01 NUESTRA ESCUELA</span>
+              <ul class="menu-list">
+                <li><a href="../quienes-somos.html" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../filosofia.html" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../instalaciones.html" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../plantel.html" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li>
+              </ul>
+            </div>
+            <div class="menu-group">
+              <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
+              <ul class="menu-list">
+                <li><a href="../sai.html" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../vida-estudiantil.html" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../ecosistema-digital.html" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li>
+              </ul>
+            </div>
+            <div class="menu-group">
+              <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
+              <ul class="menu-list">
+                <li><a href="../admisiones.html" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../portal-padres.html" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../contacto.html" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li>
+              </ul>
+            </div>
+            <div class="menu-group">
+              <span class="menu-group-title">04 NIVELES ACADÉMICOS</span>
+              <ul class="menu-list">
+                <li><a href="../prekinder.html" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../kinder.html" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../primaria.html" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../secundaria.html" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li>
+                <li><a href="../bachilleres.html" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="menu-panel__foot">
+        <div class="menu-panel__contact">
+          <span>Calle San José, 24 de Diciembre, Ciudad de Panamá</span>
+          <a href="tel:+5073915811">391-5811</a>
+          <a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- CONTENIDO PRINCIPAL MODULAR                                               -->
+  <!-- ========================================================================= -->
+  <main id="contenido">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 1: HERO EDITORIAL SOLEMNE                                       -->
+    <!-- Composición pausada con lavado de alto contraste y tipografía sólida   -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-hero block-hero--tall">
+      <img src="../assets/fotos/exterior/campus-main.webp" alt="Fachada principal del colegio" class="block-hero__bg">
+      <div class="block-hero__wash block-hero__wash--editorial"></div>
+      <div class="block-hero__container">
+        <span class="block-hero__tag">Identidad Institucional</span>
+        <h1 class="block-hero__title">Una vocación consolidada por más de <mark>tres décadas</mark>.</h1>
+        <p class="block-hero__lead">
+          Conoce la historia, la visión educativa y el compromiso humano que sustentan cada decisión formativa en el Colegio Buen Pastor Voz de Alerta.
+        </p>
+        <div class="block-hero__actions">
+          <a href="#historia" class="block-hero__btn-primary">Leer Nuestra Historia ↓</a>
+          <a href="#principios" class="block-hero__btn-secondary">Nuestros Principios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 2: LEMA INSTITUCIONAL EN FONDO NAVY                             -->
+    <!-- Cita de principios con tipografía serif y acentos dorados/turquesa     -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-bible-quote block-bible-quote--navy" id="lema-institucional">
+      <div class="block-bible-quote__container">
+        <div class="block-bible-quote__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <blockquote class="block-bible-quote__text">
+          “Formación para aprender, convivir y servir: una <mark>misión de vida</mark> fundamentada en la fe y la excelencia.”
+        </blockquote>
+        <cite class="block-bible-quote__cite">Ideario Educativo BPVDA</cite>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 3: NARRATIVA HISTÓRICA A DOS COLUMNAS (.block-split)            -->
+    <!-- Texto estructurado acompañado de fotografía y datos clave             -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-section" id="historia">
+      <div class="block-section__container">
+        <div class="block-split">
+          <div class="block-split__content">
+            <span class="block-header__badge">Nuestra Trayectoria</span>
+            <h2 class="block-split__title">Construyendo futuro desde la 24 de Diciembre.</h2>
+            <p class="block-split__text">
+              Fundado con la convicción de ofrecer una educación accesible, digna y espiritualmente arraigada, el Colegio Buen Pastor Voz de Alerta ha sido el hogar formativo de cientos de profesionales y líderes de bien.
+            </p>
+            <p class="block-split__text">
+              Nuestro modelo armoniza los más altos estándares pedagógicos con un ambiente familiar donde el respeto mutuo, la disciplina con amor y la colaboración constante son la norma diaria.
+            </p>
+            <ul class="block-split__list">
+              <li class="block-split__list-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Compromiso ético con cada familia de la comunidad.
+              </li>
+              <li class="block-split__list-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Instalaciones seguras diseñadas para el bienestar estudiantil.
+              </li>
+              <li class="block-split__list-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Acreditación oficial por el Ministerio de Educación (MEDUCA).
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-split__media">
+            <div class="block-split__image-wrap">
+              <img src="../assets/fotos/institucional/mission.webp" alt="Misión BPVDA en acción" class="block-split__image">
+            </div>
+            <div class="block-split__floating-badge">
+              <strong>MEDUCA</strong>
+              <span>Programas oficiales avalados con excelencia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 4: PUNTOS CLAVE Y ACORDEÓN INSTITUCIONAL (.block-accordion)     -->
+    <!-- Despliegue interactivo accesible para reglamentos, valores y preguntas -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-section block-section--cream" id="principios">
+      <div class="block-section__container">
+        <div class="block-header block-header--center">
+          <span class="block-header__badge">Directrices y Compromisos</span>
+          <h2 class="block-header__title">Nuestros principios <mark>institucionales</mark></h2>
+          <p class="block-header__lead">
+            Ejes estratégicos que orientan la convivencia, la disciplina y las metas educativas en todos los niveles.
+          </p>
+        </div>
+
+        <div class="block-accordion">
+          <!-- Item 1 -->
+          <details class="block-accordion__item" open>
+            <summary class="block-accordion__summary">1. Fundamento Bíblico y Espiritual</summary>
+            <div class="block-accordion__content">
+              Reconocemos a Dios como la fuente de toda sabiduría y entendimiento. Integramos valores de compasión, verdad, justicia y rectitud en cada área curricular y momento de la vida escolar cotidiana.
+            </div>
+          </details>
+
+          <!-- Item 2 -->
+          <details class="block-accordion__item">
+            <summary class="block-accordion__summary">2. Excelencia Académica y Formación Continua</summary>
+            <div class="block-accordion__content">
+              Buscamos que cada alumno adquiera habilidades sólidas de razonamiento, expresión y resolución de problemas. Nuestros planes de estudio responden a las demandas actuales garantizando un aprendizaje profundo y aplicable.
+            </div>
+          </details>
+
+          <!-- Item 3 -->
+          <details class="block-accordion__item">
+            <summary class="block-accordion__summary">3. Alianza Escuela - Familia</summary>
+            <div class="block-accordion__content">
+              Consideramos que la educación es una responsabilidad compartida. Fomentamos canales de comunicación directos, transparentes y afectuosos entre padres, docentes y directivos para respaldar de manera unida el desarrollo de los hijos.
+            </div>
+          </details>
+
+          <!-- Item 4 -->
+          <details class="block-accordion__item">
+            <summary class="block-accordion__summary">4. Disciplina Positiva y Seguridad Integral</summary>
+            <div class="block-accordion__content">
+              Promovemos un ambiente libre de acoso, fundamentado en la empatía y la resolución constructiva de conflictos. Guiamos la conducta con afecto, orden y límites claros que generan estabilidad emocional en los estudiantes.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 5: TARJETAS EDITORIALES DE COMPROMISO COMUNITARIO                -->
+    <!-- Cuadrícula limpia para pilares o perfiles institucionales              -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-section block-section--paper">
+      <div class="block-section__container">
+        <div class="block-header block-header--center">
+          <span class="block-header__badge">Compromisos Activos</span>
+          <h2 class="block-header__title">Garantías para cada <mark>familia</mark></h2>
+          <p class="block-header__lead">
+            La confianza depositada en nuestro colegio se traduce en acciones concretas y verificables día tras día.
+          </p>
+        </div>
+
+        <div class="block-features-grid">
+          <!-- Tarjeta 1 -->
+          <article class="block-card">
+            <div class="block-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="block-card__title">Ambiente Seguro y Protegido</h3>
+            <p class="block-card__text">
+              Protocolos estrictos de acceso, cámaras de monitoreo y supervisión constante en patios y pasillos durante toda la jornada escolar.
+            </p>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="block-card">
+            <div class="block-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <h3 class="block-card__title">Plataforma Académica SAI</h3>
+            <p class="block-card__text">
+              Acceso oportuno a calificaciones, asistencia, cronograma de exámenes y avisos institucionales directamente desde cualquier dispositivo.
+            </p>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="block-card">
+            <div class="block-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <h3 class="block-card__title">Atención Personalizada</h3>
+            <p class="block-card__text">
+              Orientación y consejería dispuesta a escuchar y atender las necesidades individuales de cada alumno con prontitud y calidez.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 6: LLAMADO A LA ACCIÓN (CTA) INSTITUCIONAL                      -->
+    <!-- Enlace a contacto y admisiones                                         -->
+    <!-- --------------------------------------------------------------------- -->
+    <section class="block-cta">
+      <div class="block-cta__container">
+        <span class="block-cta__badge">Visítanos y Conócenos</span>
+        <h2 class="block-cta__title">Queremos acompañar el crecimiento de tu familia</h2>
+        <p class="block-cta__text">
+          Nuestras puertas están abiertas para atenderte, responder a tus preguntas y brindarte una visita guiada por nuestras instalaciones.
+        </p>
+        <div class="block-cta__buttons">
+          <a href="../contacto.html" class="block-hero__btn-primary">Contactar con Administración ↗</a>
+          <a href="../admisiones.html" class="block-hero__btn-secondary">Requisitos de Matrícula</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- PIE DE PÁGINA INSTITUCIONAL GLOBAL (FOOTER)                               -->
+  <!-- ========================================================================= -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col footer-col--brand">
+        <div class="footer-brand">
+          <img decoding="async" src="../assets/brand/pastor-logo-white.png" alt="Buen Pastor" class="footer-pastor-logo">
+          <div class="footer-brand-meta">
+            <span class="footer-school-name">Colegio Buen Pastor</span>
+            <span class="footer-school-sub">Voz de Alerta</span>
+          </div>
+        </div>
+        <p class="footer-location">Calle San José, Urb. Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá</p>
+        <a href="https://maps.app.goo.gl/r5Arxesjc7P2Uzew7" target="_blank" rel="noopener noreferrer" class="footer-maps-link">
+          <img decoding="async" src="../assets/icons/place-icon.png" alt="" class="footer-maps-icon">
+          <span>Ver en Google Maps</span>
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Oficina</h4>
+        <p class="footer-phone"><a href="tel:+5073915811">391-5811</a></p>
+        <div class="footer-hours-block">
+          <span class="footer-hours-tag">Horario regular</span>
+          <p class="footer-hours">7:30 a.m. - 2:00 p.m.</p>
+        </div>
+        <div class="footer-hours-block">
+          <span class="footer-hours-tag">Horario de verano</span>
+          <p class="footer-hours">8:00 a.m. - 2:00 p.m.</p>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Atención al cliente</h4>
+        <p class="footer-phone"><a href="tel:+5073915811">391-5811</a> <span class="footer-phone-sep">/</span> <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="footer-phone-wa">6744-1351</a></p>
+        <p class="footer-email"><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 BUEN PASTOR VOZ DE ALERTA</p>
+      <div class="footer-socials">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Enviar correo por Gmail" class="social-link">
+          <svg viewBox="0 0 512 512" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/?locale=de_DE" target="_blank" rel="noopener noreferrer" aria-label="Facebook BPVDA" class="social-link">
+          <svg viewBox="0 0 320 512" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram BPVDA" class="social-link">
+          <svg viewBox="0 0 24 24" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M7 2C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2H7ZM12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7ZM9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12ZM17 8C17.5523 8 18 7.55228 18 7C18 6.44772 17.5523 6 17 6C16.4477 6 16 6.44772 16 7C16 7.55228 16.4477 8 17 8Z"/></svg>
+        </a>
+        <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp BPVDA" class="social-link">
+          <img src="../assets/icons/whatsapp-icon.png" alt="WhatsApp" class="social-icon-img">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>

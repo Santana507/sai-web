@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ==============================================================================
  * BPVDA — JavaScript Institucional Modular (Vanilla JS)
  * ==============================================================================
@@ -453,5 +453,41 @@
     }
   });
 
+  /* ----------------------------------------------------------------------------
+   * 11. MENÚ TEMPORAL DE DESARROLLADOR (Comparador de Plantillas)
+   * ----------------------------------------------------------------------------
+   * Control de apertura y cierre accesible para el menú comparador de plantillas.
+   */
+  const devContainer = document.getElementById('devMenuContainer');
+  const devBtn = document.getElementById('devMenuBtn');
+  const devDropdown = document.getElementById('devMenuDropdown');
+
+  if (devContainer && devBtn && devDropdown) {
+    devBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = devContainer.classList.toggle('is-open');
+      devBtn.setAttribute('aria-expanded', String(isOpen));
+      devDropdown.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!devContainer.contains(e.target)) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && devContainer.classList.contains('is-open')) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+        devBtn.focus();
+      }
+    });
+  }
+
 }());
+
 
