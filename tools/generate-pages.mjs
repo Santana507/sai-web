@@ -5,57 +5,67 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const templatesDir = join(root, 'tools', 'templates');
 
-// 1. Definición de los 5 Pilares y Enlaces de Navegación
+// 1. Definición de los 5 Pilares y Enlaces de Navegación (Orden Pedagógico Natural)
 const groups = [
-  [
-    '01 NUESTRA ESCUELA',
-    [
+  {
+    num: '01',
+    title: 'Nuestra Escuela',
+    links: [
       ['¿Quiénes somos?', 'quienes-somos.html'],
       ['Propósito BPVDA', 'filosofia.html'],
       ['Instalaciones', 'instalaciones.html'],
       ['Plantel docente', 'plantel.html']
     ]
-  ],
-  [
-    '02 ENFOQUE EDUCATIVO',
-    [
-      ['SAI BPVDA', 'sai.html'],
-      ['Vida estudiantil', 'vida-estudiantil.html'],
-      ['Ecosistema digital', 'ecosistema-digital.html']
-    ]
-  ],
-  [
-    '03 FAMILIA Y COMUNIDAD',
-    [
-      ['Admisiones y matrícula', 'admisiones.html'],
-      ['Portal de padres', 'portal-padres.html'],
-      ['Contacto y atención', 'contacto.html']
-    ]
-  ],
-  [
-    '04 PRIMARIA',
-    [
+  },
+  {
+    num: '02',
+    title: 'Preescolar y Primaria',
+    links: [
       ['Prekínder', 'prekinder.html'],
       ['Kínder', 'kinder.html'],
       ['Primaria', 'primaria.html']
     ]
-  ],
-  [
-    '05 SECUNDARIA Y BACHILLERES',
-    [
+  },
+  {
+    num: '03',
+    title: 'Secundaria y Bachilleres',
+    links: [
       ['Secundaria', 'secundaria.html'],
       ['Bachilleres', 'bachilleres.html']
     ]
-  ]
+  },
+  {
+    num: '04',
+    title: 'Enfoque Educativo',
+    links: [
+      ['SAI BPVDA', 'sai.html'],
+      ['Vida estudiantil', 'vida-estudiantil.html'],
+      ['Ecosistema digital', 'ecosistema-digital.html']
+    ]
+  },
+  {
+    num: '05',
+    title: 'Familia y Comunidad',
+    links: [
+      ['Admisiones y matrícula', 'admisiones.html'],
+      ['Portal de padres', 'portal-padres.html'],
+      ['Contacto y atención', 'contacto.html']
+    ]
+  }
 ];
 
-// 2. Construcción de Grupos de Menú
+// 2. Construcción de Columnas de Navegación (Diseño Nítido y Natural)
 const menuGroupsHtml = groups
-  .map(([title, links]) =>
+  .map(g =>
     `<div class="menu-group">
-      <span class="menu-group-title">${title}</span>
+      <div class="menu-group-header">
+        <span class="menu-group-num">${g.num}</span>
+        <h3 class="menu-group-title">${g.title}</h3>
+      </div>
       <ul class="menu-list">` +
-    links.map(([name, url]) => `<li><a href="${url}" class="menu-link"><span>${name}</span> <i class="menu-chevron">↗</i></a></li>`).join('') +
+    g.links.map(([name, url]) =>
+      `<li><a href="${url}" class="menu-link"><span class="menu-link-text">${name}</span><i class="menu-chevron" aria-hidden="true">↗</i></a></li>`
+    ).join('') +
     `</ul>
     </div>`
   )
@@ -68,21 +78,21 @@ const richFooter = readFileSync(join(templatesDir, 'footer.html'), 'utf8').trim(
 
 // 4. Catálogo de Datos para Páginas Interiores (heroImage, splitImage)
 const data = [
-  ['quienes-somos.html', '¿Quiénes somos?', '01 NUESTRA ESCUELA', 'Una comunidad que educa con <mark>propósito</mark>.', 'assets/fotos/institucional/community.webp', 'assets/fotos/institucional/culture-main.webp', 'Conoce la historia, el compromiso y la comunidad que hacen posible BPVDA.'],
+  ['quienes-somos.html', '¿Quiénes somos?', '01 NUESTRA ESCUELA', 'Una comunidad que educa con <mark>propósito</mark>.', 'assets/fotos/institucional/community.webp', 'assets/fotos/institucional/recognition.webp', 'Conoce la historia, el compromiso y la comunidad que hacen posible BPVDA.'],
   ['filosofia.html', 'Propósito BPVDA', '01 NUESTRA ESCUELA', 'Valores que orientan cada <mark>decisión</mark>.', 'assets/fotos/institucional/mission.webp', 'assets/fotos/institucional/mission.webp', 'Misión, visión y principios cristianos que sostienen nuestra propuesta educativa.'],
   ['instalaciones.html', 'Instalaciones', '01 NUESTRA ESCUELA', 'Espacios para aprender, convivir y <mark>crecer</mark>.', 'assets/fotos/exterior/IMG_9374.webp', 'assets/fotos/exterior/campus-restzone.webp', 'Conoce los espacios que reciben diariamente a nuestra comunidad escolar.'],
   ['plantel.html', 'Plantel docente', '01 NUESTRA ESCUELA', 'Educadores que inspiran y <mark>guían</mark>.', 'assets/fotos/primaria-preescolar/IMG_9484.webp', 'assets/fotos/primaria-preescolar/IMG_9489.webp', 'Un equipo comprometido con acompañar los procesos y talentos de cada estudiante.'],
-  ['sai.html', 'SAI BPVDA', '02 ENFOQUE EDUCATIVO', 'Todo el aprendizaje, en un mismo <mark>lugar</mark>.', 'assets/new/alliances/SAI logo oficial.jpg', 'assets/new/sai/Captura de pantalla 2026-09-12 135920.png', 'SAI centraliza las herramientas, actividades y comunicaciones importantes para nuestra comunidad.'],
-  ['vida-estudiantil.html', 'Vida estudiantil', '02 ENFOQUE EDUCATIVO', 'Talentos que se convierten en <mark>experiencias</mark>.', 'assets/fotos/secundaria/IMG_9585.webp', 'assets/fotos/secundaria/IMG_9575.webp', 'Proyectos, actividades, cultura, deporte y logros que enriquecen la vida escolar.'],
-  ['ecosistema-digital.html', 'Ecosistema digital', '02 ENFOQUE EDUCATIVO', 'Herramientas para aprender sin <mark>límites</mark>.', 'assets/fotos/secundaria/IMG_9514.webp', 'assets/fotos/secundaria/IMG_9511.webp', 'Una red de plataformas que acompaña el aprendizaje dentro y fuera del aula.'],
-  ['portal-padres.html', 'Portal de padres', '03 FAMILIA Y COMUNIDAD', 'Información escolar al alcance de tu <mark>familia</mark>.', 'assets/new/alliances/Edvoice1.webp', 'assets/fotos/institucional/client-atention.webp', 'Accesos directos a las plataformas donde las familias consultan información académica.'],
-  ['contacto.html', 'Contacto y atención', '03 FAMILIA Y COMUNIDAD', 'Estamos aquí para <mark>orientarte</mark>.', 'assets/fotos/exterior/campus-exterior.webp', 'assets/fotos/institucional/client-atention.webp', 'Canales directos para conversar, visitar y conocer la comunidad BPVDA.'],
-  ['secundaria.html', 'Secundaria y Bachilleres', '05 SECUNDARIA Y BACHILLERES', 'Preparación para los retos que <mark>vienen</mark>.', 'assets/fotos/secundaria/IMG_9504.webp', 'assets/fotos/secundaria/IMG_9510.webp', 'Secundaria y bachillerato para impulsar habilidades, propósito y futuro.']
+  ['secundaria.html', 'Secundaria y Bachilleres', '03 SECUNDARIA Y BACHILLERES', 'Preparación para los retos que <mark>vienen</mark>.', 'assets/fotos/secundaria/IMG_9504.webp', 'assets/fotos/secundaria/IMG_9510.webp', 'Secundaria y bachillerato para impulsar habilidades, propósito y futuro.'],
+  ['sai.html', 'SAI BPVDA', '04 ENFOQUE EDUCATIVO', 'Todo el aprendizaje, en un mismo <mark>lugar</mark>.', 'assets/new/alliances/SAI logo oficial.jpg', 'assets/new/sai/Captura de pantalla 2026-09-12 135920.png', 'SAI centraliza las herramientas, actividades y comunicaciones importantes para nuestra comunidad.'],
+  ['vida-estudiantil.html', 'Vida estudiantil', '04 ENFOQUE EDUCATIVO', 'Talentos que se convierten en <mark>experiencias</mark>.', 'assets/fotos/secundaria/IMG_9585.webp', 'assets/fotos/secundaria/IMG_9575.webp', 'Proyectos, actividades, cultura, deporte y logros que enriquecen la vida escolar.'],
+  ['ecosistema-digital.html', 'Ecosistema digital', '04 ENFOQUE EDUCATIVO', 'Herramientas para aprender sin <mark>límites</mark>.', 'assets/fotos/secundaria/IMG_9514.webp', 'assets/fotos/secundaria/IMG_9511.webp', 'Una red de plataformas que acompaña el aprendizaje dentro y fuera del aula.'],
+  ['portal-padres.html', 'Portal de padres', '05 FAMILIA Y COMUNIDAD', 'Información escolar al alcance de tu <mark>familia</mark>.', 'assets/new/alliances/Edvoice1.webp', 'assets/fotos/institucional/client-atention.webp', 'Accesos directos a las plataformas donde las familias consultan información académica.'],
+  ['contacto.html', 'Contacto y atención', '05 FAMILIA Y COMUNIDAD', 'Estamos aquí para <mark>orientarte</mark>.', 'assets/fotos/exterior/campus-exterior.webp', 'assets/fotos/institucional/client-atention.webp', 'Canales directos para conversar, visitar y conocer la comunidad BPVDA.']
 ];
 
 const visualSets = {
   '¿Quiénes somos?': [
-    'assets/fotos/institucional/learn-mind.webp',
+    'assets/fotos/institucional/achievement.webp',
     'assets/fotos/exterior/IMG_9379.webp',
     'assets/fotos/institucional/mission.webp',
     'assets/fotos/exterior/IMG_9372.webp',
@@ -154,12 +164,12 @@ const visualSets = {
     'assets/new/alliances/Canva1.webp'
   ],
   'Contacto y atención': [
-    'assets/fotos/exterior/IMG_9378.webp',
-    'assets/fotos/exterior/IMG_9373.webp',
-    'assets/fotos/exterior/IMG_9381.webp',
-    'assets/fotos/exterior/IMG_9375.webp',
-    'assets/fotos/exterior/IMG_9388.webp',
-    'assets/fotos/exterior/IMG_9390.webp'
+    'assets/fotos/institucional/community.webp',
+    'assets/fotos/exterior/campus-main.webp',
+    'assets/fotos/institucional/admision.webp',
+    'assets/fotos/institucional/culture.webp',
+    'assets/fotos/exterior/campus-restzone.webp',
+    'assets/fotos/institucional/achievement.webp'
   ],
   'Secundaria y Bachilleres': [
     'assets/fotos/secundaria/robotics-1.webp',
@@ -171,40 +181,106 @@ const visualSets = {
   ]
 };
 
+const carouselMeta = {
+  'Contacto y atención': [
+    { tag: 'COMUNIDAD', caption: 'Una comunidad que te respalda y te acompaña.' },
+    { tag: 'CAMPUS', caption: 'Instalaciones preparadas para recibir a tu familia.' },
+    { tag: 'ORIENTACIÓN', caption: 'Atención cercana en cada consulta y trámite.' },
+    { tag: 'VALORES', caption: 'Formación integral que inspira vidas.' },
+    { tag: 'CONVIVENCIA', caption: 'Espacios seguros diseñados para aprender y compartir.' },
+    { tag: 'FUTURO', caption: 'Guiando los pasos de las nuevas generaciones.' }
+  ],
+  'default': [
+    { tag: 'PROPÓSITO', caption: 'Un entorno diseñado para descubrir y trascender.' },
+    { tag: 'LOGROS', caption: 'Cada paso es una meta formativa alcanzada.' },
+    { tag: 'COMUNIDAD', caption: 'Una comunidad educativa que te respalda.' },
+    { tag: 'INNOVACIÓN', caption: 'Tecnología y pedagogía presentes en cada aula.' },
+    { tag: 'LIDERAZGO', caption: 'Formando a los líderes del mañana con valores.' },
+    { tag: 'CRECIMIENTO', caption: 'Creciendo juntos con dedicación cada día.' }
+  ]
+};
+
 const cards = (title) => {
   const images = visualSets[title] || visualSets['¿Quiénes somos?'];
+  const metaList = carouselMeta[title] || carouselMeta['default'];
+
+  const renderCard = (img, i) => {
+    const meta = metaList[i % metaList.length];
+    return `
+        <article class="carousel-v3__card">
+          <img src="${img}" alt="${meta.caption}" loading="lazy">
+          <div class="carousel-v3__overlay">
+            <span class="carousel-v3__tag">
+              <span class="carousel-v3__tag-dot" aria-hidden="true"></span>
+              ${meta.tag}
+            </span>
+            <h3>${meta.caption}</h3>
+          </div>
+        </article>`;
+  };
+
+  const groupHtml = images.map((img, i) => renderCard(img, i)).join('');
+
   return `
 <section class="content-cards section-pad">
-  <article><h3>Una propuesta con propósito</h3><p>Aquí se incorporará el contenido institucional final de ${title}.</p></article>
-  <article><h3>Experiencias que acompañan</h3><p>Este espacio está preparado para explicar los procesos, recursos y oportunidades de la comunidad BPVDA.</p></article>
-  <article><h3>Una comunidad cercana</h3><p>Familias, estudiantes y educadores construyen juntos cada etapa del aprendizaje.</p></article>
+  <article class="content-card">
+    <div class="content-card__head">
+      <div class="content-card__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+      </div>
+      <span class="content-card__tag">01 · Propósito</span>
+    </div>
+    <h3>Una propuesta con propósito</h3>
+    <p>Aquí se incorporará el contenido institucional final de ${title}.</p>
+    <div class="content-card__foot">
+      <span>Enfoque formativo</span>
+      <b>→</b>
+    </div>
+  </article>
+
+  <article class="content-card">
+    <div class="content-card__head">
+      <div class="content-card__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      </div>
+      <span class="content-card__tag">02 · Acompañamiento</span>
+    </div>
+    <h3>Experiencias que acompañan</h3>
+    <p>Este espacio está preparado para explicar los procesos, recursos y oportunidades de la comunidad BPVDA.</p>
+    <div class="content-card__foot">
+      <span>Ruta de aprendizaje</span>
+      <b>→</b>
+    </div>
+  </article>
+
+  <article class="content-card">
+    <div class="content-card__head">
+      <div class="content-card__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <span class="content-card__tag">03 · Comunidad</span>
+    </div>
+    <h3>Una comunidad cercana</h3>
+    <p>Familias, estudiantes y educadores construyen juntos cada etapa del aprendizaje.</p>
+    <div class="content-card__foot">
+      <span>Alianza familiar</span>
+      <b>→</b>
+    </div>
+  </article>
 </section>
-<section class="carousel-v3">
+<section class="carousel-v3" aria-label="Galería visual de momentos BPVDA">
   <div class="carousel-v3__head">
     <h2>Momentos que inspiran.</h2>
-    <p>Desliza para explorar la riqueza visual de nuestra comunidad educativa.</p>
+    <p>Desliza o disfruta del recorrido continuo por los espacios y vivencias de nuestra comunidad educativa.</p>
   </div>
   <div class="carousel-v3__track-container">
     <div class="carousel-v3__track">
-      ${images.map((img, i) => {
-        const captions = [
-          "Un entorno diseñado para descubrir.",
-          "Cada paso es un logro alcanzado.",
-          "Una comunidad que te respalda.",
-          "Innovación presente en cada aula.",
-          "Formando a los líderes del mañana.",
-          "Creciendo juntos cada día."
-        ];
-        return `
-        <article class="carousel-v3__card">
-          <img src="${img}" alt="Momento BPVDA" loading="lazy">
-          <div class="carousel-v3__overlay">
-            <span class="carousel-v3__tag">BPVDA</span>
-            <h3>${captions[i % captions.length]}</h3>
-          </div>
-        </article>
-        `;
-      }).join('')}
+      <div class="carousel-v3__group">
+        ${groupHtml}
+      </div>
+      <div class="carousel-v3__group" aria-hidden="true">
+        ${groupHtml}
+      </div>
     </div>
   </div>
 </section>`;
@@ -234,12 +310,42 @@ const special = (file) => {
   }
   if (file === 'contacto.html') {
     return `<section class="contact-direct section-pad">
-  <div><span>SECRETARÍA</span><a href="tel:+5073915811">391-5811</a></div>
-  <div><span>WHATSAPP</span><a href="https://wa.me/50767441351">6744-1351</a></div>
-  <div><span>CORREO</span><a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a></div>
+  <a href="tel:+5073915811" class="contact-direct__card">
+    <div class="contact-direct__icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </div>
+    <div class="contact-direct__info">
+      <span class="contact-direct__tag">SECRETARÍA</span>
+      <strong class="contact-direct__value">391-5811</strong>
+      <span class="contact-direct__sub">Atención telefónica regular</span>
+    </div>
+    <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+  </a>
+  <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="contact-direct__card contact-direct__card--wa">
+    <div class="contact-direct__icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </div>
+    <div class="contact-direct__info">
+      <span class="contact-direct__tag">WHATSAPP</span>
+      <strong class="contact-direct__value">6744-1351</strong>
+      <span class="contact-direct__sub">Consultas directas</span>
+    </div>
+    <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+  </a>
+  <a href="mailto:info@buenpastor-vda.net" class="contact-direct__card">
+    <div class="contact-direct__icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+    <div class="contact-direct__info">
+      <span class="contact-direct__tag">CORREO</span>
+      <strong class="contact-direct__value">info@buenpastor-vda.net</strong>
+      <span class="contact-direct__sub">Trámites y consultas</span>
+    </div>
+    <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+  </a>
 </section>
 <section class="map-section">
-  <iframe title="Ubicación de Buen Pastor Voz de Alerta" src="https://www.google.com/maps?q=Calle%20San%20Jos%C3%A9%2C%2024%20de%20Diciembre%2C%20Ciudad%20de%20Panam%C3%A1&output=embed" loading="lazy"></iframe>
+  <iframe title="Ubicación exacta de Colegio Buen Pastor Voz de Alerta" src="https://www.google.com/maps?q=9.106901321318759,-79.36663973009655&amp;hl=es&amp;z=17&amp;output=embed" loading="lazy"></iframe>
 </section>`;
   }
   if (file === 'secundaria.html') {
@@ -343,12 +449,10 @@ const filosofiaHtml = `<!doctype html>
   ${visualHeader}
 
   <main id="contenido">
-    <!-- Hero Interactivo con Secuencia de Fundido Fotográfico (Crossfade) -->
+    <!-- Hero Institucional con Imagen Fija de Alta Calidad -->
     <section class="purpose-fade">
       <div class="purpose-fade__images">
-        <img class="is-active" src="assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="assets/new/purpose/IMG_1966.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA con uniforme">
+        <img class="is-active" src="assets/fotos/institucional/mission.webp" alt="Estudiante BPVDA en auditorio institucional">
       </div>
       <div class="purpose-fade__content">
         <span>01 NUESTRA ESCUELA</span>
@@ -403,7 +507,7 @@ const filosofiaHtml = `<!doctype html>
 writeFileSync(join(root, 'filosofia.html'), filosofiaHtml);
 
 // 7. Generación de Páginas por Niveles Educativos
-const levelPage = (file, title, hero, lead, photos, body) => {
+const levelPage = (file, title, hero, lead, photos, body, levelPillar = '02 PREESCOLAR Y PRIMARIA') => {
   const pageHtml = `<!doctype html>
 <html lang="es">
 <head>
@@ -426,7 +530,7 @@ const levelPage = (file, title, hero, lead, photos, body) => {
     <section class="level-hero">
       <img src="${photos[0]}" alt="Estudiantes BPVDA">
       <div>
-        <span>04 PRIMARIA</span>
+        <span>${levelPillar}</span>
         <h1>${hero}</h1>
         <p>${lead}</p>
         <a href="#experiencias">Descubre la etapa <b>↓</b></a>
@@ -535,36 +639,32 @@ levelPage(
   ['assets/fotos/secundaria/IMG_9505.webp'],
   `<section class="primary-statement">
   <div>
-    <span>05 BACHILLERES</span>
+    <span>03 SECUNDARIA Y BACHILLERES</span>
     <h2>Una etapa orientada al futuro.</h2>
   </div>
   <p>Aquí se incorporará el contenido institucional de Bachilleres.</p>
-</section>`
+</section>`,
+  '03 SECUNDARIA Y BACHILLERES'
 );
 
-// 8. Actualizar Cabecera de Portada (index.html)
-const indexPath = join(root, 'index.html');
-const indexContent = readFileSync(indexPath, 'utf8');
-const headerStart = indexContent.indexOf('<header class="site-header">');
-const headerEnd = indexContent.indexOf('</header>', headerStart) + 9;
+// 8. Actualizar Cabecera de Portada (index.html) y Admisiones (admisiones.html)
+const updatePageHeader = (filePath) => {
+  try {
+    const content = readFileSync(filePath, 'utf8');
+    const headerStart = content.indexOf('<header class="site-header">');
+    const headerEnd = content.indexOf('</header>', headerStart) + 9;
 
-if (headerStart !== -1 && headerEnd !== -1) {
-  const links = {
-    'mision.html': 'filosofia.html',
-    'vision.html': 'secundaria.html',
-    'nosotros.html': 'quienes-somos.html',
-    'curriculo.html': 'ecosistema-digital.html',
-    'actividades.html': 'vida-estudiantil.html',
-    'admision.html': 'admisiones.html',
-    'admision.html#preguntas': 'contacto.html'
-  };
-
-  let updatedIndex = indexContent.slice(0, headerStart) + visualHeader + indexContent.slice(headerEnd);
-  for (const [from, to] of Object.entries(links)) {
-    updatedIndex = updatedIndex.replaceAll(`href="${from}"`, `href="${to}"`);
+    if (headerStart !== -1 && headerEnd !== -1) {
+      let updated = content.slice(0, headerStart) + visualHeader + content.slice(headerEnd);
+      writeFileSync(filePath, updated);
+    }
+  } catch (e) {
+    console.error(`Error actualizando cabecera en ${filePath}:`, e);
   }
-  writeFileSync(indexPath, updatedIndex);
-}
+};
+
+updatePageHeader(join(root, 'index.html'));
+updatePageHeader(join(root, 'admisiones.html'));
 
 console.log('✅ Páginas y navegación actualizadas con éxito desde plantillas modulares.');
 
