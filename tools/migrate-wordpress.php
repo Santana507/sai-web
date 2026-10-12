@@ -525,17 +525,17 @@ $groups = [
     '01 NUESTRA ESCUELA' => [
         '¿Quiénes somos?' => 'quienes-somos', 'Propósito BPVDA' => 'filosofia', 'Instalaciones' => 'instalaciones', 'Plantel docente' => 'plantel',
     ],
-    '02 PREESCOLAR Y PRIMARIA' => [
-        'Prekínder' => 'prekinder', 'Kínder' => 'kinder', 'Primaria' => 'primaria',
-    ],
-    '03 SECUNDARIA Y BACHILLERES' => [
-        'Secundaria' => 'secundaria', 'Bachilleres' => 'bachilleres',
-    ],
-    '04 ENFOQUE EDUCATIVO' => [
+    '02 ENFOQUE EDUCATIVO' => [
         'SAI BPVDA' => 'sai', 'Vida estudiantil' => 'vida-estudiantil', 'Ecosistema digital' => 'ecosistema-digital',
     ],
-    '05 FAMILIA Y COMUNIDAD' => [
+    '03 FAMILIA Y COMUNIDAD' => [
         'Admisiones y matrícula' => 'admisiones', 'Portal de padres' => 'portal-padres', 'Contacto y atención' => 'contacto',
+    ],
+    '04 PRIMARIA' => [
+        'Prekínder' => 'prekinder', 'Kínder' => 'kinder', 'Primaria' => 'primaria',
+    ],
+    '05 SECUNDARIA Y BACHILLERES' => [
+        'Secundaria' => 'secundaria', 'Bachilleres' => 'bachilleres',
     ],
 ];
 $position = 1;

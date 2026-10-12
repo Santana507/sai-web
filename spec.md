@@ -55,10 +55,10 @@ El objetivo es proveer una experiencia web inmersiva, accesible y de alto rendim
 * **RF-07**: **CUANDO** el usuario presione la tecla `Escape` o haga clic en cualquier enlace interno del menú, **EL SISTEMA** cerrará inmediatamente el menú y devolverá el foco al botón disparador.
 * **RF-08**: **EL SISTEMA** organizará las 16 páginas en 5 secciones verticales claramente delimitadas:
   * **01 NUESTRA ESCUELA**: ¿Quiénes somos?, Propósito BPVDA, Instalaciones, Plantel docente.
-  * **02 PREESCOLAR Y PRIMARIA**: Prekínder, Kínder, Primaria.
-  * **03 SECUNDARIA Y BACHILLERES**: Secundaria, Bachilleres.
-  * **04 ENFOQUE EDUCATIVO**: SAI BPVDA, Vida estudiantil, Ecosistema digital.
-  * **05 FAMILIA Y COMUNIDAD**: Admisiones y matrícula, Portal de padres, Contacto y atención.
+  * **02 ENFOQUE EDUCATIVO**: SAI BPVDA, Vida estudiantil, Ecosistema digital.
+  * **03 FAMILIA Y COMUNIDAD**: Admisiones y matrícula, Portal de padres, Contacto y atención.
+  * **04 PRIMARIA**: Prekínder, Kínder, Primaria.
+  * **05 SECUNDARIA Y BACHILLERES**: Secundaria, Bachilleres.
 * **RF-09**: **EL SISTEMA** incluirá en el pie del menú (`.menu-panel__foot`) los datos de contacto directo (dirección, PBX y correo) y los iconos oficiales de redes sociales (Gmail, Facebook, Instagram, WhatsApp).
 
 ### 4.3. Hero Slider de Portada (`index.html`)

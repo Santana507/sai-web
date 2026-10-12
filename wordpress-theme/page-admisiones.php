@@ -7,8 +7,6 @@ get_header(); ?>
 <main id="contenido">
     <!-- 1. HERO SECTION -->
     <header class="interior-hero">
-      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/institucional/admision-main.webp" alt="Admisiones y Matrículas Colegio Buen Pastor Voz de Alerta" decoding="async">
-      <div class="interior-hero__wash"></div>
       <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
         <span class="section-tag">03 FAMILIA Y COMUNIDAD</span>
         <h1>El primer paso hacia una educación con <mark>propósito</mark> — Matrículas 2027</h1>
@@ -389,7 +387,7 @@ get_header(); ?>
           <!-- Tarjeta 1 -->
           <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <div style="height: 220px; background-color: var(--deep); position: relative; overflow: hidden;">
-              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/institucional/admision.webp" alt="Trámites de matrícula y requisitos" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/admision.webp" alt="Trámites de matrícula y requisitos" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div style="padding: 2.2rem; flex: 1; display: flex; flex-direction: column;">
               <h4 style="color: var(--navy); margin-bottom: 1rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.75rem;">
@@ -402,7 +400,7 @@ get_header(); ?>
           <!-- Tarjeta 2 -->
           <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <div style="height: 220px; background-color: var(--navy); position: relative; overflow: hidden;">
-              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/institucional/client-atention.webp" alt="Atención y acompañamiento a familias BPVDA" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/community.webp" alt="Comunidad educativa y familia BPVDA" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div style="padding: 2.2rem; flex: 1; display: flex; flex-direction: column;">
               <h4 style="color: var(--navy); margin-bottom: 1rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.75rem;">
@@ -415,7 +413,7 @@ get_header(); ?>
           <!-- Tarjeta 3 -->
           <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <div style="height: 220px; background-color: var(--deep); position: relative; overflow: hidden;">
-              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/exterior/IMG_9376.webp" alt="Instalaciones del Colegio BPVDA" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/media/campus-entry.webp" alt="Instalaciones del Colegio BPVDA" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div style="padding: 2.2rem; flex: 1; display: flex; flex-direction: column;">
               <h4 style="color: var(--navy); margin-bottom: 1rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.75rem;">
