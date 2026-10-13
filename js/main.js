@@ -86,6 +86,15 @@
       link.addEventListener('click', function () { setMenu(false); });
     });
 
+    // Clic fuera de la tarjeta flotante del menú (backdrop): cierra el menú
+    document.addEventListener('click', function (event) {
+      if (!menuPanel.classList.contains('is-open')) return;
+      const headerBar = header ? header.querySelector('.header-bar') : null;
+      if (!menuPanel.contains(event.target) && (!headerBar || !headerBar.contains(event.target))) {
+        setMenu(false);
+      }
+    });
+
     // Control por Teclado: Escape y navegación con Tabulador (Focus Trap)
     document.addEventListener('keydown', function (event) {
       // 1. Tecla Escape: Cierre inmediato del menú
