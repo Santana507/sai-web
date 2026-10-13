@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla 06: Galería de Inmersión con Filtros — BPVDA Pruebas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="plantillas.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+</head>
+<body style="background: var(--paper); padding: 2rem 1.5rem;">
+
+  <div style="max-width: 1200px; margin: 0 auto 2rem auto; display: flex; justify-content: space-between; align-items: center;">
+    <a href="index.html" style="font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 0.5rem;">
+      ← Volver al Catálogo de Pruebas
+    </a>
+    <span style="background: var(--navy); color: #fff; padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700;">
+      PLANTILLA AISLADA 06
+    </span>
+  </div>
+
+  <main style="max-width: 1200px; margin: 0 auto;">
+    <!-- ================================================================
+         CÓDIGO DE SECCIÓN: GALERÍA DE INMERSIÓN VISUAL CON FILTROS
+         Copiar desde aquí hacia la página deseada (ej: instalaciones.html)
+         ================================================================ -->
+    <section class="explorer-section">
+      <div class="explorer-header">
+        <span class="explorer-tagline">Infraestructura y Espacios</span>
+        <h2 class="explorer-title">Espacios Diseñados para Crecer</h2>
+        <p class="explorer-desc">Explora nuestros ambientes de estudio, áreas recreativas y laboratorios. Filtra por categoría para descubrir cada rincón del colegio.</p>
+
+        <!-- Filtros de Categoría -->
+        <div class="explorer-filter-pills" role="tablist">
+          <button type="button" class="filter-btn active" data-filter="all">Todos los Espacios</button>
+          <button type="button" class="filter-btn" data-filter="academicos">Aulas y Ciencias</button>
+          <button type="button" class="filter-btn" data-filter="campus">Campus y Exteriores</button>
+          <button type="button" class="filter-btn" data-filter="convivencia">Zonas de Convivencia</button>
+        </div>
+      </div>
+
+      <div class="explorer-cards-grid">
+        <!-- Tarjeta 1: Aulas / Secundaria -->
+        <article class="explorer-card" data-category="academicos">
+          <img class="exp-img" src="../assets/fotos/secundaria/IMG_9504.webp" alt="Aulas interactivas de secundaria">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Académico</span>
+            <h4>Aulas Climatizadas y Multimedia</h4>
+            <p>Mobiliario ergonómico y pantallas interactivas que facilitan la concentración y el trabajo colaborativo.</p>
+            <a href="../instalaciones.html" class="exp-cta-btn">Conocer más detalles →</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Campus Exterior -->
+        <article class="explorer-card" data-category="campus">
+          <img class="exp-img" src="../assets/fotos/exterior/campus-main.webp" alt="Fachada y áreas principales del campus">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Campus</span>
+            <h4>Instalaciones Seguras y Cerradas</h4>
+            <p>Seguridad y control de acceso permanente para la tranquilidad de cada familia.</p>
+            <a href="../instalaciones.html" class="exp-cta-btn">Ver seguridad del plantel →</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Convivencia -->
+        <article class="explorer-card" data-category="convivencia">
+          <img class="exp-img" src="../assets/fotos/exterior/campus-restzone.webp" alt="Zonas de descanso y esparcimiento">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Convivencia</span>
+            <h4>Áreas Recreativas y Patios Verdes</h4>
+            <p>Ambientes frescos diseñados para la interacción sana, el descanso y actividades grupales al aire libre.</p>
+            <a href="../vida-estudiantil.html" class="exp-cta-btn">Vida en el campus →</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4: Laboratorio / Ciencias -->
+        <article class="explorer-card" data-category="academicos">
+          <img class="exp-img" src="../assets/fotos/secundaria/IMG_9506.webp" alt="Estudiantes en práctica de ciencias">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Académico</span>
+            <h4>Laboratorio de Ciencias Experimentales</h4>
+            <p>Instrumental completo de microscopía y reactivos seguros para la investigación científica guiada.</p>
+            <a href="../bachilleres.html" class="exp-cta-btn">Ver plan de ciencias →</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Campus Entrada -->
+        <article class="explorer-card" data-category="campus">
+          <img class="exp-img" src="../assets/fotos/exterior/campus-entry.webp" alt="Entrada y recepción del plantel">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Campus</span>
+            <h4>Pórtico de Acceso y Recepción</h4>
+            <p>Flujo vehicular y peatonal organizado con zona techada para entrada y salida de alumnos.</p>
+            <a href="../instalaciones.html" class="exp-cta-btn">Información de acceso →</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 6: Convivencia y Comunidad -->
+        <article class="explorer-card" data-category="convivencia">
+          <img class="exp-img" src="../assets/fotos/institucional/community.webp" alt="Comunidad educativa reunida">
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <span class="exp-category">Convivencia</span>
+            <h4>Eventos Comunitarios y Capilla</h4>
+            <p>Celebraciones institucionales y momentos de devocional donde compartimos en familia.</p>
+            <a href="../filosofia.html" class="exp-cta-btn">Nuestra comunidad →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="plantillas.js"></script>
+</body>
+</html>

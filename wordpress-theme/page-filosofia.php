@@ -28,7 +28,7 @@ get_header(); ?>
     <!-- Pilares Formativos: 01 Valores, 02 Misión y 03 Visión -->
     <section class="purpose-pillars">
       <article class="purpose-pillar purpose-pillar--values">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1715.JPG" alt="Estudiantes BPVDA en formación de valores">
         <div>
           <span>01</span>
           <h2>Valores</h2>
@@ -41,10 +41,10 @@ get_header(); ?>
           <h2>Misión</h2>
           <p>Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.</p>
         </div>
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1966.JPG" alt="Estudiante BPVDA">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
       </article>
       <article class="purpose-pillar purpose-pillar--vision">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1655.JPG" alt="Estudiante BPVDA">
         <div>
           <span>03</span>
           <h2>Visión</h2>

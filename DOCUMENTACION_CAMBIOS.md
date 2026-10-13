@@ -2,6 +2,80 @@
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
+## Sesión #32 — Interactividad Vocacional en Perfiles de Salida / Carreras Universitarias (`bachilleres.html`)
+- **Objetivo**: Implementar interactividad en todos los apartados de *Perfil de Salida / Carreras Universitarias* en los tres bachilleratos (Ciencias, Informática y Comercio), de modo que al presionar cualquier carrera sobresalga una mini-información explicativa sobre qué trata esa profesión y cómo prepara BPVDA al estudiante.
+- **Estructura Interactiva y Accesible (HTML / ARIA)**:
+  - Conversión de las píldoras estáticas en botones accesibles `<button type="button" class="career-pill" ... aria-expanded="false">` con atributo visual `+` (icono que rota 45° a `✕` al activarse).
+  - Incorporación de atributos de datos semánticos (`data-title`, `data-desc`, `data-bpvda`, `data-keys`) para 19 carreras universitarias oficiales.
+  - Inclusión de un contenedor desplegable animado (`.career-popout`) debajo del grupo de píldoras con encabezado, título, descripción vocacional, aporte pedagógico BPVDA, áreas curriculares clave y botón de cierre `✕`.
+- **Comportamiento en JavaScript (`js/main.js`)**:
+  - Delegación de eventos en cada contenedor `.track-careers`:
+    - Al presionar una carrera: se resalta la píldora activa con notch indicador `▼`, se inyectan los datos y se despliega la tarjeta con animación fluida.
+    - Al presionar la misma carrera activa: se alterna a estado cerrado.
+    - Al presionar el botón `✕` de la tarjeta o la tecla `Escape`: se contrae el detalle y se devuelve el foco de manera accesible.
+- **Diseño Visual y Responsividad (`css/styles.css` y `wordpress-theme/style.css`)**:
+  - Píldoras con sombra sutil, elevación hover y colores de acento por especialidad (turquesa para Ciencias, naranja para Informática, dorado para Comercio).
+  - Tarjeta desplegable con transición suave de altura basada en CSS Grid (`grid-template-rows: 0fr` a `1fr`), borde de acento izquierdo y metadatos en 2 columnas (1 columna en dispositivos móviles).
+- **Sincronización Total y Validación SDD**:
+  - Compilado en `tools/generate-pages.mjs` y exportado a `bachilleres.html`.
+  - Plantilla de WordPress actualizada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-bachilleres.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #31 — Perfeccionamiento de Bachilleres (`bachilleres.html`): Fotografía de Comercio y Rediseño Editorial del Hub Preuniversitario
+- **Objetivo**: Atender los dos requerimientos puntuales del usuario en `bachilleres.html`:
+  1. Reemplazar la fotografía de Bachillerato en Comercio (`IMG_9514.webp`) por una imagen más dinámica, nítida y atractiva.
+  2. Rediseñar completamente el bloque de llamado a la acción preuniversitario (`.bachilleres-cta-box`), eliminando la apariencia genérica, simple y de plantilla de IA para convertirlo en un módulo de admisión preuniversitaria de alto nivel editorial.
+- **Cambio Fotográfico en Bachillerato en Comercio**:
+  - Sustitución de `IMG_9514.webp` (estudiantes mirando hacia abajo con fondo de baldosas que lucía estático) por `IMG_9531.webp`: fotografía de alta resolución y dinamismo de estudiantes de secundaria en clase activa con computadoras portátiles, tabletas digitales y material didáctico colaborativo.
+  - Actualización del badge a *"Gestión Empresarial, Finanzas & Proyectos"*.
+- **Rediseño Editorial del Hub Preuniversitario (`.preuni-admissions-hub`)**:
+  - Se eliminó el contenedor simple y centrado de IA (`.bachilleres-cta-box`) y se sustituyó por una arquitectura asimétrica dividida en dos columnas (*Split Pre-University Admissions Hub*):
+    - **Cabecera Editorial**: Título editorial de prestigio (*"Tu Proyección Universitaria Comienza con una Base Sólida"*) con apertura limpia sin etiquetas flotantes redundantes.
+    - **Columna Izquierda (Garantías Formativas)**: 3 pilares académicos tangibles con iconografía SVG nítida:
+      1. *Articulación Directa con Admisiones (UTP · UP · USMA)*: Refuerzo en cálculo, ciencias, redacción y lógica analítica.
+      2. *Prácticas Reales en Laboratorios y Software*: Experimentación práctica, desarrollo de software, robótica y contabilidad computarizada.
+      3. *Orientación Vocacional y Acompañamiento Personalizado*: Diagnóstico de aptitudes para afianzar la elección vocacional.
+      - Acciones de doble nivel: botón primario *"Iniciar Proceso de Admisión →"* y botón secundario *"Consultar con Secretaría Académica"*.
+    - **Columna Derecha (Tarjeta Flotante de Ruta y Atención Inmediata)**: Tarjeta ejecutiva con fondo `--deep` y gradiente de contraste:
+      - *Ruta en 3 Pasos*: 01. Revisión de Requisitos y Créditos, 02. Diagnóstico Académico y Entrevista, 03. Matrícula y Asignación de Especialidad.
+      - *Canales Directos*: Acceso inmediato con clic directo al PBX telefónico `(507) 391-5811`, correo oficial `info@buenpastor-vda.net`, y horario de atención presencial de la sede en 24 de Diciembre.
+- **Refinamiento de la Cita de Graduando (`.student-voice`)**:
+  - Reestructurado el contenedor de la cita con comillas decorativas sutiles, tipografía cursiva equilibrada y firma institucional jerarquizada para enlazar armoniosamente con el Hub de Admisiones.
+- **Sincronización Total y Validación SDD**:
+  - Código fuente unificado en `tools/generate-pages.mjs` y regenerado con `node tools/generate-pages.mjs`.
+  - Estilos CSS incorporados y responsivos en `css/styles.css` y espejados en `wordpress-theme/style.css`.
+  - Tema de WordPress recompilado con `tools/build-wp-pages.ps1` (`wordpress-theme/page-bachilleres.php`).
+  - Verificación estricta con `node tools/verify-integrity.mjs`: **0 enlaces rotos y 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #30 — Rediseño de Secundaria (`secundaria.html`): Nuevo Hero y Bento Grid Editorial
+- **Objetivo**: Atender la solicitud del usuario en la sección de Secundaria (`secundaria.html`): cambiar la imagen de fondo del Hero que se cortaba incómodamente (`IMG_9504.webp`), eliminar las tarjetas repetitivas (`.content-cards` y `.carousel-v3`), y presentar una alternativa de diseño asimétrica, fresca y moderna para que el usuario decida si mantenerla o retirarla.
+- **Cambio de Imagen de Hero**:
+  - Reemplazo de `IMG_9504.webp` (estudiante agachado recortado por el encuadre) por `IMG_9528.webp` (4 estudiantes de secundaria con uniforme y carpetas en pasillo iluminado por luz natural, sonriendo, con encuadre amplio).
+  - Regla CSS `.interior-hero--secundaria img { object-position: center 25%; }` para garantizar que los rostros y cuerpos de los estudiantes permanezcan perfectamente visibles y centrados en desktop, tablet y móviles sin cortes indeseados.
+- **Eliminación de Elementos Repetitivos**:
+  - Removido el bloque `.content-cards` (3 tarjetas azul marino genéricas).
+  - Removido el carrusel `.carousel-v3` (6 tarjetas idénticas con la misma etiqueta BPVDA).
+- **Implementación de Alternativa Dinámica: Bento Grid Asimétrico (`.bento-section`)**:
+  - **Tarjeta Hero Principal (7 columnas)**: Destaca el aula interactiva de secundaria con fotografía real `IMG_9530.webp` (clase activa con docente y proyecto experimental de física), badge "Campus Activo" con punto pulsante turquesa, titular de aulas equipadas y botón de acción hacia Bachilleres.
+  - **Tarjeta Métrica Destacada (5 columnas)**: Fondo azul corporativo (`var(--deep)`), indicador `100%`, y lista de verificación con iconos SVG (admisión universitaria, robótica educativa, apoyo psicopedagógico).
+  - **3 Microtarjetas Inferiores (4 columnas c/u)**:
+    1. *Ecosistema SAI*: Icono de plataforma, descripción y etiquetas tipo píldora (Calificaciones, Horarios, Comunicación).
+    2. *Valores y Convivencia*: Icono naranja de libro/principios, formación bíblica y enlace directo a Filosofía Institucional.
+    3. *Ciencia y Robótica*: Icono de matraz/laboratorio, enfoque en proyectos STEM y feria anual.
+- **Cita Estudiantil Realista**:
+  - Reemplazado el texto genérico de guía en `.student-voice` por una cita contextualizada de un estudiante de secundaria BPVDA.
+- **Sincronización de Plantillas y WordPress**:
+  - `tools/generate-pages.mjs`: Desacoplada `secundaria.html` del bucle genérico y dotada de su propio generador modular para evitar sobreescritura accidental.
+  - `css/styles.css` y `wordpress-theme/style.css`: Incorporados los estilos y media queries del Bento Grid y el encuadre del Hero.
+  - Sincronizado `wordpress-theme/page-secundaria.php` mediante `tools/build-wp-pages.ps1`.
+  - Verificación `node tools/verify-integrity.mjs`: 0 enlaces rotos, 0 recursos multimedia faltantes.
+
+---
+
 ## Sesión #29 — Rediseño Minimalista y Editorial de la Sección Primaria (`primaria.html`)
 - **Objetivo**: Corregir la repetición de fotografías burst (`IMG_9538.webp` y `IMG_9540.webp`), eliminar el hueco en blanco asimétrico en la cuadrícula y renovar el diseño con una estética minimalista, armónica, natural y sin tono genérico de IA.
 - **Cambios Estructurales en HTML y Plantillas (`tools/generate-pages.mjs` y `primaria.html`)**:
@@ -881,6 +955,70 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 
 ### Verificación
 - `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
+---
+
+## Creación y Rediseño Integral de la Sección de Bachilleres (2026-10-12)
+
+### Solicitud del Usuario
+- Diseñar y desarrollar la sección de **Bachilleres** (`bachilleres.html`), destacando de forma integral, atractiva y no repetitiva las tres especialidades oficiales que ofrece el colegio:
+  1. **Bachillerato en Ciencias**
+  2. **Bachillerato en Informática**
+  3. **Bachillerato en Comercio**
+- Que la sección sea lo mejor posible, dinámica, visualmente llamativa y mantenga la coherencia fotográfica institucional.
+
+### Diagnóstico Previo
+- La página `bachilleres.html` poseía un contenido provisional generado con el generador genérico de niveles que contenía la etiqueta errónea `04 PRIMARIA` y un texto de marcador de posición (*"Aquí se incorporará el contenido institucional de Bachilleres"*).
+- No existía un desglose específico con la identidad pedagógica, competencias técnicas, laboratorios y perfiles de egreso para las tres modalidades de bachillerato.
+
+### Soluciones Aplicadas
+1. **Hero Interior de Educación Media**:
+   - Fotografía real de alta resolución: `assets/fotos/secundaria/IMG_9582.webp` (aula de secundaria en sesión interactiva participativa con pantalla digital).
+   - Tipografía institucional: `04 NIVELES ACADÉMICOS · EDUCACIÓN MEDIA`, titular destacado *"Tu vocación forjada con <mark>excelencia y propósito</mark>."* y botones de acción rápida (*Explorar Especialidades ↓* y *Proceso de Admisión →*).
+2. **Barra de Navegación Rápida de Especialidades (`.tracks-nav-bar`)**:
+   - Selector visual interactivo con micro-tarjetas numeradas (01 Ciencias, 02 Informática, 03 Comercio) con enlaces directos (`#ciencias`, `#informatica`, `#comercio`) para exploración inmediata.
+3. **Presentación Editorial Preuniversitaria (`.split-feature`)**:
+   - Fotografía contextual de educación media: `assets/fotos/secundaria/IMG_9550.webp` (estudiantes en aula tecnológica con computadoras portátiles y pantalla inteligente).
+   - Franja de métricas clave (`.preuni-stats-strip`): `100% Articulación Universitaria`, `3 Bachilleratos Oficiales`, `MEDUCA Planes Certificados`.
+4. **Showcase Tridimensional de Especialidades (Diseño No Repetitivo)**:
+   - **01. Bachillerato en Ciencias**:
+     - Fotografía: `assets/fotos/secundaria/IMG_9574.webp` (estudiante resolviendo álgebra lineal y matrices en pizarra inteligente).
+     - Insignia: `Laboratorio de Matemáticas & STEM`.
+     - Tag: `CIENCIAS EXACTAS Y DE LA SALUD · STEM`.
+     - Competencias: Química y Biología Experimental, Cálculo y Álgebra Superior, Física Aplicada y Bioética.
+     - Carreras de salida: Medicina & Cirugía, Ingeniería Civil, Biotecnología, Electromecánica, Odontología, Arquitectura, Farmacia.
+   - **02. Bachillerato en Informática**:
+     - Disposición inversa asimétrica (`.track-showcase--reverse`) para quebrar la monotonía visual.
+     - Fotografía: `assets/fotos/secundaria/robotics-2.webp` (estudiantes en taller de robótica con multímetro, circuitos y programación en laptop).
+     - Insignia: `Robótica Educativa, Circuitos & Software`.
+     - Tag: `TECNOLOGÍA, SOFTWARE E INNOVACIÓN · EDUTECH`.
+     - Competencias: Programación y Código, Robótica y Mecatrónica, Redes y Conectividad LAN, Ciberseguridad y Ética Digital.
+     - Carreras de salida: Ingeniería de Software, Ciencias de la Computación, Ciberseguridad, Robótica & Automatización, Telecomunicaciones, IA.
+   - **03. Bachillerato en Comercio**:
+     - Fotografía: `assets/fotos/secundaria/IMG_9514.webp` (estudiantes en sesión colaborativa de análisis empresarial y proyectos comerciales).
+     - Insignia: `Gestión Empresarial & Contabilidad`.
+     - Tag: `GESTIÓN EMPRESARIAL, FINANZAS Y LIDERAZGO`.
+     - Competencias: Contabilidad Financiera y Bancaria, Gestión de Empresas, Legislación Mercantil/Tributaria, Formulación de Planes de Negocio.
+     - Carreras de salida: Banca y Finanzas, Contaduría Pública Autorizada (CPA), Administración de Empresas, Comercio Internacional, Mercadeo & Logística, Economía.
+5. **Ecosistema Preuniversitario BPVDA (`.preuni-section`)**:
+   - Bloque Bento en fondo oscuro de alto contraste (`var(--deep)`) con 4 pilares:
+     - 01. Simulacros y Admisión Universitaria (UP, UTP, universidades privadas).
+     - 02. Aulas Digitales y Laboratorios equipados.
+     - 03. Orientación Vocacional Personalizada (acompañamiento psicopedagógico en 10°, 11° y 12°).
+     - 04. Liderazgo Ético y Carácter Cristiano.
+6. **Voz de la Comunidad / Graduando (`.student-voice`)**:
+   - Cita testimonial destacando el acompañamiento docente y la preparación integral con Dios como fundamento.
+7. **Bloque de Conversión y Admisión Media (`.bachilleres-cta-box`)**:
+   - Banner con gradiente institucional, llamado claro a la acción y enlaces directos a [admisiones.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/admisiones.html) y [contacto.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/contacto.html).
+8. **Sincronización Total con el Ecosistema y WordPress**:
+   - Plantilla modular actualizada en [tools/generate-pages.mjs](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/tools/generate-pages.mjs).
+   - Estilos CSS idénticos agregados a [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) y [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Recompiladas todas las páginas del sitio estático con `node tools/generate-pages.mjs`.
+   - Generada la plantilla para WordPress [wordpress-theme/page-bachilleres.php](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/page-bachilleres.php) mediante `tools/build-wp-pages.ps1`.
+
+### Verificación
+- `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
+
 
 
 

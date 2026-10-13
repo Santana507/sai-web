@@ -488,6 +488,92 @@
     });
   }
 
+  /* ----------------------------------------------------------------------------
+   * 12. PERFILES DE SALIDA / CARRERAS UNIVERSITARIAS (bachilleres.html)
+   * ----------------------------------------------------------------------------
+   * Muestra u oculta la mini-información de cada carrera al presionar su píldora.
+   * Totalmente accesible con ARIA (aria-expanded y aria-hidden) y teclado (Esc).
+   */
+  const careerContainers = document.querySelectorAll('.track-careers');
+  careerContainers.forEach(function (container) {
+    const pills = container.querySelectorAll('.career-pill');
+    const popout = container.querySelector('.career-popout');
+    if (!popout || pills.length === 0) return;
+
+    const titleEl = popout.querySelector('.career-popout__title');
+    const descEl = popout.querySelector('.career-popout__desc');
+    const bpvdaEl = popout.querySelector('.career-popout__bpvda');
+    const keysEl = popout.querySelector('.career-popout__keys-list');
+    const closeBtn = popout.querySelector('.career-popout__close');
+
+    function closePopout() {
+      pills.forEach(function (p) {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-expanded', 'false');
+      });
+      popout.classList.remove('is-open');
+      popout.setAttribute('aria-hidden', 'true');
+    }
+
+    function openPopout(pill) {
+      const isAlreadyActive = pill.classList.contains('is-active');
+
+      if (isAlreadyActive) {
+        closePopout();
+        return;
+      }
+
+      // Desactivar píldoras previas en este contenedor
+      pills.forEach(function (p) {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-expanded', 'false');
+      });
+
+      // Activar píldora actual
+      pill.classList.add('is-active');
+      pill.setAttribute('aria-expanded', 'true');
+
+      // Inyectar datos en la tarjeta
+      if (titleEl) titleEl.textContent = pill.getAttribute('data-title') || '';
+      if (descEl) descEl.textContent = pill.getAttribute('data-desc') || '';
+      if (bpvdaEl) bpvdaEl.textContent = pill.getAttribute('data-bpvda') || '';
+      if (keysEl) keysEl.textContent = pill.getAttribute('data-keys') || '';
+
+      popout.classList.add('is-open');
+      popout.setAttribute('aria-hidden', 'false');
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        openPopout(pill);
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        closePopout();
+      });
+    }
+  });
+
+  // Cierre global con la tecla Escape si hay algún popout abierto
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const openPopouts = document.querySelectorAll('.career-popout.is-open');
+      openPopouts.forEach(function (popout) {
+        const container = popout.closest('.track-careers');
+        if (container) {
+          container.querySelectorAll('.career-pill').forEach(function (p) {
+            p.classList.remove('is-active');
+            p.setAttribute('aria-expanded', 'false');
+          });
+          popout.classList.remove('is-open');
+          popout.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  });
+
 }());
 
 

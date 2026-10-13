@@ -7,7 +7,7 @@ get_header(); ?>
 <main id="contenido">
     <!-- Hero Específico del Nivel con Imagen de Fondo y Llamado a la Acción -->
     <section class="level-hero">
-      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/levels/primaria/IMG_9484.webp" alt="Estudiantes BPVDA">
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/primaria-preescolar/IMG_9494.webp" alt="Estudiantes BPVDA">
       <div>
         <span>04 PRIMARIA</span>
         <h1>Aprender para comprender y <mark>transformar</mark>.</h1>
