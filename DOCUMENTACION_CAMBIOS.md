@@ -2,6 +2,42 @@
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
+## Sesión #34 — Restauración de Canales Directos de Contacto y Coordenadas Exactas de Google Maps (`contacto.html`)
+- **Objetivo**: Recuperar la versión definitiva de la sección de contacto y mapa en `contacto.html`, luego de que un commit de colaborador (`81b1930`) revirtiera las tarjetas interactivas de contacto y sustituyera el mapa de coordenadas exactas por una búsqueda genérica de calle.
+- **Cambios Restaurados**:
+  1. **Google Maps con Coordenadas Geográficas Exactas**:
+     - Restaurado el `iframe` con las coordenadas precisas del colegio: `https://www.google.com/maps?q=9.106901321318759,-79.36663973009655&hl=es&z=17&output=embed`, garantizando que el pin rojo señale exactamente las instalaciones en 24 de Diciembre.
+  2. **Tarjetas Interactivas de Contacto Directo (`.contact-direct__card`)**:
+     - **Secretaría**: Enlace `tel:+5073915811`, ícono SVG de teléfono, tag turquesa, valor `391-5811`, subtítulo *"Atención telefónica regular"* y flecha de acción `↗`.
+     - **WhatsApp**: Enlace directo `https://wa.me/50767441351`, estilo de acento verde WhatsApp (`.contact-direct__card--wa`), ícono SVG de mensaje, tag, valor `6744-1351`, subtítulo *"Consultas directas"* y flecha `↗`.
+     - **Correo**: Enlace `mailto:info@buenpastor-vda.net`, ícono SVG de correo, tag, valor `info@buenpastor-vda.net`, subtítulo *"Trámites y consultas"* y flecha `↗`.
+  3. **Estilos y Centrado Simétrico**:
+     - Restauradas en `css/styles.css` y `wordpress-theme/style.css` las reglas de `.contact-direct`, `.contact-direct.section-pad`, `.contact-direct__card`, `.contact-direct__icon`, `.contact-direct__tag`, `.contact-direct__value`, `.contact-direct__sub`, `.contact-direct__arrow` y modificadores hover.
+     - Ajustado el padding de `.carousel-v3` (`padding-bottom: clamp(28px, 3vw, 36px)`) para lograr simetría vertical (`~64px` arriba y abajo de las tarjetas).
+  4. **Sincronización Total del Ecosistema**:
+     - Actualizados `contacto.html`, `tools/generate-pages.mjs` y `wordpress-theme/page-contacto.php`.
+- **Verificación**: `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #33 — Adaptación y Ajuste de Imagen en Sección de Contacto (`index.html`)
+- **Objetivo**: Corregir el espacio vacío inferior debajo de la fotografía de entrada/campus en la sección de Contacto (*"El siguiente paso / Ven a conocer nuestra comunidad"*), adaptando la imagen para que llene el 100% de la altura de la columna y elimine completamente el espacio naranja residual.
+- **Causa Raíz Identificada**:
+  - La sección `.contact` es un grid de 2 columnas (`.9fr 1.1fr`) con fondo naranja institucional (`--orange`).
+  - La columna de texto derecha (`.contact-copy`) es dinámica y de mayor altura (~750px–850px) debido al título tipográfico grande (`clamp(46px, 5.4vw, 76px)`), espaciados y botones de acción.
+  - La imagen izquierda (`.contact-photo img`) tenía una altura fija hardcoded de `height: 620px;`, dejando un espacio vacío de más de 120px–180px debajo de la foto que revelaba el fondo naranja del contenedor.
+- **Solución Implementada**:
+  - En `.contact`: fijado `min-height: 620px` y `align-items: stretch` para asegurar un balance vertical mínimo y estiramiento parejo de ambas columnas.
+  - En `.contact-photo`: configurado con `position: relative`, `height: 100%`, `min-height: 100%` y `overflow: hidden`.
+  - En `.contact-photo img` (y `.contact-photo figure img` para bloques Gutenberg de WordPress): posicionado de forma absoluta (`position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;`). De esta manera, la imagen llena con precisión milimétrica el 100% del alto y ancho disponible sin forzar el cálculo de pistas de Grid ni dejar ningún espacio inferior.
+  - En `.contact-copy h2`: añadido `hyphens: none` para evitar cortes de guiones antiestéticos como *"cono-cer"*.
+  - En dispositivos móviles (`@media (max-width: 700px)`): reseteado `min-height: auto` en la sección y fijada la foto en `height: 340px; position: relative` con `object-fit: cover` para una presentación apilada nítida y equilibrada.
+- **Sincronización Total y Validación SDD**:
+  - Modificado `css/styles.css` y espejado en `wordpress-theme/style.css`.
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
 ## Sesión #32 — Interactividad Vocacional en Perfiles de Salida / Carreras Universitarias (`bachilleres.html`)
 - **Objetivo**: Implementar interactividad en todos los apartados de *Perfil de Salida / Carreras Universitarias* en los tres bachilleratos (Ciencias, Informática y Comercio), de modo que al presionar cualquier carrera sobresalga una mini-información explicativa sobre qué trata esa profesión y cómo prepara BPVDA al estudiante.
 - **Estructura Interactiva y Accesible (HTML / ARIA)**:
