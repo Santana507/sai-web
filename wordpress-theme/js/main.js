@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ==============================================================================
  * BPVDA — JavaScript Institucional Modular (Vanilla JS)
  * ==============================================================================
@@ -64,6 +64,16 @@
     menuPanel.classList.toggle('is-open', open);
     menuPanel.setAttribute('aria-hidden', String(!open));
     document.body.classList.toggle('menu-is-open', open);
+
+    // Cerrar menú desplegable de desarrollador si estuviera abierto
+    const devMenuContainer = document.getElementById('devMenuContainer');
+    const devMenuBtn = document.getElementById('devMenuBtn');
+    const devMenuDropdown = document.getElementById('devMenuDropdown');
+    if (devMenuContainer && devMenuContainer.classList.contains('is-open')) {
+      devMenuContainer.classList.remove('is-open');
+      if (devMenuBtn) devMenuBtn.setAttribute('aria-expanded', 'false');
+      if (devMenuDropdown) devMenuDropdown.setAttribute('aria-hidden', 'true');
+    }
     
     // Gestión del Foco accesible (Focus Trap)
     if (open) {
@@ -84,6 +94,15 @@
     // Clic en cualquier enlace interno dentro del menú: cierra automáticamente el panel
     menuPanel.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () { setMenu(false); });
+    });
+
+    // Clic fuera de la tarjeta flotante del menú (backdrop): cierra el menú
+    document.addEventListener('click', function (event) {
+      if (!menuPanel.classList.contains('is-open')) return;
+      const headerBar = header ? header.querySelector('.header-bar') : null;
+      if (!menuPanel.contains(event.target) && (!headerBar || !headerBar.contains(event.target))) {
+        setMenu(false);
+      }
     });
 
     // Control por Teclado: Escape y navegación con Tabulador (Focus Trap)
@@ -430,11 +449,15 @@
    * Instagram, WhatsApp) asegurando perfecta coherencia gráfica entre el
    * pie de página institucional y el panel de navegación modal.
    */
-    const socialMarkup = [
+  const brandLogo = document.querySelector('.brand-logo-img');
+  const brandSrc = brandLogo ? (brandLogo.getAttribute('src') || '') : '';
+  const assetsIdx = brandSrc.indexOf('assets/');
+  const assetsPrefix = assetsIdx !== -1 ? brandSrc.slice(0, assetsIdx) : '';
+  const socialMarkup = [
     '<a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@buenpastor-vda.net" target="_blank" rel="noopener noreferrer" aria-label="Correo electrónico" class="social-link"><svg viewBox="0 0 512 512" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></a>',
     '<a href="https://www.facebook.com/people/Escuela-Buen-Pastor-Voz-De-Alerta/100045208036432/?locale=de_DE" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link"><svg viewBox="0 0 320 512" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>',
     '<a href="https://www.instagram.com/bpvda/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="none" style="width:20px; height:20px; display:block;"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M7 2C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2H7ZM12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7ZM9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12ZM17 8C17.5523 8 18 7.55228 18 7C18 6.44772 17.5523 6 17 6C16.4477 6 16 6.44772 16 7C16 7.55228 16.4477 8 17 8Z"/></svg></a>',
-    '<a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link"><img src="assets/icons/whatsapp-icon.png" alt=""></a>'
+    '<a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link"><img src="' + assetsPrefix + 'assets/icons/whatsapp-icon.png" alt=""></a>'
   ].join('');
 
   // Inyección en los contenedores del pie de página
@@ -453,5 +476,39 @@
     }
   });
 
-}());
+  /* ----------------------------------------------------------------------------
+   * 11. MENÚ TEMPORAL DE DESARROLLADOR (Comparador de Plantillas)
+   * ----------------------------------------------------------------------------
+   * Control de apertura y cierre accesible para el menú comparador de plantillas.
+   */
+  const devContainer = document.getElementById('devMenuContainer');
+  const devBtn = document.getElementById('devMenuBtn');
+  const devDropdown = document.getElementById('devMenuDropdown');
 
+  if (devContainer && devBtn && devDropdown) {
+    devBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = devContainer.classList.toggle('is-open');
+      devBtn.setAttribute('aria-expanded', String(isOpen));
+      devDropdown.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!devContainer.contains(e.target)) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && devContainer.classList.contains('is-open')) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+        devBtn.focus();
+      }
+    });
+  }
+
+}());

@@ -209,6 +209,7 @@ em {
 
 .essential-nav {
   display: flex;
+  align-items: center;
   gap: clamp(18px, 2.4vw, 36px);
   font-size: 14px;
   font-weight: 600;
@@ -2568,7 +2569,13 @@ footer {
   }
 
   .essential-nav {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .essential-nav > a {
+    display: none !important;
   }
 
   .menu-panel {
@@ -5195,7 +5202,8 @@ select.form-control {
 
 /* Aislar el layout y renderizado de secciones principales para evitar repintados globales */
 .site-header {
-  contain: layout;
+  /* Evitar contain: layout porque atrapa hijos position: fixed (#menu-principal) dentro de los 78px del header */
+  contain: none;
 }
 
 .hero {
@@ -5230,11 +5238,205 @@ img, video {
 }
 
 
-/* ====
-   03. NAVEGACIÓN (REDESIGN: "Encuentra tu camino")
-   Overrides para la cuadrícula del menú modal y microinteracciones
-   ==== */
+/* ==========================================================================
+   03. NAVEGACIÓN MODAL FLOTANTE (BENTO 2x2 — "Encuentra tu camino")
+   Tarjeta flotante con resplandor ambiental, logo oficial visible, cuadrícula
+   Bento 2x2 enmarcada y pie de contacto + redes sociales.
+   ========================================================================== */
 
+/* Fondo translúcido detrás de la tarjeta flotante del menú */
+body.menu-is-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(2, 10, 20, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+/* Cabecera superior integrada dentro de la tarjeta flotante cuando el menú está abierto */
+body.menu-is-open .site-header,
+body.menu-is-open .site-header.is-scrolled,
+body.menu-is-open .site-header.is-scrolled-free {
+  pointer-events: auto !important;
+  contain: none !important;
+  padding: 0 !important;
+}
+
+body.menu-is-open .site-header .header-bar,
+body.menu-is-open .site-header.is-scrolled .header-bar,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
+  width: calc(100vw - 36px) !important;
+  max-width: 1320px !important;
+  height: 74px !important;
+  margin: 14px auto 0 !important;
+  padding: 0 clamp(24px, 3.8vw, 48px) !important;
+  background: rgba(5, 19, 34, 0.92) !important;
+  border-radius: 20px 20px 0 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.14) !important;
+  box-shadow: none !important;
+  pointer-events: auto !important;
+}
+
+/* Mantener visible el logo oficial BPVDA y la navegación superior al abrir el menú */
+body.menu-is-open .site-header .brand,
+body.menu-is-open .site-header.is-scrolled-free .brand {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.menu-is-open .site-header .brand-logo-img,
+body.menu-is-open .site-header.is-scrolled .brand-logo-img {
+  height: 52px !important;
+}
+
+body.menu-is-open .site-header .essential-nav,
+body.menu-is-open .site-header.is-scrolled .essential-nav,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .essential-nav,
+.site-header.is-scrolled.is-scrolled-free:has(.dev-menu-container.is-open) .essential-nav {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+body.menu-is-open .site-header .menu-button,
+body.menu-is-open .site-header.is-scrolled .menu-button,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+body.menu-is-open .site-header .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tarjeta Modal Flotante (No cubre toda la pantalla) */
+#menu-principal.menu-panel {
+  position: fixed !important;
+  z-index: 31 !important;
+  top: 14px !important;
+  bottom: 18px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: calc(100vw - 36px) !important;
+  max-width: 1320px !important;
+  height: calc(100vh - 32px) !important;
+  height: calc(100dvh - 32px) !important;
+  max-height: calc(100dvh - 32px) !important;
+  margin: 0 auto !important;
+  padding: clamp(78px, 8.8vh, 86px) clamp(24px, 3.8vw, 48px) clamp(12px, 1.8vh, 18px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background-color: #051322 !important;
+  background-image:
+    radial-gradient(ellipse 80% 80% at 50% -20%, rgba(14, 116, 144, 0.28), rgba(5, 19, 34, 0)),
+    radial-gradient(circle at 50% 25%, rgba(0, 150, 255, 0.09) 0%, rgba(5, 19, 34, 0) 70%),
+    radial-gradient(circle at 85% 80%, rgba(10, 40, 80, 0.22) 0%, rgba(5, 19, 34, 0) 60%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(34, 211, 238, 0.08) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.3) transparent;
+}
+
+#menu-principal .menu-panel__main {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: clamp(8px, 1.6vh, 20px) !important;
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: auto !important;
+  flex: 1 0 auto !important;
+}
+
+/* Cabecera Editorial del Menú ("Encuentra tu camino.") */
+#menu-principal .menu-panel__title {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  align-self: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  padding-bottom: clamp(6px, 1.3vh, 16px) !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.15) !important;
+}
+
+#menu-principal .menu-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+#menu-principal .menu-eyebrow span {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  color: #22d3ee !important;
+  text-transform: uppercase !important;
+}
+
+#menu-principal .menu-eyebrow__line {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: #22d3ee;
+  border-radius: 2px;
+}
+
+#menu-principal .menu-panel__title h2 {
+  font-size: clamp(24px, 3.8vh, 46px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.06 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+#menu-principal .menu-title-accent {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(90deg, #f97316, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 2px;
+}
+
+#menu-principal .menu-panel__title p {
+  font-size: clamp(12px, 1.5vh, 15px) !important;
+  color: #cbd5e1 !important;
+  font-weight: 300 !important;
+  margin: 4px auto 0 !important;
+  max-width: 580px !important;
+  line-height: 1.38 !important;
+}
+
+#menu-principal .menu-subtitle-accent {
+  color: #fb923c;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Cuadrícula Bento 2x2 Enmarcada */
 #menu-principal .menu-nav {
   display: block;
   width: 100%;
@@ -5242,33 +5444,68 @@ img, video {
 
 #menu-principal .menu-panel__groups {
   display: grid !important;
-  gap: 32px !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  align-content: center;
-  background: transparent !important;
-  overflow: visible !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  gap: 0 !important;
+  height: auto !important;
+  background: rgba(7, 25, 45, 0.72) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28) !important;
+  overflow: hidden !important;
 }
 
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
+  padding: clamp(9px, 1.6vh, 22px) clamp(20px, 2.4vw, 30px) !important;
   background: transparent !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+#menu-principal .menu-group:nth-child(1) {
+  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+}
+
+#menu-principal .menu-group:nth-child(2) {
+  border-right: none !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+}
+
+#menu-principal .menu-group:nth-child(3) {
+  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
+  border-bottom: none !important;
+}
+
+#menu-principal .menu-group:nth-child(4) {
   border: none !important;
-  padding: 0 !important;
 }
 
 #menu-principal .menu-group-title {
-  display: block !important;
-  margin-bottom: 20px !important;
-  padding-left: 14px !important;
-  color: var(--turquoise) !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  letter-spacing: .18em !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 0 clamp(3px, 0.7vh, 10px) 0 !important;
+  padding: 0 0 clamp(4px, 0.7vh, 9px) 0 !important;
+  color: #22d3ee !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
-  border-bottom: 1px solid rgba(255, 107, 44, 0.4) !important;
-  padding-bottom: 10px !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.2) !important;
   min-height: 0 !important;
+}
+
+#menu-principal .menu-group-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22d3ee;
+  flex-shrink: 0;
 }
 
 #menu-principal .menu-list {
@@ -5277,7 +5514,7 @@ img, video {
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 0 !important;
 }
 
 #menu-principal .menu-link {
@@ -5285,108 +5522,200 @@ img, video {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: 12px 14px !important;
-  border-radius: 8px !important;
-  color: #f8f9fa !important;
+  padding: clamp(4px, 0.75vh, 9px) 2px !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.1) !important;
+  color: #e2e8f0 !important;
   text-decoration: none !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
+  font-weight: 600 !important;
+  font-size: clamp(13px, 1.65vh, 16px) !important;
+  line-height: 1.22 !important;
   background: transparent !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  border: none !important;
+  transition: color 0.2s ease, border-color 0.2s ease !important;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
 }
 
 #menu-principal.menu-panel.is-open .menu-link {
-  animation: menuLinkIn .4s cubic-bezier(.22, 1, .36, 1) forwards;
+  animation: menuLinkIn .38s cubic-bezier(.22, 1, .36, 1) forwards;
 }
 
-/* Stagger animation */
-#menu-principal .menu-group:nth-child(1) .menu-link { animation-delay: .05s; }
-#menu-principal .menu-group:nth-child(2) .menu-link { animation-delay: .1s; }
-#menu-principal .menu-group:nth-child(3) .menu-link { animation-delay: .15s; }
-#menu-principal .menu-group:nth-child(4) .menu-link { animation-delay: .2s; }
-#menu-principal .menu-group:nth-child(5) .menu-link { animation-delay: .25s; }
+/* Stagger animation por cuadrante */
+#menu-principal .menu-group:nth-child(1) .menu-link { animation-delay: .04s; }
+#menu-principal .menu-group:nth-child(2) .menu-link { animation-delay: .08s; }
+#menu-principal .menu-group:nth-child(3) .menu-link { animation-delay: .12s; }
+#menu-principal .menu-group:nth-child(4) .menu-link { animation-delay: .16s; }
 
 #menu-principal .menu-link span {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: color 0.2s ease !important;
 }
 
 #menu-principal .menu-chevron {
   font-family: var(--font-sans) !important;
   font-style: normal !important;
   font-weight: 600 !important;
-  font-size: 14px !important;
-  opacity: 0.5 !important;
-  transform: translateX(-4px) !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  color: inherit;
+  font-size: 15px !important;
+  color: rgba(34, 211, 238, 0.6) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
 }
 
-/* Hover / Focus Effects */
 #menu-principal .menu-link:hover,
 #menu-principal .menu-link:focus-visible {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  border-bottom-color: rgba(34, 211, 238, 0.28) !important;
   outline: none !important;
 }
 
 #menu-principal .menu-link:hover span,
 #menu-principal .menu-link:focus-visible span {
-  transform: translateX(4px) !important;
-  color: #fff !important;
+  transform: none !important;
+  color: #ffffff !important;
 }
 
 #menu-principal .menu-link:hover .menu-chevron,
 #menu-principal .menu-link:focus-visible .menu-chevron {
-  opacity: 1 !important;
-  color: var(--orange) !important;
-  transform: translateX(4px) !important;
+  color: #00e5ff !important;
+  transform: translate(3px, -3px) !important;
 }
 
-/* Cancelar efectos legacy (after lines) */
 #menu-principal .menu-link::after {
   display: none !important;
 }
 
-/* Responsive Overrides */
-@media (max-width: 980px) {
-  #menu-principal .menu-panel__groups {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 32px 28px !important;
-  }
+/* Pie del Menú (Contacto + Redes Sociales) */
+#menu-principal .menu-panel__foot {
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: clamp(8px, 1.4vh, 18px) auto 0 !important;
+  padding: clamp(8px, 1.3vh, 16px) 0 0 !important;
+  min-height: 0 !important;
+  border-top: 1px solid rgba(34, 211, 238, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  background: transparent !important;
 }
 
+#menu-principal .menu-panel__contact {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px 14px !important;
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  white-space: normal !important;
+}
+
+#menu-principal .menu-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#menu-principal a.menu-contact-item:hover {
+  color: #67e8f9;
+}
+
+#menu-principal .menu-contact-icon {
+  width: 14px;
+  height: 14px;
+  color: #22d3ee;
+  flex-shrink: 0;
+}
+
+#menu-principal .menu-contact-sep {
+  color: rgba(6, 182, 212, 0.4);
+}
+
+#menu-principal .menu-panel__socials {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-left: auto !important;
+}
+
+#menu-principal .menu-social-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(8, 51, 68, 0.7);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#menu-principal .menu-social-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+#menu-principal .menu-social-btn:hover {
+  color: #ffffff;
+  border-color: #00e5ff;
+  background: rgba(0, 229, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Adaptación Responsiva (Tablet y Móvil) */
 @media (max-width: 768px) {
-  #menu-principal .menu-panel__groups {
-    grid-template-columns: repeat(2, 1fr) !important;
+  body.menu-is-open .site-header .header-bar,
+  body.menu-is-open .site-header.is-scrolled .header-bar,
+  body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
+    width: calc(100vw - 20px) !important;
+    margin: 10px auto 0 !important;
+    height: 66px !important;
+    padding: 0 18px !important;
+    border-radius: 16px 16px 0 0 !important;
   }
-  #menu-principal {
-    padding: 40px 24px !important;
-  }
-}
 
-@media (max-width: 639px) {
-  #menu-principal {
-    padding: 30px 16px !important;
+  #menu-principal.menu-panel {
+    top: 10px !important;
+    bottom: 12px !important;
+    width: calc(100vw - 20px) !important;
+    height: calc(100vh - 22px) !important;
+    height: calc(100dvh - 22px) !important;
+    max-height: calc(100dvh - 22px) !important;
+    padding: 78px 18px 18px !important;
+    border-radius: 16px !important;
   }
-  #menu-principal .menu-panel__title {
-    margin-bottom: 40px !important;
-  }
-  #menu-principal .menu-panel__title h2 {
-    font-size: 32px !important;
-  }
+
   #menu-principal .menu-panel__groups {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
   }
-  #menu-principal .menu-link {
-    min-height: 48px !important;
-    padding: 14px 16px !important;
-    font-size: 16px !important;
+
+  #menu-principal .menu-group:nth-child(1),
+  #menu-principal .menu-group:nth-child(2),
+  #menu-principal .menu-group:nth-child(3) {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
   }
-  #menu-principal .menu-group-title {
-    padding-left: 16px !important;
+
+  #menu-principal .menu-panel__foot {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  #menu-principal .menu-panel__contact {
+    justify-content: center !important;
+  }
+
+  #menu-principal .menu-contact-sep {
+    display: none;
+  }
+
+  #menu-principal .menu-panel__socials {
+    margin: 0 auto !important;
   }
 }
 /* ====
@@ -5687,37 +6016,6 @@ img, video {
 
 
 
-/* ====
-   04. MENÚ DE 4 BLOQUES (Primaria + Secundaria + Bachilleres unificados)
-   Escritorio: 4 columnas que aprovechan todo el alto disponible del panel,
-   con tipografía escalada según la altura de la ventana.
-   ==== */
-@media (min-width: 981px) {
-  #menu-principal .menu-panel__groups {
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: clamp(28px, 3.2vw, 56px) !important;
-    align-content: center !important;
-    align-items: start !important;
-  }
-  #menu-principal .menu-group-title {
-    font-size: clamp(12px, 1.75vh, 16px) !important;
-    margin-bottom: clamp(14px, 2.4vh, 28px) !important;
-    padding-bottom: clamp(10px, 1.6vh, 16px) !important;
-  }
-  #menu-principal .menu-list {
-    gap: clamp(4px, 0.9vh, 10px) !important;
-  }
-  #menu-principal .menu-link {
-    font-size: clamp(16px, 3vh, 25px) !important;
-    padding: clamp(9px, 1.9vh, 20px) 14px !important;
-    line-height: 1.2 !important;
-  }
-  #menu-principal .menu-chevron {
-    font-size: clamp(14px, 2.2vh, 20px) !important;
-  }
-}
-
-
 /* ==========================================================================
    05. FILOSOFÍA: SLIDER CENTRADO EN LOS OJOS
    Las fotos son verticales (2:3) y el hero es horizontal, por lo que se recorta
@@ -5792,6 +6090,9 @@ img, video {
   right: 0;
   width: 640px;
   max-width: 92vw;
+  max-height: calc(100vh - 100px);
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
   background: rgba(3, 28, 49, 0.97);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(16, 184, 176, 0.45);
@@ -5873,11 +6174,18 @@ img, video {
   border-bottom-color: rgba(255, 107, 44, 0.4);
 }
 
+.essential-nav .dev-menu-dropdown a::after,
+.dev-menu-dropdown a::after {
+  display: none !important;
+  content: none !important;
+}
+
+.essential-nav .dev-menu-link,
 .dev-menu-link {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding: 10px 14px;
+  padding: 10px 14px !important;
   border-radius: 8px;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.04);
@@ -5897,12 +6205,14 @@ img, video {
   line-height: 1.3;
 }
 
+.essential-nav .dev-menu-link:hover,
 .dev-menu-link:hover {
   background: rgba(16, 184, 176, 0.18);
   border-color: var(--turquoise);
   transform: translateX(4px);
 }
 
+.essential-nav .dev-menu-col--v2 .dev-menu-link:hover,
 .dev-menu-col--v2 .dev-menu-link:hover {
   background: rgba(255, 107, 44, 0.15);
   border-color: var(--orange);
@@ -5915,7 +6225,12 @@ img, video {
   text-align: right;
 }
 
+.essential-nav .dev-footer-link,
 .dev-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0 !important;
   font-size: 0.8rem;
   color: var(--turquoise);
   text-decoration: none;
@@ -5923,38 +6238,10 @@ img, video {
   transition: color 0.2s ease;
 }
 
+.essential-nav .dev-footer-link:hover,
 .dev-footer-link:hover {
   color: #2ee6dc;
   text-decoration: underline;
-}
-
-/* Versión en Menú Modal / Móvil */
-.menu-panel__dev-access {
-  margin-top: 20px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px dashed rgba(16, 184, 176, 0.4);
-  border-radius: 12px;
-}
-
-.menu-panel__dev-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-#menu-principal .menu-panel__dev-access .menu-list {
-  gap: 4px !important;
-}
-
-#menu-principal .menu-panel__dev-access .menu-link {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-  font-size: 14.5px !important;
-  padding: 8px 12px !important;
-  min-height: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -5963,9 +6250,6 @@ img, video {
     right: -40px;
   }
   .dev-menu-columns {
-    grid-template-columns: 1fr;
-  }
-  .menu-panel__dev-links {
     grid-template-columns: 1fr;
   }
 }
