@@ -1,4 +1,4 @@
-﻿/*
+/*
 Theme Name: BPVDA Theme - Oficial
 Theme URI: https://github.com/Santana507/sai-web
 Author: Colegio Buen Pastor Voz de Alerta
@@ -12,20 +12,20 @@ Text Domain: bpvda
 /* ====
    ARQUITECTURA DE ESTILOS BPVDA (PREPARADO PARA TEMA WORDPRESS)
    --------------------------------------------------------------------------
-   01. VARIABLES & CONFIGURACIÃ“N GLOBAL   --> wp-theme: assets/css/base.css
+   01. VARIABLES & CONFIGURACIÓN GLOBAL   --> wp-theme: assets/css/base.css
    02. RESET Y ESTILOS BASE              --> wp-theme: assets/css/reset.css
-   03. NAVEGACIÃ“N (HEADER, NAV, MENÃš)    --> wp-theme: template-parts/header/
+   03. NAVEGACIÓN (HEADER, NAV, MENÚ)    --> wp-theme: template-parts/header/
    04. HERO COMPONENT (PORTADA & SLIDER) --> wp-theme: template-parts/hero/
    05. COMPONENTES Y TARJETAS            --> wp-theme: template-parts/cards/
-   06. MÃ“DULOS EDITORIALES Y PILARES     --> wp-theme: template-parts/pillars/
-   07. PÃGINAS DE NIVEL ACADÃ‰MICO        --> wp-theme: page-templates/levels/
-   08. PROPÃ“SITO Y FILOSOFÃA             --> wp-theme: page-templates/purpose/
-   09. PIE DE PÃGINA (FOOTER ENRIQUECIDO)--> wp-theme: template-parts/footer/
+   06. MÓDULOS EDITORIALES Y PILARES     --> wp-theme: template-parts/pillars/
+   07. PÁGINAS DE NIVEL ACADÉMICO        --> wp-theme: page-templates/levels/
+   08. PROPÓSITO Y FILOSOFÍA             --> wp-theme: page-templates/purpose/
+   09. PIE DE PÁGINA (FOOTER ENRIQUECIDO)--> wp-theme: template-parts/footer/
    ==== */
 
 /* ====
-   01. VARIABLES & CONFIGURACIÃ“N GLOBAL
-   Paleta cromÃ¡tica institucional BPVDA y variables tipogrÃ¡ficas base.
+   01. VARIABLES & CONFIGURACIÓN GLOBAL
+   Paleta cromática institucional BPVDA y variables tipográficas base.
    ==== */
 :root {
   --navy: #072b49;
@@ -52,7 +52,7 @@ Text Domain: bpvda
 
 /* ====
    02. RESET Y ESTILOS BASE
-   NormalizaciÃ³n universal de cajas, scroll fluido, tipografÃ­a y accesibilidad.
+   Normalización universal de cajas, scroll fluido, tipografía y accesibilidad.
    ==== */
 * {
   box-sizing: border-box;
@@ -63,7 +63,7 @@ html {
 }
 
 body {
-  /* Prevenir desbordamiento de texto en mï¿½viles */
+  /* Prevenir desbordamiento de texto en m�viles */
   overflow-wrap: break-word;
   word-wrap: break-word;
   -webkit-hyphens: auto;
@@ -147,8 +147,8 @@ em {
 }
 
 /* ====
-   03. NAVEGACIÃ“N (HEADER, BARRA SUPERIOR Y MENÃš MODAL FLOTANTE)
-   Cabecera sticky/fixed con encogimiento en scroll y menÃº modal de 5 pilares.
+   03. NAVEGACIÓN (HEADER, BARRA SUPERIOR Y MENÚ MODAL FLOTANTE)
+   Cabecera sticky/fixed con encogimiento en scroll y menú modal de 5 pilares.
    ==== */
 .site-header {
   position: fixed;
@@ -208,7 +208,7 @@ em {
   height: 48px;
 }
 
-/* Ocultar logo cuando el menÃº estÃ¡ abierto */
+/* Ocultar logo cuando el menú está abierto */
 .menu-is-open .brand {
   opacity: 0 !important;
   visibility: hidden !important;
@@ -434,7 +434,7 @@ em {
   display: block !important;
 }
 
-/* AnulaciÃ³n de pseudo-elementos huÃ©rfanos que inyectaban segunda imagen */
+/* Anulación de pseudo-elementos huérfanos que inyectaban segunda imagen */
 .menu-panel__intro::after,
 .menu-panel::after {
   display: none !important;
@@ -649,7 +649,7 @@ em {
 
 /* ====
    04. HERO COMPONENT (PORTADA Y SLIDER HORIZONTAL)
-   Slider multipantalla tÃ¡ctil con video hero de 10s y barra de progreso.
+   Slider multipantalla táctil con video hero de 10s y barra de progreso.
    ==== */
 .hero {
   position: relative;
@@ -976,7 +976,7 @@ h1 em,
 
 /* ====
    05. COMPONENTES Y TARJETAS DE PORTADA (SECCIONES 01 A 05)
-   Mosaico asimÃ©trico, oferta acadÃ©mica, aprendizaje activo, logros y comunidad.
+   Mosaico asimétrico, oferta académica, aprendizaje activo, logros y comunidad.
    ==== */
 .statement {
   background: var(--cream);
@@ -1770,8 +1770,8 @@ h1 em,
 }
 
 /* ====
-   09. PIE DE PÃGINA (FOOTER ENRIQUECIDO EN 3 COLUMNAS)
-   Marca institucional, horarios de oficina, atenciÃ³n al cliente y redes sociales.
+   09. PIE DE PÁGINA (FOOTER ENRIQUECIDO EN 3 COLUMNAS)
+   Marca institucional, horarios de oficina, atención al cliente y redes sociales.
    ==== */
 footer {
   display: flex;
@@ -2016,7 +2016,7 @@ footer {
   transform: scale(1.08);
 }
 
-/* Enlace "Ver en Google Maps" en el footer y pÃ¡ginas */
+/* Enlace "Ver en Google Maps" en el footer y páginas */
 .footer-maps-link {
   display: inline-flex;
   align-items: center;
@@ -2049,7 +2049,7 @@ footer {
 }
 
 /* ====
-   06. MÃ“DULOS EDITORIALES Y PÃGINAS INTERIORES
+   06. MÓDULOS EDITORIALES Y PÁGINAS INTERIORES
    Hero interior con imagen de fondo, capa de contraste y flujo de lectura.
    ==== */
 .interior-hero {
@@ -2557,7 +2557,7 @@ footer {
 
 /* ====
    09.2 CONSULTAS DE MEDIOS (MEDIA QUERIES RESPONSIVE)
-   Adaptaciones de diseÃ±o para pantallas medianas, tablets y dispositivos mÃ³viles.
+   Adaptaciones de diseño para pantallas medianas, tablets y dispositivos móviles.
    ==== */
 @media (max-width: 1000px) {
 
@@ -2572,7 +2572,13 @@ footer {
   }
 
   .essential-nav {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .essential-nav > a {
+    display: none !important;
   }
 
   .menu-panel {
@@ -2922,7 +2928,7 @@ footer {
   }
 }
 
-/* RevisiÃ³n visual 2026: navegaciÃ³n, identidad, carrusel e imÃ¡genes. */
+/* Revisión visual 2026: navegación, identidad, carrusel e imágenes. */
 .site-header,
 .header-bar {
   height: 78px;
@@ -2978,7 +2984,7 @@ footer {
   padding: 0 !important;
 }
 
-/* AnulaciÃ³n de la segunda imagen en el menÃº */
+/* Anulación de la segunda imagen en el menú */
 .menu-panel__intro::after {
   content: none !important;
   display: none !important;
@@ -3217,20 +3223,20 @@ h2 em {
 
 /* ====
    06.2 COMPONENTES EDITORIALES AVANZADOS
-   Split feature (50/50), cuadrÃ­cula de docentes, marquesina de alianzas y mapa.
+   Split feature (50/50), cuadrícula de docentes, marquesina de alianzas y mapa.
    ==== */
 .split-feature{display:grid;grid-template-columns:1fr 1fr;background:#f2f0eb;min-height:420px}.split-feature img{width:100%;height:100%;min-height:420px;object-fit:cover}.split-feature>div{padding:clamp(42px,7vw,110px);align-self:center}.split-feature h2,.teacher-section h2,.alliance-intro h2{font-size:clamp(34px,5vw,68px);line-height:1.03;color:var(--navy)}.split-feature p{font-size:18px;line-height:1.7;color:#41515c}.content-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;background:#fff}.content-cards article{padding:32px;background:var(--navy);color:#fff;border-radius:8px}.content-cards h3{color:#65d6d1;font-size:23px}.content-cards p{line-height:1.65}.teacher-section,.alliance-intro{background:#eff7f7}.teacher-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:35px}.teacher-grid article{position:relative;overflow:hidden;min-height:420px;background:#08334a;border-radius:10px;display:flex;align-items:flex-end}.teacher-grid img{width:100%;height:390px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 10px 14px rgba(0,0,0,.32))}.teacher-grid article>div{position:absolute;inset:auto 0 0;padding:22px;color:#fff;background:linear-gradient(transparent,rgba(3,24,37,.94))}.teacher-grid h3{margin:6px 0}.teacher-grid span{font-size:11px;letter-spacing:.1em;color:#64d7d1}.platform-links{display:flex;gap:18px;justify-content:center;background:#f4f3ef}.platform-links a{padding:18px 25px;background:#f36e32;color:#fff;font-weight:700;border-radius:999px}.alliance-marquee{overflow:hidden;background:#fff;padding:34px 0}.alliance-marquee>div{display:flex;gap:48px;align-items:center;width:max-content;animation:alliance-scroll 32s linear infinite}.alliance-marquee img{height:70px;width:150px;object-fit:contain;filter:grayscale(1)}@keyframes alliance-scroll{to{transform:translateX(-50%)}}.contact-direct{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.contact-direct div{padding:30px;background:#08334a;color:#fff}.contact-direct span{display:block;font-size:12px;letter-spacing:.12em;color:#67d7d1;margin-bottom:12px}.contact-direct a{font-size:20px;color:#fff}.map-section iframe{width:100%;height:460px;border:0;display:block}.student-voice{background:#f36e32;color:#fff;text-align:center}.student-voice blockquote{max-width:800px;margin:auto;font-size:clamp(28px,4vw,54px);line-height:1.15;font-family:Georgia,serif}.student-voice span{display:block;margin-top:25px;font-size:12px;letter-spacing:.14em}.media-placeholder{background:#dcefee;text-align:center}.media-placeholder p{font-size:18px}
 @media(max-width:800px){.split-feature,.content-cards,.teacher-grid,.contact-direct{grid-template-columns:1fr}.split-feature img{min-height:280px}.teacher-grid{max-width:440px;margin:32px auto}.menu-panel{overflow:auto}.menu-panel__groups{grid-template-columns:1fr}.menu-panel__groups section{padding-bottom:8px}}
 
-/* MenÃº por pilares: referencia de navegaciÃ³n editorial, con rutas visuales claras. */
+/* Menú por pilares: referencia de navegación editorial, con rutas visuales claras. */
 .menu-panel{overflow-y:auto!important;padding:92px max(5vw,34px) 28px!important;background:linear-gradient(125deg,#031c31 0%,#072b49 62%,#075f70 100%)!important}
 .menu-panel__main{grid-template-columns:minmax(230px,.62fr) minmax(0,1.7fr)!important;gap:clamp(30px,5vw,72px)!important;align-items:start!important}
 .menu-panel__intro{position:sticky;top:0;padding-top:10px!important}.menu-panel__intro p{display:block!important}.menu-panel__photo{display:block!important;width:100%!important;height:180px!important;margin-top:24px!important}.menu-panel__groups{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;align-content:start!important}.menu-panel__groups section{padding:22px 24px!important;border:1px solid rgb(255 255 255 / 14%);border-radius:10px;background:rgb(255 255 255 / 5%);transition:background .25s ease,transform .25s ease}.menu-panel__groups section:hover{background:rgb(16 184 176 / 12%);transform:translateY(-3px)}.menu-panel__groups section:nth-child(4),.menu-panel__groups section:nth-child(5){background:rgb(255 107 44 / 10%)}.menu-panel__groups section>span{margin-bottom:10px!important;color:#7be0da!important}.menu-panel__groups a{padding:11px 0!important;font-size:clamp(16px,1.25vw,20px)!important}.menu-panel__foot{margin-top:24px!important}.menu-panel__socials{display:flex!important}
 @media(max-width:900px){.menu-panel__main{grid-template-columns:1fr!important}.menu-panel__intro{position:static}.menu-panel__photo{display:none!important}.menu-panel__groups{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:600px){.menu-panel{padding:82px 20px 20px!important}.menu-panel__groups{grid-template-columns:1fr!important}.menu-panel__foot{display:none!important}}
 
 /* ====
-   07. PÃGINAS DE NIVEL ACADÃ‰MICO (PREESCOLAR, PRIMARIA, SECUNDARIA)
-   Composiciones dedicadas: Level Hero, Facts, GalerÃ­as temÃ¡ticas y Mosaicos.
+   07. PÁGINAS DE NIVEL ACADÉMICO (PREESCOLAR, PRIMARIA, SECUNDARIA)
+   Composiciones dedicadas: Level Hero, Facts, Galerías temáticas y Mosaicos.
    ==== */
 .menu-panel__main{grid-template-columns:1fr!important}.menu-panel__title{grid-column:1/-1;text-align:center;margin:0 auto 8px}.menu-panel__title span{color:var(--turquoise);font-size:11px;letter-spacing:.2em;font-weight:700}.menu-panel__title h2{margin:8px 0;font-size:clamp(36px,4vw,58px);line-height:1;color:#fff}.menu-panel__title p{margin:0;color:rgb(255 255 255 / 70%)}.menu-panel__groups{grid-column:1/-1!important}.level-hero{position:relative;min-height:78vh;display:grid;place-items:center;color:#fff;overflow:hidden}.level-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.level-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,28,49,.84),rgba(3,28,49,.18))}.level-hero>div{position:relative;z-index:1;width:min(780px,88vw);padding:130px 0 80px}.level-hero span,.level-welcome span,.kinder-journey span,.primary-statement span{letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--turquoise)}.level-hero h1{font-size:clamp(48px,7vw,94px);line-height:.94;margin:14px 0}.level-hero p{max-width:590px;font-size:20px}.level-hero a{display:inline-flex;margin-top:15px;padding:14px 20px;border:1px solid #fff;color:#fff}.level-welcome{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,8vw,110px);padding:clamp(65px,9vw,140px);align-items:center;background:#fff7ec}.level-welcome h2,.kinder-journey h2,.primary-statement h2,.primary-mosaic h2{font-size:clamp(36px,4vw,66px);line-height:1;color:var(--navy)}.level-welcome p,.kinder-journey p,.primary-statement p,.primary-mosaic p{font-size:18px;line-height:1.7}.level-photo-stack{display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:14px}.level-photo-stack img:first-child{height:430px}.level-photo-stack img:last-child{height:280px;margin-bottom:35px}.level-photo-stack img,.level-moments img,.kinder-gallery img,.primary-mosaic img{width:100%;object-fit:cover}.level-moments{display:grid;grid-template-columns:1.15fr .85fr;background:#0d766f;color:#fff;align-items:center}.level-moments img{height:440px}.level-moments div{padding:clamp(45px,7vw,100px)}.level-moments span{color:#a7fff6;letter-spacing:.16em;font-size:12px}.level-moments h2{font-size:clamp(32px,4vw,58px);line-height:1}.kinder-journey{display:grid;grid-template-columns:1fr 1.1fr;padding:clamp(60px,8vw,125px);gap:25px;background:#e6f6f3}.kinder-journey__main{width:100%;height:470px;object-fit:cover;border-radius:50% 50% 8px 8px}.kinder-journey__facts{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.kinder-journey__facts article{background:var(--orange);padding:22px;color:#fff}.kinder-journey__facts b{font-size:34px}.kinder-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:55px;background:#fff}.kinder-gallery img{height:350px}.kinder-gallery div{padding:25px;background:var(--navy);color:#fff}.kinder-gallery h2{font-size:38px;line-height:1}.primary-statement{display:grid;grid-template-columns:1fr 1fr;gap:9vw;padding:clamp(65px,10vw,150px);background:#f5f3ed}.primary-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;background:#fff}.primary-mosaic img{height:420px}.primary-mosaic div{padding:clamp(35px,7vw,90px);background:#0e827b;color:#fff}.primary-mosaic h2{color:#fff}.primary-mosaic img:last-child{grid-column:1/-1;height:330px}@media(max-width:700px){.level-welcome,.kinder-journey,.primary-statement,.primary-mosaic,.kinder-gallery,.level-moments{grid-template-columns:1fr}.level-welcome,.kinder-journey,.primary-statement{padding:55px 24px}.kinder-journey__facts{grid-template-columns:repeat(3,1fr)}.kinder-gallery img,.level-moments img{height:280px}.primary-mosaic img:last-child{grid-column:auto}.level-hero>div{padding:130px 24px 70px}}
 .interior-hero__content h1 mark,.level-hero h1 mark{color:var(--orange)!important;background:transparent!important;position:relative;padding:0 .03em}.interior-hero__content h1 mark:after,.level-hero h1 mark:after{content:"";position:absolute;left:0;right:0;bottom:-.09em;height:4px;background:var(--turquoise)}.menu-panel{padding:76px 5vw 18px!important;overflow:hidden!important}.menu-panel__main{display:grid!important;grid-template-rows:auto 1fr;min-height:0!important;gap:16px!important}.menu-panel__title{margin:0!important}.menu-panel__title h2{font-size:clamp(30px,3vw,44px)!important}.menu-panel__groups{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px!important;min-height:0}.menu-panel__groups section{padding:16px!important;border-radius:7px!important}.menu-panel__groups section>span{font-size:10px!important;letter-spacing:.12em!important;min-height:28px}.menu-panel__groups a{padding:8px 0!important;font-size:clamp(14px,1.05vw,17px)!important;line-height:1.15!important}.menu-panel__foot{margin:0!important;padding:13px 0 0!important;min-height:45px;background:var(--deep)}.menu-panel__contact{gap:30px!important;font-size:12px}.editorial-flow{padding:clamp(44px,7vw,100px) 0;background:var(--paper);overflow:hidden}.editorial-flow__head{display:flex;justify-content:space-between;align-items:end;gap:30px;width:min(1180px,90vw);margin:0 auto 26px}.editorial-flow__head h2{font-size:clamp(34px,4vw,62px);line-height:1;margin:0}.editorial-flow__head p{max-width:420px;margin:0}.editorial-track{display:flex;gap:16px;width:max-content;animation:editorial-scroll 38s linear infinite}.editorial-flow:hover .editorial-track{animation-play-state:paused}.editorial-card{position:relative;width:310px;height:360px;overflow:hidden;border-radius:10px;background:var(--deep);color:#fff}.editorial-card img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-out-expo)}.editorial-card div{position:absolute;inset:auto 0 0;padding:65px 22px 22px;background:linear-gradient(transparent,rgba(3,28,49,.94))}.editorial-card h3{margin:0;font-size:24px}.editorial-card p{margin:7px 0 0;line-height:1.45}.editorial-card:hover img{transform:scale(1.08)}@keyframes editorial-scroll{to{transform:translateX(-35%)}}.content-cards article{cursor:pointer;transition:transform var(--dur-normal) var(--ease-out-expo),background var(--dur-normal) var(--ease-out-expo),box-shadow var(--dur-normal) var(--ease-out-expo)}.content-cards article:hover{transform:translateY(-10px);background:#0c716d}@media(max-width:1100px){.menu-panel{overflow-y:auto!important}.menu-panel__groups{grid-template-columns:repeat(3,minmax(0,1fr))!important}}@media(max-width:700px){.menu-panel{overflow-y:auto!important}.menu-panel__groups{grid-template-columns:1fr!important}.menu-panel__foot{display:none!important}}
@@ -3238,7 +3244,7 @@ h2 em {
 .purpose-fade h1 mark{color:var(--orange)!important;background:transparent!important;position:relative}.purpose-fade h1 mark:after{content:"";position:absolute;left:0;right:0;bottom:-.09em;height:4px;background:var(--turquoise)}
 .menu-panel__groups a{width:100%!important;margin-right:0!important;border-bottom:1px solid rgb(255 255 255 / 16%)!important}.menu-panel__foot{position:static!important}.purpose-fade{min-height:88vh}.purpose-fade__images img{opacity:0!important;animation:none!important;transition:opacity 1.6s ease-in-out}.purpose-fade__images img.is-active{opacity:1!important}.purpose-fade__content h1{font-size:clamp(64px,10vw,145px);max-width:1050px}.purpose-intro{padding:clamp(80px,13vw,210px) max(8vw,30px);background:#f7f3eb;text-align:center}.purpose-intro span{color:var(--turquoise);letter-spacing:.18em;font-size:12px;font-weight:700}.purpose-intro p{max-width:1200px;margin:28px auto 0;font-size:clamp(32px,5vw,78px);line-height:1.08;color:var(--navy);font-weight:600}.purpose-pillars{background:#fff}.purpose-pillar{display:grid;grid-template-columns:1fr 1fr;min-height:680px}.purpose-pillar img{width:100%;height:100%;min-height:550px;object-fit:cover}.purpose-pillar>div{padding:clamp(60px,9vw,150px);align-self:center}.purpose-pillar span{display:block;color:var(--turquoise);font-size:18px;font-weight:700}.purpose-pillar h2{font-size:clamp(72px,10vw,150px);line-height:.82;margin:25px 0;color:var(--navy)}.purpose-pillar p{font-size:clamp(18px,2vw,26px);line-height:1.55;max-width:560px}.purpose-pillar--mission{background:var(--orange);color:#fff}.purpose-pillar--mission h2,.purpose-pillar--mission span{color:#fff}.purpose-pillar--mission img{order:2}.purpose-pillar--vision{background:#0c716d;color:#fff}.purpose-pillar--vision h2,.purpose-pillar--vision span{color:#fff}@media(max-width:800px){.purpose-fade__content h1{font-size:clamp(58px,15vw,92px)}.purpose-intro{padding:85px 25px}.purpose-intro p{font-size:34px}.purpose-pillar{grid-template-columns:1fr;min-height:0}.purpose-pillar img{min-height:360px}.purpose-pillar--mission img{order:0}.purpose-pillar>div{padding:65px 25px}.purpose-pillar h2{font-size:76px}}
 
-/* MenÃº de cinco pilares: columnas verticales y pie independiente. */
+/* Menú de cinco pilares: columnas verticales y pie independiente. */
 .menu-panel{display:grid!important;grid-template-rows:minmax(0,1fr) auto!important;justify-content:stretch!important;height:calc(100dvh - 14px)!important;padding:86px 5vw 22px!important;overflow:hidden!important}
 .menu-panel__main{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto minmax(0,1fr)!important;gap:18px!important;min-height:0!important}
 .menu-panel__title{align-self:start!important;text-align:center!important}
@@ -3256,8 +3262,8 @@ h2 em {
 .menu-panel__socials .social-link img{width:16px!important;height:16px!important}
 
 /* ====
-   08. PROPÃ“SITO Y FILOSOFÃA INSTITUCIONAL
-   Secuencia de fundido fotogrÃ¡fico (crossfade), manifiesto y pilares formativos.
+   08. PROPÓSITO Y FILOSOFÍA INSTITUCIONAL
+   Secuencia de fundido fotográfico (crossfade), manifiesto y pilares formativos.
    ==== */
 .purpose-fade{min-height:76vh!important}
 .purpose-fade__content h1{max-width:900px!important;font-size:clamp(48px,6.7vw,96px)!important;line-height:.96!important;hyphens:none!important;word-break:normal!important;overflow-wrap:normal!important}
@@ -3429,7 +3435,7 @@ mark.alt {
   color: var(--deep);
   font-weight: 800;
 }
-.interior-hero .subtÃ­tulo,
+.interior-hero .subtítulo,
 .interior-hero p {
   font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.95);
@@ -4250,7 +4256,7 @@ select.form-control {
 }
 
 .form-error-msg::before {
-  content: 'âš ';
+  content: '⚠';
   font-size: 0.85rem;
 }
 
@@ -4696,7 +4702,7 @@ select.form-control {
 }
 
 /*  */
-/* SECCIÃ“N ADMISIONES Y MATRÃCULAS 2027       */
+/* SECCIÓN ADMISIONES Y MATRÍCULAS 2027       */
 /*  */
 .adm-hub { background: #fbfbfd; position: relative; overflow: hidden; }
 .adm-hub__header { text-align: center; max-width: 900px; margin: 0 auto 50px; }
@@ -4706,7 +4712,7 @@ select.form-control {
 .adm-paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1040px; margin: 0 auto 60px; }
 .adm-path-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 18px; padding: 32px 28px; position: relative; transition: all .25s ease; cursor: pointer; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
 .adm-path-card:hover, .adm-path-card.is-active { border-color: var(--turquoise, #0cb4ab); transform: translateY(-4px); box-shadow: 0 16px 36px rgba(12, 180, 171, 0.12); }
-.adm-path-card.is-active::after { content: "âœ“ SELECCIONADO"; position: absolute; top: 18px; right: 18px; font-size: 11px; font-weight: 800; color: #0cb4ab; background: #e6faf9; padding: 4px 10px; border-radius: 99px; letter-spacing: .08em; }
+.adm-path-card.is-active::after { content: "✓ SELECCIONADO"; position: absolute; top: 18px; right: 18px; font-size: 11px; font-weight: 800; color: #0cb4ab; background: #e6faf9; padding: 4px 10px; border-radius: 99px; letter-spacing: .08em; }
 .adm-path-card .path-badge { font-size: 32px; margin-bottom: 14px; display: inline-block; }
 .adm-path-card h3 { font-size: 22px; font-weight: 800; color: var(--navy, #031c31); margin-bottom: 8px; }
 .adm-path-card p { font-size: 15px; color: #64748b; line-height: 1.5; margin-bottom: 20px; flex: 1; }
@@ -5059,10 +5065,10 @@ select.form-control {
 }
 
 /* ====
-   ANIMACIONES AVANZADAS Ã¢â‚¬â€ Cascada del menÃº y accesibilidad
+   ANIMACIONES AVANZADAS â€” Cascada del menú y accesibilidad
    ==== */
 
-/* Entrada en cascada de columnas del menÃº de 5 pilares */
+/* Entrada en cascada de columnas del menú de 5 pilares */
 @keyframes menuColIn {
   from {
     opacity: 0;
@@ -5086,7 +5092,7 @@ select.form-control {
 .menu-panel.is-open .menu-panel__groups section:nth-child(4) { animation: menuColIn 0.5s var(--ease-out-expo) 0.24s both; }
 .menu-panel.is-open .menu-panel__groups section:nth-child(5) { animation: menuColIn 0.5s var(--ease-out-expo) 0.30s both; }
 
-/* Pie del menÃº Ã¢â‚¬â€ entrada suave retardada */
+/* Pie del menú â€” entrada suave retardada */
 .menu-panel__foot {
   opacity: 0;
   transition: opacity 0.4s var(--ease-out-expo);
@@ -5097,7 +5103,7 @@ select.form-control {
   transition-delay: 0.35s;
 }
 
-/* Enlaces del menÃº Ã¢â‚¬â€ subrayado animado al hover */
+/* Enlaces del menú â€” subrayado animado al hover */
 .menu-panel__groups a {
   position: relative;
 }
@@ -5117,7 +5123,7 @@ select.form-control {
   width: 100%;
 }
 
-/* BotÃ³n flotante "Volver Arriba" Ã¢â‚¬â€ transiciÃ³n refinada */
+/* Botón flotante "Volver Arriba" â€” transición refinada */
 .back-to-top {
   transition: opacity var(--dur-normal) var(--ease-out-expo),
               transform var(--dur-normal) var(--ease-out-expo);
@@ -5132,7 +5138,7 @@ select.form-control {
   transform: translateY(-3px);
 }
 
-/* Barra de progreso del hero Ã¢â‚¬â€ transiciÃ³n elÃ¡stica */
+/* Barra de progreso del hero â€” transición elástica */
 .hero-progress b {
   transition: width 0.6s var(--ease-out-expo);
 }
@@ -5154,7 +5160,7 @@ select.form-control {
 }
 
 /* ====
-   ACCESIBILIDAD Ã¢â‚¬â€ Respeto a preferencias de movimiento reducido
+   ACCESIBILIDAD â€” Respeto a preferencias de movimiento reducido
    ==== */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -5236,12 +5242,12 @@ img, video {
 
 
 /* ==========================================================================
-   03. NAVEGACIÃ“N MODAL FLOTANTE (BENTO 2x2 â€” "Encuentra tu camino")
-   Tarjeta flotante con resplandor ambiental, logo oficial visible, cuadrÃ­cula
+   03. NAVEGACIÓN MODAL FLOTANTE (BENTO 2x2 — "Encuentra tu camino")
+   Tarjeta flotante con resplandor ambiental, logo oficial visible, cuadrícula
    Bento 2x2 enmarcada y pie de contacto + redes sociales.
    ========================================================================== */
 
-/* Fondo translÃºcido detrÃ¡s de la tarjeta flotante del menÃº */
+/* Fondo translúcido detrás de la tarjeta flotante del menú */
 body.menu-is-open::before {
   content: "";
   position: fixed;
@@ -5253,14 +5259,18 @@ body.menu-is-open::before {
   pointer-events: auto;
 }
 
-/* Cabecera superior integrada dentro de la tarjeta flotante cuando el menÃº estÃ¡ abierto */
-body.menu-is-open .site-header {
+/* Cabecera superior integrada dentro de la tarjeta flotante cuando el menú está abierto */
+body.menu-is-open .site-header,
+body.menu-is-open .site-header.is-scrolled,
+body.menu-is-open .site-header.is-scrolled-free {
   pointer-events: auto !important;
   contain: none !important;
   padding: 0 !important;
 }
 
-body.menu-is-open .site-header .header-bar {
+body.menu-is-open .site-header .header-bar,
+body.menu-is-open .site-header.is-scrolled .header-bar,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
   width: calc(100vw - 36px) !important;
   max-width: 1320px !important;
   height: 74px !important;
@@ -5275,32 +5285,41 @@ body.menu-is-open .site-header .header-bar {
   pointer-events: auto !important;
 }
 
-/* Mantener visible el logo oficial BPVDA y la navegaciÃ³n superior al abrir el menÃº */
-body.menu-is-open .site-header .brand {
+/* Mantener visible el logo oficial BPVDA y la navegación superior al abrir el menú */
+body.menu-is-open .site-header .brand,
+body.menu-is-open .site-header.is-scrolled-free .brand {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
 
-body.menu-is-open .site-header .brand-logo-img {
+body.menu-is-open .site-header .brand-logo-img,
+body.menu-is-open .site-header.is-scrolled .brand-logo-img {
   height: 52px !important;
 }
 
-body.menu-is-open .site-header .essential-nav {
+body.menu-is-open .site-header .essential-nav,
+body.menu-is-open .site-header.is-scrolled .essential-nav,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .essential-nav,
+.site-header.is-scrolled.is-scrolled-free:has(.dev-menu-container.is-open) .essential-nav {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
   pointer-events: auto !important;
 }
 
-body.menu-is-open .site-header .menu-button {
+body.menu-is-open .site-header .menu-button,
+body.menu-is-open .site-header.is-scrolled .menu-button,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button {
   background: transparent !important;
   border: none !important;
   border-radius: 999px !important;
   box-shadow: none !important;
 }
 
-body.menu-is-open .site-header .menu-button:hover {
+body.menu-is-open .site-header .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -5318,7 +5337,7 @@ body.menu-is-open .site-header .menu-button:hover {
   height: calc(100dvh - 32px) !important;
   max-height: calc(100dvh - 32px) !important;
   margin: 0 auto !important;
-  padding: 84px clamp(24px, 3.8vw, 48px) 18px !important;
+  padding: clamp(78px, 8.8vh, 86px) clamp(24px, 3.8vw, 48px) clamp(12px, 1.8vh, 18px) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -5340,14 +5359,14 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  gap: clamp(10px, 1.8vh, 22px) !important;
+  gap: clamp(8px, 1.6vh, 20px) !important;
   width: 100% !important;
   max-width: 1120px !important;
   margin: auto !important;
   flex: 1 0 auto !important;
 }
 
-/* Cabecera Editorial del MenÃº ("Encuentra tu camino.") */
+/* Cabecera Editorial del Menú ("Encuentra tu camino.") */
 #menu-principal .menu-panel__title {
   display: flex !important;
   flex-direction: column !important;
@@ -5357,7 +5376,7 @@ body.menu-is-open .site-header .menu-button:hover {
   width: 100% !important;
   max-width: 720px !important;
   margin: 0 auto !important;
-  padding-bottom: clamp(10px, 1.5vh, 18px) !important;
+  padding-bottom: clamp(6px, 1.3vh, 16px) !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.15) !important;
 }
 
@@ -5366,7 +5385,7 @@ body.menu-is-open .site-header .menu-button:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 #menu-principal .menu-eyebrow span {
@@ -5386,10 +5405,10 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title h2 {
-  font-size: clamp(28px, 4vh, 48px) !important;
+  font-size: clamp(24px, 3.8vh, 46px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  line-height: 1.08 !important;
+  line-height: 1.06 !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
@@ -5406,12 +5425,12 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title p {
-  font-size: clamp(12.5px, 1.55vh, 15px) !important;
+  font-size: clamp(12px, 1.5vh, 15px) !important;
   color: #cbd5e1 !important;
   font-weight: 300 !important;
-  margin: 6px auto 0 !important;
+  margin: 4px auto 0 !important;
   max-width: 580px !important;
-  line-height: 1.4 !important;
+  line-height: 1.38 !important;
 }
 
 #menu-principal .menu-subtitle-accent {
@@ -5420,7 +5439,7 @@ body.menu-is-open .site-header .menu-button:hover {
   font-style: italic;
 }
 
-/* CuadrÃ­cula Bento 2x2 Enmarcada */
+/* Cuadrícula Bento 2x2 Enmarcada */
 #menu-principal .menu-nav {
   display: block;
   width: 100%;
@@ -5442,7 +5461,7 @@ body.menu-is-open .site-header .menu-button:hover {
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: clamp(12px, 1.8vh, 22px) clamp(20px, 2.4vw, 30px) !important;
+  padding: clamp(9px, 1.6vh, 22px) clamp(20px, 2.4vw, 30px) !important;
   background: transparent !important;
   border-radius: 0 !important;
   margin: 0 !important;
@@ -5472,8 +5491,8 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 clamp(4px, 0.8vh, 10px) 0 !important;
-  padding: 0 0 clamp(5px, 0.8vh, 9px) 0 !important;
+  margin: 0 0 clamp(3px, 0.7vh, 10px) 0 !important;
+  padding: 0 0 clamp(4px, 0.7vh, 9px) 0 !important;
   color: #22d3ee !important;
   font-size: 11px !important;
   font-weight: 700 !important;
@@ -5506,14 +5525,14 @@ body.menu-is-open .site-header .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(5px, 0.85vh, 9px) 2px !important;
+  padding: clamp(4px, 0.75vh, 9px) 2px !important;
   border-radius: 0 !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.1) !important;
   color: #e2e8f0 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(13.5px, 1.7vh, 16px) !important;
-  line-height: 1.25 !important;
+  font-size: clamp(13px, 1.65vh, 16px) !important;
+  line-height: 1.22 !important;
   background: transparent !important;
   transition: color 0.2s ease, border-color 0.2s ease !important;
   opacity: 0;
@@ -5569,12 +5588,12 @@ body.menu-is-open .site-header .menu-button:hover {
   display: none !important;
 }
 
-/* Pie del MenÃº (Contacto + Redes Sociales) */
+/* Pie del Menú (Contacto + Redes Sociales) */
 #menu-principal .menu-panel__foot {
   width: 100% !important;
   max-width: 1120px !important;
-  margin: clamp(10px, 1.6vh, 18px) auto 0 !important;
-  padding: clamp(10px, 1.5vh, 16px) 0 0 !important;
+  margin: clamp(8px, 1.4vh, 18px) auto 0 !important;
+  padding: clamp(8px, 1.3vh, 16px) 0 0 !important;
   min-height: 0 !important;
   border-top: 1px solid rgba(34, 211, 238, 0.15) !important;
   display: flex !important;
@@ -5651,9 +5670,11 @@ body.menu-is-open .site-header .menu-button:hover {
   transform: translateY(-1px);
 }
 
-/* AdaptaciÃ³n Responsiva (Tablet y MÃ³vil) */
+/* Adaptación Responsiva (Tablet y Móvil) */
 @media (max-width: 768px) {
-  body.menu-is-open .site-header .header-bar {
+  body.menu-is-open .site-header .header-bar,
+  body.menu-is-open .site-header.is-scrolled .header-bar,
+  body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
     width: calc(100vw - 20px) !important;
     margin: 10px auto 0 !important;
     height: 66px !important;
@@ -5999,11 +6020,11 @@ body.menu-is-open .site-header .menu-button:hover {
 
 
 /* ==========================================================================
-   05. FILOSOFÃA: SLIDER CENTRADO EN LOS OJOS
+   05. FILOSOFÍA: SLIDER CENTRADO EN LOS OJOS
    Las fotos son verticales (2:3) y el hero es horizontal, por lo que se recorta
    arriba/abajo. object-position calcula el desplazamiento exacto para dejar la
-   lÃ­nea de los ojos en el centro del hero (76vh) en cualquier tamaÃ±o de pantalla.
-   Altura de imagen = 150vw. PosiciÃ³n de los ojos (fracciÃ³n de alto): 31.5% / 24.5% / 26%.
+   línea de los ojos en el centro del hero (76vh) en cualquier tamaño de pantalla.
+   Altura de imagen = 150vw. Posición de los ojos (fracción de alto): 31.5% / 24.5% / 26%.
    ========================================================================== */
 .purpose-fade__images img[src*="IMG_1963"] { object-position: 50% 24%; }
 .purpose-fade__images img[src*="IMG_1966"] { object-position: 50% 14%; }
@@ -6016,9 +6037,9 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 /* ==========================================================================
-   06. TEMPORAL: MENÃš DE DESARROLLADOR (COMPARADOR DE PLANTILLAS)
-   DiseÃ±ado como herramienta de previsualizaciÃ³n temporal para comparar
-   las plantillas de la OpciÃ³n 1 y la OpciÃ³n 2 directamente desde la web.
+   06. TEMPORAL: MENÚ DE DESARROLLADOR (COMPARADOR DE PLANTILLAS)
+   Diseñado como herramienta de previsualización temporal para comparar
+   las plantillas de la Opción 1 y la Opción 2 directamente desde la web.
    ========================================================================== */
 .dev-menu-container {
   position: relative;
@@ -6065,13 +6086,16 @@ body.menu-is-open .site-header .menu-button:hover {
   transform: rotate(180deg);
 }
 
-/* MenÃº Desplegable Flotante */
+/* Menú Desplegable Flotante */
 .dev-menu-dropdown {
   position: absolute;
   top: calc(100% + 14px);
   right: 0;
   width: 640px;
   max-width: 92vw;
+  max-height: calc(100vh - 100px);
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
   background: rgba(3, 28, 49, 0.97);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(16, 184, 176, 0.45);
@@ -6267,8 +6291,8 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 /* ==========================================================================
-   REDISEÃ‘O EDITORIAL â€” SECCIÃ“N PRIMARIA (MINIMALISTA, ESTÃ‰TICA Y COMPLETA)
-   Estructura: Statement enriquecido con pilares no-imagen y mosaico 2x2 armÃ³nico
+   REDISEÑO EDITORIAL — SECCIÓN PRIMARIA (MINIMALISTA, ESTÉTICA Y COMPLETA)
+   Estructura: Statement enriquecido con pilares no-imagen y mosaico 2x2 armónico
    ========================================================================== */
 .primary-statement--enriched {
   display: flex !important;
@@ -6362,7 +6386,7 @@ body.menu-is-open .site-header .menu-button:hover {
   margin: 0;
 }
 
-/* Mosaico AsimÃ©trico 2x2 Balanceado */
+/* Mosaico Asimétrico 2x2 Balanceado */
 .primary-mosaic {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -6550,5 +6574,4 @@ body.menu-is-open .site-header .menu-button:hover {
     padding: 30px 22px;
   }
 }
-
 

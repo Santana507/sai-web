@@ -2564,7 +2564,13 @@ footer {
   }
 
   .essential-nav {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .essential-nav > a {
+    display: none !important;
   }
 
   .menu-panel {
@@ -5246,13 +5252,17 @@ body.menu-is-open::before {
 }
 
 /* Cabecera superior integrada dentro de la tarjeta flotante cuando el menú está abierto */
-body.menu-is-open .site-header {
+body.menu-is-open .site-header,
+body.menu-is-open .site-header.is-scrolled,
+body.menu-is-open .site-header.is-scrolled-free {
   pointer-events: auto !important;
   contain: none !important;
   padding: 0 !important;
 }
 
-body.menu-is-open .site-header .header-bar {
+body.menu-is-open .site-header .header-bar,
+body.menu-is-open .site-header.is-scrolled .header-bar,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
   width: calc(100vw - 36px) !important;
   max-width: 1320px !important;
   height: 74px !important;
@@ -5268,31 +5278,40 @@ body.menu-is-open .site-header .header-bar {
 }
 
 /* Mantener visible el logo oficial BPVDA y la navegación superior al abrir el menú */
-body.menu-is-open .site-header .brand {
+body.menu-is-open .site-header .brand,
+body.menu-is-open .site-header.is-scrolled-free .brand {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
 
-body.menu-is-open .site-header .brand-logo-img {
+body.menu-is-open .site-header .brand-logo-img,
+body.menu-is-open .site-header.is-scrolled .brand-logo-img {
   height: 52px !important;
 }
 
-body.menu-is-open .site-header .essential-nav {
+body.menu-is-open .site-header .essential-nav,
+body.menu-is-open .site-header.is-scrolled .essential-nav,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .essential-nav,
+.site-header.is-scrolled.is-scrolled-free:has(.dev-menu-container.is-open) .essential-nav {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
   pointer-events: auto !important;
 }
 
-body.menu-is-open .site-header .menu-button {
+body.menu-is-open .site-header .menu-button,
+body.menu-is-open .site-header.is-scrolled .menu-button,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button {
   background: transparent !important;
   border: none !important;
   border-radius: 999px !important;
   box-shadow: none !important;
 }
 
-body.menu-is-open .site-header .menu-button:hover {
+body.menu-is-open .site-header .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled .menu-button:hover,
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -5310,7 +5329,7 @@ body.menu-is-open .site-header .menu-button:hover {
   height: calc(100dvh - 32px) !important;
   max-height: calc(100dvh - 32px) !important;
   margin: 0 auto !important;
-  padding: 84px clamp(24px, 3.8vw, 48px) 18px !important;
+  padding: clamp(78px, 8.8vh, 86px) clamp(24px, 3.8vw, 48px) clamp(12px, 1.8vh, 18px) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -5332,7 +5351,7 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  gap: clamp(10px, 1.8vh, 22px) !important;
+  gap: clamp(8px, 1.6vh, 20px) !important;
   width: 100% !important;
   max-width: 1120px !important;
   margin: auto !important;
@@ -5349,7 +5368,7 @@ body.menu-is-open .site-header .menu-button:hover {
   width: 100% !important;
   max-width: 720px !important;
   margin: 0 auto !important;
-  padding-bottom: clamp(10px, 1.5vh, 18px) !important;
+  padding-bottom: clamp(6px, 1.3vh, 16px) !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.15) !important;
 }
 
@@ -5358,7 +5377,7 @@ body.menu-is-open .site-header .menu-button:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 #menu-principal .menu-eyebrow span {
@@ -5378,10 +5397,10 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title h2 {
-  font-size: clamp(28px, 4vh, 48px) !important;
+  font-size: clamp(24px, 3.8vh, 46px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  line-height: 1.08 !important;
+  line-height: 1.06 !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
@@ -5398,12 +5417,12 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title p {
-  font-size: clamp(12.5px, 1.55vh, 15px) !important;
+  font-size: clamp(12px, 1.5vh, 15px) !important;
   color: #cbd5e1 !important;
   font-weight: 300 !important;
-  margin: 6px auto 0 !important;
+  margin: 4px auto 0 !important;
   max-width: 580px !important;
-  line-height: 1.4 !important;
+  line-height: 1.38 !important;
 }
 
 #menu-principal .menu-subtitle-accent {
@@ -5434,7 +5453,7 @@ body.menu-is-open .site-header .menu-button:hover {
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: clamp(12px, 1.8vh, 22px) clamp(20px, 2.4vw, 30px) !important;
+  padding: clamp(9px, 1.6vh, 22px) clamp(20px, 2.4vw, 30px) !important;
   background: transparent !important;
   border-radius: 0 !important;
   margin: 0 !important;
@@ -5464,8 +5483,8 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 clamp(4px, 0.8vh, 10px) 0 !important;
-  padding: 0 0 clamp(5px, 0.8vh, 9px) 0 !important;
+  margin: 0 0 clamp(3px, 0.7vh, 10px) 0 !important;
+  padding: 0 0 clamp(4px, 0.7vh, 9px) 0 !important;
   color: #22d3ee !important;
   font-size: 11px !important;
   font-weight: 700 !important;
@@ -5498,14 +5517,14 @@ body.menu-is-open .site-header .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(5px, 0.85vh, 9px) 2px !important;
+  padding: clamp(4px, 0.75vh, 9px) 2px !important;
   border-radius: 0 !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.1) !important;
   color: #e2e8f0 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(13.5px, 1.7vh, 16px) !important;
-  line-height: 1.25 !important;
+  font-size: clamp(13px, 1.65vh, 16px) !important;
+  line-height: 1.22 !important;
   background: transparent !important;
   transition: color 0.2s ease, border-color 0.2s ease !important;
   opacity: 0;
@@ -5565,8 +5584,8 @@ body.menu-is-open .site-header .menu-button:hover {
 #menu-principal .menu-panel__foot {
   width: 100% !important;
   max-width: 1120px !important;
-  margin: clamp(10px, 1.6vh, 18px) auto 0 !important;
-  padding: clamp(10px, 1.5vh, 16px) 0 0 !important;
+  margin: clamp(8px, 1.4vh, 18px) auto 0 !important;
+  padding: clamp(8px, 1.3vh, 16px) 0 0 !important;
   min-height: 0 !important;
   border-top: 1px solid rgba(34, 211, 238, 0.15) !important;
   display: flex !important;
@@ -5645,7 +5664,9 @@ body.menu-is-open .site-header .menu-button:hover {
 
 /* Adaptación Responsiva (Tablet y Móvil) */
 @media (max-width: 768px) {
-  body.menu-is-open .site-header .header-bar {
+  body.menu-is-open .site-header .header-bar,
+  body.menu-is-open .site-header.is-scrolled .header-bar,
+  body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
     width: calc(100vw - 20px) !important;
     margin: 10px auto 0 !important;
     height: 66px !important;
@@ -6064,6 +6085,9 @@ body.menu-is-open .site-header .menu-button:hover {
   right: 0;
   width: 640px;
   max-width: 92vw;
+  max-height: calc(100vh - 100px);
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
   background: rgba(3, 28, 49, 0.97);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(16, 184, 176, 0.45);

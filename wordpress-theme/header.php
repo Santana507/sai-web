@@ -36,36 +36,37 @@
       <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>">Admisiones</a>
       <a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">Contacto</a>
 
-      <!-- [INICIO TEMPORAL MENÚ DESARROLLADOR - ELIMINAR TRAS APROBACIÓN DE PLANTILLAS] -->
+      <!-- [TEMPORAL: MENÚ DESARROLLADOR - COMPARADOR DE PLANTILLAS] -->
       <div class="dev-menu-container" id="devMenuContainer">
-        <button type="button" class="dev-menu-trigger" id="devMenuBtn" aria-expanded="false" aria-controls="devMenuDropdown">
-          <span class="dev-badge-dot" aria-hidden="true"></span>
+        <button type="button" class="dev-menu-btn" id="devMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Menú de Desarrollador: Comparar Plantillas">
+          <span class="dev-badge-icon">🛠️</span>
           <span>Desarrollador</span>
-          <svg class="dev-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <span class="dev-chevron">▾</span>
         </button>
         <div class="dev-menu-dropdown" id="devMenuDropdown" aria-hidden="true">
           <div class="dev-menu-header">
-            <strong>Comparador de Plantillas</strong>
-            <span>Seleccione una propuesta para previsualizar</span>
+            <span class="dev-menu-tag">MODO DESARROLLADOR (TEMPORAL)</span>
+            <h4>Comparador de Plantillas</h4>
+            <p>Selecciona cualquiera de las versiones para revisar y comparar:</p>
           </div>
-          <div class="dev-menu-grid">
+          <div class="dev-menu-columns">
             <div class="dev-menu-col">
-              <span class="dev-col-title">Opción 1 — Editorial Moderna</span>
+              <span class="dev-col-title">Opción 1: Modular Clásica</span>
               <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-academica.html' ) ); ?>" class="dev-menu-link">
-                <strong>1. Académica</strong>
-                <small>Hero asimétrico, cita bíblica, malla curricular</small>
+                <strong>1. Académica / Niveles</strong>
+                <small>Hero con overlay, cita bíblica, mosaico fotográfico</small>
               </a>
               <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-innovacion.html' ) ); ?>" class="dev-menu-link">
-                <strong>2. Innovación y Vida</strong>
-                <small>Hero inmersivo, Bento Grid, pestañas interactivas</small>
+                <strong>2. Innovación &amp; Vida Estudiantil</strong>
+                <small>Carrusel v3 horizontal, métricas, proyectos</small>
               </a>
               <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-editorial.html' ) ); ?>" class="dev-menu-link">
-                <strong>3. Editorial / Institucional</strong>
-                <small>Hero clásico, principios, línea de tiempo y FAQ</small>
+                <strong>3. Editorial &amp; Institucional</strong>
+                <small>Narrativa 2 cols, lema navy, acordeón nativo</small>
               </a>
             </div>
-            <div class="dev-menu-col">
-              <span class="dev-col-title dev-col-title--v2">Opción 2 — Split Minimalista</span>
+            <div class="dev-menu-col dev-menu-col--v2">
+              <span class="dev-col-title">Opción 2: Split Minimalista</span>
               <a href="<?php echo esc_url( home_url( '/plantillas/Plantilla Opción 2/plantilla-academica-v2.html' ) ); ?>" class="dev-menu-link">
                 <strong>1. Académica v2</strong>
                 <small>Hero split 50/50, bloque sólido teal, pilares</small>
