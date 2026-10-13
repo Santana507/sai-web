@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ==============================================================================
  * BPVDA — JavaScript Institucional Modular (Vanilla JS)
  * ==============================================================================
@@ -64,6 +64,16 @@
     menuPanel.classList.toggle('is-open', open);
     menuPanel.setAttribute('aria-hidden', String(!open));
     document.body.classList.toggle('menu-is-open', open);
+
+    // Cerrar menú desplegable de desarrollador si estuviera abierto
+    const devMenuContainer = document.getElementById('devMenuContainer');
+    const devMenuBtn = document.getElementById('devMenuBtn');
+    const devMenuDropdown = document.getElementById('devMenuDropdown');
+    if (devMenuContainer && devMenuContainer.classList.contains('is-open')) {
+      devMenuContainer.classList.remove('is-open');
+      if (devMenuBtn) devMenuBtn.setAttribute('aria-expanded', 'false');
+      if (devMenuDropdown) devMenuDropdown.setAttribute('aria-hidden', 'true');
+    }
     
     // Gestión del Foco accesible (Focus Trap)
     if (open) {
@@ -84,6 +94,15 @@
     // Clic en cualquier enlace interno dentro del menú: cierra automáticamente el panel
     menuPanel.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () { setMenu(false); });
+    });
+
+    // Clic fuera de la tarjeta flotante del menú (backdrop): cierra el menú
+    document.addEventListener('click', function (event) {
+      if (!menuPanel.classList.contains('is-open')) return;
+      const headerBar = header ? header.querySelector('.header-bar') : null;
+      if (!menuPanel.contains(event.target) && (!headerBar || !headerBar.contains(event.target))) {
+        setMenu(false);
+      }
     });
 
     // Control por Teclado: Escape y navegación con Tabulador (Focus Trap)
@@ -453,5 +472,41 @@
     }
   });
 
+  /* ----------------------------------------------------------------------------
+   * 11. MENÚ TEMPORAL DE DESARROLLADOR (Comparador de Plantillas)
+   * ----------------------------------------------------------------------------
+   * Control de apertura y cierre accesible para el menú comparador de plantillas.
+   */
+  const devContainer = document.getElementById('devMenuContainer');
+  const devBtn = document.getElementById('devMenuBtn');
+  const devDropdown = document.getElementById('devMenuDropdown');
+
+  if (devContainer && devBtn && devDropdown) {
+    devBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = devContainer.classList.toggle('is-open');
+      devBtn.setAttribute('aria-expanded', String(isOpen));
+      devDropdown.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!devContainer.contains(e.target)) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && devContainer.classList.contains('is-open')) {
+        devContainer.classList.remove('is-open');
+        devBtn.setAttribute('aria-expanded', 'false');
+        devDropdown.setAttribute('aria-hidden', 'true');
+        devBtn.focus();
+      }
+    });
+  }
+
 }());
+
 

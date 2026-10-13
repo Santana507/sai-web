@@ -35,6 +35,60 @@
       <a href="<?php echo esc_url( home_url( '/filosofia/' ) ); ?>">Filosofía</a>
       <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>">Admisiones</a>
       <a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">Contacto</a>
+
+      <!-- [INICIO TEMPORAL MENÚ DESARROLLADOR - ELIMINAR TRAS APROBACIÓN DE PLANTILLAS] -->
+      <div class="dev-menu-container" id="devMenuContainer">
+        <button type="button" class="dev-menu-trigger" id="devMenuBtn" aria-expanded="false" aria-controls="devMenuDropdown">
+          <span class="dev-badge-dot" aria-hidden="true"></span>
+          <span>Desarrollador</span>
+          <svg class="dev-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="dev-menu-dropdown" id="devMenuDropdown" aria-hidden="true">
+          <div class="dev-menu-header">
+            <strong>Comparador de Plantillas</strong>
+            <span>Seleccione una propuesta para previsualizar</span>
+          </div>
+          <div class="dev-menu-grid">
+            <div class="dev-menu-col">
+              <span class="dev-col-title">Opción 1 — Editorial Moderna</span>
+              <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-academica.html' ) ); ?>" class="dev-menu-link">
+                <strong>1. Académica</strong>
+                <small>Hero asimétrico, cita bíblica, malla curricular</small>
+              </a>
+              <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-innovacion.html' ) ); ?>" class="dev-menu-link">
+                <strong>2. Innovación y Vida</strong>
+                <small>Hero inmersivo, Bento Grid, pestañas interactivas</small>
+              </a>
+              <a href="<?php echo esc_url( home_url( '/plantillas/plantilla-editorial.html' ) ); ?>" class="dev-menu-link">
+                <strong>3. Editorial / Institucional</strong>
+                <small>Hero clásico, principios, línea de tiempo y FAQ</small>
+              </a>
+            </div>
+            <div class="dev-menu-col">
+              <span class="dev-col-title dev-col-title--v2">Opción 2 — Split Minimalista</span>
+              <a href="<?php echo esc_url( home_url( '/plantillas/Plantilla Opción 2/plantilla-academica-v2.html' ) ); ?>" class="dev-menu-link">
+                <strong>1. Académica v2</strong>
+                <small>Hero split 50/50, bloque sólido teal, pilares</small>
+              </a>
+              <a href="<?php echo esc_url( home_url( '/plantillas/Plantilla Opción 2/plantilla-innovacion-v2.html' ) ); ?>" class="dev-menu-link">
+                <strong>2. Innovación v2</strong>
+                <small>Split teal profundo, carrusel moments, métricas</small>
+              </a>
+              <a href="<?php echo esc_url( home_url( '/plantillas/Plantilla Opción 2/plantilla-editorial-v2.html' ) ); ?>" class="dev-menu-link">
+                <strong>3. Editorial v2</strong>
+                <small>Split portal de padres &amp; valores, acordeón</small>
+              </a>
+            </div>
+          </div>
+          <div class="dev-menu-footer">
+            <a href="<?php echo esc_url( home_url( '/COMPARADOR_PLANTILLAS_DEV.md' ) ); ?>" target="_blank" class="dev-footer-link">
+              <span>📄 Ver Guía Comparativa y Notas de Retiro</span> <i>↗</i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- [FIN TEMPORAL MENÚ DESARROLLADOR] -->
+
       <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>" class="btn-matriculate">MATRICÚLATE AQUÍ</a>
     </nav>
 

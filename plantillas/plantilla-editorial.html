@@ -18,31 +18,88 @@
   <!-- CABECERA INSTITUCIONAL GLOBAL (HEADER)                                     -->
   <!-- ========================================================================= -->
   <header class="site-header">
-    <div class="header-bar">
-      <!-- Logotipo Institucional Principal -->
-      <a class="brand" href="../index.html" aria-label="Inicio">
-        <img decoding="async" src="../assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
-      </a>
+  <!-- Barra de Navegación Superior Fija (Header Bar) -->
+  <div class="header-bar">
+    <!-- Logotipo Institucional Principal con enlace a Portada -->
+    <a class="brand" href="../index.html" aria-label="Inicio">
+      <img decoding="async" src="../assets/brand/bpvda-logo-white.png" alt="Buen Pastor Voz de Alerta" class="brand-logo-img">
+    </a>
 
-      <!-- Navegación Esencial Superior -->
-      <nav class="essential-nav" aria-label="Navegación esencial">
-        <a href="../filosofia.html">Filosofía</a>
-        <a href="../admisiones.html">Admisiones</a>
-        <a href="../contacto.html">Contacto</a>
-        <a href="../admisiones.html" class="btn-matriculate">MATRICULATE AQUÍ</a>
-      </nav>
+    <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
+    <nav class="essential-nav" aria-label="Navegación esencial">
+      <a href="../filosofia.html">Filosofía</a>
+      <a href="../admisiones.html">Admisiones</a>
+      <a href="../contacto.html">Contacto</a>
 
-      <!-- Botón Disparador del Menú Modal -->
-      <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
-        <img decoding="async" src="../assets/icons/menu.png" alt="" class="icon-menu-img">
-        <img decoding="async" src="../assets/icons/close.png" alt="" class="icon-close-img">
-      </button>
-    </div>
+      <!-- [TEMPORAL: MENÚ DESARROLLADOR - COMPARADOR DE PLANTILLAS] -->
+      <div class="dev-menu-container" id="devMenuContainer">
+        <button type="button" class="dev-menu-btn" id="devMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Menú de Desarrollador: Comparar Plantillas">
+          <span class="dev-badge-icon">🛠️</span>
+          <span>Desarrollador</span>
+          <span class="dev-chevron">▾</span>
+        </button>
+        <div class="dev-menu-dropdown" id="devMenuDropdown" aria-hidden="true">
+          <div class="dev-menu-header">
+            <span class="dev-menu-tag">MODO DESARROLLADOR (TEMPORAL)</span>
+            <h4>Comparador de Plantillas</h4>
+            <p>Selecciona cualquiera de las versiones para revisar y comparar:</p>
+          </div>
+          <div class="dev-menu-columns">
+            <div class="dev-menu-col">
+              <span class="dev-col-title">Opción 1: Modular Clásica</span>
+              <a href="plantilla-academica.html" class="dev-menu-link">
+                <strong>1. Académica / Niveles</strong>
+                <small>Hero con overlay, cita bíblica, mosaico fotográfico</small>
+              </a>
+              <a href="plantilla-innovacion.html" class="dev-menu-link">
+                <strong>2. Innovación &amp; Vida Estudiantil</strong>
+                <small>Carrusel v3 horizontal, métricas, proyectos</small>
+              </a>
+              <a href="plantilla-editorial.html" class="dev-menu-link">
+                <strong>3. Editorial &amp; Institucional</strong>
+                <small>Narrativa 2 cols, lema navy, acordeón nativo</small>
+              </a>
+            </div>
+            <div class="dev-menu-col dev-menu-col--v2">
+              <span class="dev-col-title">Opción 2: Split Minimalista</span>
+              <a href="Plantilla Opción 2/plantilla-academica-v2.html" class="dev-menu-link">
+                <strong>1. Académica v2</strong>
+                <small>Hero split 50/50, bloque sólido teal, pilares</small>
+              </a>
+              <a href="Plantilla Opción 2/plantilla-innovacion-v2.html" class="dev-menu-link">
+                <strong>2. Innovación v2</strong>
+                <small>Split teal profundo, carrusel moments, métricas</small>
+              </a>
+              <a href="Plantilla Opción 2/plantilla-editorial-v2.html" class="dev-menu-link">
+                <strong>3. Editorial v2</strong>
+                <small>Split portal de padres &amp; valores, acordeón</small>
+              </a>
+            </div>
+          </div>
+          <div class="dev-menu-footer">
+            <a href="../COMPARADOR_PLANTILLAS_DEV.md" target="_blank" class="dev-footer-link">
+              <span>📄 Ver Guía Comparativa y Notas de Retiro</span> <i>↗</i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- [FIN TEMPORAL MENÚ DESARROLLADOR] -->
 
-    <!-- Menú Desplegable Modal Institucional (4 Bloques) -->
-    <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
-      <div class="menu-panel__main">
-        <div class="menu-panel__title">
+      <a href="../admisiones.html" class="btn-matriculate">MATRICÚLATE AQUÍ</a>
+    </nav>
+
+    <!-- Botón Disparador del Menú Modal Desplegable (Accesible con ARIA) -->
+    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+      <img decoding="async" src="../assets/icons/menu.png" alt="" class="icon-menu-img">
+      <img decoding="async" src="../assets/icons/close.png" alt="" class="icon-close-img">
+    </button>
+  </div>
+
+  <!-- Panel del Menú Modal Desplegable (Diseño Bento 2x2 Flotante) -->
+  <div class="menu-panel" id="menu-principal" data-menu-panel aria-hidden="true">
+    <div class="menu-panel__main">
+      <!-- Título de Bienvenida e Introducción Editorial del Menú -->
+      <div class="menu-panel__title">
         <div class="menu-eyebrow">
           <span class="menu-eyebrow__line" aria-hidden="true"></span>
           <span>BUEN PASTOR VOZ DE ALERTA</span>
@@ -52,48 +109,50 @@
         <p>Educar la mente. <em class="menu-subtitle-accent">Formar carácter.</em> Explora cada etapa formativa de la comunidad educativa BPVDA.</p>
       </div>
 
-        <nav class="menu-nav" aria-label="Navegación principal">
-          <div class="menu-panel__groups">
-            <div class="menu-group">
-              <span class="menu-group-title">01 NUESTRA ESCUELA</span>
-              <ul class="menu-list">
-                <li><a href="../quienes-somos.html" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../filosofia.html" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../instalaciones.html" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../plantel.html" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li>
-              </ul>
-            </div>
-            <div class="menu-group">
-              <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
-              <ul class="menu-list">
-                <li><a href="../sai.html" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../vida-estudiantil.html" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../ecosistema-digital.html" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li>
-              </ul>
-            </div>
-            <div class="menu-group">
-              <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
-              <ul class="menu-list">
-                <li><a href="../admisiones.html" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../portal-padres.html" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../contacto.html" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li>
-              </ul>
-            </div>
-            <div class="menu-group">
-              <span class="menu-group-title">04 NIVELES ACADÉMICOS</span>
-              <ul class="menu-list">
-                <li><a href="../prekinder.html" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../kinder.html" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../primaria.html" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../secundaria.html" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li>
-                <li><a href="../bachilleres.html" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li>
-              </ul>
-            </div>
+      <!-- Cuadrícula Bento 2x2 de los 4 Pilares Institucionales -->
+      <nav class="menu-nav" aria-label="Navegación principal">
+        <div class="menu-panel__groups">
+          <div class="menu-group">
+            <span class="menu-group-title">01 NUESTRA ESCUELA</span>
+            <ul class="menu-list">
+              <li><a href="../quienes-somos.html" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../filosofia.html" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../instalaciones.html" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../plantel.html" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li>
+            </ul>
           </div>
-        </nav>
-      </div>
+          <div class="menu-group">
+            <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
+            <ul class="menu-list">
+              <li><a href="../sai.html" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../vida-estudiantil.html" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../ecosistema-digital.html" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
+            <ul class="menu-list">
+              <li><a href="../admisiones.html" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../portal-padres.html" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../contacto.html" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <span class="menu-group-title">04 NIVELES ACADÉMICOS</span>
+            <ul class="menu-list">
+              <li><a href="../prekinder.html" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../kinder.html" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../primaria.html" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../secundaria.html" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li>
+              <li><a href="../bachilleres.html" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
-      <div class="menu-panel__foot">
+    <!-- Pie del Menú Modal con Contacto Directo y Redes Sociales -->
+    <div class="menu-panel__foot">
       <div class="menu-panel__contact">
         <span class="menu-contact-item">
           <svg class="menu-contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>

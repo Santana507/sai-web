@@ -64,6 +64,16 @@
     menuPanel.classList.toggle('is-open', open);
     menuPanel.setAttribute('aria-hidden', String(!open));
     document.body.classList.toggle('menu-is-open', open);
+
+    // Cerrar menú desplegable de desarrollador si estuviera abierto
+    const devMenuContainer = document.getElementById('devMenuContainer');
+    const devMenuBtn = document.getElementById('devMenuBtn');
+    const devMenuDropdown = document.getElementById('devMenuDropdown');
+    if (devMenuContainer && devMenuContainer.classList.contains('is-open')) {
+      devMenuContainer.classList.remove('is-open');
+      if (devMenuBtn) devMenuBtn.setAttribute('aria-expanded', 'false');
+      if (devMenuDropdown) devMenuDropdown.setAttribute('aria-hidden', 'true');
+    }
     
     // Gestión del Foco accesible (Focus Trap)
     if (open) {

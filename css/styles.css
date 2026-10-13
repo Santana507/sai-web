@@ -209,6 +209,7 @@ em {
 
 .essential-nav {
   display: flex;
+  align-items: center;
   gap: clamp(18px, 2.4vw, 36px);
   font-size: 14px;
   font-weight: 600;
@@ -5190,7 +5191,8 @@ select.form-control {
 
 /* Aislar el layout y renderizado de secciones principales para evitar repintados globales */
 .site-header {
-  contain: layout;
+  /* Evitar contain: layout porque atrapa hijos position: fixed (#menu-principal) dentro de los 78px del header */
+  contain: none;
 }
 
 .hero {
@@ -5246,15 +5248,18 @@ body.menu-is-open::before {
 /* Cabecera superior integrada dentro de la tarjeta flotante cuando el menú está abierto */
 body.menu-is-open .site-header {
   pointer-events: auto !important;
+  contain: none !important;
+  padding: 0 !important;
 }
 
 body.menu-is-open .site-header .header-bar {
   width: calc(100vw - 36px) !important;
   max-width: 1320px !important;
-  height: 76px !important;
+  height: 74px !important;
   margin: 14px auto 0 !important;
   padding: 0 clamp(24px, 3.8vw, 48px) !important;
-  background: transparent !important;
+  background: rgba(5, 19, 34, 0.92) !important;
+  border-radius: 20px 20px 0 0 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.14) !important;
@@ -5270,7 +5275,7 @@ body.menu-is-open .site-header .brand {
 }
 
 body.menu-is-open .site-header .brand-logo-img {
-  height: 54px !important;
+  height: 52px !important;
 }
 
 body.menu-is-open .site-header .essential-nav {
@@ -5301,10 +5306,11 @@ body.menu-is-open .site-header .menu-button:hover {
   right: 0 !important;
   width: calc(100vw - 36px) !important;
   max-width: 1320px !important;
-  height: auto !important;
+  height: calc(100vh - 32px) !important;
+  height: calc(100dvh - 32px) !important;
   max-height: calc(100dvh - 32px) !important;
   margin: 0 auto !important;
-  padding: 88px clamp(24px, 3.8vw, 48px) 22px !important;
+  padding: 84px clamp(24px, 3.8vw, 48px) 18px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -5326,7 +5332,7 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  gap: clamp(14px, 2.2vh, 24px) !important;
+  gap: clamp(10px, 1.8vh, 22px) !important;
   width: 100% !important;
   max-width: 1120px !important;
   margin: auto !important;
@@ -5338,11 +5344,12 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+  align-self: center !important;
   text-align: center !important;
   width: 100% !important;
   max-width: 720px !important;
   margin: 0 auto !important;
-  padding-bottom: clamp(12px, 1.8vh, 20px) !important;
+  padding-bottom: clamp(10px, 1.5vh, 18px) !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.15) !important;
 }
 
@@ -5351,7 +5358,7 @@ body.menu-is-open .site-header .menu-button:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 #menu-principal .menu-eyebrow span {
@@ -5371,7 +5378,7 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title h2 {
-  font-size: clamp(30px, 4.4vh, 50px) !important;
+  font-size: clamp(28px, 4vh, 48px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
   line-height: 1.08 !important;
@@ -5391,12 +5398,12 @@ body.menu-is-open .site-header .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title p {
-  font-size: clamp(13px, 1.65vh, 15px) !important;
+  font-size: clamp(12.5px, 1.55vh, 15px) !important;
   color: #cbd5e1 !important;
   font-weight: 300 !important;
-  margin: 8px auto 0 !important;
-  max-width: 560px !important;
-  line-height: 1.45 !important;
+  margin: 6px auto 0 !important;
+  max-width: 580px !important;
+  line-height: 1.4 !important;
 }
 
 #menu-principal .menu-subtitle-accent {
@@ -5413,8 +5420,10 @@ body.menu-is-open .site-header .menu-button:hover {
 
 #menu-principal .menu-panel__groups {
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
   gap: 0 !important;
+  height: auto !important;
   background: rgba(7, 25, 45, 0.72) !important;
   border: 1px solid rgba(56, 189, 248, 0.22) !important;
   border-radius: 16px !important;
@@ -5425,10 +5434,11 @@ body.menu-is-open .site-header .menu-button:hover {
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: clamp(14px, 2vh, 24px) clamp(20px, 2.4vw, 30px) !important;
+  padding: clamp(12px, 1.8vh, 22px) clamp(20px, 2.4vw, 30px) !important;
   background: transparent !important;
   border-radius: 0 !important;
   margin: 0 !important;
+  min-height: 0 !important;
 }
 
 #menu-principal .menu-group:nth-child(1) {
@@ -5454,10 +5464,10 @@ body.menu-is-open .site-header .menu-button:hover {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 clamp(6px, 1vh, 12px) 0 !important;
-  padding: 0 0 clamp(6px, 1vh, 10px) 0 !important;
+  margin: 0 0 clamp(4px, 0.8vh, 10px) 0 !important;
+  padding: 0 0 clamp(5px, 0.8vh, 9px) 0 !important;
   color: #22d3ee !important;
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
@@ -5488,13 +5498,13 @@ body.menu-is-open .site-header .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(6px, 0.95vh, 10px) 2px !important;
+  padding: clamp(5px, 0.85vh, 9px) 2px !important;
   border-radius: 0 !important;
   border-bottom: 1px solid rgba(34, 211, 238, 0.1) !important;
   color: #e2e8f0 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(14px, 1.8vh, 16.5px) !important;
+  font-size: clamp(13.5px, 1.7vh, 16px) !important;
   line-height: 1.25 !important;
   background: transparent !important;
   transition: color 0.2s ease, border-color 0.2s ease !important;
@@ -5555,8 +5565,8 @@ body.menu-is-open .site-header .menu-button:hover {
 #menu-principal .menu-panel__foot {
   width: 100% !important;
   max-width: 1120px !important;
-  margin: clamp(14px, 2vh, 22px) auto 0 !important;
-  padding: clamp(12px, 1.8vh, 18px) 0 0 !important;
+  margin: clamp(10px, 1.6vh, 18px) auto 0 !important;
+  padding: clamp(10px, 1.5vh, 16px) 0 0 !important;
   min-height: 0 !important;
   border-top: 1px solid rgba(34, 211, 238, 0.15) !important;
   display: flex !important;
@@ -5573,6 +5583,7 @@ body.menu-is-open .site-header .menu-button:hover {
   gap: 8px 14px !important;
   color: #94a3b8 !important;
   font-size: 12px !important;
+  white-space: normal !important;
 }
 
 #menu-principal .menu-contact-item {
@@ -5639,12 +5650,15 @@ body.menu-is-open .site-header .menu-button:hover {
     margin: 10px auto 0 !important;
     height: 66px !important;
     padding: 0 18px !important;
+    border-radius: 16px 16px 0 0 !important;
   }
 
   #menu-principal.menu-panel {
     top: 10px !important;
     bottom: 12px !important;
     width: calc(100vw - 20px) !important;
+    height: calc(100vh - 22px) !important;
+    height: calc(100dvh - 22px) !important;
     max-height: calc(100dvh - 22px) !important;
     padding: 78px 18px 18px !important;
     border-radius: 16px !important;
@@ -6131,11 +6145,18 @@ body.menu-is-open .site-header .menu-button:hover {
   border-bottom-color: rgba(255, 107, 44, 0.4);
 }
 
+.essential-nav .dev-menu-dropdown a::after,
+.dev-menu-dropdown a::after {
+  display: none !important;
+  content: none !important;
+}
+
+.essential-nav .dev-menu-link,
 .dev-menu-link {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding: 10px 14px;
+  padding: 10px 14px !important;
   border-radius: 8px;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.04);
@@ -6155,12 +6176,14 @@ body.menu-is-open .site-header .menu-button:hover {
   line-height: 1.3;
 }
 
+.essential-nav .dev-menu-link:hover,
 .dev-menu-link:hover {
   background: rgba(16, 184, 176, 0.18);
   border-color: var(--turquoise);
   transform: translateX(4px);
 }
 
+.essential-nav .dev-menu-col--v2 .dev-menu-link:hover,
 .dev-menu-col--v2 .dev-menu-link:hover {
   background: rgba(255, 107, 44, 0.15);
   border-color: var(--orange);
@@ -6173,7 +6196,12 @@ body.menu-is-open .site-header .menu-button:hover {
   text-align: right;
 }
 
+.essential-nav .dev-footer-link,
 .dev-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0 !important;
   font-size: 0.8rem;
   color: var(--turquoise);
   text-decoration: none;
@@ -6181,38 +6209,10 @@ body.menu-is-open .site-header .menu-button:hover {
   transition: color 0.2s ease;
 }
 
+.essential-nav .dev-footer-link:hover,
 .dev-footer-link:hover {
   color: #2ee6dc;
   text-decoration: underline;
-}
-
-/* Versión en Menú Modal / Móvil */
-.menu-panel__dev-access {
-  margin-top: 20px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px dashed rgba(16, 184, 176, 0.4);
-  border-radius: 12px;
-}
-
-.menu-panel__dev-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-#menu-principal .menu-panel__dev-access .menu-list {
-  gap: 4px !important;
-}
-
-#menu-principal .menu-panel__dev-access .menu-link {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-  font-size: 14.5px !important;
-  padding: 8px 12px !important;
-  min-height: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -6221,9 +6221,6 @@ body.menu-is-open .site-header .menu-button:hover {
     right: -40px;
   }
   .dev-menu-columns {
-    grid-template-columns: 1fr;
-  }
-  .menu-panel__dev-links {
     grid-template-columns: 1fr;
   }
 }
