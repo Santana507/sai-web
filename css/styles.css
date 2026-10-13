@@ -2560,12 +2560,12 @@ footer {
 
   .site-header,
   .header-bar {
-    height: 76px;
+    height: 70px;
   }
 
   .header-bar {
     grid-template-columns: 1fr auto;
-    padding: 0 22px;
+    padding: 0 18px;
   }
 
   .essential-nav {
@@ -2574,7 +2574,8 @@ footer {
     gap: 8px;
   }
 
-  .essential-nav > a {
+  .essential-nav > a,
+  .dev-menu-container {
     display: none !important;
   }
 
@@ -7359,28 +7360,31 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   appearance: none;
   -webkit-appearance: none;
   background: #ffffff;
-  border: 1px solid rgba(7, 43, 73, 0.16);
+  border: 1.5px solid rgba(7, 43, 73, 0.14);
   color: var(--navy);
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  min-height: 40px;
+  border-radius: 999px;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer;
   text-align: left;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  box-shadow: 0 1px 3px rgba(7, 43, 73, 0.04);
+  box-shadow: 0 2px 6px rgba(7, 43, 73, 0.05);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .career-pill:hover {
   border-color: var(--turquoise);
   color: var(--turquoise);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(7, 43, 73, 0.08);
+  box-shadow: 0 4px 12px rgba(7, 43, 73, 0.1);
 }
 
 .career-pill:focus-visible {
@@ -7390,28 +7394,38 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
 .career-pill-icon {
   font-style: normal;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1;
-  color: #92a4b5;
-  transition: transform 0.22s ease, color 0.22s ease;
+  color: #7b8e9f;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(7, 43, 73, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease, color 0.22s ease, background-color 0.22s ease;
+  flex-shrink: 0;
 }
 
 .career-pill:hover .career-pill-icon {
   color: var(--turquoise);
+  background: rgba(16, 184, 176, 0.12);
 }
 
 /* Estado Activo de la Píldora seleccionada */
 .career-pill.is-active {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #ffffff;
+  background: var(--navy) !important;
+  border-color: var(--navy) !important;
+  color: #ffffff !important;
   box-shadow: 0 4px 14px rgba(7, 43, 73, 0.22);
   transform: translateY(-2px);
 }
 
 .career-pill.is-active .career-pill-icon {
-  color: var(--turquoise);
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   transform: rotate(45deg);
 }
 
@@ -7441,16 +7455,24 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
    TARJETA DESPLEGABLE / MINIDETALLE DE CARRERA (POPOUT DRAWER)
    ========================================================================== */
 .career-popout {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
-  overflow: hidden;
-  margin-top: 0;
+  display: none !important;
+  margin-top: 14px;
 }
 
 .career-popout.is-open {
-  grid-template-rows: 1fr;
-  margin-top: 14px;
+  display: block !important;
+  animation: careerDrawerFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes careerDrawerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .career-popout__inner {
@@ -7461,9 +7483,6 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   border-left: 4px solid var(--turquoise);
   padding: 18px 20px;
   box-shadow: 0 10px 28px rgba(7, 43, 73, 0.08);
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.26s ease 0.06s, transform 0.26s ease 0.06s;
 }
 
 .track-showcase--informatica .career-popout__inner {
@@ -7472,11 +7491,6 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
 .track-showcase--comercio .career-popout__inner {
   border-left-color: #d97706;
-}
-
-.career-popout.is-open .career-popout__inner {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .career-popout__top {
@@ -7504,19 +7518,24 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
 .career-popout__close {
   appearance: none;
-  background: transparent;
+  background: rgba(7, 43, 73, 0.06);
   border: none;
-  color: #8b99a6;
-  font-size: 1rem;
+  color: #5c6873;
+  font-size: 0.95rem;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   transition: all 0.2s ease;
 }
 
 .career-popout__close:hover {
-  background: rgba(7, 43, 73, 0.06);
+  background: rgba(7, 43, 73, 0.12);
   color: var(--navy);
 }
 
@@ -8050,21 +8069,186 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   box-shadow: 0 14px 40px rgba(3, 28, 49, 0.2);
 }
 
-/* Responsividad Bachilleres */
+/* ==========================================================================
+   RESPONSIVIDAD AVANZADA (MÓVIL Y TABLET): BACHILLERES Y NAVEGACIÓN
+   Diseño de alta fidelidad: tarjetas táctiles, menú sin colisiones y UX fluida.
+   ========================================================================== */
 @media (max-width: 992px) {
+  /* 1. Header en móvil: eliminar menú dev y mantener barra sólida al scrollear */
+  .dev-menu-container {
+    display: none !important;
+  }
+
+  .site-header,
+  .header-bar {
+    height: 70px !important;
+  }
+
+  .header-bar {
+    padding: 0 16px !important;
+  }
+
+  .brand-logo-img {
+    height: 44px !important;
+  }
+
+  .site-header.is-scrolled .header-bar,
+  .site-header.is-scrolled.is-scrolled-free .header-bar {
+    background: rgba(3, 28, 49, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    pointer-events: auto !important;
+    box-shadow: 0 6px 20px rgba(3, 28, 49, 0.4) !important;
+  }
+
+  .site-header.is-scrolled.is-scrolled-free {
+    pointer-events: auto !important;
+  }
+
+  /* 2. Hero Interior en móvil */
+  .interior-hero {
+    min-height: 72svh;
+  }
+
+  .interior-hero__content {
+    padding-top: 80px;
+    width: min(920px, calc(100% - 32px));
+  }
+
+  .interior-hero__content h1 {
+    font-size: clamp(2rem, 6.2vw, 3.2rem) !important;
+    margin: 16px auto;
+    line-height: 1.1;
+  }
+
+  .interior-hero__content p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* 3. Barra de navegación rápida entre especialidades como tarjetas táctiles */
   .tracks-nav-bar {
     grid-template-columns: 1fr;
-    margin-top: -20px;
+    margin: -16px auto 2.5rem auto;
+    gap: 12px;
+    width: min(1100px, calc(100% - 32px));
+  }
+
+  .tracks-nav-item {
+    background: #ffffff;
+    border: 1px solid rgba(7, 43, 73, 0.12);
+    border-left: 5px solid var(--turquoise);
+    border-radius: 14px;
+    padding: 14px 18px;
+    box-shadow: 0 4px 16px rgba(7, 43, 73, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tracks-nav-item:nth-child(2) {
+    border-left-color: var(--orange);
+  }
+
+  .tracks-nav-item:nth-child(3) {
+    border-left-color: #d97706;
+  }
+
+  .tracks-nav-item::after {
+    content: "↓";
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(7, 43, 73, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--navy);
+    flex-shrink: 0;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .tracks-nav-item:active {
+    transform: scale(0.98);
+    background: #fbfbfb;
+  }
+
+  .tracks-nav-item:active::after {
+    background: var(--navy);
+    color: #ffffff;
+  }
+
+  /* 4. Split Feature y Franja de Métricas Preuniversitarias */
+  .split-feature {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
+
+  .split-feature img {
+    min-height: 240px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .split-feature > div {
+    padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 24px) !important;
+  }
+
+  .split-feature h2 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
+    line-height: 1.15;
+  }
+
+  .split-feature p {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .preuni-stats-strip {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    padding: 14px 10px !important;
+    background: rgba(7, 43, 73, 0.04);
+    border-radius: 14px;
+    border-top: none !important;
+    margin-top: 1.5rem;
+  }
+
+  .preuni-stat-box {
+    align-items: center;
+    text-align: center;
+  }
+
+  .preuni-stat-val {
+    font-size: clamp(1.25rem, 4vw, 1.6rem) !important;
+    line-height: 1.1;
+  }
+
+  .preuni-stat-lbl {
+    font-size: clamp(0.65rem, 2vw, 0.74rem) !important;
+    margin-top: 3px;
+    line-height: 1.25;
+  }
+
+  /* 5. Showcase de Especialidades */
+  .tracks-showcase-section {
+    margin: 2.5rem auto;
+    width: min(1240px, calc(100% - 24px));
   }
 
   .track-showcase,
   .track-showcase--reverse {
     grid-template-columns: 1fr;
+    margin-bottom: 2.5rem;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(7, 43, 73, 0.08);
   }
 
   .track-showcase--reverse .track-media {
@@ -8076,46 +8260,175 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   }
 
   .track-media {
-    min-height: 320px;
+    min-height: 220px;
+    max-height: 280px;
+  }
+
+  .track-media-badge {
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    max-width: calc(100% - 24px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .track-content {
+    padding: clamp(20px, 4vw, 28px) clamp(16px, 3.5vw, 22px);
+  }
+
+  .track-content h3 {
+    font-size: clamp(1.5rem, 4.5vw, 1.9rem);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .track-quote {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+    margin: 0.4rem 0 1rem 0;
+  }
+
+  .track-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0 0 1.2rem 0;
+  }
+
+  /* Competencias organizadas */
+  .track-competencies {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 1.3rem;
+  }
+
+  .track-comp-item {
+    padding: 10px 12px;
+    background: #ffffff;
+    border: 1px solid rgba(7, 43, 73, 0.08);
+    border-radius: 10px;
+  }
+
+  /* Salidas Universitarias / Píldoras interactivas */
+  .track-careers {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+
+  .careers-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .careers-label {
+    font-size: 0.72rem;
+  }
+
+  .careers-hint {
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .careers-pills {
+    gap: 8px;
+  }
+
+  .career-pill {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-height: 38px;
+  }
+
+  .career-popout__inner {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .career-popout__title {
+    font-size: 1.05rem;
+  }
+
+  .career-popout__desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  /* 6. Ecosistema Preuniversitario Bento */
+  .preuni-section {
+    padding: 3rem clamp(16px, 4vw, 24px);
+    border-radius: 20px;
   }
 
   .preuni-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .preuni-card {
+    padding: 1.3rem;
+    border-radius: 14px;
+  }
+
+  /* 7. Hub de Admisiones y Ruta de Ingreso */
+  .preuni-admissions-hub {
+    padding: 3rem clamp(16px, 4vw, 24px);
   }
 
   .preuni-hub-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+
+  .preuni-hub-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+
+  .preuni-hub-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .preuni-guarantee-item {
+    gap: 12px;
+  }
+
+  .preuni-roadmap-card {
+    padding: 1.4rem;
+    border-radius: 16px;
+  }
+
+  .preuni-direct-contact {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .preuni-contact-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
 @media (max-width: 640px) {
-  .track-competencies {
-    grid-template-columns: 1fr;
-  }
-
-  .preuni-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
 
   .hero-btn-primary,
   .hero-btn-outline {
     width: 100%;
     justify-content: center;
-  }
-
-  .preuni-contact-links {
-    grid-template-columns: 1fr;
+    padding: 13px 20px;
   }
 
   .preuni-hub-actions {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
 
   .preuni-hub-actions .hero-btn-primary,

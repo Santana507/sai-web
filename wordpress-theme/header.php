@@ -118,40 +118,18 @@
       <nav class="menu-nav" aria-label="Navegación principal">
         <div class="menu-panel__groups">
           <div class="menu-group">
-            <span class="menu-group-title">01 NUESTRA ESCUELA</span>
-            <ul class="menu-list">
-              <li><a href="<?php echo esc_url( home_url( '/quienes-somos/' ) ); ?>" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/filosofia/' ) ); ?>" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/instalaciones/' ) ); ?>" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/plantel/' ) ); ?>" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li>
-            </ul>
-          </div>
-          <div class="menu-group">
-            <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
-            <ul class="menu-list">
-              <li><a href="<?php echo esc_url( home_url( '/sai/' ) ); ?>" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/vida-estudiantil/' ) ); ?>" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/ecosistema-digital/' ) ); ?>" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li>
-            </ul>
-          </div>
-          <div class="menu-group">
-            <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
-            <ul class="menu-list">
-              <li><a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/portal-padres/' ) ); ?>" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li>
-            </ul>
-          </div>
-          <div class="menu-group">
-            <span class="menu-group-title">04 NIVELES ACADÉMICOS</span>
-            <ul class="menu-list">
-              <li><a href="<?php echo esc_url( home_url( '/prekinder/' ) ); ?>" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/kinder/' ) ); ?>" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/primaria/' ) ); ?>" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/secundaria/' ) ); ?>" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li>
-              <li><a href="<?php echo esc_url( home_url( '/bachilleres/' ) ); ?>" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li>
-            </ul>
-          </div>
+      <span class="menu-group-title">01 NUESTRA ESCUELA</span>
+      <ul class="menu-list"><li><a href="<?php echo esc_url( home_url( '/quienes-somos/' ) ); ?>" class="menu-link"><span>¿Quiénes somos?</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/filosofia/' ) ); ?>" class="menu-link"><span>Propósito BPVDA</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/instalaciones/' ) ); ?>" class="menu-link"><span>Instalaciones</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/plantel/' ) ); ?>" class="menu-link"><span>Plantel docente</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">02 ENFOQUE EDUCATIVO</span>
+      <ul class="menu-list"><li><a href="<?php echo esc_url( home_url( '/sai/' ) ); ?>" class="menu-link"><span>SAI BPVDA</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/vida-estudiantil/' ) ); ?>" class="menu-link"><span>Vida estudiantil</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/ecosistema-digital/' ) ); ?>" class="menu-link"><span>Ecosistema digital</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">03 FAMILIA Y COMUNIDAD</span>
+      <ul class="menu-list"><li><a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>" class="menu-link"><span>Admisiones y matrícula</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/portal-padres/' ) ); ?>" class="menu-link"><span>Portal de padres</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>" class="menu-link"><span>Contacto y atención</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div><div class="menu-group">
+      <span class="menu-group-title">04 NIVELES ACADÉMICOS</span>
+      <ul class="menu-list"><li><a href="<?php echo esc_url( home_url( '/prekinder/' ) ); ?>" class="menu-link"><span>Prekínder</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/kinder/' ) ); ?>" class="menu-link"><span>Kínder</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/primaria/' ) ); ?>" class="menu-link"><span>Primaria</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/secundaria/' ) ); ?>" class="menu-link"><span>Secundaria</span> <i class="menu-chevron">↗</i></a></li><li><a href="<?php echo esc_url( home_url( '/bachilleres/' ) ); ?>" class="menu-link"><span>Bachilleres</span> <i class="menu-chevron">↗</i></a></li></ul>
+    </div>
         </div>
       </nav>
     </div>

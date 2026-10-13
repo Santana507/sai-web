@@ -564,6 +564,13 @@
 
       popout.classList.add('is-open');
       popout.setAttribute('aria-hidden', 'false');
+
+      // En dispositivos móviles, asegurar que la tarjeta desplegada sea visible inmediatamente
+      if (window.innerWidth <= 768) {
+        setTimeout(function () {
+          popout.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 60);
+      }
     }
 
     pills.forEach(function (pill) {

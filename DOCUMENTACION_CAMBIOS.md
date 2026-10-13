@@ -1019,6 +1019,35 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
 ### Verificación
 - `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes en los 18 archivos HTML**.
 
+---
+
+## Sesión #22 — Optimización Responsiva Móvil, Navegación Táctil e Interactividad en Bachilleres (2026-10-12)
+
+### Problemas Solucionados
+1. **Colisión de Cabecera al Hacer Scroll en Móvil**:
+   - En dispositivos móviles, la barra superior se volvía transparente al desplazarse hacia abajo (`is-scrolled-free`), provocando que los textos, títulos e imágenes colisionaran directamente detrás del logotipo BPVDA.
+   - **Solución**: Se forzó un fondo sólido/esmerilado azul profundo (`rgba(3, 28, 49, 0.96)`) con `backdrop-filter: blur(16px)` y borde inferior sutil en pantallas <= 992px, asegurando legibilidad impecable y protección total del logotipo institucional y botón hamburguesa en todo momento.
+2. **Botón Temporal de Desarrollador en Móvil**:
+   - El desplegable `🛠 Desarrollador` ocupaba espacio crítico en la barra superior móvil, apretando el logo BPVDA contra el botón de menú.
+   - **Solución**: Ocultado estrictamente en pantallas móviles y tablets (`@media (max-width: 992px) { .dev-menu-container { display: none !important; } }`).
+3. **Barra de Acceso Rápido entre Especialidades (`.tracks-nav-bar`)**:
+   - En móvil colapsaba en líneas de texto planas sin apariencia de tarjeta ni retroalimentación táctil.
+   - **Solución**: Rediseñada en tarjetas táctiles independientes con fondo blanco, sombra de elevación, borde izquierdo distintivo por color (turquesa para Ciencias, naranja para Informática, ámbar para Comercio) e indicador circular de salto `↓` que responde al toque (`:active`).
+4. **Fallo en Cajón Interactivo de Carreras (`.career-popout`)**:
+   - El cajón utilizaba `grid-template-rows: 0fr`, lo que provocaba que en navegadores móviles (WebKit/Chromium) los bordes y etiquetas internas (`INFORMACIÓN DE CARRERA [✕]`, `Aporte Formativo:`, `Áreas Curriculares:`) permanecieran permanentemente visibles en blanco antes de presionar cualquier botón, transmitiendo sensación de fallo.
+   - **Solución**: Se rediseñó con `display: none !important;` por defecto y `display: block !important;` junto a animación fluida (`careerDrawerFadeIn`) únicamente al activarse una carrera.
+   - Píldoras de carrera (`.career-pill`) convertidas en botones táctiles redondeados (mínimo 40px de altura táctil) con icono circular `+` que rota a `✕` en estado activo.
+   - Se añadió desplazamiento suave automático (`scrollIntoView`) en móvil al tocar una carrera para asegurar retroalimentación inmediata.
+   - Indicador explicativo actualizado: `👆 Toca cada carrera para ver detalles`.
+5. **Ajuste de Proporciones en Contenido Móvil**:
+   - `.preuni-stats-strip` adaptada a 3 columnas horizontales compactas (`100%`, `3`, `MEDUCA`) evitando bloques verticales desmedidos.
+   - Reducción de espaciados y tipografía balanceada en `.track-showcase`, `.track-competencies`, `.preuni-section` y `.preuni-admissions-hub`.
+6. **Sincronización Total con WordPress**:
+   - Sincronizados [css/styles.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/css/styles.css) con [wordpress-theme/style.css](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/style.css).
+   - Sincronizado [js/main.js](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/js/main.js) con [wordpress-theme/js/main.js](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/js/main.js).
+   - Recompiladas las plantillas PHP con `tools/build-wp-pages.ps1`.
+   - Verificado con `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
 
 
 

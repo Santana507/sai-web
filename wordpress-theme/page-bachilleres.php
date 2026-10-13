@@ -127,7 +127,7 @@ get_header(); ?>
           <div class="track-careers">
             <div class="careers-header-row">
               <span class="careers-label">Perfil de Salida / Carreras Universitarias</span>
-              <span class="careers-hint">Toca cada carrera para ver de qué trata</span>
+              <span class="careers-hint">👆 Toca cada carrera para ver detalles</span>
             </div>
             <div class="careers-pills">
               <button type="button" class="career-pill" data-title="Medicina & Cirugía" data-desc="Diagnóstico, tratamiento clínico, prevención de enfermedades y preservación de la salud humana y comunitaria." data-bpvda="Prácticas continuas de laboratorio en biología celular, química orgánica y sólidos fundamentos de bioética." data-keys="Biología celular, Química orgánica, Bioética, Fisiología humana" aria-expanded="false">
@@ -233,7 +233,7 @@ get_header(); ?>
           <div class="track-careers">
             <div class="careers-header-row">
               <span class="careers-label">Perfil de Salida / Carreras Universitarias</span>
-              <span class="careers-hint">Toca cada carrera para ver de qué trata</span>
+              <span class="careers-hint">👆 Toca cada carrera para ver detalles</span>
             </div>
             <div class="careers-pills">
               <button type="button" class="career-pill" data-title="Ingeniería de Software" data-desc="Diseño sistemático, desarrollo, pruebas y mantenimiento de plataformas en la nube, aplicaciones complejas y software a gran escala." data-bpvda="Fundamentos de lógica computacional, algoritmia estructurada y programación orientada a objetos en proyectos reales." data-keys="Algoritmos, Arquitectura de software, Bases de datos, Metodologías ágiles" aria-expanded="false">
@@ -335,7 +335,7 @@ get_header(); ?>
           <div class="track-careers">
             <div class="careers-header-row">
               <span class="careers-label">Perfil de Salida / Carreras Universitarias</span>
-              <span class="careers-hint">Toca cada carrera para ver de qué trata</span>
+              <span class="careers-hint">👆 Toca cada carrera para ver detalles</span>
             </div>
             <div class="careers-pills">
               <button type="button" class="career-pill" data-title="Banca y Finanzas" data-desc="Administración estratégica del capital, análisis de riesgos crediticios, valoración de inversiones y regulación de mercados financieros." data-bpvda="Operaciones bancarias, matemáticas financieras, cálculo de tasas de interés y conciliaciones de cuentas." data-keys="Evaluación de proyectos, Mercados bursátiles, Análisis crediticio, Finanzas corporativas" aria-expanded="false">
