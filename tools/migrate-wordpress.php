@@ -317,9 +317,7 @@ bpvda_update_page($pageIds['inicio'], $home, true);
 // Filosofía: bloques nativos editables.
 $philosophy = bpvda_group(
     bpvda_group(
-        bpvda_image($asset('new/purpose/IMG_1963.JPG'), 'Estudiante BPVDA con uniforme')
-        . bpvda_image($asset('new/purpose/IMG_1966.JPG'), 'Estudiante BPVDA con uniforme')
-        . bpvda_image($asset('new/purpose/IMG_1991.JPG'), 'Estudiante BPVDA con uniforme'),
+        bpvda_image($asset('fotos/institucional/community.webp'), 'Comunidad educativa del Colegio Buen Pastor Voz de Alerta'),
         'purpose-fade__images'
     )
     . bpvda_group(bpvda_paragraph('01 NUESTRA ESCUELA') . bpvda_heading('Una educación con <mark>propósito</mark>.', 1) . bpvda_paragraph('Formamos personas con valores, conocimiento y una mirada generosa hacia los demás.'), 'purpose-fade__content'),
@@ -327,8 +325,8 @@ $philosophy = bpvda_group(
 );
 $philosophy .= bpvda_group(bpvda_paragraph('PROPÓSITO BPVDA') . bpvda_paragraph('Creemos en una educación integral que impulsa el desarrollo académico, personal y espiritual de niños y jóvenes, fundamentada en la fe, la excelencia y el servicio.'), 'purpose-intro', 'section');
 $pillars = [
-    ['01', 'Valores', 'La fe, el respeto, la responsabilidad y el amor al prójimo orientan la manera en que convivimos y aprendemos.', 'new/purpose/IMG_1963.JPG', 'purpose-pillar--values'],
-    ['02', 'Misión', 'Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.', 'new/purpose/IMG_1966.JPG', 'purpose-pillar--mission'],
+    ['01', 'Valores', 'La fe, el respeto, la responsabilidad y el amor al prójimo orientan la manera en que convivimos y aprendemos.', 'new/purpose/IMG_1715.JPG', 'purpose-pillar--values'],
+    ['02', 'Misión', 'Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.', 'new/purpose/IMG_1627.JPG', 'purpose-pillar--mission'],
     ['03', 'Visión', 'Ser una comunidad educativa que inspira a sus estudiantes a aprender, liderar y construir un futuro mejor.', 'new/purpose/IMG_1991.JPG', 'purpose-pillar--vision'],
 ];
 $pillarBlocks = '';

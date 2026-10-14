@@ -5,12 +5,10 @@
 get_header(); ?>
 
 <main id="contenido">
-    <!-- Hero Interactivo con Secuencia de Fundido Fotográfico (Crossfade) -->
+    <!-- Hero con Fotografía Institucional de Propósito Educativo -->
     <section class="purpose-fade">
       <div class="purpose-fade__images">
-        <img class="is-active" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1966.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA con uniforme">
+        <img class="is-active" src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/fotos/institucional/community.webp" alt="Comunidad educativa del Colegio Buen Pastor Voz de Alerta">
       </div>
       <div class="purpose-fade__content">
         <span>01 NUESTRA ESCUELA</span>
@@ -36,15 +34,15 @@ get_header(); ?>
         </div>
       </article>
       <article class="purpose-pillar purpose-pillar--mission">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
         <div>
           <span>02</span>
           <h2>Misión</h2>
           <p>Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.</p>
         </div>
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
       </article>
       <article class="purpose-pillar purpose-pillar--vision">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1655.JPG" alt="Estudiante BPVDA">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA con uniforme">
         <div>
           <span>03</span>
           <h2>Visión</h2>

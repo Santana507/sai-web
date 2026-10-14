@@ -2,6 +2,321 @@
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
+## Sesión #44 — Ajuste y Encuadre Fotográfico en Filosofía Institucional (`filosofia.html`)
+- **Objetivo**: Corregir el recorte fotográfico excesivo en el hero de `filosofia.html` (*Propósito BPVDA - Una educación con propósito*) sustituyendo la rotación vertical desproporcionada por una imagen estática panorámica institucional de alta nitidez, y reubicar la fotografía vertical del estudiante con uniforme y gafas BPVDA en la columna de la sección Visión.
+- **Cambios Realizados**:
+  1. **Hero de Propósito / Filosofía (`.purpose-fade`)**:
+     - Se reemplazó el carrusel de 3 retratos verticales (`IMG_1963.JPG`, `IMG_1966.JPG`, `IMG_1991.JPG`) que se recortaban de forma forzada en pantallas horizontales por una única fotografía real panorámica de alta resolución: `assets/fotos/institucional/community.webp` (estudiantes y equipo docente sonrientes en el escenario escolar).
+     - El script de rotación automática (`js/main.js`) detecta de forma nativa que existe un solo elemento activo y desactiva el temporizador para un despliegue estático, limpio y sin saltos visuales.
+     - Ajuste de encuadre CSS en `css/styles.css`: `.purpose-fade__images img { object-fit: cover !important; object-position: center 38% !important; }` para centrar perfectamente a la comunidad educativa.
+  2. **Sección Visión (`.purpose-pillar--vision`)**:
+     - Se reemplazó la imagen anterior (`IMG_1655.JPG`) por `assets/new/purpose/IMG_1991.JPG` (estudiante con uniforme y gafas BPVDA), cuyo formato vertical 2:3 encaja de manera natural en la columna lateral 50/50 de la sección.
+     - Ajuste de encuadre CSS: `.purpose-pillar--vision img { object-fit: cover !important; object-position: center 20% !important; }` asegurando enfoque nítido en el rostro e insignia institucional.
+  3. **Corrección de Ritmo Responsivo en Pilares Formativos (`.purpose-pillar`)**:
+     - Causa del problema reportado: En escritorio el diseño alterna en zig-zag (Foto-Texto en Valores, Texto-Foto en Misión, Foto-Texto en Visión). Al colapsar en una sola columna en pantallas móviles, el orden original del marcado generaba una colisión de dos bloques de texto contiguos (Texto de Valores inmediatamente seguido por Texto de Misión) y luego dos fotografías seguidas (Foto de Misión seguida de Foto de Visión).
+     - Solución técnica:
+       - En escritorio (`@media (min-width: 851px)`): Se preservó el diseño en zig-zag con `order: 1` para el texto y `order: 2` para la imagen en `.purpose-pillar--mission`.
+       - En móviles/tablets (`@media (max-width: 850px)`): Se garantizó el ritmo visual consistente **Foto → Texto** en cada pilar (`img { order: 1; }`, `div { order: 2; }`), separando el texto blanco de Valores y el texto naranja de Misión mediante la fotografía de Misión.
+  4. **Encuadre Fotográfico Superior en Pilares Formativos (`object-position: center top`)**:
+     - Causa identificada: Las fotografías de los pilares (`IMG_1715.JPG`, `IMG_1627.JPG`, `IMG_1991.JPG`) son retratos donde las cabezas y rostros se ubican en el tercio superior. Al utilizar `object-position: 50% 50%` por defecto con `object-fit: cover`, el contenedor recortaba los extremos superior e inferior, cortando el pelo y la frente de los sujetos.
+     - Solución técnica:
+       - Se fijó `object-position: center top !important;` en `.purpose-pillar img` y en cada pilar individual (`.purpose-pillar--values img`, `.purpose-pillar--mission img`, `.purpose-pillar--vision img`), anclando el encuadre al margen superior para conservar el 100% de la cabeza, cabello y expresión facial.
+       - En móviles (`@media (max-width: 850px)`), se amplió la altura del contenedor fotográfico a `height: clamp(360px, 85vw, 480px)` para otorgar mayor aire vertical en pantallas como 425px.
+  5. **Sincronización Total del Ecosistema**:
+     - Actualización en el generador maestro `tools/generate-pages.mjs`.
+     - Regeneración de `filosofia.html` con `node tools/generate-pages.mjs`.
+     - Sincronización de estilos en el tema WordPress con `node tools/sync-wp-css.mjs`.
+     - Actualización de `tools/migrate-wordpress.php` y re-compilación de `wordpress-theme/page-filosofia.php` mediante `tools/build-wp-pages.ps1`.
+     - Verificación con `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #43 — Optimización Integral para Móviles y Tablets: Experiencia Familiar Fluida
+- **Objetivo**: Adaptar exhaustivamente todas las secciones y componentes rediseñados (Quiénes Somos, Instalaciones, Plantel Docente, SAI Campus Virtual, Vida Estudiantil, Ecosistema Digital, Portal de Padres, Contacto y detalles de Bachilleres) para teléfonos inteligentes y tabletas, eliminando fricciones para padres y acudientes.
+- **Mejoras Implementadas**:
+  1. **Tipografía Fluida y Encabezados Hero**:
+     - Se ajustaron los límites inferiores de `clamp()` en títulos `h1` y `h2` (`clamp(1.85rem, 5.8vw, 2.6rem)`) con `overflow-wrap: break-word` para evitar que términos extensos rompan o desborden la pantalla en dispositivos estrechos (320px–400px).
+     - Relleno ergonómico en héroes para dispositivos móviles: `clamp(84px, 11vh, 110px) 16px clamp(44px, 6vh, 60px)`.
+  2. **Franjas de Métricas e Indicadores (Dashboard 2x2)**:
+     - En lugar de colapsar 4 métricas a una columna vertical interminable, se implementó una cuadrícula balanceada `repeat(2, 1fr)` en teléfonos móviles (hasta 340px) en las 7 secciones de impacto, permitiendo escanear cifras de inmediato.
+  3. **Manifiestos y Resguardo Fotográfico**:
+     - Altura controlada de imágenes en móviles (`height: clamp(220px, 50vw, 340px)`).
+     - Reubicación estática de las insignias y versículos flotantes en pantallas menores a 768px (`position: static; margin-top: 14px;`) para no obstruir las caras de docentes, alumnos ni instalaciones.
+  4. **Tarjetas, Bento Grids y Densidad Visual**:
+     - Reducción del acolchado interno en tarjetas (de 38px a ~18-20px en móviles) para dar prioridad a la legibilidad y evitar compresión de texto.
+     - Transición en tabletas (768px–1024px) a cuadrículas de 2 columnas para plataformas, servicios, cronogramas y departamentos.
+  5. **Prevención de Auto-Zoom en iOS Safari y Formulario de Contacto**:
+     - Tipografía de inputs, selects y textareas fijada en `16px` para anular el zoom automático intrusivo de Safari en iPhone.
+     - Botón de envío táctil ampliado a `min-height: 52px` con ancho completo.
+  6. **Mapa y Canales de Atención Directa**:
+     - Altura del mapa interactivo optimizada a 290px en móviles para evitar captura de scroll táctil al deslizar.
+     - Botones de navegación directa a Google Maps y Waze distribuidos al 50% con objetivos táctiles de 46px.
+     - Botón de cierre en cajón interactivo de carreras (`.career-popout__close`) ampliado a 36x36px con `touch-action: manipulation`.
+  7. **Sincronización Total y Verificación**:
+     - Estilos sincronizados con `wordpress-theme/style.css` vía `node tools/sync-wp-css.mjs`.
+     - Plantillas PHP recompiladas con `tools/build-wp-pages.ps1`.
+     - Verificación con `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #42 — Corrección Crítica de Maquetación del Hero de Instalaciones y Renderizado de Header/Footer
+- **Objetivo**: Corregir de raíz el problema visual reportado en `instalaciones.html` donde el texto del hero aparecía aplastado en una columna de 20px a la derecha y restaurar la inyección íntegra de cabecera y pie de página en todo el sitio.
+- **Correcciones Realizadas**:
+  1. **Hero de Instalaciones (`instalaciones.html` y `css/styles.css`)**:
+     - Causa identificada: `.inst-hero` utiliza `display: flex; align-items: center;`. La imagen de fondo no tenía aplicada la clase `.inst-hero__bg` y se renderizaba como elemento flex en el flujo de contenido con ancho natural, desplazando el contenedor `.inst-hero__container` fuera de pantalla y colapsando el titular tipográfico.
+     - Solución técnica en CSS: Se amplió la regla a `.inst-hero img, .inst-hero > img, .inst-hero__bg` con `position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;`. Regla defensiva análoga agregada a `.qs-hero`.
+     - Solución en marcado: Se aseguró la clase `inst-hero__bg` en la etiqueta de la imagen hero dentro de `tools/generate-pages.mjs`.
+  2. **Renderizado de Header y Footer**:
+     - Se eliminó el escape accidental `\${visualHeader}` y `\${richFooter}` en las plantillas de `tools/generate-pages.mjs`, garantizando la inyección del header visual y footer con navegación Bento y redes en las 16 páginas.
+  3. **Reconstrucción y Sincronización**:
+     - Regeneración de HTML con `node tools/generate-pages.mjs`.
+     - Sincronización de estilos con `node tools/sync-wp-css.mjs`.
+     - Recompilación de plantillas WordPress con `tools/build-wp-pages.ps1`.
+     - Verificación con `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #41 — Rediseño de Fase 3: Portal de Padres (`portal-padres.html`) y Contacto (`contacto.html`)
+- **Objetivo**: Completar las 2 páginas de la **Fase 3 (03 Familia y Comunidad)** eliminando componentes repetitivos, tarjetas navy duplicadas y carruseles redundantes.
+- **Páginas Transformadas**:
+  1. `portal-padres.html`:
+     - Hero cálido con fotografía de comunidad familiar (`assets/fotos/institucional/IMG_9637.webp`).
+     - Franja de 4 métricas de acompañamiento escolar (Canales digitales, Escuela para Padres, Horarios de atención, 100% seguimiento).
+     - Manifiesto de alianza formativa Colegio-Familia (*Proverbios 22:6*).
+     - Cuadrícula de 6 servicios digitales y de apoyo (Edvoice, SAI Moodle, Caja y Tesorería, Consejería Escolar, Circulares Oficiales, Escuela para Padres).
+     - Protocolo de comunicación paso a paso (4 etapas claras).
+     - Calendario de hitos institucionales por bimestre escolar.
+  2. `contacto.html`:
+     - Hero sobrio y directo con foto del campus exterior (`assets/fotos/exterior/IMG_9379.webp`).
+     - Franja de 4 canales de atención ágil (Línea PBX, WhatsApp oficial, Correo institucional, Atención presencial).
+     - Tarjetas informativas de ubicación, horarios y vías de comunicación.
+     - Integración del mapa satelital interactivo y formulario de consultas directas.
+- **Verificación**: 0 enlaces rotos y 0 fotos duplicadas.
+
+---
+
+## Sesión #40 — Rediseño de Ecosistema Digital: Catálogo de Alianzas y Competencias (`ecosistema-digital.html`)
+- **Objetivo**: Culminar la tercera y última página de la **Fase 2 (02 Enfoque Educativo)** del plan integral de des-duplicación visual, transformando por completo `ecosistema-digital.html` desde una plantilla genérica con 3 tarjetas navy clónicas, carrusel genérico y una marquesina simple de logos hacia un **Catálogo Interactivo de Alianzas Tecnológicas y Competencias Digitales** con fichas estructuradas de propósito pedagógico.
+- **Transformación de Componentes e Imágenes Reales (2 fotos exclusivas y 8 logos oficiales de alianzas)**:
+  1. **Hero Tecnológico de Innovación Educativa (`.eco-hero`)**:
+     - Fotografía de portada de alta resolución: `assets/fotos/secundaria/IMG_9529.webp` (1.50 MB, estudiantes en aula informática con pantallas interactivas).
+     - Overlay con degradado institucional tecnológico, eyebrow `02 ENFOQUE EDUCATIVO · ECOSISTEMA DIGITAL` con icono SVG de globo red, titular con `<mark>`, bajada clara y doble botón (*"Explorar Plataformas ↓"* y *"Campus Virtual SAI ↗"*).
+  2. **Franja de Métricas Digitales (`.eco-facts-strip`)**:
+     - 4 métricas del ecosistema de innovación:
+       - `+8 Alianzas`: Plataformas educativas oficiales integradas.
+       - `100%`: Alumnos con licencias institucionales activas.
+       - `STEM & Lógica`: Enfoque pedagógico basado en competencias.
+       - `Cloud 24/7`: Continuidad de aprendizaje en colegio y hogar.
+  3. **Manifiesto de Innovación Ética (`.eco-manifesto`)**:
+     - Columna izquierda con fotografía de estudiante concentrado en aula digital (`assets/fotos/secundaria/IMG_9520.webp`, 873 KB) y badge institucional (*"Tecnología con valores: creadores conscientes y éticos"*).
+     - Columna derecha con filosofía de tecnología con propósito y cita rectora de *Proverbios 18:15*.
+  4. **Catálogo de 8 Plataformas Educativas Oficiales (`.eco-platforms-section`)**:
+     - 8 tarjetas interactivas con logo oficial, categoría, niveles escolares y descripción de impacto pedagógico:
+       - *Progrentis* (`Progrentis1.png`): Neuroeducación y comprensión lectora ágil (Primaria y Secundaria).
+       - *Matific* (`Matific1.png`): Pensamiento lógico-matemático gamificado (Preescolar y Primaria).
+       - *Canva for Education* (`Canva1.webp`): Diseño gráfico y comunicación visual (Todos los niveles).
+       - *Edvoice* (`Edvoice1.webp`): Canal de comunicación instantánea y seguimiento familiar (Comunidad de padres).
+       - *SAI BPVDA Moodle* (`SAI logo oficial.jpg`): Campus virtual central y aula digital (Primaria y Secundaria).
+       - *King's Corner* (`Kingscorner.png`): Inmersión lingüística y gramática en idioma inglés (Primaria y Secundaria).
+       - *Academia 24* (`Academia 24 - 1.png`): Tutoría digital y refuerzo curricular (Secundaria y Bachilleres).
+       - *Kahoot!* (`kahoot1.webp`): Gamificación y dinámicas de evaluación formativa en el aula (Todos los niveles).
+  5. **Principios de Ciudadanía y Seguridad Digital (`.eco-safety-section`)**:
+     - 3 tarjetas con iconografía SVG premium:
+       - *Entornos Seguros y Privacidad*: Protección perimetral y resguardo estricto de datos.
+       - *Mediación Docente Activa*: Planificación pedagógica con sentido, evitando el consumo pasivo.
+       - *Equilibrio con la Vida Presencial*: Desconexión saludable, libros físicos y diálogo cara a cara.
+  6. **Banner de Cierre (`.eco-cta`)**:
+     - Llamado a la acción para iniciar el proceso de matrícula o conocer el campus SAI.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `ecosistema-digital.html`.
+  - Estilos `.eco-*` estructurados en `css/styles.css` y sincronizados con `wordpress-theme/style.css` mediante `tools/sync-wp-css.mjs`.
+  - Plantilla de WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-ecosistema-digital.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+  - Auditoría de duplicados: **0 fotos repetidas en ecosistema-digital.html**.
+
+---
+
+## Sesión #39 — Rediseño de Vida Estudiantil: Mosaico Editorial de Experiencias y Clubes (`vida-estudiantil.html`)
+- **Objetivo**: Completar la segunda página de la **Fase 2 (02 Enfoque Educativo)** del plan integral de des-duplicación visual, transformando `vida-estudiantil.html` desde una plantilla repetitiva con 3 tarjetas navy genéricas y carrusel clónico con fotografías duplicadas hacia un dinámico **Mosaico Editorial de Experiencias, Clubes y Cronograma Anual**.
+- **Transformación de Componentes e Imágenes Reales (6 fotos únicas y 0 duplicadas)**:
+  1. **Hero Vibrante de Comunidad Escolar (`.ve-hero`)**:
+     - Fotografía de portada de alta resolución: `assets/fotos/secundaria/IMG_9587.webp` (752 KB, comunidad juvenil y ambiente escolar cálido).
+     - Overlay degradado institucional, eyebrow `02 ENFOQUE EDUCATIVO · VIDA ESTUDIANTIL` con icono SVG de estrella, titular con `<mark>` naranja cálido, bajada descriptiva y doble botón de acción (*"Explorar Clubes y Actividades ↓"* y *"Proceso de Admisión ↗"*).
+  2. **Franja de Métricas de Vida Estudiantil (`.ve-facts-strip`)**:
+     - 4 métricas de formación extracurricular:
+       - `+10 Clubes`: Talleres y disciplinas activas en el plantel.
+       - `100%`: Participación en proyectos cívicos y comunitarios.
+       - `3 Ferias`: Hitos institucionales anuales (Ciencia, Folclore y Deporte).
+       - `1° Lugares`: Reconocimientos en olimpiadas científicas y STEM.
+  3. **Manifiesto de Formación Integral (`.ve-manifesto`)**:
+     - Columna izquierda con fotografía de liderazgo colaborativo (`assets/fotos/secundaria/IMG_9516.webp`, 973 KB) y badge con versículo rector de *1 Timoteo 4:12*.
+     - Columna derecha con narrativa sobre aprender haciendo, conviviendo y sirviendo.
+  4. **Cuadrícula de Clubes y Experiencias Formativas (`.ve-clubs-section`)**:
+     - 4 tarjetas modulares interactivas con fotografías reales exclusivas:
+       - *Club de Robótica y Ferias Científicas* (`assets/fotos/secundaria/IMG_9551.webp`, 1.06 MB).
+       - *Disciplinas Deportivas y Torneos Escolares* (`assets/fotos/secundaria/IMG_9583.webp`, 732 KB).
+       - *Banda de Música y Expresión Folclórica* (`assets/fotos/secundaria/IMG_9594.webp`, 746 KB).
+       - *Devocionales y Liderazgo Cristiano* (`assets/fotos/secundaria/IMG_9524.webp`, 1.02 MB).
+  5. **Cronograma de Hitos Escolares Anuales (`.ve-timeline-section`)**:
+     - 4 hitos estructurados por trimestre:
+       - *I Trimestre*: Jornada de Integración y Deporte.
+       - *II Trimestre*: Feria de Ciencias y Robótica.
+       - *III Trimestre*: Mes de la Patria y Semana Cívica.
+       - *Cierre Lectivo*: Gala de Talentos y Graduación.
+  6. **Banner de Cierre (`.ve-cta`)**:
+     - Llamado a la acción con enlaces a Admisiones y Visitas al Campus.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `vida-estudiantil.html`.
+  - Estilos `.ve-*` agregados a `css/styles.css` y sincronizados con `wordpress-theme/style.css` mediante `tools/sync-wp-css.mjs`.
+  - Plantilla de WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-vida-estudiantil.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+  - Auditoría de duplicados: **Eliminadas las 2 fotos duplicadas con bachilleres.html (`IMG_9582.webp` e `IMG_9574.webp`)**. Total de fotos duplicadas en el sitio reducido a 8.
+
+---
+
+## Sesión #38 — Rediseño del Campus Virtual Interactivo SAI (`sai.html`)
+- **Objetivo**: Iniciar la **Fase 2 (02 Enfoque Educativo)** del plan integral de des-duplicación visual, transformando `sai.html` desde una plantilla repetitiva con un logo de baja resolución estirado en el hero, 3 cajas navy genéricas y carrusel clónico hacia un auténtico **Portal del Campus Virtual Interactivo** con tecnología Moodle, mockup de interfaz real, métricas digitales y guía paso a paso para estudiantes.
+- **Transformación de Componentes e Imágenes Reales**:
+  1. **Hero Tecnológico del Campus Virtual (`.sai-hero`)**:
+     - Fotografía de portada de alta resolución: `assets/fotos/secundaria/IMG_9532.webp` (1.45 MB, estudiantes trabajando en estaciones digitales de aula informática).
+     - Overlay con degradado institucional tecnológico, eyebrow `02 ENFOQUE EDUCATIVO · SAI BPVDA` con icono SVG de pantalla, titular con `<mark>`, bajada clara y doble botón de acción (*"Ingresar al Campus SAI ↗"* con enlace directo a la plataforma y *"Guía de Acceso para Estudiantes ↓"*).
+  2. **Franja de Métricas Digitales (`.sai-facts-strip`)**:
+     - 4 métricas del ecosistema digital:
+       - `24/7`: Campus accesible en cualquier momento y lugar.
+       - `100%`: Asignaturas con aula virtual y materiales al día.
+       - `Moodle Enterprise`: Motor tecnológico educativo líder mundial.
+       - `0 Papel`: Entregas digitales ecológicas, trazables y organizadas.
+  3. **Mockup UI Oficial y Cuadrícula de Módulos (`.sai-preview-section`)**:
+     - Ventana de navegador simulada (`.sai-window`) con barra de control (botones de semáforo rojo/amarillo/verde, URL `https://sai.bpvda.edu.pa/` y badge institucional).
+     - Captura de pantalla real enmarcada de la plataforma BPVDA: `assets/new/sai/Captura de pantalla 2026-09-12 135920.png`.
+     - 4 tarjetas modulares de funcionalidades pedagógicas:
+       - *Materiales y Guías Didácticas*: Acceso permanente a lecciones y presentaciones.
+       - *Buzón de Tareas y Entregas*: Subida de archivos con sello de hora automático.
+       - *Evaluaciones y Quizzes*: Cuestionarios interactivos y autoevaluaciones.
+       - *Calificaciones y Retroalimentación*: Notas ponderadas y comentarios del docente.
+  4. **Guía de Acceso para Estudiantes en 3 Pasos (`.sai-steps-section`)**:
+     - *Paso 1: Credenciales Oficiales* (usuario y clave asignados en matrícula).
+     - *Paso 2: Acceso y Selección de Grado* (visita a `sai.bpvda.edu.pa` y panel de cursos).
+     - *Paso 3: Participación y Entrega Oportuna* (fechas límite y aprovechamiento escolar).
+  5. **Mesa de Asistencia Digital y Soporte (`.sai-support-section`)**:
+     - 3 tarjetas de resolución de incidencias:
+       - *Restablecimiento de Contraseña* (enlace directo a WhatsApp de secretaría/soporte).
+       - *Acceso Móvil* (guía de la app oficial de Moodle para iOS y Android).
+       - *Comunicación Familiar* (enlace integrado a la plataforma de padres Edvoice).
+  6. **Banner de Cierre con Acceso Inmediato (`.sai-cta`)**:
+     - Llamado directo a entrar al aula virtual o redirigir al Portal de Padres.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `sai.html`.
+  - Estilos `.sai-*` estructurados en `css/styles.css` y sincronizados con `wordpress-theme/style.css` mediante `tools/sync-wp-css.mjs`.
+  - Plantilla de WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-sai.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+  - Auditoría de duplicados: **0 fotos repetidas en sai.html**.
+
+---
+
+## Sesión #37 — Rediseño de Plantel Docente: Enfoque Departamental y Mentoría por Ciclos (`plantel.html`)
+- **Objetivo**: Culminar la tercera y última página de la **Fase 1 (01 Nuestra Escuela)** del plan integral de des-duplicación visual, transformando por completo `plantel.html` desde una plantilla repetitiva con 3 tarjetas navy genéricas, carrusel genérico y dibujos animados placeholders (`1.png` - `4.png`) hacia una estructura editorial de alto prestigio con enfoque departamental, mentoría por ciclos y fotografías reales de aula.
+- **Transformación de Componentes e Imágenes Reales (6 fotos únicas y 0 repetidas)**:
+  1. **Hero Editorial de Vocación Pedagógica (`.doc-hero`)**:
+     - Fotografía de portada de alta resolución: `assets/fotos/primaria-preescolar/IMG_9490.webp` (1.2 MB, aula real con interacción activa docente-estudiante).
+     - Overlay con degradado institucional, eyebrow `01 NUESTRA ESCUELA · PLANTEL DOCENTE` con icono SVG de mentores, titular de impacto con `<mark>` cálido, bajada descriptiva y doble botón (*"Conocer Ciclos y Departamentos ↓"* y *"Agendar Orientación Pedagógica ↗"*).
+  2. **Franja de Métricas Docentes (`.doc-facts-strip`)**:
+     - 4 métricas tangibles del equipo formativo:
+       - `+40 Educadores`: Comprometidos con la formación integral y cristiana.
+       - `100%`: Docentes titulados y en capacitación pedagógica continua.
+       - `1:15`: Ratio docente-alumno para acompañamiento personalizado en aula.
+       - `14 Grados`: Acompañamiento continuo desde Maternal hasta 12° año.
+  3. **Manifiesto de Vocación y Mentoría Cristiana (`.doc-manifesto`)**:
+     - Columna izquierda con fotografía real de aula (`assets/fotos/primaria-preescolar/IMG_9436.webp`, 1.2 MB) y badge flotante institucional (*"Vocación que transforma vidas"*).
+     - Columna derecha con filosofía del educador BPVDA y cita bíblica rectora (*San Lucas 6:40*).
+  4. **Estructura Departamental y Ciclos Formativos (`.doc-cycles-section`)**:
+     - 4 tarjetas modulares de ciclos académicos con fotografías reales exclusivas y listas de competencias formativas:
+       - *Ciclo 1: Preescolar y Maternal — Educación Inicial: Afecto, Curiosidad y Estimulación* (`assets/fotos/primaria-preescolar/IMG_9455.webp`, 1.0 MB).
+       - *Ciclo 2: Educación Primaria — Cimientos Cognitivos y Carácter* (`assets/fotos/primaria-preescolar/IMG_9491.webp`, 1.1 MB).
+       - *Ciclo 3: Secundaria y Bachilleratos — Rigor Académico y Liderazgo* (`assets/fotos/secundaria/IMG_9519.webp`, 1.2 MB).
+       - *Ciclo 4: Áreas Especiales y STEM — Idiomas, Robótica, Arte y Deporte* (`assets/fotos/secundaria/IMG_9548.webp`, 809 KB).
+  5. **Pilares del Compromiso Docente (`.doc-commit-section`)**:
+     - 3 tarjetas con iconografía SVG premium y microtags institucionales:
+       - *01 · Capacitación Continua*: Actualización en neuroeducación y plataformas digitales (Canva, Moodle, SAI).
+       - *02 · Cuidado Socioemocional*: Pastoral, consejería y orientación cercana en valores bíblicos.
+       - *03 · Alianza con el Hogar*: Comunicación diaria mediante Edvoice y reuniones periódicas de avance.
+  6. **Banner de Cierre Docente (`.doc-cta`)**:
+     - Diálogo y comunidad con enlaces directos para solicitar entrevistas pedagógicas y admisiones.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `plantel.html`.
+  - Estilos `.doc-*` agregados a `css/styles.css` y sincronizados con `wordpress-theme/style.css` vía `tools/sync-wp-css.mjs`.
+  - Plantilla WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-plantel.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+  - Auditoría de duplicados: **0 imágenes duplicadas en plantel.html** y eliminados definitivamente los 4 dibujos placeholders antiguos.
+
+---
+
+## Sesión #36 — Rediseño Arquitectónico y Guía de Zonas de Instalaciones (`instalaciones.html`)
+- **Objetivo**: Completar la segunda página de la **Fase 1 (01 Nuestra Escuela)** del plan integral de des-duplicación visual, transformando `instalaciones.html` desde una plantilla repetitiva con 3 tarjetas navy genéricas y carrusel genérico hacia una experiencia editorial e inmersiva de Guía de Campus por Zonas Clave y Mosaico Arquitectónico.
+- **Transformación de Componentes e Imágenes Reales (9 fotos únicas de `assets/fotos/exterior/` y `assets/fotos/secundaria/`)**:
+  1. **Hero Panorámico del Campus (`.inst-hero`)**:
+     - Fotografía de portada de alta resolución: `assets/fotos/exterior/IMG_9387.webp` (Patio central bajo sombra natural y pabellón principal).
+     - Overlay con degradado institucional, eyebrow `01 NUESTRA ESCUELA · INSTALACIONES Y CAMPUS`, titular asimétrico con `<mark>`, bajada descriptiva y doble botón de acción (*"Explorar Zonas del Campus ↓"* y *"Agendar una Visita Presencial ↗"*).
+  2. **Franja de Capacidades del Campus (`.inst-facts-strip`)**:
+     - 4 métricas de infraestructura escolar:
+       - `100%`: Aulas climatizadas y confortables.
+       - `3 Pabellones`: Preescolar, Primaria y Secundaria claramente delimitados.
+       - `1 Lab`: Informática, STEM y Robótica educativa.
+       - `2 Áreas`: Cancha multideportiva y parque infantil VDA.
+  3. **Guía de Espacios por Zonas Clave (`.inst-zones-section`)**:
+     - Reemplazo total de las 3 tarjetas navy por 4 tarjetas modulares interactivas con foto superior, badge temático y lista de características con checks SVG:
+       - *Zona 1: Aulas Modernas y Entornos de Aprendizaje* (`assets/fotos/exterior/IMG_9383.webp`).
+       - *Zona 2: Laboratorio de Cómputo, Robótica y Ciencias* (`assets/fotos/secundaria/IMG_9531.webp`).
+       - *Zona 3: Cancha Multideportiva y Espacios Recreativos* (`assets/fotos/exterior/IMG_9391.webp`).
+       - *Zona 4: VDA Park: Esparcimiento y Juego Infantil* (`assets/fotos/exterior/IMG_9394.webp`).
+  4. **Mosaico Bento Arquitectónico (`.inst-bento-section`)**:
+     - Sustituido el carrusel genérico por un Bento Grid de 4 piezas asimétricas con fotografías reales de exteriores:
+       - *Pabellón exclusivo de Primera Infancia* (`assets/fotos/exterior/IMG_9408.webp`).
+       - *Entrada principal y garita de seguridad* (`assets/fotos/exterior/IMG_9371.webp`).
+       - *Corredores techados y descanso* (`assets/fotos/exterior/campus-restzone.webp`).
+       - *Módulos de juego y desarrollo motor* (`assets/fotos/exterior/IMG_9400.webp`).
+  5. **Banner de Cierre: Recorrido Presencial (`.inst-cta`)**:
+     - Llamado a la acción con agendamiento guiado a contacto y admisiones.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `instalaciones.html`.
+  - Estilos `.inst-*` estructurados en `css/styles.css` y espejados en `wordpress-theme/style.css`.
+  - Plantilla de WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-instalaciones.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #35 — Rediseño Editorial y Des-duplicación Visual de ¿Quiénes Somos? (`quienes-somos.html`)
+- **Objetivo**: Iniciar la **Fase 1 (01 Nuestra Escuela)** del plan integral de des-duplicación visual, eliminando por completo los bloques clónicos y repetitivos (`split-feature` 50/50, `content-cards` con 3 cajas navy genéricas y `carousel-v3` genérico) en `quienes-somos.html`, sustituyéndolos por una arquitectura institucional de prestigio auténtica con imágenes reales no repetidas.
+- **Transformación de Componentes**:
+  1. **Hero Institucional de Prestigio (`.qs-hero`)**:
+     - Fotografía de fondo de alta resolución (`assets/fotos/institucional/admision.webp`, 602 KB) con wash degradado institucional para legibilidad óptima.
+     - Eyebrow con icono SVG (`01 NUESTRA ESCUELA · IDENTIDAD Y TRAYECTORIA`), titular de impacto con `clamp()` y botones de acción doble (*"Conoce nuestra historia ↓"* y *"Proceso de admisión ↗"*).
+  2. **Franja de Métricas e Impacto Formativo (`.qs-facts-strip`)**:
+     - 4 métricas tangibles: `+20` años de trayectoria en 24 de Diciembre, `100%` formación con valores bíblicos, `14` grados continuos (Maternal a Secundaria) y `3` bachilleratos oficiales.
+  3. **Manifiesto Editorial Asimétrico (`.qs-manifesto`)**:
+     - Columna izquierda con fotografía de cultura y comunidad escolar (`assets/fotos/institucional/culture.webp`, 297 KB) y badge flotante institucional (*"Formación para la vida, no solo para el aula"*).
+     - Columna derecha con narrativa auténtica y caja destacada de cita bíblica rectora (*Proverbios 22:6*).
+  4. **Tríada de Pilares Fundacionales (`.qs-pillars-grid`)**:
+     - Sustituidas las 3 tarjetas navy genéricas por tarjetas editoriales interactivas con iconografía SVG premium y acentos de color institucional:
+       - *01 · Espiritualidad y Carácter*: Fundamento Cristocéntrico.
+       - *02 · Rigor Pedagógico*: Excelencia Académica y STEM.
+       - *03 · Comunidad y Hogar*: Alianza Sagrada con la Familia.
+  5. **Mosaico Bento de Vida Escolar (`.qs-bento-section`)**:
+     - Eliminado el carrusel repetido de diapositivas y reemplazado por un Bento Grid asimétrico con 4 fotografías institucionales reales sin duplicación:
+       - *Mérito y Superación* (`achievement.webp`)
+       - *Pensamiento Crítico* (`learn-mind.webp`)
+       - *Fe y Convivencia* (`mission.webp`)
+       - *Identidad y Cultura* (`culture-main.webp`)
+  6. **Llamado a la Acción Institucional (`.qs-cta`)**:
+     - Bloque elegante con accesos directos a Admisiones y agendamiento de visitas al campus.
+- **Sincronización Total y Validación SDD**:
+  - Código incorporado de forma dedicada en `tools/generate-pages.mjs` y exportado a `quienes-somos.html`.
+  - Estilos `.qs-*` estructurados en `css/styles.css` y espejados en `wordpress-theme/style.css`.
+  - Plantilla de WordPress regenerada mediante `tools/build-wp-pages.ps1` (`wordpress-theme/page-quienes-somos.php`).
+  - Verificación `node tools/verify-integrity.mjs`: **0 enlaces rotos, 0 recursos multimedia faltantes**.
+
+---
+
 ## Sesión #34 — Restauración de Canales Directos de Contacto y Coordenadas Exactas de Google Maps (`contacto.html`)
 - **Objetivo**: Recuperar la versión definitiva de la sección de contacto y mapa en `contacto.html`, luego de que un commit de colaborador (`81b1930`) revirtiera las tarjetas interactivas de contacto y sustituyera el mapa de coordenadas exactas por una búsqueda genérica de calle.
 - **Cambios Restaurados**:
@@ -1083,6 +1398,86 @@ Historial cronológico de cambios aplicados en el repositorio y código fuente d
    - Sincronizado [js/main.js](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/js/main.js) con [wordpress-theme/js/main.js](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/wordpress-theme/js/main.js).
    - Recompiladas las plantillas PHP con `tools/build-wp-pages.ps1`.
    - Verificado con `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+
+---
+
+## Sesión #41 — Rediseño Integral de Portal de Padres: Hub de Servicios a la Familia (2026-10-13)
+
+### Objetivos y Transformación de la Página
+Se transformó por completo `portal-padres.html` (perteneciente al pilar **03 FAMILIA Y COMUNIDAD**), erradicando las tarjetas navy genéricas, el carrusel de fotos repetidas y la imagen estirada de logotipo en el hero.
+
+### Mejoras Realizadas
+1. **Hero de Alianza Familia-Colegio**:
+   - Fotografía real de fachada exterior y recepción (`assets/fotos/exterior/IMG_9370.webp`, 6000x4000, 100% no utilizada previamente en el sitio) con overlay corporativo azul profundo y turquesa.
+   - Titular: *«Una alianza viva entre el hogar y el colegio»*.
+   - Badges rápidos de estado (Edvoice, SAI Moodle y Horario de Secretaría).
+2. **Franja de Métricas y Compromisos (`.padres-facts-strip`)**:
+   - 4 compromisos institucionales: 100% Digital sin papel, 24/7 Disponibilidad del aula virtual SAI, 4 Informes periódicos y <24h tiempo de respuesta.
+3. **Hub Central de Plataformas y Servicios (`.padres-services-grid`)**:
+   - Mosaico de 6 tarjetas de acción rápida con logos oficiales, iconos y botones directos:
+     1. **Edvoice**: App de comunicación oficial, circulares y justificación ágil de ausencias médicas.
+     2. **SAI BPVDA**: Aula virtual Moodle, tareas, guías de estudio descargables y notas.
+     3. **Tesorería y Finanzas**: Información de pagos vía Banco General, ACH, Yappy Comercial y botón directo de WhatsApp para envío de comprobantes.
+     4. **Calendario y Fechas Clave**: Hitos de entregas de boletines, asambleas y vacaciones.
+     5. **Consejería Pastoral y Apoyo Socioemocional**: Orientación cristiana, hábitos de estudio y citas confidenciales.
+     6. **Secretaría Escolar y Trámites**: Emisión de constancias, récord de notas y teléfono directo (391-5811).
+4. **Manifiesto de Alianza Hogar-Escuela**:
+   - Fotografía del campus (`assets/fotos/exterior/IMG_9374.webp`, 6000x4000, 100% no utilizada previamente).
+   - Principio bíblico: *«Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.» — Proverbios 22:6*.
+5. **Guía de Primeros Pasos para Nuevas Familias (`.padres-steps-grid`)**:
+   - 4 pasos estructurados: Descarga de Edvoice, Ingreso de Código de Familia, Activación de SAI Moodle y Participación en Asambleas.
+6. **Cronograma del Año Escolar (`.padres-terms-grid`)**:
+   - Desglose por períodos I, II y III con fechas de exámenes, ferias y actos de graduación.
+7. **Acordeón Accesible de Preguntas Frecuentes (`.padres-faq-accordion`)**:
+   - Componentes nativos `<details>` y `<summary>` con respuestas directas a inasistencias, pagos bancarios, recuperación de contraseñas y horarios de atención.
+8. **Banner Final de Soporte y Atención**:
+   - Canales directos: PBX 391-5811, WhatsApp de acudientes y ubicación de ventanilla.
+9. **Eliminación Total de Fotos Duplicadas**:
+   - `portal-padres.html` quedó con 0 imágenes repetidas. Eliminadas de esta página las duplicaciones de `admision.webp` y `client-atention.webp`.
+10. **Verificación y Sincronización**:
+    - `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+    - `node tools/sync-wp-css.mjs`: Estilos sincronizados en `wordpress-theme/style.css`.
+    - `powershell tools/build-wp-pages.ps1`: Plantilla `page-portal-padres.php` de WordPress actualizada.
+
+---
+
+## Sesión #42 — Rediseño Integral de Contacto y Atención: Centro de Orientación y Visitas (2026-10-13)
+
+### Objetivos y Transformación de la Página
+Se transformó por completo `contacto.html` (completando las 8 páginas observadas del sitio), eliminando las tarjetas navy genéricas intermedias, el carrusel inferior repetitivo y las fotos duplicadas con otras secciones.
+
+### Mejoras Realizadas
+1. **Hero de Bienvenida al Campus**:
+   - Fotografía real de fachada y entrada (`assets/fotos/exterior/IMG_9372.webp`, 6000x4000, 100% no utilizada previamente en el sitio) con overlay azul corporativo.
+   - Titular: *«Estamos aquí para orientar a tu familia»*.
+   - Badges de sede física, horario y PBX directo.
+2. **Canales Directos Optimizados (`.contact-direct`)**:
+   - Tarjetas interactivas para Secretaría & PBX (`391-5811`), WhatsApp Oficial (`6744-1351`) y Correo Institucional (`info@buenpastor-vda.net`).
+3. **Formulario Accesible de Consulta y Visita Guiada (`.contacto-form-card`)**:
+   - Formulario estructurado para acudientes con selección de nivel formativo, motivo de consulta (recorrido, costos, secretaría) y nota de privacidad conforme a la Ley 81.
+4. **Hub de Información Operativa de la Sede (`.contacto-side-info`)**:
+   - Desglose detallado de horarios (año escolar y verano), guía de transporte y accesibilidad (Metro Línea 2 Estación 24 de Diciembre, Metrobús, vehículo particular y estacionamiento) y normas de ingreso al plantel.
+5. **Acordeón Accesible de Preguntas Frecuentes (`.contacto-faq-accordion`)**:
+   - Respuestas nativas `<details>/<summary>` sobre coordinación de visitas guiadas, áreas a conocer en el recorrido, traslados escolares y consulta de expedientes.
+6. **Mapa Oficial con Coordenadas Exactas (`#mapa-ubicacion`)**:
+   - Iframe interactivo centrado en `9.106901321318759,-79.36663973009655` con botones de salto directo a Google Maps y navegación satelital con Waze.
+7. **Erradicación de Duplicados**:
+   - Se eliminaron las fotos repetidas de `client-atention.webp` y `campus-exterior.webp` de esta página, dejándolas en uso único.
+8. **Verificación y Sincronización Total**:
+   - `node tools/verify-integrity.mjs`: **0 enlaces rotos** y **0 recursos multimedia faltantes**.
+   - `node tools/sync-wp-css.mjs`: Estilos sincronizados en `wordpress-theme/style.css`.
+   - `powershell tools/build-wp-pages.ps1`: Plantilla `page-contacto.php` de WordPress actualizada.
+
+### Ajuste de Detalle — Actualización Visual en Quiénes Somos
+- Se sustituyó la fotografía folclórica (`culture.webp`) en el bloque manifiesto de [quienes-somos.html](file:///c:/Users/JOSE%20SANTANA/OneDrive/Escritorio/sai-web/quienes-somos.html) por la imagen institucional de estudiantes en uniforme con diploma y reconocimientos académicos y de carácter (`assets/fotos/institucional/recognition.webp`), alineándose perfectamente con el titular *«Educamos la mente, el corazón y el carácter»*.
+- Sincronizadas las plantillas HTML y WordPress con 0 errores de integridad.
+
+### Corrección de Error — Renderizado de Cabecera y Pie en Páginas Rediseñadas
+- Se identificó y corrigió un error de escape de cadenas en `tools/generate-pages.mjs`, donde `\${visualHeader}` y `\${richFooter}` estaban escapados con barra invertida (`\`), provocando que se imprimiera el texto literal `${visualHeader}` y `${richFooter}` en lugar de renderizar la barra de navegación institucional y el pie de página.
+- Se desescaparon todas las expresiones a `${visualHeader}` y `${richFooter}` y se regeneraron las 18 páginas HTML y las 17 plantillas PHP de WordPress.
+- Verificado con `node tools/verify-integrity.mjs`: cabecera superior y pie de página visibles y funcionales al 100% en todo el sitio.
+
+
 
 
 

@@ -271,7 +271,7 @@ const special = (file) => {
 };
 
 // 5. Generación de Páginas Interiores Estándar
-for (const [file, title, eyebrow, hero, heroImage, splitImage, intro] of data.filter(entry => entry[0] !== 'filosofia.html' && entry[0] !== 'secundaria.html')) {
+for (const [file, title, eyebrow, hero, heroImage, splitImage, intro] of data.filter(entry => entry[0] !== 'filosofia.html' && entry[0] !== 'secundaria.html' && entry[0] !== 'quienes-somos.html' && entry[0] !== 'instalaciones.html' && entry[0] !== 'plantel.html' && entry[0] !== 'sai.html' && entry[0] !== 'vida-estudiantil.html' && entry[0] !== 'ecosistema-digital.html' && entry[0] !== 'portal-padres.html' && entry[0] !== 'contacto.html')) {
   const body = `
     <!-- ============================================================ -->
     <!-- SECCIÓN: PRESENTACIÓN EDITORIAL (SPLIT FEATURE)              -->
@@ -358,12 +358,10 @@ const filosofiaHtml = `<!doctype html>
   ${visualHeader}
 
   <main id="contenido">
-    <!-- Hero Interactivo con Secuencia de Fundido Fotográfico (Crossfade) -->
+    <!-- Hero con Fotografía Institucional de Propósito Educativo -->
     <section class="purpose-fade">
       <div class="purpose-fade__images">
-        <img class="is-active" src="assets/new/purpose/IMG_1963.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="assets/new/purpose/IMG_1966.JPG" alt="Estudiante BPVDA con uniforme">
-        <img src="assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA con uniforme">
+        <img class="is-active" src="assets/fotos/institucional/community.webp" alt="Comunidad educativa del Colegio Buen Pastor Voz de Alerta">
       </div>
       <div class="purpose-fade__content">
         <span>01 NUESTRA ESCUELA</span>
@@ -389,15 +387,15 @@ const filosofiaHtml = `<!doctype html>
         </div>
       </article>
       <article class="purpose-pillar purpose-pillar--mission">
+        <img src="assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
         <div>
           <span>02</span>
           <h2>Misión</h2>
           <p>Brindar una formación de excelencia que fortalezca las capacidades de cada estudiante y lo prepare para servir con propósito.</p>
         </div>
-        <img src="assets/new/purpose/IMG_1627.JPG" alt="Estudiante BPVDA">
       </article>
       <article class="purpose-pillar purpose-pillar--vision">
-        <img src="assets/new/purpose/IMG_1655.JPG" alt="Estudiante BPVDA">
+        <img src="assets/new/purpose/IMG_1991.JPG" alt="Estudiante BPVDA con uniforme">
         <div>
           <span>03</span>
           <h2>Visión</h2>
@@ -416,6 +414,2144 @@ const filosofiaHtml = `<!doctype html>
 </html>`;
 
 writeFileSync(join(root, 'filosofia.html'), filosofiaHtml);
+
+// 6a. Generación de Página ¿Quiénes somos? (Arquitectura Institucional de Prestigio)
+const quienesSomosHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Quiénes somos? | Colegio Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Institucional de Prestigio -->
+    <section class="qs-hero">
+      <img src="assets/fotos/institucional/admision.webp" alt="Comunidad educativa del Colegio Buen Pastor Voz de Alerta" class="qs-hero__bg">
+      <div class="qs-hero__overlay"></div>
+      <div class="qs-hero__container">
+        <span class="qs-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          01 NUESTRA ESCUELA · IDENTIDAD Y TRAYECTORIA
+        </span>
+        <h1>Una comunidad que educa con <mark>propósito</mark>, fe y excelencia.</h1>
+        <p class="qs-hero__lead">Más de dos décadas formando con amor y rigor pedagógico en 24 de Diciembre, guiando a cada estudiante para descubrir sus dones, cultivar carácter cristiano y alcanzar su máximo potencial académico.</p>
+        <div class="qs-hero__actions">
+          <a href="#manifiesto" class="hero-btn-primary">Conoce nuestra historia <b>↓</b></a>
+          <a href="admisiones.html" class="hero-btn-outline">Proceso de admisión <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas e Impacto Formativo -->
+    <section class="qs-facts-strip">
+      <div class="qs-facts-grid">
+        <div class="qs-fact-card">
+          <span class="qs-fact-num">+20<span>.</span></span>
+          <span class="qs-fact-label">Años de trayectoria formando en Panamá Este</span>
+        </div>
+        <div class="qs-fact-card">
+          <span class="qs-fact-num">100<span>%</span></span>
+          <span class="qs-fact-label">Educación fundamentada en valores bíblicos</span>
+        </div>
+        <div class="qs-fact-card">
+          <span class="qs-fact-num">14</span>
+          <span class="qs-fact-label">Grados continuos: Maternal, Primaria y Secundaria</span>
+        </div>
+        <div class="qs-fact-card">
+          <span class="qs-fact-num">3</span>
+          <span class="qs-fact-label">Bachilleratos oficiales: Ciencias, Informática y Comercio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloque Manifiesto: Quiénes Somos en Esencia -->
+    <section class="qs-manifesto" id="manifiesto">
+      <div class="qs-manifesto__inner">
+        <div class="qs-manifesto__media">
+          <img src="assets/fotos/institucional/recognition.webp" alt="Estudiantes del Colegio Buen Pastor formados en valores y excelencia" class="qs-manifesto__img" loading="lazy">
+          <div class="qs-manifesto__badge">
+            <strong>Formación para la vida</strong>
+            <span>No solo para el aula</span>
+          </div>
+        </div>
+        <div class="qs-manifesto__content">
+          <span class="qs-section-tag">NUESTRA ESENCIA INSTITUCIONAL</span>
+          <h2>Educamos la mente, el corazón y el carácter.</h2>
+          <p>El <strong>Colegio Buen Pastor Voz de Alerta (BPVDA)</strong> es una institución educativa comprometida con la formación integral de niños y jóvenes en el corregimiento de 24 de Diciembre, Ciudad de Panamá. Nuestro modelo une la solidez académica con principios cristianos inquebrantables, preparando a cada generación para afrontar los desafíos universitarios y sociales con solvencia moral y profesional.</p>
+          <p>Creemos firmemente en una educación personalizada, donde cada estudiante es conocido por su nombre, acompañado por docentes con vocación pastoral y respaldado por un entorno de sana convivencia y disciplina con propósito.</p>
+          
+          <div class="qs-bible-verse">
+            <blockquote>«Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.»</blockquote>
+            <cite>Proverbios 22:6 · Principio Rector BPVDA</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tríada de Pilares Fundacionales -->
+    <section class="qs-pillars" id="pilares">
+      <div class="qs-pillars__header">
+        <span class="qs-section-tag">PILARES FORMATIVOS</span>
+        <h2>Tres dimensiones que definen nuestra identidad</h2>
+        <p>Una estructura formativa coherente donde lo espiritual, lo académico y lo familiar se complementan para garantizar el desarrollo pleno de nuestros alumnos.</p>
+      </div>
+
+      <div class="qs-pillars-grid">
+        <!-- Pilar 1 -->
+        <article class="qs-pillar-card qs-pillar-card--1">
+          <div class="qs-pillar-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <span class="qs-pillar-tag">01 · ESPIRITUALIDAD Y CARÁCTER</span>
+          <h3>Fundamento Cristocéntrico</h3>
+          <p>Formamos la conciencia ética y moral a través de la vivencia diaria de valores bíblicos: respeto, honradez, amor al prójimo y devocionales que fortalecen la fe de cada hogar.</p>
+        </article>
+
+        <!-- Pilar 2 -->
+        <article class="qs-pillar-card qs-pillar-card--2">
+          <div class="qs-pillar-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="qs-pillar-tag">02 · RIGOR PEDAGÓGICO</span>
+          <h3>Excelencia Académica y STEM</h3>
+          <p>Un currículo riguroso y actualizado que integra plataformas educativas interactivas (SAI, Progrentis, Matific, Edvoice), robótica educativa y reforzamiento científico continuo.</p>
+        </article>
+
+        <!-- Pilar 3 -->
+        <article class="qs-pillar-card qs-pillar-card--3">
+          <div class="qs-pillar-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="qs-pillar-tag">03 · COMUNIDAD Y HOGAR</span>
+          <h3>Alianza Sagrada con la Familia</h3>
+          <p>Entendemos que la educación florece cuando el colegio y la familia caminan en mutuo acuerdo. Mantenemos canales directos de orientación, escuelas para padres y puertas siempre abiertas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Mosaico Bento: Vida Escolar Auténtica -->
+    <section class="qs-bento-section">
+      <div class="qs-bento-header">
+        <span class="qs-section-tag">VIDA ESCOLAR EN ACCIÓN</span>
+        <h2>Nuestra comunidad a través de los años</h2>
+        <p>Momentos reales capturados en nuestro campus: ciencia, devoción, esfuerzo académico y compañerismo fraterno.</p>
+      </div>
+
+      <div class="qs-bento-grid">
+        <!-- Item 1 (7 cols) -->
+        <article class="qs-bento-item qs-bento-item--1">
+          <img src="assets/fotos/institucional/achievement.webp" alt="Estudiantes BPVDA recibiendo reconocimiento académico" loading="lazy">
+          <div class="qs-bento-overlay">
+            <span class="qs-bento-tag">MÉRITO Y SUPERACIÓN</span>
+            <h3>Reconocimiento a la constancia académica</h3>
+            <p>Estimulamos el esfuerzo de cada alumno premiando el desempeño, la conducta intachable y el espíritu de liderazgo.</p>
+          </div>
+        </article>
+
+        <!-- Item 2 (5 cols) -->
+        <article class="qs-bento-item qs-bento-item--2">
+          <img src="assets/fotos/institucional/learn-mind.webp" alt="Estudiante en aula de clase concentrado en su aprendizaje" loading="lazy">
+          <div class="qs-bento-overlay">
+            <span class="qs-bento-tag">PENSAMIENTO CRÍTICO</span>
+            <h3>Aulas activas e investigación</h3>
+            <p>Entornos pedagógicos diseñados para fomentar la indagación, la lectura comprensiva y la resolución analítica.</p>
+          </div>
+        </article>
+
+        <!-- Item 3 (5 cols) -->
+        <article class="qs-bento-item qs-bento-item--3">
+          <img src="assets/fotos/institucional/mission.webp" alt="Comunidad de estudiantes compartiendo en ambiente escolar cristiano" loading="lazy">
+          <div class="qs-bento-overlay">
+            <span class="qs-bento-tag">FE Y CONVIVENCIA</span>
+            <h3>Comunidad unida por el amor fraternal</h3>
+            <p>Espacios de devoción y reflexión donde se consolidan amistades sanas que perduran por toda la vida.</p>
+          </div>
+        </article>
+
+        <!-- Item 4 (7 cols) -->
+        <article class="qs-bento-item qs-bento-item--4">
+          <img src="assets/fotos/institucional/culture-main.webp" alt="Estudiantes en celebración cívica e identidad panameña" loading="lazy">
+          <div class="qs-bento-overlay">
+            <span class="qs-bento-tag">IDENTIDAD Y CULTURA</span>
+            <h3>Tradición cívica y amor patrio</h3>
+            <p>Promovemos con orgullo el folclore, la historia nacional y los deberes cívicos que distinguen al ciudadano ejemplar.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre: Llamado a la Acción Institucional -->
+    <section class="qs-cta">
+      <div class="qs-cta__inner">
+        <span class="qs-section-tag" style="color: var(--turquoise);">EL SIGUIENTE PASO</span>
+        <h2>Forma parte de la familia del Buen Pastor</h2>
+        <p>Te invitamos a visitar nuestras instalaciones en 24 de Diciembre, dialogar con nuestro equipo directivo y descubrir de cerca una propuesta educativa pensada para el futuro de tus hijos.</p>
+        <div class="qs-cta__actions">
+          <a href="admisiones.html" class="hero-btn-primary">Conocer Admisiones <b>↗</b></a>
+          <a href="contacto.html" class="hero-btn-outline">Agendar una Visita al Campus <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'quienes-somos.html'), quienesSomosHtml);
+
+// 6c. Generación de Página Instalaciones (Guía de Espacios por Zonas Clave y Mosaico Arquitectónico)
+const instalacionesHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instalaciones y Campus | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Panorámica del Campus BPVDA -->
+    <section class="inst-hero">
+      <img src="assets/fotos/exterior/IMG_9387.webp" alt="Campus y patio central del Colegio Buen Pastor Voz de Alerta bajo sombra natural" class="inst-hero__bg" loading="eager">
+      <div class="inst-hero__overlay"></div>
+      <div class="inst-hero__container">
+        <span class="inst-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          01 NUESTRA ESCUELA · INSTALACIONES Y CAMPUS
+        </span>
+        <h1>Espacios seguros pensados para <mark>aprender y convivir</mark>.</h1>
+        <p class="inst-hero__lead">Un campus integral en 24 de Diciembre diseñado para el confort, la formación académica sólida, la innovación tecnológica y el sano esparcimiento cristiano de cada uno de nuestros estudiantes.</p>
+        <div class="inst-hero__actions">
+          <a href="#zonas" class="hero-btn-primary">Explorar Zonas del Campus <b>↓</b></a>
+          <a href="contacto.html" class="hero-btn-outline">Agendar una Visita Presencial <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Capacidades del Campus -->
+    <section class="inst-facts-strip">
+      <div class="inst-facts-grid">
+        <div class="inst-fact-card">
+          <span class="inst-fact-num">100<span>%</span></span>
+          <span class="inst-fact-label">Aulas climatizadas y confortables</span>
+        </div>
+        <div class="inst-fact-card">
+          <span class="inst-fact-num">3<span> Pabellones</span></span>
+          <span class="inst-fact-label">Preescolar, Primaria y Secundaria delimitados</span>
+        </div>
+        <div class="inst-fact-card">
+          <span class="inst-fact-num">1<span> Lab</span></span>
+          <span class="inst-fact-label">Informática, STEM y Robótica educativa</span>
+        </div>
+        <div class="inst-fact-card">
+          <span class="inst-fact-num">2<span> Áreas</span></span>
+          <span class="inst-fact-label">Cancha multideportiva y parque infantil VDA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guía de Espacios por Zonas Clave -->
+    <section class="inst-zones-section" id="zonas">
+      <div class="inst-zones-header">
+        <span class="inst-hero__eyebrow" style="color: var(--orange);">INFRAESTRUCTURA EDUCATIVA</span>
+        <h2>Áreas diseñadas para cada etapa formativa</h2>
+        <p>Cada rincón de nuestras instalaciones responde a estándares de bienestar pedagógico, ventilación, seguridad perimetral y tecnología aplicada al aula.</p>
+      </div>
+
+      <div class="inst-zones-grid">
+        <!-- Zona 1: Pabellones de Clases -->
+        <article class="inst-zone-card">
+          <div class="inst-zone-media">
+            <img src="assets/fotos/exterior/IMG_9383.webp" alt="Pabellón de aulas y corredores del Colegio Buen Pastor" loading="lazy">
+            <span class="inst-zone-badge">Academia</span>
+          </div>
+          <div class="inst-zone-body">
+            <h3>Aulas Modernas y Entornos de Aprendizaje</h3>
+            <ul class="inst-zone-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Aulas amplias con climatización continua y excelente iluminación.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Mobiliario ergonómico adaptado a las edades de cada nivel.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Corredores techados, rampas y señalización de evacuación integral.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Zona 2: Laboratorio de Tecnología y Ciencias -->
+        <article class="inst-zone-card">
+          <div class="inst-zone-media">
+            <img src="assets/fotos/secundaria/IMG_9531.webp" alt="Laboratorio de cómputo y robótica con estudiantes" loading="lazy">
+            <span class="inst-zone-badge">Innovación</span>
+          </div>
+          <div class="inst-zone-body">
+            <h3>Laboratorio de Cómputo, Robótica y Ciencias</h3>
+            <ul class="inst-zone-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Estaciones informáticas con acceso al ecosistema digital institucional.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Equipamiento interactivo para programación, robótica y ciencia práctica.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Soporte integral a los bachilleratos en Ciencias e Informática.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Zona 3: Cancha Multideportiva -->
+        <article class="inst-zone-card">
+          <div class="inst-zone-media">
+            <img src="assets/fotos/exterior/IMG_9391.webp" alt="Cancha polideportiva techada para baloncesto y fútbol" loading="lazy">
+            <span class="inst-zone-badge">Deporte</span>
+          </div>
+          <div class="inst-zone-body">
+            <h3>Cancha Multideportiva y Espacios Recreativos</h3>
+            <ul class="inst-zone-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Área protegida y ventilada para educación física y entrenamiento.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Cancha multiuso acondicionada para baloncesto, voleibol y futsal.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Escenario central para torneos intercolegiales y actos cívicos.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Zona 4: VDA Park Infantil -->
+        <article class="inst-zone-card">
+          <div class="inst-zone-media">
+            <img src="assets/fotos/exterior/IMG_9394.webp" alt="Parque infantil VDA Park con juegos modulares protegidos" loading="lazy">
+            <span class="inst-zone-badge">Recreación</span>
+          </div>
+          <div class="inst-zone-body">
+            <h3>VDA Park: Esparcimiento y Juego Infantil</h3>
+            <ul class="inst-zone-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Parque infantil exclusivo para Preescolar y primeros años de Primaria.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Juegos modulares de alta durabilidad bajo supervisión constante.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Piso protector para el libre juego motriz y la convivencia sana.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Mosaico Bento Arquitectónico -->
+    <section class="inst-bento-section">
+      <div class="inst-bento-header">
+        <span class="inst-hero__eyebrow" style="color: var(--turquoise);">RECORRIDO VISUAL</span>
+        <h2>Detalles arquitectónicos de nuestro campus</h2>
+        <p>Una mirada fotográfica a los ambientes donde cada día florece el compromiso educativo del Buen Pastor.</p>
+      </div>
+
+      <div class="inst-bento-grid">
+        <!-- Item 1 (7 cols) -->
+        <article class="inst-bento-item inst-bento-item--1">
+          <img src="assets/fotos/exterior/IMG_9408.webp" alt="Pabellón de preescolar y áreas de primera infancia" loading="lazy">
+          <div class="inst-bento-overlay">
+            <span class="inst-bento-tag">PREESCOLAR SEGURO</span>
+            <h3>Pabellón exclusivo de Primera Infancia</h3>
+            <p>Instalaciones adaptadas con accesos controlados y zonas lúdicas especializadas para los más pequeños.</p>
+          </div>
+        </article>
+
+        <!-- Item 2 (5 cols) -->
+        <article class="inst-bento-item inst-bento-item--2">
+          <img src="assets/fotos/exterior/IMG_9371.webp" alt="Acceso principal y punto de control del colegio" loading="lazy">
+          <div class="inst-bento-overlay">
+            <span class="inst-bento-tag">ACCESIBILIDAD Y CONTROL</span>
+            <h3>Entrada principal y garita de seguridad</h3>
+            <p>Seguridad perimetral y protocolos rigurosos de acceso para la tranquilidad de las familias.</p>
+          </div>
+        </article>
+
+        <!-- Item 3 (5 cols) -->
+        <article class="inst-bento-item inst-bento-item--3">
+          <img src="assets/fotos/exterior/campus-restzone.webp" alt="Corredores techados y áreas de descanso estudiantil" loading="lazy">
+          <div class="inst-bento-overlay">
+            <span class="inst-bento-tag">ESPACIOS COMUNES</span>
+            <h3>Corredores techados y descanso</h3>
+            <p>Zonas frescas y sombreadas que invitan a la sana convivencia y el compañerismo entre clases.</p>
+          </div>
+        </article>
+
+        <!-- Item 4 (7 cols) -->
+        <article class="inst-bento-item inst-bento-item--4">
+          <img src="assets/fotos/exterior/IMG_9400.webp" alt="Módulos de recreación infantil en el patio escolar" loading="lazy">
+          <div class="inst-bento-overlay">
+            <span class="inst-bento-tag">RECREACIÓN ACTIVA</span>
+            <h3>Módulos de juego y desarrollo motor</h3>
+            <p>Estructuras diseñadas para la coordinación motriz, la socialización y el juego guiado en un entorno protegido.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre: Recorrido Presencial -->
+    <section class="inst-cta">
+      <div class="inst-cta__inner">
+        <span class="inst-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">VISITA EL CAMPUS</span>
+        <h2>Conoce nuestras instalaciones en persona</h2>
+        <p>Te abrimos las puertas de nuestro campus en 24 de Diciembre para que recorras las aulas, conozcas las medidas de seguridad y experimentes el ambiente familiar donde tus hijos crecerán.</p>
+        <div class="inst-cta__actions">
+          <a href="contacto.html" class="hero-btn-primary">Agendar un Recorrido Guiado <b>↗</b></a>
+          <a href="admisiones.html" class="hero-btn-outline">Proceso de Admisión <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'instalaciones.html'), instalacionesHtml);
+
+// 6d. Generación de Página Plantel Docente (Enfoque Departamental y Mentoría por Ciclos)
+const plantelHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plantel Docente | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Plantel Docente BPVDA -->
+    <section class="doc-hero">
+      <img src="assets/fotos/primaria-preescolar/IMG_9490.webp" alt="Docente de aula interactuando activamente con sus estudiantes en el Colegio Buen Pastor" loading="eager">
+      <div class="doc-hero__overlay"></div>
+      <div class="doc-hero__container">
+        <span class="doc-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          01 NUESTRA ESCUELA · PLANTEL DOCENTE
+        </span>
+        <h1>Educadores que inspiran con fe, ciencia y <mark>corazón</mark>.</h1>
+        <p class="doc-hero__lead">Un cuerpo de maestros y mentores altamente capacitados, unidos por una auténtica vocación cristiana y dedicados a cultivar el potencial académico, moral y humano de cada estudiante en 24 de Diciembre.</p>
+        <div class="doc-hero__actions">
+          <a href="#ciclos" class="hero-btn-primary">Conocer Ciclos y Departamentos <b>↓</b></a>
+          <a href="contacto.html" class="hero-btn-outline">Agendar Orientación Pedagógica <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas Docentes -->
+    <section class="doc-facts-strip">
+      <div class="doc-facts-grid">
+        <div class="doc-fact-card">
+          <span class="doc-fact-num">+40<span> Educadores</span></span>
+          <span class="doc-fact-label">Comprometidos con la excelencia integral</span>
+        </div>
+        <div class="doc-fact-card">
+          <span class="doc-fact-num">100<span>%</span></span>
+          <span class="doc-fact-label">Docentes titulados y en formación continua</span>
+        </div>
+        <div class="doc-fact-card">
+          <span class="doc-fact-num">1<span>:15</span></span>
+          <span class="doc-fact-label">Ratio docente-alumno para guía personalizada</span>
+        </div>
+        <div class="doc-fact-card">
+          <span class="doc-fact-num">14<span> Grados</span></span>
+          <span class="doc-fact-label">Acompañamiento continuo de Maternal a 12°</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifiesto de Vocación y Mentoría Cristiana -->
+    <section class="doc-manifesto">
+      <div class="doc-manifesto__inner">
+        <div class="doc-manifesto__media">
+          <img src="assets/fotos/primaria-preescolar/IMG_9436.webp" alt="Maestra guiando con afecto y atención cercana a niños en aula" loading="lazy">
+          <div class="doc-manifesto__badge">
+            <strong>VOCACIÓN QUE TRANSFORMA</strong>
+            El maestro del Buen Pastor enseña la mente, toca el corazón y siembra principios para toda la vida.
+          </div>
+        </div>
+        <div class="doc-manifesto__content">
+          <span class="doc-hero__eyebrow" style="color: var(--orange);">FILOSOFÍA DEL EDUCADOR</span>
+          <h2>Más que impartir materias, formamos personas</h2>
+          <p class="doc-manifesto__lead">En el Colegio Buen Pastor Voz de Alerta, cada educador asume su labor como un llamado sagrado de mentoría y servicio a las familias.</p>
+          <p class="doc-manifesto__text">Nuestros docentes combinan el dominio didáctico y el rigor académico con una escucha activa y empática. Conocemos a cada estudiante por su nombre, detectamos sus talentos específicos y lo motivamos a superar retos académicos bajo un ambiente de disciplina con amor y respeto mutuo.</p>
+          <div class="doc-manifesto__quote">
+            <p>«El discípulo no es superior a su maestro; mas todo el que fuere perfeccionado, será como su maestro.»</p>
+            <cite>San Lucas 6:40 · Principio Rector de Mentoría</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ciclos Formativos y Equipos Docentes -->
+    <section class="doc-cycles-section" id="ciclos">
+      <div class="doc-cycles-header">
+        <span class="doc-hero__eyebrow" style="color: var(--turquoise);">ESTRUCTURA PEDAGÓGICA</span>
+        <h2>Equipos docentes especializados por etapa de vida</h2>
+        <p>La pedagogía se adapta con precisión a la madurez cognitiva y socioemocional de cada grado, guiada por maestros especialistas en cada área.</p>
+      </div>
+
+      <div class="doc-cycles-grid">
+        <!-- Ciclo 1: Educación Inicial -->
+        <article class="doc-cycle-card">
+          <div class="doc-cycle-media">
+            <img src="assets/fotos/primaria-preescolar/IMG_9455.webp" alt="Aula de preescolar con actividades lúdicas y estimulación temprana" loading="lazy">
+            <span class="doc-cycle-badge">Preescolar y Maternal</span>
+          </div>
+          <div class="doc-cycle-body">
+            <h3>Educación Inicial: Afecto, Curiosidad y Estimulación</h3>
+            <p class="doc-cycle-desc">Docentes especializadas en desarrollo infantil temprano que fomentan la seguridad emocional, la motricidad fina y la socialización en un clima cálido y protector.</p>
+            <ul class="doc-cycle-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Estimulación psicomotriz, lenguaje y primeras nociones lógicas.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Iniciación al inglés fonético y cantos devocionales formativos.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Acompañamiento individualizado en hábitos de orden e independencia.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Ciclo 2: Primaria Completa -->
+        <article class="doc-cycle-card">
+          <div class="doc-cycle-media">
+            <img src="assets/fotos/primaria-preescolar/IMG_9491.webp" alt="Estudiantes de primaria participando en clase interactiva" loading="lazy">
+            <span class="doc-cycle-badge">Educación Primaria</span>
+          </div>
+          <div class="doc-cycle-body">
+            <h3>Educación Primaria: Cimientos Cognitivos y Carácter</h3>
+            <p class="doc-cycle-desc">Maestros enfocados en consolidar la comprensión lectora, el razonamiento matemático y hábitos de estudio sólidos, integrando herramientas digitales dinámicas.</p>
+            <ul class="doc-cycle-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Programa lector Progrentis para velocidad y comprensión analítica.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Matemáticas aplicadas con la metodología interactiva Matific.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Formación en valores bíblicos y civismo ciudadano constante.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Ciclo 3: Secundaria y Bachilleres -->
+        <article class="doc-cycle-card">
+          <div class="doc-cycle-media">
+            <img src="assets/fotos/secundaria/IMG_9519.webp" alt="Docente de secundaria explicando conceptos avanzados en pizarra y proyector" loading="lazy">
+            <span class="doc-cycle-badge">Secundaria y Bachilleratos</span>
+          </div>
+          <div class="doc-cycle-body">
+            <h3>Premedia y Media: Rigor Académico y Liderazgo</h3>
+            <p class="doc-cycle-desc">Profesores de cátedra especializados en Ciencias, Informática, Comercio y Humanidades que preparan al joven para las exigencias de la educación superior.</p>
+            <ul class="doc-cycle-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Preparación científica rigurosa y proyectos de investigación real.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Uso del aula virtual SAI (Moodle) para autogestión del aprendizaje.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Orientación vocacional y mentoría para proyectos de vida éticos.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Ciclo 4: Áreas Especiales y Tecnología -->
+        <article class="doc-cycle-card">
+          <div class="doc-cycle-media">
+            <img src="assets/fotos/secundaria/IMG_9548.webp" alt="Laboratorio de robótica y tecnología con instructor guiando proyectos" loading="lazy">
+            <span class="doc-cycle-badge">Áreas Especiales y STEM</span>
+          </div>
+          <div class="doc-cycle-body">
+            <h3>Especialidades: Idiomas, Tecnología, Arte y Deporte</h3>
+            <p class="doc-cycle-desc">Instructores apasionados que enriquecen la formación escolar mediante la tecnología de punta, el bilingüismo funcional, la expresión artística y el acondicionamiento físico.</p>
+            <ul class="doc-cycle-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Robótica educativa, programación y experimentación práctica.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Docentes de inglés enfocados en destrezas comunicativas orales y escritas.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Educación física, bandas musicales y grupos folclóricos representativos.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Pilares del Compromiso Docente -->
+    <section class="doc-commit-section">
+      <div class="doc-commit-header">
+        <span class="doc-hero__eyebrow" style="color: var(--orange);">CALIDAD INSTITUCIONAL</span>
+        <h2>Pilares que definen a nuestro equipo pedagógico</h2>
+        <p>Principios innegociables que garantizan una educación de excelencia con calidez humana en cada salón de clases.</p>
+      </div>
+
+      <div class="doc-commit-grid">
+        <!-- Pilar 1 -->
+        <article class="doc-commit-card">
+          <div class="doc-commit-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <span class="doc-commit-tag">01 · CAPACITACIÓN CONTINUA</span>
+          <h3>Actualización y Didáctica Activa</h3>
+          <p>Talleres pedagógicos permanentes en neuroeducación, herramientas digitales (Canva, Moodle, SAI) e innovaciones curriculares avaladas por MEDUCA.</p>
+        </article>
+
+        <!-- Pilar 2 -->
+        <article class="doc-commit-card">
+          <div class="doc-commit-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <span class="doc-commit-tag">02 · CUIDADO SOCIOEMOCIONAL</span>
+          <h3>Pastoral y Orientación Cercana</h3>
+          <p>Cada educador brinda acompañamiento con empatía, guiando espiritualmente al alumno y colaborando estrechamente con el departamento de orientación y consejería.</p>
+        </article>
+
+        <!-- Pilar 3 -->
+        <article class="doc-commit-card">
+          <div class="doc-commit-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <span class="doc-commit-tag">03 · ALIANZA CON EL HOGAR</span>
+          <h3>Comunicación Transparente</h3>
+          <p>Uso diario de Edvoice y reuniones periódicas para mantener a las familias informadas sobre avances académicos, retos y logros de sus hijos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre Docente -->
+    <section class="doc-cta">
+      <div class="doc-cta__inner">
+        <span class="doc-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">DIÁLOGO Y COMUNIDAD</span>
+        <h2>Conversa con nuestro equipo pedagógico</h2>
+        <p>Te invitamos a coordinar una entrevista pedagógica para conocer a los educadores de tu hijo, resolver dudas curriculares y experimentar la calidez de nuestra familia escolar.</p>
+        <div class="doc-cta__actions">
+          <a href="contacto.html" class="hero-btn-primary">Solicitar una Cita Pedagógica <b>↗</b></a>
+          <a href="admisiones.html" class="hero-btn-outline">Proceso de Matrícula <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'plantel.html'), plantelHtml);
+
+// 6e. Generación de Página SAI BPVDA (Portal del Campus Virtual Interactivo)
+const saiHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAI BPVDA | Campus Virtual Interactivo</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: SAI Campus Virtual -->
+    <section class="sai-hero">
+      <img src="assets/fotos/secundaria/IMG_9532.webp" alt="Estudiantes en aula digital interactiva con equipos informáticos en el Colegio Buen Pastor" loading="eager">
+      <div class="sai-hero__overlay"></div>
+      <div class="sai-hero__container">
+        <span class="sai-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          02 ENFOQUE EDUCATIVO · SAI BPVDA
+        </span>
+        <h1>Campus virtual interactivo al servicio del <mark>aprendizaje</mark>.</h1>
+        <p class="sai-hero__lead">La plataforma educativa oficial del Colegio Buen Pastor que conecta tus clases presenciales con recursos multimedia, tareas digitales y seguimiento académico continuo las 24 horas del día.</p>
+        <div class="sai-hero__actions">
+          <a href="https://sai.bpvda.edu.pa/login/index.php?loginredirect=1" target="_blank" rel="noopener noreferrer" class="hero-btn-primary">Ingresar al Campus SAI <b>↗</b></a>
+          <a href="#guia" class="hero-btn-outline">Guía de Acceso para Estudiantes <b>↓</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas Digitales -->
+    <section class="sai-facts-strip">
+      <div class="sai-facts-grid">
+        <div class="sai-fact-card">
+          <span class="sai-fact-num">24<span>/7</span></span>
+          <span class="sai-fact-label">Campus accesible en cualquier momento y lugar</span>
+        </div>
+        <div class="sai-fact-card">
+          <span class="sai-fact-num">100<span>%</span></span>
+          <span class="sai-fact-label">Asignaturas con aula virtual y materiales al día</span>
+        </div>
+        <div class="sai-fact-card">
+          <span class="sai-fact-num">Moodle<span> Enterprise</span></span>
+          <span class="sai-fact-label">Motor tecnológico educativo líder mundial</span>
+        </div>
+        <div class="sai-fact-card">
+          <span class="sai-fact-num">0<span> Papel</span></span>
+          <span class="sai-fact-label">Entregas digitales ecológicas y organizadas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mockup UI de la Plataforma y Módulos -->
+    <section class="sai-preview-section">
+      <div class="sai-preview-header">
+        <span class="sai-hero__eyebrow" style="color: var(--orange);">INTERFAZ OFICIAL</span>
+        <h2>Tu aula de clases ahora cabe en tu pantalla</h2>
+        <p>Diseñada con una navegación intuitiva y herramientas pedagógicas que permiten a cada estudiante organizar su horario, descargar lecciones y entregar asignaciones sin complicaciones.</p>
+      </div>
+
+      <!-- Ventana de Navegador Simulada -->
+      <div class="sai-window">
+        <div class="sai-window__bar">
+          <div class="sai-window__dots">
+            <span class="sai-window__dot sai-window__dot--red"></span>
+            <span class="sai-window__dot sai-window__dot--yellow"></span>
+            <span class="sai-window__dot sai-window__dot--green"></span>
+          </div>
+          <div class="sai-window__url">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>https://sai.bpvda.edu.pa/</span>
+          </div>
+          <span class="sai-window__tag">PLATAFORMA OFICIAL BPVDA</span>
+        </div>
+        <div class="sai-window__body">
+          <img src="assets/new/sai/Captura de pantalla 2026-09-12 135920.png" alt="Captura de pantalla de la plataforma virtual SAI Colegio Buen Pastor" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Módulos de Aprendizaje -->
+      <div class="sai-modules-grid">
+        <!-- Módulo 1 -->
+        <article class="sai-module-card">
+          <div class="sai-module-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div class="sai-module-content">
+            <h3>Materiales y Guías Didácticas</h3>
+            <p>Accede en cualquier momento a las diapositivas de clase, documentos complementarios, enlaces a bibliotecas digitales y lecturas compartidas por tus profesores.</p>
+          </div>
+        </article>
+
+        <!-- Módulo 2 -->
+        <article class="sai-module-card">
+          <div class="sai-module-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          </div>
+          <div class="sai-module-content">
+            <h3>Buzón de Tareas y Entregas Digitales</h3>
+            <p>Carga tus proyectos individuales o grupales en formato PDF, documentos o presentaciones con sello de hora y confirmación de recepción automática.</p>
+          </div>
+        </article>
+
+        <!-- Módulo 3 -->
+        <article class="sai-module-card">
+          <div class="sai-module-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          </div>
+          <div class="sai-module-content">
+            <h3>Evaluaciones y Quizzes Interactivos</h3>
+            <p>Comprueba tus conocimientos mediante cuestionarios formativos con corrección inmediata, cronómetros de práctica y retroalimentación pregunta por pregunta.</p>
+          </div>
+        </article>
+
+        <!-- Módulo 4 -->
+        <article class="sai-module-card">
+          <div class="sai-module-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="sai-module-content">
+            <h3>Calificaciones y Retroalimentación</h3>
+            <p>Consulta tus notas ponderadas por trimestre, comentarios pedagógicos del docente y observaciones para fortalecer tus hábitos de estudio.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Guía de Acceso en 3 Pasos -->
+    <section class="sai-steps-section" id="guia">
+      <div class="sai-steps-header">
+        <span class="sai-hero__eyebrow" style="color: var(--turquoise);">PASO A PASO</span>
+        <h2>¿Cómo ingresar al campus SAI?</h2>
+        <p>Tres sencillos pasos para iniciar tu sesión y comenzar a interactuar con tus asignaturas desde el primer día de clases.</p>
+      </div>
+
+      <div class="sai-steps-grid">
+        <!-- Paso 1 -->
+        <article class="sai-step-card">
+          <span class="sai-step-badge">1</span>
+          <h3>Usa tus credenciales oficiales</h3>
+          <p>Tu usuario y contraseña institucional son entregados por secretaría al formalizar la matrícula. Tu usuario generalmente corresponde a tu número de cédula escolar.</p>
+        </article>
+
+        <!-- Paso 2 -->
+        <article class="sai-step-card">
+          <span class="sai-step-badge">2</span>
+          <h3>Ingresa al portal y ubica tu grado</h3>
+          <p>Visita <strong>sai.bpvda.edu.pa</strong> e inicia sesión. En tu panel principal verás las asignaturas activas de tu nivel con los avisos del docente.</p>
+        </article>
+
+        <!-- Paso 3 -->
+        <article class="sai-step-card">
+          <span class="sai-step-badge">3</span>
+          <h3>Participa y entrega tus asignaciones</h3>
+          <p>Revisa las fechas límite en el calendario virtual, descarga tus recursos y sube tus tareas antes del cierre para mantener un rendimiento óptimo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Mesa de Soporte Digital y Preguntas Frecuentes -->
+    <section class="sai-support-section">
+      <div class="sai-support-header">
+        <span class="sai-hero__eyebrow" style="color: var(--orange);">ASISTENCIA TÉCNICA</span>
+        <h2>¿Necesitas ayuda con tu cuenta?</h2>
+        <p>Canales rápidos para resolver dificultades de acceso, olvido de contraseñas o configuración de tus dispositivos móviles.</p>
+      </div>
+
+      <div class="sai-support-grid">
+        <!-- Tarjeta 1 -->
+        <article class="sai-support-card">
+          <div class="sai-support-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>Restablecimiento de Contraseña</h3>
+          <p>Si olvidaste tu clave o tienes problemas para ingresar, solicítalo al departamento de informática o a secretaría del plantel.</p>
+          <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer">Solicitar por WhatsApp ↗</a>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="sai-support-card">
+          <div class="sai-support-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <h3>Acceso desde Teléfonos Móviles</h3>
+          <p>Puedes descargar la app oficial de Moodle para iOS y Android e ingresar la dirección <code>sai.bpvda.edu.pa</code> para recibir alertas.</p>
+          <a href="https://moodle.com/app/" target="_blank" rel="noopener noreferrer">Ver App Moodle ↗</a>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="sai-support-card">
+          <div class="sai-support-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </div>
+          <h3>Comunicación con Padres (Edvoice)</h3>
+          <p>Los acudientes cuentan con la app Edvoice para circulares, reportes de asistencia y comunicaciones oficiales del colegio.</p>
+          <a href="https://edvoice.additioapp.com/access/login" target="_blank" rel="noopener noreferrer">Ingresar a Edvoice ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre: Acceso Inmediato -->
+    <section class="sai-cta">
+      <div class="sai-cta__inner">
+        <span class="sai-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">INGRESO DIRECTO</span>
+        <h2>Comienza tu jornada de aprendizaje en SAI</h2>
+        <p>Inicia sesión ahora y descubre todo lo que tus profesores han preparado para fortalecer tus materias y enriquecer tu aprendizaje.</p>
+        <div class="sai-cta__actions">
+          <a href="https://sai.bpvda.edu.pa/login/index.php?loginredirect=1" target="_blank" rel="noopener noreferrer" class="hero-btn-primary">Entrar a SAI Moodle <b>↗</b></a>
+          <a href="portal-padres.html" class="hero-btn-outline">Ir al Portal de Padres <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'sai.html'), saiHtml);
+
+// 6f. Generación de Página Vida Estudiantil (Mosaico Editorial de Experiencias y Clubes)
+const vidaEstudiantilHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vida Estudiantil | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Vida Estudiantil BPVDA -->
+    <section class="ve-hero">
+      <img src="assets/fotos/secundaria/IMG_9587.webp" alt="Estudiantes del Colegio Buen Pastor compartiendo con alegría en la vida escolar" loading="eager">
+      <div class="ve-hero__overlay"></div>
+      <div class="ve-hero__container">
+        <span class="ve-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          02 ENFOQUE EDUCATIVO · VIDA ESTUDIANTIL
+        </span>
+        <h1>Talentos que florecen más allá del <mark>aula tradicional</mark>.</h1>
+        <p class="ve-hero__lead">La experiencia en el Buen Pastor se vive en la ciencia, el deporte, el arte y la fe. Fomentamos la pasión de cada estudiante a través de clubes, proyectos colaborativos y vivencias que forjan líderes con carácter cristiano.</p>
+        <div class="ve-hero__actions">
+          <a href="#clubes" class="hero-btn-primary">Explorar Clubes y Actividades <b>↓</b></a>
+          <a href="admisiones.html" class="hero-btn-outline">Proceso de Admisión <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas de Vida Estudiantil -->
+    <section class="ve-facts-strip">
+      <div class="ve-facts-grid">
+        <div class="ve-fact-card">
+          <span class="ve-fact-num">+10<span> Clubes</span></span>
+          <span class="ve-fact-label">Talleres y disciplinas extracurriculares activas</span>
+        </div>
+        <div class="ve-fact-card">
+          <span class="ve-fact-num">100<span>%</span></span>
+          <span class="ve-fact-label">Participación en proyectos cívicos y comunitarios</span>
+        </div>
+        <div class="ve-fact-card">
+          <span class="ve-fact-num">3<span> Ferias</span></span>
+          <span class="ve-fact-label">Hitos anuales en Ciencia, Folclore y Deporte</span>
+        </div>
+        <div class="ve-fact-card">
+          <span class="ve-fact-num">1°<span> Lugares</span></span>
+          <span class="ve-fact-label">Reconocimientos en olimpiadas científicas y STEM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifiesto de Formación Integral -->
+    <section class="ve-manifesto">
+      <div class="ve-manifesto__inner">
+        <div class="ve-manifesto__media">
+          <img src="assets/fotos/secundaria/IMG_9516.webp" alt="Estudiantes colaborando en proyectos de liderazgo escolar" loading="lazy">
+          <div class="ve-manifesto__badge">
+            <strong>CARÁCTER Y LIDERAZGO</strong>
+            «Ninguno tenga en poco tu juventud, sino sé ejemplo de los creyentes en palabra, conducta, amor, espíritu, fe y pureza.» · 1 Timoteo 4:12
+          </div>
+        </div>
+        <div class="ve-manifesto__content">
+          <span class="ve-hero__eyebrow" style="color: var(--orange);">EXPERIENCIAS CON PROPÓSITO</span>
+          <h2>Aprender haciendo, conviviendo y sirviendo</h2>
+          <p class="ve-manifesto__lead">En el Colegio Buen Pastor Voz de Alerta estamos convencidos de que las lecciones más perdurables ocurren cuando los estudiantes ponen sus dones al servicio de la comunidad.</p>
+          <p class="ve-manifesto__text">Nuestra vida estudiantil promueve el equilibrio entre la exigencia académica y el disfrute recreativo. Ya sea diseñando robots en el laboratorio, compitiendo con deportividad en la cancha techada, ejecutando piezas folclóricas o sirviendo en jornadas solidarias, cada alumno descubre que su voz y sus talentos tienen un valor único.</p>
+          <div class="ve-manifesto__quote">
+            <p>«El verdadero liderazgo escolar no se impone: se demuestra con el ejemplo, el servicio al prójimo y la búsqueda constante de la excelencia.»</p>
+            <cite>Ideario Formativo BPVDA · Pastoral Estudiantil</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloques Temáticos de Clubes y Experiencias -->
+    <section class="ve-clubs-section" id="clubes">
+      <div class="ve-clubs-header">
+        <span class="ve-hero__eyebrow" style="color: var(--turquoise);">DISCIPLINAS Y TALLERES</span>
+        <h2>Áreas extracurriculares que inspiran</h2>
+        <p>Espacios dinámicos diseñados para despertar vocaciones, canalizar la energía juvenil y potenciar habilidades blandas para el futuro.</p>
+      </div>
+
+      <div class="ve-clubs-grid">
+        <!-- Bloque 1: Ciencia, Robótica y STEM -->
+        <article class="ve-club-card">
+          <div class="ve-club-media">
+            <img src="assets/fotos/secundaria/IMG_9551.webp" alt="Estudiantes en laboratorio de robótica y experimentos de ciencias" loading="lazy">
+            <span class="ve-club-badge">Innovación y STEM</span>
+          </div>
+          <div class="ve-club-body">
+            <h3>Club de Robótica y Ferias Científicas</h3>
+            <p class="ve-club-desc">Diseño, programación y montaje de prototipos interactivos. Los estudiantes aplican conceptos de física, matemáticas e informática en proyectos tangibles para ferias intercolegiales.</p>
+            <ul class="ve-club-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Programación de microcontroladores y sensores automatizados.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Metodología de investigación científica aplicada a problemas reales.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Participación en olimpiadas nacionales y muestras STEM.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Bloque 2: Deporte y Vida Saludable -->
+        <article class="ve-club-card">
+          <div class="ve-club-media">
+            <img src="assets/fotos/secundaria/IMG_9583.webp" alt="Estudiantes en la cancha deportiva escolar participando en baloncesto y futsal" loading="lazy">
+            <span class="ve-club-badge">Deporte y Salud</span>
+          </div>
+          <div class="ve-club-body">
+            <h3>Disciplinas Deportivas y Torneos Escolares</h3>
+            <p class="ve-club-desc">Entrenamiento físico y fomento del espíritu deportivo en nuestra cancha multiuso. Fomentamos la disciplina, la resiliencia y el compañerismo a través del juego activo.</p>
+            <ul class="ve-club-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Equipos formativos de baloncesto, voleibol y fútbol sala.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Torneos intercursos y encuentros amistosos intercolegiales.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Acondicionamiento físico, psicomotricidad y hábitos saludables.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Bloque 3: Arte, Música y Tradición Cívica -->
+        <article class="ve-club-card">
+          <div class="ve-club-media">
+            <img src="assets/fotos/secundaria/IMG_9594.webp" alt="Actividades artísticas, musicales y folclóricas de los estudiantes BPVDA" loading="lazy">
+            <span class="ve-club-badge">Arte y Tradición</span>
+          </div>
+          <div class="ve-club-body">
+            <h3>Banda de Música y Expresión Folclórica</h3>
+            <p class="ve-club-desc">Cultivo de la sensibilidad musical, el folclore panameño y el fervor patriótico. Nuestros estudiantes representan con honor al colegio en actos cívicos y desfiles de fiestas patrias.</p>
+            <ul class="ve-club-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Banda escolar de música y percusión institucional.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Agrupaciones de bailes típicos y preservación de tradiciones panameñas.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Oratoria cívica, declamación poética y artes plásticas.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Bloque 4: Vida Espiritual y Convivencia Cristiana -->
+        <article class="ve-club-card">
+          <div class="ve-club-media">
+            <img src="assets/fotos/secundaria/IMG_9524.webp" alt="Jóvenes en devocional escolar y convivencia fraterna cristiana" loading="lazy">
+            <span class="ve-club-badge">Fe y Comunidad</span>
+          </div>
+          <div class="ve-club-body">
+            <h3>Devocionales y Proyección Comunitaria</h3>
+            <p class="ve-club-desc">Espacios semanales de adoración, lectura bíblica y reflexión donde los alumnos fortalecen su identidad espiritual, estrechan lazos fraternales y participan en obras de servicio.</p>
+            <ul class="ve-club-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Devocionales matutinos con alabanza, oración y principios bíblicos.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Campañas de solidaridad y apoyo social en la comunidad de 24 de Diciembre.</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Grupos de liderazgo juvenil y mentoría pastoral entre pares.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cronograma de Hitos Anuales -->
+    <section class="ve-timeline-section">
+      <div class="ve-timeline-header">
+        <span class="ve-hero__eyebrow" style="color: var(--orange);">CALENDARIO DE TRADICIONES</span>
+        <h2>Los momentos que marcan el año escolar</h2>
+        <p>Eventos anuales esperados por toda la comunidad educativa que consolidan el orgullo y la pertenencia al Buen Pastor.</p>
+      </div>
+
+      <div class="ve-timeline-grid">
+        <!-- Hito 1 -->
+        <article class="ve-timeline-card">
+          <span class="ve-timeline-period">I TRIMESTRE</span>
+          <h3>Jornada de Integración y Deporte</h3>
+          <p>Inauguración de torneos deportivos intercursos, convivencias de bienvenida y devocional de apertura de ciclo escolar.</p>
+        </article>
+
+        <!-- Hito 2 -->
+        <article class="ve-timeline-card">
+          <span class="ve-timeline-period">II TRIMESTRE</span>
+          <h3>Feria de Ciencias y Robótica</h3>
+          <p>Demostración pública de prototipos, experimentos biológicos, aplicaciones tecnológicas y proyectos ecológicos.</p>
+        </article>
+
+        <!-- Hito 3 -->
+        <article class="ve-timeline-card">
+          <span class="ve-timeline-period">III TRIMESTRE</span>
+          <h3>Mes de la Patria y Semana Cívica</h3>
+          <p>Desfiles de gala de la banda institucional, homenajes a los símbolos patrios, comidas típicas y certamen folclórico.</p>
+        </article>
+
+        <!-- Hito 4 -->
+        <article class="ve-timeline-card">
+          <span class="ve-timeline-period">CIERRE LECTIVO</span>
+          <h3>Gala de Talentos y Graduación</h3>
+          <p>Reconocimiento al cuadro de honor, devocional solemne de acción de gracias y ceremonia de egreso de bachilleres.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre -->
+    <section class="ve-cta">
+      <div class="ve-cta__inner">
+        <span class="ve-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">VIVE LA EXPERIENCIA</span>
+        <h2>Descubre tu pasión en el Buen Pastor</h2>
+        <p>Una comunidad escolar vibrante donde cada estudiante encuentra su vocación, desarrolla su carácter y forja amistades para toda la vida.</p>
+        <div class="ve-cta__actions">
+          <a href="admisiones.html" class="hero-btn-primary">Conocer Admisiones y Matrícula <b>↗</b></a>
+          <a href="contacto.html" class="hero-btn-outline">Visitar Nuestro Campus <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'vida-estudiantil.html'), vidaEstudiantilHtml);
+
+// 6g. Generación de Página Ecosistema Digital (Catálogo de Alianzas y Competencias Digitales)
+const ecosistemaDigitalHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ecosistema Digital | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Ecosistema Digital BPVDA -->
+    <section class="eco-hero">
+      <img src="assets/fotos/secundaria/IMG_9529.webp" alt="Estudiantes en el laboratorio digital utilizando plataformas educativas en el Colegio Buen Pastor" loading="eager">
+      <div class="eco-hero__overlay"></div>
+      <div class="eco-hero__container">
+        <span class="eco-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          02 ENFOQUE EDUCATIVO · ECOSISTEMA DIGITAL
+        </span>
+        <h1>Tecnología pedagógica que potencia cada <mark>habilidad</mark>.</h1>
+        <p class="eco-hero__lead">En el Buen Pastor integramos plataformas educativas de clase mundial para expandir el pensamiento crítico, la fluidez lectora, el razonamiento matemático y la creatividad de nuestros alumnos.</p>
+        <div class="eco-hero__actions">
+          <a href="#plataformas" class="hero-btn-primary">Explorar Plataformas <b>↓</b></a>
+          <a href="sai.html" class="hero-btn-outline">Campus Virtual SAI <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas Digitales -->
+    <section class="eco-facts-strip">
+      <div class="eco-facts-grid">
+        <div class="eco-fact-card">
+          <span class="eco-fact-num">+8<span> Alianzas</span></span>
+          <span class="eco-fact-label">Plataformas educativas oficiales integradas</span>
+        </div>
+        <div class="eco-fact-card">
+          <span class="eco-fact-num">100<span>%</span></span>
+          <span class="eco-fact-label">Alumnos con licencias institucionales activas</span>
+        </div>
+        <div class="eco-fact-card">
+          <span class="eco-fact-num">STEM<span> &amp; Lógica</span></span>
+          <span class="eco-fact-label">Enfoque pedagógico basado en competencias</span>
+        </div>
+        <div class="eco-fact-card">
+          <span class="eco-fact-num">Cloud<span> 24/7</span></span>
+          <span class="eco-fact-label">Continuidad de aprendizaje en colegio y hogar</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifiesto de Innovación Ética -->
+    <section class="eco-manifesto">
+      <div class="eco-manifesto__inner">
+        <div class="eco-manifesto__media">
+          <img src="assets/fotos/secundaria/IMG_9520.webp" alt="Estudiante en aula concentrado trabajando con herramientas informáticas" loading="lazy">
+          <div class="eco-manifesto__badge">
+            <strong>TECNOLOGÍA CON VALORES</strong>
+            Formamos creadores conscientes y usuarios éticos: la tecnología al servicio de la sabiduría y el carácter.
+          </div>
+        </div>
+        <div class="eco-manifesto__content">
+          <span class="eco-hero__eyebrow" style="color: var(--orange);">INNOVACIÓN PEDAGÓGICA</span>
+          <h2>Herramientas que despiertan el pensamiento, no la distracción</h2>
+          <p class="eco-manifesto__lead">La tecnología en el Colegio Buen Pastor Voz de Alerta no es un sustituto del maestro, sino un amplificador del aprendizaje profundo y personalizado.</p>
+          <p class="eco-manifesto__text">Cada una de nuestras alianzas digitales responde a un propósito curricular específico: agilizar la lectura comprensiva, desafiar la resolución lógica de problemas, estimular el diseño visual y garantizar una comunicación transparente con las familias. Todo enmarcado en principios cristianos de sobriedad, discernimiento y uso responsable.</p>
+          <div class="eco-manifesto__quote">
+            <p>«El corazón del entendido adquiere sabiduría; y el oído de los sabios busca la ciencia.»</p>
+            <cite>Proverbios 18:15 · Sabiduría y Conocimiento Digital</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Plataformas -->
+    <section class="eco-platforms-section" id="plataformas">
+      <div class="eco-platforms-header">
+        <span class="eco-hero__eyebrow" style="color: var(--turquoise);">CATÁLOGO INTERACTIVO</span>
+        <h2>Alianzas tecnológicas que impulsan el aprendizaje</h2>
+        <p>Conoce las herramientas líderes a nivel global que enriquecen cada clase y fortalecen las competencias de nuestros estudiantes.</p>
+      </div>
+
+      <div class="eco-platforms-grid">
+        <!-- 01 Progrentis -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Progrentis1.png" alt="Logo oficial Progrentis" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">NEUROEDUCACIÓN</span>
+          <h3>Progrentis</h3>
+          <span class="eco-platform-levels">Primaria y Secundaria</span>
+          <p>Entrenamiento neurocognitivo que desarrolla la velocidad de lectura comprensiva, el escaneo crítico y la decodificación ágil de textos complejos.</p>
+        </article>
+
+        <!-- 02 Matific -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Matific1.png" alt="Logo oficial Matific" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">PENSAMIENTO LÓGICO</span>
+          <h3>Matific</h3>
+          <span class="eco-platform-levels">Preescolar y Primaria</span>
+          <p>Laboratorio matemático gamificado donde los niños experimentan con fracciones, geometría y operaciones mediante dinámicas visuales interactivas.</p>
+        </article>
+
+        <!-- 03 Canva for Education -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Canva1.webp" alt="Logo oficial Canva for Education" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">CREATIVIDAD VISUAL</span>
+          <h3>Canva for Education</h3>
+          <span class="eco-platform-levels">Todos los Niveles</span>
+          <p>Suite creativa profesional que capacita a los alumnos en diseño gráfico, creación de infografías, presentaciones orales y producción multimedia.</p>
+        </article>
+
+        <!-- 04 Edvoice -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Edvoice1.webp" alt="Logo oficial Edvoice" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">COMUNICACIÓN FAMILIAR</span>
+          <h3>Edvoice</h3>
+          <span class="eco-platform-levels">Comunidad de Padres</span>
+          <p>Canal oficial de mensajería instantánea escolar para entrega de circulares, avisos institucionales, reportes de asistencia y seguimiento de tareas.</p>
+        </article>
+
+        <!-- 05 SAI BPVDA Moodle -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/SAI logo oficial.jpg" alt="Logo oficial SAI BPVDA" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">CAMPUS VIRTUAL</span>
+          <h3>SAI BPVDA (Moodle)</h3>
+          <span class="eco-platform-levels">Primaria y Secundaria</span>
+          <p>Plataforma centralizada del colegio para repositorios de asignaturas, entregas digitales de tareas, cuestionarios formativos y registro de calificaciones.</p>
+        </article>
+
+        <!-- 06 King's Corner -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Kingscorner.png" alt="Logo oficial King's Corner" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">IDIOMA INGLÉS</span>
+          <h3>King's Corner</h3>
+          <span class="eco-platform-levels">Primaria y Secundaria</span>
+          <p>Entorno interactivo para afianzar el dominio del inglés a través de lecturas graduadas, gramática práctica y ejercicios de comprensión auditiva.</p>
+        </article>
+
+        <!-- 07 Academia 24 -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/Academia 24 - 1.png" alt="Logo oficial Academia 24" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">REFUERZO CURRICULAR</span>
+          <h3>Academia 24</h3>
+          <span class="eco-platform-levels">Secundaria y Bachilleres</span>
+          <p>Tutoría digital y biblioteca de contenidos de apoyo para reforzar materias clave de ciencias, matemáticas y comercio con explicaciones paso a paso.</p>
+        </article>
+
+        <!-- 08 Kahoot! -->
+        <article class="eco-platform-card">
+          <div class="eco-platform-logo-shell">
+            <img src="assets/new/alliances/kahoot1.webp" alt="Logo oficial Kahoot" loading="lazy">
+          </div>
+          <span class="eco-platform-tag">APRENDIZAJE LÚDICO</span>
+          <h3>Kahoot!</h3>
+          <span class="eco-platform-levels">Todos los Niveles</span>
+          <p>Dinámicas de evaluación formativa en tiempo real que fomentan el entusiasmo, la participación activa en el aula y la autoevaluación constante.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Principios de Ciudadanía y Seguridad Digital -->
+    <section class="eco-safety-section">
+      <div class="eco-safety-header">
+        <span class="eco-hero__eyebrow" style="color: var(--orange);">CIUDADANÍA DIGITAL</span>
+        <h2>Pilares de seguridad y acompañamiento ético</h2>
+        <p>Cuidamos la huella digital y el bienestar socioemocional de nuestros alumnos con directrices claras y entornos protegidos.</p>
+      </div>
+
+      <div class="eco-safety-grid">
+        <!-- Pilar 1 -->
+        <article class="eco-safety-card">
+          <div class="eco-safety-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>Entornos Seguros y Privacidad</h3>
+          <p>Todas las cuentas institucionales operan bajo filtros de seguridad perimetral escolar, sin anuncios invasivos y con resguardo estricto de la privacidad infantil.</p>
+        </article>
+
+        <!-- Pilar 2 -->
+        <article class="eco-safety-card">
+          <div class="eco-safety-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>Mediación Docente Activa</h3>
+          <p>El uso de cada software responde a una planificación didáctica previa guiada por el maestro, evitando el consumo pasivo de pantallas sin valor educativo.</p>
+        </article>
+
+        <!-- Pilar 3 -->
+        <article class="eco-safety-card">
+          <div class="eco-safety-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          </div>
+          <h3>Equilibrio con la Vida Presencial</h3>
+          <p>Promovemos hábitos saludables de desconexión, valorando la lectura en libros físicos, la caligrafía, la actividad física y el diálogo cara a cara en familia.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Banner de Cierre -->
+    <section class="eco-cta">
+      <div class="eco-cta__inner">
+        <span class="eco-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">EL FUTURO HOY</span>
+        <h2>Una educación moderna con cimientos eternos</h2>
+        <p>Preparamos a tus hijos para prosperar en la sociedad del conocimiento, equipados con las mejores herramientas digitales y afianzados en la roca de los valores cristianos.</p>
+        <div class="eco-cta__actions">
+          <a href="admisiones.html" class="hero-btn-primary">Iniciar Proceso de Matrícula <b>↗</b></a>
+          <a href="sai.html" class="hero-btn-outline">Conocer el Campus SAI <b>→</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'ecosistema-digital.html'), ecosistemaDigitalHtml);
+
+// 6g. Generación de Página Portal de Padres (Hub Integral de Servicios a la Familia)
+const portalPadresHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal de Padres | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Portal de Padres BPVDA -->
+    <section class="padres-hero">
+      <img src="assets/fotos/exterior/IMG_9370.webp" alt="Fachada y recepción del Colegio Buen Pastor Voz de Alerta" loading="eager">
+      <div class="padres-hero__overlay"></div>
+      <div class="padres-hero__container">
+        <span class="padres-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          03 FAMILIA Y COMUNIDAD · PORTAL DE PADRES
+        </span>
+        <h1>Una alianza viva entre el <mark>hogar</mark> y el colegio.</h1>
+        <p class="padres-hero__lead">Acompañamos el crecimiento integral de tus hijos. Centraliza aquí los accesos a las plataformas digitales de comunicación, seguimiento académico en SAI, trámites administrativos, pagos escolares y canales directos de secretaría y consejería.</p>
+        <div class="padres-hero__actions">
+          <a href="#plataformas" class="hero-btn-primary">Accesos Directos a Plataformas <b>↓</b></a>
+          <a href="#guia-padres" class="hero-btn-outline">Guía de Nuevas Familias <b>↓</b></a>
+        </div>
+        <div class="padres-hero__badges">
+          <div class="padres-badge-item">
+            <span class="padres-badge-dot" aria-hidden="true"></span>
+            <span><strong>Edvoice:</strong> Circulares y avisos al instante</span>
+          </div>
+          <div class="padres-badge-item">
+            <span class="padres-badge-dot" aria-hidden="true"></span>
+            <span><strong>SAI Moodle:</strong> Aula virtual y notas</span>
+          </div>
+          <div class="padres-badge-item">
+            <span class="padres-badge-dot" aria-hidden="true"></span>
+            <span><strong>Secretaría:</strong> L-V 7:30 a.m. – 2:00 p.m.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Métricas y Compromisos -->
+    <section class="padres-facts-strip">
+      <div class="padres-facts-grid">
+        <div class="padres-fact-card">
+          <span class="padres-fact-num">100<span>%</span></span>
+          <span class="padres-fact-label">Comunicación digital sin papel vía Edvoice y correo</span>
+        </div>
+        <div class="padres-fact-card">
+          <span class="padres-fact-num">24<span>/7</span></span>
+          <span class="padres-fact-label">Disponibilidad del aula virtual SAI y recursos de estudio</span>
+        </div>
+        <div class="padres-fact-card">
+          <span class="padres-fact-num">4<span> Periodos</span></span>
+          <span class="padres-fact-label">Informes bimestrales de avance académico y formativo</span>
+        </div>
+        <div class="padres-fact-card">
+          <span class="padres-fact-num">&lt;24<span>h</span></span>
+          <span class="padres-fact-label">Tiempo promedio de respuesta en canales de secretaría</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hub Central de Plataformas y Servicios -->
+    <section class="padres-services-section" id="plataformas">
+      <div class="padres-section-header">
+        <span class="padres-hero__eyebrow" style="color: var(--turquoise);">SERVICIOS DIGITALES & TRÁMITES</span>
+        <h2>Accesos directos para la familia</h2>
+        <p>Selecciona la plataforma o servicio que requieres para gestionar el día a día escolar de tu hijo.</p>
+      </div>
+
+      <div class="padres-services-grid">
+        <!-- 01 Edvoice -->
+        <article class="padres-service-card padres-service-card--featured">
+          <div class="padres-card-top">
+            <div class="padres-card-logo">
+              <img src="assets/new/alliances/Edvoice1.webp" alt="Logo de Edvoice" loading="lazy">
+            </div>
+            <span class="padres-card-pill">COMUNICACIÓN OFICIAL</span>
+          </div>
+          <h3>Edvoice: App Escolar de Avisos y Circulares</h3>
+          <p>Canal prioritario para recibir comunicados oficiales, justificar inasistencias por motivos médicos, autorizar salidas pedagógicas y conversar directamente con el docente tutor.</p>
+          <div class="padres-card-features">
+            <span>✓ Mensajería instantánea y segura</span>
+            <span>✓ Notificaciones push en tu celular</span>
+            <span>✓ Justificación ágil de ausencias</span>
+          </div>
+          <div class="padres-card-actions">
+            <a href="https://edvoice.additioapp.com/access/login" target="_blank" rel="noopener noreferrer" class="hero-btn-primary">Ingresar a Edvoice Web <b>↗</b></a>
+            <a href="#guia-edvoice" class="padres-link-aux">¿Cómo activar mi cuenta? →</a>
+          </div>
+        </article>
+
+        <!-- 02 SAI Moodle -->
+        <article class="padres-service-card padres-service-card--featured">
+          <div class="padres-card-top">
+            <div class="padres-card-logo">
+              <img src="assets/new/alliances/SAI logo oficial.jpg" alt="Logo oficial SAI Moodle" loading="lazy">
+            </div>
+            <span class="padres-card-pill" style="background: rgba(16, 184, 176, 0.15); color: var(--turquoise);">AULA VIRTUAL</span>
+          </div>
+          <h3>SAI BPVDA: Aula Virtual y Tareas</h3>
+          <p>Plataforma de seguimiento pedagógico continuo. Consulta las tareas semanales de tu hijo, guías de estudio descargables, evaluaciones programadas y cronograma de exámenes.</p>
+          <div class="padres-card-features">
+            <span>✓ Repositorio de materias y guías</span>
+            <span>✓ Calendario de entregas y pruebas</span>
+            <span>✓ Retroalimentación del docente</span>
+          </div>
+          <div class="padres-card-actions">
+            <a href="https://sai.bpvda.edu.pa/login/index.php?loginredirect=1" target="_blank" rel="noopener noreferrer" class="hero-btn-primary" style="background: var(--navy); border-color: var(--turquoise);">Entrar a SAI Moodle <b>↗</b></a>
+            <a href="sai.html" class="padres-link-aux">Conocer la plataforma SAI →</a>
+          </div>
+        </article>
+
+        <!-- 03 Tesorería y Pagos -->
+        <article class="padres-service-card">
+          <div class="padres-card-top">
+            <div class="padres-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <span class="padres-card-pill">TESORERÍA & FINANZAS</span>
+          </div>
+          <h3>Pagos de Mensualidades y Paz y Salvo</h3>
+          <p>Paga cómodamente desde tu banca digital. Aceptamos transferencias ACH, depósito en Banco General y Yappy Comercial. Envía tu comprobante con el nombre completo y grado del estudiante.</p>
+          <ul class="padres-list-compact">
+            <li><strong>Banco General:</strong> Cuenta Corriente oficial BPVDA</li>
+            <li><strong>Yappy Comercial:</strong> Directorio institucional Buen Pastor</li>
+            <li><strong>Caja Presencial:</strong> L-V 7:30 a.m. a 2:00 p.m.</li>
+          </ul>
+          <div class="padres-card-actions">
+            <a href="https://wa.me/50767441351?text=Hola,%20deseo%20enviar%20comprobante%20de%20pago%20o%20consultar%20mi%20estado%20de%20cuenta" target="_blank" rel="noopener noreferrer" class="hero-btn-outline">Enviar Comprobante WhatsApp <b>↗</b></a>
+          </div>
+        </article>
+
+        <!-- 04 Calendario Escolar -->
+        <article class="padres-service-card">
+          <div class="padres-card-top">
+            <div class="padres-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <span class="padres-card-pill">CRONOGRAMA LECTIVO</span>
+          </div>
+          <h3>Calendario y Fechas Clave del Año</h3>
+          <p>Mantente al día con los eventos más importantes del año lectivo: asambleas de padres, semanas de evaluaciones trimestrales, entrega de boletines oficiales, feriados y vacaciones.</p>
+          <ul class="padres-list-compact">
+            <li><strong>Boletines:</strong> Cierre de cada período bimestral/trimestral</li>
+            <li><strong>Asambleas:</strong> Convocatorias generales y por grado</li>
+            <li><strong>Eventos cívicos:</strong> Fiestas patrias y semana del colegio</li>
+          </ul>
+          <div class="padres-card-actions">
+            <a href="#calendario-fechas" class="hero-btn-outline">Ver Hitos del Calendario <b>↓</b></a>
+          </div>
+        </article>
+
+        <!-- 05 Consejería y Bienestar -->
+        <article class="padres-service-card">
+          <div class="padres-card-top">
+            <div class="padres-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <span class="padres-card-pill">APOYO SOCIOEMOCIONAL</span>
+          </div>
+          <h3>Consejería Pastoral y Bienestar Escolar</h3>
+          <p>Espacio confidencial para brindar orientación espiritual, psicológica y formativa a los estudiantes y sus familias. Coordinamos entrevistas individuales para atender necesidades específicas.</p>
+          <ul class="padres-list-compact">
+            <li><strong>Capellanía:</strong> Consejería cristiana y oración por familias</li>
+            <li><strong>Gabinete psicopedagógico:</strong> Hábitos de estudio y convivencia</li>
+            <li><strong>Atención:</strong> Citas programadas con anticipación</li>
+          </ul>
+          <div class="padres-card-actions">
+            <a href="contacto.html" class="hero-btn-outline">Solicitar Cita de Consejería <b>↗</b></a>
+          </div>
+        </article>
+
+        <!-- 06 Secretaría y Certificaciones -->
+        <article class="padres-service-card">
+          <div class="padres-card-top">
+            <div class="padres-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <span class="padres-card-pill">GESTIÓN ACADÉMICA</span>
+          </div>
+          <h3>Secretaría Escolar y Trámites Oficiales</h3>
+          <p>Emisión de constancias de matrícula, récord oficial de notas para traslados, certificaciones de buena conducta, actualización de expedientes del acudiente y carnets escolares.</p>
+          <ul class="padres-list-compact">
+            <li><strong>Teléfono directo:</strong> 391-5811</li>
+            <li><strong>Correo:</strong> info@buenpastor-vda.net</li>
+            <li><strong>Tiempo de entrega:</strong> 48 a 72 horas hábiles</li>
+          </ul>
+          <div class="padres-card-actions">
+            <a href="tel:+5073915811" class="hero-btn-outline">Llamar a Secretaría: 391-5811 <b>📞</b></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Manifiesto de Alianza Hogar-Escuela -->
+    <section class="padres-manifesto">
+      <div class="padres-manifesto__inner">
+        <div class="padres-manifesto__media">
+          <img src="assets/fotos/exterior/IMG_9374.webp" alt="Instalaciones del Colegio Buen Pastor donde la comunidad de familias se reúne" loading="lazy">
+          <div class="padres-manifesto__badge">
+            <strong>PRINCIPIO BÍBLICO DE LA FAMILIA</strong>
+            «Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.» · Proverbios 22:6
+          </div>
+        </div>
+        <div class="padres-manifesto__content">
+          <span class="padres-hero__eyebrow" style="color: var(--orange);">VALORES Y COMPROMISO</span>
+          <h2>Caminamos de la mano en la formación de tus hijos</h2>
+          <p class="padres-manifesto__lead">En el Colegio Buen Pastor Voz de Alerta consideramos a los padres de familia como los primeros y fundamentales formadores del carácter.</p>
+          <p class="padres-manifesto__text">Nuestra misión educativa alcanza su máxima plenitud cuando existe una comunicación abierta y un compromiso mutuo entre el colegio y el hogar. Al compartir valores bíblicos sólidos, disciplina con amor y metas académicas claras, creamos para los niños y jóvenes un ambiente seguro y coherente en el que florecen con confianza.</p>
+          <div class="padres-manifesto__quote">
+            <p>«La verdadera educación no sólo transmite conocimientos a la mente; forja el carácter en el corazón a través del ejemplo coherente de padres y maestros.»</p>
+            <cite>Comunidad Educativa BPVDA · Dirección Pastoral</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guía Paso a Paso para Nuevos Padres -->
+    <section class="padres-guide-section" id="guia-padres">
+      <div class="padres-section-header">
+        <span class="padres-hero__eyebrow" style="color: var(--turquoise);">INDUCCIÓN PARA ACUDIENTES</span>
+        <h2>Primeros pasos en la comunidad BPVDA</h2>
+        <p>Sigue estos sencillos pasos para asegurar que tu familia esté conectada y al día con todas las actividades escolares desde el primer día de clases.</p>
+      </div>
+
+      <div class="padres-steps-grid" id="guia-edvoice">
+        <div class="padres-step-card">
+          <div class="padres-step-num">01</div>
+          <h3>Instala la App Edvoice</h3>
+          <p>Descarga la aplicación gratuita <strong>Edvoice</strong> desde App Store o Google Play Store. Te permitirá recibir notificaciones urgentes y circulares institucionales al instante.</p>
+          <span class="padres-step-tip">💡 Disponible también en versión navegador web.</span>
+        </div>
+
+        <div class="padres-step-card">
+          <div class="padres-step-num">02</div>
+          <h3>Ingresa tu Código de Familia</h3>
+          <p>Al matricular a tu hijo en Secretaría, recibirás un <strong>código de vinculación único</strong>. Introdúcelo en Edvoice para enlazar inmediatamente tu perfil con el salón y los profesores de tu hijo.</p>
+          <span class="padres-step-tip">💡 Si extraviaste tu código, solicítalo al 391-5811.</span>
+        </div>
+
+        <div class="padres-step-card">
+          <div class="padres-step-num">03</div>
+          <h3>Activa el Acceso a SAI Moodle</h3>
+          <p>Cada estudiante cuenta con un usuario institucional para ingresar al Campus Virtual SAI en <a href="https://sai.bpvda.edu.pa" target="_blank" rel="noopener">sai.bpvda.edu.pa</a>. Revisa semanalmente las tareas y guías de estudio asignadas.</p>
+          <span class="padres-step-tip">💡 Recomendamos guardar el acceso en favoritos.</span>
+        </div>
+
+        <div class="padres-step-card">
+          <div class="padres-step-num">04</div>
+          <h3>Participa en las Asambleas</h3>
+          <p>Asiste a las reuniones trimestrales de acudientes y citas de consejería. Tu presencia activa demuestra a tus hijos el valor que la familia otorga a su educación y progreso.</p>
+          <span class="padres-step-tip">💡 Las fechas se avisan con anticipación por Edvoice.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hitos del Año Escolar -->
+    <section class="padres-calendar-section" id="calendario-fechas">
+      <div class="padres-section-header">
+        <span class="padres-hero__eyebrow" style="color: var(--orange);">CRONOGRAMA GENERAL</span>
+        <h2>Hitos y períodos clave del año escolar</h2>
+        <p>Planifica con tiempo las actividades académicas y familiares de acuerdo con el calendario institucional.</p>
+      </div>
+
+      <div class="padres-terms-grid">
+        <div class="padres-term-card">
+          <div class="padres-term-header">
+            <span class="padres-term-tag">PERÍODO I</span>
+            <h3>Inicio de Clases & Adaptación</h3>
+          </div>
+          <ul class="padres-term-events">
+            <li><strong>Bienvenida y Apertura:</strong> Asamblea inicial de padres y entrega del reglamento escolar.</li>
+            <li><strong>Diagnóstico de Aprendizajes:</strong> Evaluación de nivelación diagnóstica en materias troncales.</li>
+            <li><strong>Semana de Evaluaciones I:</strong> Exámenes parciales del primer período lectivo.</li>
+            <li><strong>Entrega de Boletines I:</strong> Primera reunión formal de entrega de informes académicos.</li>
+          </ul>
+        </div>
+
+        <div class="padres-term-card">
+          <div class="padres-term-header">
+            <span class="padres-term-tag">PERÍODO II</span>
+            <h3>Consolidación, Ciencia & Cultura</h3>
+          </div>
+          <ul class="padres-term-events">
+            <li><strong>Feria Científica y de Robótica:</strong> Exposición de proyectos estudiantiles abierta a la familia.</li>
+            <li><strong>Aniversario del Colegio:</strong> Jornada cívica y deportiva conmemorativa de la comunidad.</li>
+            <li><strong>Semana de Evaluaciones II:</strong> Exámenes trimestrales intermedios.</li>
+            <li><strong>Receso de Medio Año:</strong> Semana de descanso escolar de mitad de ciclo.</li>
+          </ul>
+        </div>
+
+        <div class="padres-term-card">
+          <div class="padres-term-header">
+            <span class="padres-term-tag">PERÍODO III</span>
+            <h3>Cierre, Logros & Graduaciones</h3>
+          </div>
+          <ul class="padres-term-events">
+            <li><strong>Feria de la Hispanidad & Folclore:</strong> Fiestas patrias, presentaciones folclóricas y gastronomía.</li>
+            <li><strong>Exámenes Finales Trimestrales:</strong> Cierre de asignaturas y proyectos finales de graduación.</li>
+            <li><strong>Entrega Final de Calificaciones:</strong> Boletines definitivos y paz y salvo del año escolar.</li>
+            <li><strong>Actos de Graduación:</strong> Ceremonia solemne para Preescolar, Primaria, Premedia y Bachilleres.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes de Familias -->
+    <section class="padres-faq-section" id="faq-padres">
+      <div class="padres-section-header">
+        <span class="padres-hero__eyebrow" style="color: var(--turquoise);">RESOLUCIÓN DE DUDAS</span>
+        <h2>Preguntas frecuentes de las familias</h2>
+        <p>Encuentra respuestas inmediatas a las consultas más comunes sobre la dinámica escolar y administrativa.</p>
+      </div>
+
+      <div class="padres-faq-accordion">
+        <details class="padres-faq-item" open>
+          <summary class="padres-faq-question">
+            <span>¿Cómo justifico una inasistencia o tardanza médica de mi acudido?</span>
+            <span class="padres-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="padres-faq-answer">
+            <p>Las inasistencias por salud deben notificarse a través de la aplicación <strong>Edvoice</strong> el mismo día de la ausencia, adjuntando la constancia médica o excusa formal firmada por el acudiente. Para citas médicas programadas, se solicita enviar el aviso con al menos 24 horas de anticipación a la coordinación de nivel.</p>
+          </div>
+        </details>
+
+        <details class="padres-faq-item">
+          <summary class="padres-faq-question">
+            <span>¿Cuáles son los canales y fechas límite para el pago de colegiaturas?</span>
+            <span class="padres-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="padres-faq-answer">
+            <p>Las mensualidades escolares vencen dentro de los primeros diez (10) días de cada mes. Puedes realizar el pago mediante <strong>Banco General (banca en línea / ACH)</strong> o <strong>Yappy Comercial</strong>. Tras efectuar la transacción, envía el comprobante por WhatsApp al <strong>6744-1351</strong> detallando el nombre completo del estudiante y su grado para registrar el paz y salvo.</p>
+          </div>
+        </details>
+
+        <details class="padres-faq-item">
+          <summary class="padres-faq-question">
+            <span>¿Qué debo hacer si olvidé las credenciales de SAI Moodle o Edvoice?</span>
+            <span class="padres-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="padres-faq-answer">
+            <p>Para recuperar tu clave de acceso a la plataforma <strong>SAI BPVDA</strong>, puedes utilizar el enlace de "¿Olvidó su contraseña?" en la pantalla de inicio con el correo del estudiante, o escribir a <a href="mailto:info@buenpastor-vda.net">info@buenpastor-vda.net</a> solicitando el restablecimiento. Para la app <strong>Edvoice</strong>, secretaría docente puede emitir un nuevo código de vinculación en ventanilla.</p>
+          </div>
+        </details>
+
+        <details class="padres-faq-item">
+          <summary class="padres-faq-question">
+            <span>¿Cómo solicito una cita individual con un docente o profesor consejero?</span>
+            <span class="padres-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="padres-faq-answer">
+            <p>Las reuniones con docentes consejeros se coordinan por medio de la mensajería interna de <strong>Edvoice</strong> en el horario de atención a padres designado para cada profesor, o comunicándose con Secretaría al <strong>391-5811</strong>. Esto asegura que el profesor reserve el espacio sin interrumpir su tiempo de docencia frente a grupo.</p>
+          </div>
+        </details>
+
+        <details class="padres-faq-item">
+          <summary class="padres-faq-question">
+            <span>¿Cuál es el horario de atención presencial en oficinas y caja?</span>
+            <span class="padres-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="padres-faq-answer">
+            <p>Nuestra oficina de atención al cliente, caja y secretaría docente atiende de manera continua de <strong>lunes a viernes de 7:30 a.m. a 2:00 p.m.</strong> en las instalaciones de Monterrico, 24 de Diciembre. En período de vacaciones escolares o de verano rige el horario de 8:00 a.m. a 2:00 p.m.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Banner de Soporte Final -->
+    <section class="padres-support-banner">
+      <div class="padres-support-inner">
+        <span class="padres-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">ESTAMOS PARA SERVIRTE</span>
+        <h2>¿Necesitas asistencia adicional o atención personalizada?</h2>
+        <p>Nuestro equipo de secretaría docente, tesorería y bienestar pastoral está a tu completa disposición para acompañar a tu familia en todo momento.</p>
+        <div class="padres-support-actions">
+          <a href="tel:+5073915811" class="hero-btn-primary">Llamar a Secretaría: 391-5811 <b>📞</b></a>
+          <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="hero-btn-outline">Escribir por WhatsApp <b>💬</b></a>
+          <a href="contacto.html" class="hero-btn-outline">Ver Horarios y Ubicación <b>📍</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'portal-padres.html'), portalPadresHtml);
+
+// 6h. Generación de Página Contacto y Atención (Centro de Orientación Familiar)
+const contactoHtml = `<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto y Atención | Buen Pastor Voz de Alerta</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- Enlace accesible para lectores de pantalla -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera Institucional y Menú Modal -->
+  ${visualHeader}
+
+  <main id="contenido">
+    <!-- Hero Interior: Contacto y Atención BPVDA -->
+    <section class="contacto-hero">
+      <img src="assets/fotos/exterior/IMG_9372.webp" alt="Entrada y fachada exterior del Colegio Buen Pastor Voz de Alerta" loading="eager">
+      <div class="contacto-hero__overlay"></div>
+      <div class="contacto-hero__container">
+        <span class="contacto-hero__eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          03 FAMILIA Y COMUNIDAD · CONTACTO Y ATENCIÓN
+        </span>
+        <h1>Estamos aquí para orientar a tu <mark>familia</mark>.</h1>
+        <p class="contacto-hero__lead">Acércate a conversar con nuestro equipo, programa una visita guiada para conocer las instalaciones y resuelve cualquier duda sobre admisiones, trámites de secretaría o vida escolar en el Colegio Buen Pastor Voz de Alerta.</p>
+        <div class="contacto-hero__actions">
+          <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="hero-btn-primary">Escribir por WhatsApp <b>💬</b></a>
+          <a href="#visita-form" class="hero-btn-outline">Solicitar Visita al Campus <b>↓</b></a>
+          <a href="#mapa-ubicacion" class="hero-btn-outline">Ver Ubicación y Mapa <b>↓</b></a>
+        </div>
+        <div class="contacto-hero__badges">
+          <div class="contacto-badge-item">
+            <span class="contacto-badge-dot" aria-hidden="true"></span>
+            <span><strong>Sede:</strong> Calle San José, Urb. Monterrico, 24 de Diciembre</span>
+          </div>
+          <div class="contacto-badge-item">
+            <span class="contacto-badge-dot" aria-hidden="true"></span>
+            <span><strong>Horario:</strong> L-V 7:30 a.m. – 2:00 p.m.</span>
+          </div>
+          <div class="contacto-badge-item">
+            <span class="contacto-badge-dot" aria-hidden="true"></span>
+            <span><strong>Teléfono:</strong> (507) 391-5811</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Franja de Canales Directos de Atención Inmediata -->
+    <section class="contact-direct section-pad">
+      <a href="tel:+5073915811" class="contact-direct__card">
+        <div class="contact-direct__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </div>
+        <div class="contact-direct__info">
+          <span class="contact-direct__tag">SECRETARÍA & PBX</span>
+          <strong class="contact-direct__value">391-5811</strong>
+          <span class="contact-direct__sub">Atención telefónica y conmutador</span>
+        </div>
+        <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="https://wa.me/50767441351" target="_blank" rel="noopener noreferrer" class="contact-direct__card contact-direct__card--wa">
+        <div class="contact-direct__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <div class="contact-direct__info">
+          <span class="contact-direct__tag">WHATSAPP OFICIAL</span>
+          <strong class="contact-direct__value">6744-1351</strong>
+          <span class="contact-direct__sub">Orientación y consultas rápidas</span>
+        </div>
+        <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="mailto:info@buenpastor-vda.net" class="contact-direct__card">
+        <div class="contact-direct__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <div class="contact-direct__info">
+          <span class="contact-direct__tag">CORREO INSTITUCIONAL</span>
+          <strong class="contact-direct__value">info@buenpastor-vda.net</strong>
+          <span class="contact-direct__sub">Trámites y documentos oficiales</span>
+        </div>
+        <span class="contact-direct__arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <!-- Sección Principal: Formulario de Visita y Hub de Sede -->
+    <section class="contacto-main-section" id="visita-form">
+      <div class="contacto-main-grid">
+        <!-- Columna Izquierda: Formulario de Contacto / Visita -->
+        <div class="contacto-form-card">
+          <span class="contacto-hero__eyebrow" style="color: var(--orange);">FORMULARIO DE ORIENTACIÓN</span>
+          <h2>Solicitar Visita Guiada o Consulta</h2>
+          <p>Completa los siguientes campos y nuestro equipo de admisiones y orientación se comunicará contigo en menos de 24 horas hábiles.</p>
+
+          <form action="mailto:info@buenpastor-vda.net" method="POST" enctype="text/plain" class="contacto-form">
+            <div class="contacto-form-row">
+              <div class="contacto-form-group">
+                <label for="contactNombre">Nombre y Apellido del Acudiente *</label>
+                <input type="text" id="contactNombre" name="nombre" placeholder="Ej: María Rodríguez" required>
+              </div>
+              <div class="contacto-form-group">
+                <label for="contactTelefono">Teléfono / WhatsApp *</label>
+                <input type="tel" id="contactTelefono" name="telefono" placeholder="Ej: +507 6000-0000" required>
+              </div>
+            </div>
+
+            <div class="contacto-form-group">
+              <label for="contactEmail">Correo Electrónico *</label>
+              <input type="email" id="contactEmail" name="email" placeholder="Ej: acudiente@correo.com" required>
+            </div>
+
+            <div class="contacto-form-row">
+              <div class="contacto-form-group">
+                <label for="contactNivel">Nivel o Grado de Interés *</label>
+                <select id="contactNivel" name="nivel" required>
+                  <option value="" disabled selected>Selecciona un nivel...</option>
+                  <option value="Prekínder">Prekínder (Preescolar)</option>
+                  <option value="Kínder">Kínder (Preescolar)</option>
+                  <option value="Primaria">Primaria (1° a 6° Grado)</option>
+                  <option value="Secundaria">Premedia / Secundaria (7° a 9°)</option>
+                  <option value="Bachiller Ciencias">Bachiller en Ciencias (10° a 12°)</option>
+                  <option value="Bachiller Informatica">Bachiller en Informática (10° a 12°)</option>
+                  <option value="Bachiller Comercio">Bachiller en Comercio (10° a 12°)</option>
+                  <option value="Tramite Administrativo">Trámite Administrativo / Secretaría</option>
+                </select>
+              </div>
+              <div class="contacto-form-group">
+                <label for="contactMotivo">Motivo de Contacto *</label>
+                <select id="contactMotivo" name="motivo" required>
+                  <option value="Visita Guiada" selected>Recorrido guiado por el campus</option>
+                  <option value="Informacion Matricula">Información de matrícula y costos</option>
+                  <option value="Entrevista Consejeria">Entrevista con dirección/consejería</option>
+                  <option value="Consulta General">Consulta general</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="contacto-form-group">
+              <label for="contactMensaje">Mensaje o Pregunta Específica</label>
+              <textarea id="contactMensaje" name="mensaje" rows="4" placeholder="Escribe aquí los detalles de tu consulta, fechas preferidas para tu visita o necesidades formativas de tu acudido..."></textarea>
+            </div>
+
+            <button type="submit" class="contacto-btn-submit">
+              <span>Enviar Consulta / Solicitar Recorrido</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+
+            <p class="contacto-privacy-note">🔒 Tus datos personales son tratados con estricta confidencialidad institucional conforme a la legislación vigente de protección de datos.</p>
+          </form>
+        </div>
+
+        <!-- Columna Derecha: Tarjetas de Información Operativa -->
+        <div class="contacto-side-info">
+          <!-- Horarios -->
+          <div class="contacto-info-box">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Horarios de Atención Presencial
+            </h3>
+            <p>Nuestras ventanillas de secretaría y caja están disponibles de forma continua para atender trámites familiares:</p>
+            <ul class="contacto-schedule-list">
+              <li class="contacto-schedule-item">
+                <strong>Año Lectivo Regular:</strong>
+                <span>7:30 a.m. – 2:00 p.m.</span>
+              </li>
+              <li class="contacto-schedule-item">
+                <strong>Período de Verano:</strong>
+                <span>8:00 a.m. – 2:00 p.m.</span>
+              </li>
+              <li class="contacto-schedule-item">
+                <strong>Días de Atención:</strong>
+                <span>Lunes a Viernes</span>
+              </li>
+              <li class="contacto-schedule-item">
+                <strong>Fines de Semana:</strong>
+                <span>Cerrado (Citas especiales previas)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ubicación y Accesibilidad -->
+          <div class="contacto-info-box">
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Cómo Llegar a la Sede
+            </h3>
+            <p>Estamos ubicados en Calle San José, Urbanización Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá.</p>
+            <ul class="contacto-transport-list">
+              <li>
+                <strong>🚇 En Metro (Línea 2):</strong>
+                Bájate en la Estación 24 de Diciembre. Desde allí puedes tomar transporte interno o taxi hacia Monterrico (aproximadamente 5 minutos).
+              </li>
+              <li>
+                <strong>🚌 En Transporte Público:</strong>
+                Rutas de Vía España, Tumba Muerto o Corredor Sur con destino a 24 de Diciembre / Pacora, con parada cercana a la entrada de Monterrico.
+              </li>
+              <li>
+                <strong>🚗 En Vehículo Particular:</strong>
+                Acceso fluido desde la Carretera Panamericana por la entrada principal de Monterrico. Contamos con estacionamiento interno para visitantes.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Normas de Visita -->
+          <div class="contacto-info-box" style="background: var(--cream); border-color: rgba(16, 184, 176, 0.3);">
+            <h3 style="color: var(--navy);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Normas de Ingreso al Plantel
+            </h3>
+            <p>Por la seguridad y el bienestar de los estudiantes, todo visitante debe registrarse en la garita principal presentando su documento de identidad personal (cédula o pasaporte). Agradecemos acudir con vestimenta adecuada acorde al entorno escolar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas Frecuentes de Visitas y Orientación -->
+    <section class="contacto-faq-section">
+      <div class="padres-section-header">
+        <span class="contacto-hero__eyebrow" style="color: var(--turquoise);">RESOLUCIÓN DE DUDAS</span>
+        <h2>Preguntas frecuentes sobre visitas y atención</h2>
+        <p>Todo lo que necesitas saber antes de acercarte a las instalaciones de nuestro colegio.</p>
+      </div>
+
+      <div class="contacto-faq-accordion">
+        <details class="contacto-faq-item" open>
+          <summary class="contacto-faq-question">
+            <span>¿Es indispensable coordinar una cita previa para conocer el campus?</span>
+            <span class="contacto-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="contacto-faq-answer">
+            <p>Para trámites administrativos de ventanilla (pagos en caja, entrega de documentos o solicitud de constancias) <strong>no se requiere cita previa</strong> dentro de nuestro horario regular. Sin embargo, para realizar un <strong>recorrido guiado por las instalaciones</strong> o sostener una entrevista con directores de nivel, recomendamos programarla con al menos 24 horas de antelación para asegurar que un orientador esté disponible para atenderte con dedicación.</p>
+          </div>
+        </details>
+
+        <details class="contacto-faq-item">
+          <summary class="contacto-faq-question">
+            <span>¿Qué áreas del colegio se pueden conocer durante la visita guiada?</span>
+            <span class="contacto-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="contacto-faq-answer">
+            <p>Durante el recorrido podrás conocer los pabellones académicos, las aulas interactivas del nivel correspondiente a tu hijo, los laboratorios de ciencias y robótica, la capilla y auditorio central, la biblioteca, el comedor escolar y el complejo multideportivo techado.</p>
+          </div>
+        </details>
+
+        <details class="contacto-faq-item">
+          <summary class="contacto-faq-question">
+            <span>¿Qué documentación debo traer si solicito información para traslado de otro colegio?</span>
+            <span class="contacto-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="contacto-faq-answer">
+            <p>Es conveniente presentar una copia del <strong>último boletín de calificaciones o créditos oficiales</strong> del estudiante, así como la copia de la cédula juvenil del alumno y la cédula del acudiente. Con estos documentos, nuestro equipo pedagógico podrá brindarte una orientación precisa sobre el plan de convalidación y cupos disponibles.</p>
+          </div>
+        </details>
+
+        <details class="contacto-faq-item">
+          <summary class="contacto-faq-question">
+            <span>¿Cómo consulto el estatus de un trámite o solicitud de admisión ya enviada?</span>
+            <span class="contacto-faq-arrow" aria-hidden="true">▾</span>
+          </summary>
+          <div class="contacto-faq-answer">
+            <p>Puedes consultar el estado de tu expediente directamente a través de nuestro WhatsApp institucional <strong>6744-1351</strong> o comunicándote al PBX <strong>391-5811</strong> indicando el nombre completo del estudiante y el nivel académico solicitado.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Mapa Interactivo Oficial con Coordenadas Exactas -->
+    <section class="contacto-map-wrapper" id="mapa-ubicacion">
+      <div class="contacto-map-container">
+        <div class="contacto-map-header">
+          <div>
+            <h3>Sede Central BPVDA en Google Maps</h3>
+            <p>Calle San José, Urbanización Monterrico, Corregimiento 24 de Diciembre, Ciudad de Panamá</p>
+          </div>
+          <div class="contacto-map-nav-actions">
+            <a href="https://maps.app.goo.gl/r5Arxesjc7P2Uzew7" target="_blank" rel="noopener noreferrer" class="contacto-map-nav-btn">
+              <span>Abrir en Google Maps</span> ↗
+            </a>
+            <a href="https://waze.com/ul?ll=9.106901321318759,-79.36663973009655&navigate=yes" target="_blank" rel="noopener noreferrer" class="contacto-map-nav-btn">
+              <span>Navegar con Waze</span> ↗
+            </a>
+          </div>
+        </div>
+        <iframe class="contacto-map-frame" title="Ubicación exacta de Colegio Buen Pastor Voz de Alerta" src="https://www.google.com/maps?q=9.106901321318759,-79.36663973009655&amp;hl=es&amp;z=17&amp;output=embed" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  ${richFooter}
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+</body>
+</html>`;
+
+writeFileSync(join(root, 'contacto.html'), contactoHtml);
 
 // 6b. Generación de Página Secundaria y Bachilleres (Bento Grid Editorial Asimétrico)
 const secundariaHtml = `<!doctype html>
