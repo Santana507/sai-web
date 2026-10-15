@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /plantillas/
+Disallow: /pruebas/
+Disallow: /sandbox/
+Disallow: /form-nuevo-ingreso.html
+Disallow: /form-preingreso.html
+
+Sitemap: https://santana507.github.io/sai-web/sitemap.xml

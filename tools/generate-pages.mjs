@@ -2343,7 +2343,14 @@ const contactoHtml = `<!doctype html>
           <h2>Solicitar Visita Guiada o Consulta</h2>
           <p>Completa los siguientes campos y nuestro equipo de admisiones y orientación se comunicará contigo en menos de 24 horas hábiles.</p>
 
-          <form action="mailto:info@buenpastor-vda.net" method="POST" enctype="text/plain" class="contacto-form">
+          <!-- ENVÍO: FormSubmit.co. Destinatario de PRUEBAS en data-recipient/action; al confirmar la
+               recepción, cambiar ambos a info@buenpastor-vda.net. La primera vez FormSubmit pide activar el correo. -->
+          <form action="https://formsubmit.co/jjose19santanaa@gmail.com" method="POST" class="contacto-form" data-contact-form data-recipient="jjose19santanaa@gmail.com">
+            <input type="hidden" name="_subject" value="Nueva consulta desde la web BPVDA">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+            <p class="contacto-form-status" data-form-status role="status" aria-live="polite" hidden></p>
             <div class="contacto-form-row">
               <div class="contacto-form-group">
                 <label for="contactNombre">Nombre y Apellido del Acudiente *</label>
@@ -3473,6 +3480,12 @@ if (headerStart !== -1 && headerEnd !== -1) {
   }
   writeFileSync(indexPath, updatedIndex);
 }
+
+// Metadatos SEO (description, canonical, Open Graph, JSON-LD), robots.txt y sitemap.xml.
+import { execFileSync } from 'node:child_process';
+execFileSync(process.execPath, [join(root, 'tools', 'apply-seo.mjs')], { cwd: root, stdio: 'inherit' });
+// Optimización: fuentes por <link>, lazy-loading, rel externo y gemelas WebP.
+execFileSync(process.execPath, [join(root, 'tools', 'optimize-pages.mjs')], { cwd: root, stdio: 'inherit' });
 
 console.log('✅ Páginas y navegación actualizadas con éxito desde plantillas modulares.');
 

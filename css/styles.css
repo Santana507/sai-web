@@ -1,5 +1,5 @@
 /* Hoja autocontenida: no requiere Tailwind ni preprocesador. */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
+/* Montserrat se carga con <link> en el <head> de cada página (ver tools/optimize-pages.mjs). */
 
 /* ====
    ARQUITECTURA DE ESTILOS BPVDA (PREPARADO PARA TEMA WORDPRESS)
@@ -14461,3 +14461,47 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 }
 
 
+
+
+/* ==========================================================================
+   Barra de contacto rápido (solo móvil) + estado del formulario de contacto
+   ========================================================================== */
+.quick-contact { display: none; }
+
+@media (max-width: 768px) {
+  .quick-contact {
+    position: fixed;
+    z-index: 24;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 -6px 20px rgba(3, 28, 49, 0.28);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    background-color: var(--deep);
+  }
+  .quick-contact__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    color: #fff;
+    background: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .quick-contact__btn--wa { background: #0b6b64; }
+  .quick-contact__btn:focus-visible { outline: 3px solid var(--turquoise); outline-offset: -3px; }
+  body { padding-bottom: calc(48px + env(safe-area-inset-bottom, 0)); }
+  .back-to-top { bottom: calc(64px + env(safe-area-inset-bottom, 0)); right: 16px; }
+}
+
+.contacto-form-status { margin: 0 0 14px; padding: 12px 16px; border-radius: 10px; font-weight: 600; line-height: 1.45; }
+.contacto-form-status.is-ok { background: #e6f6f4; color: #05524c; border: 1px solid #10b8b0; }
+.contacto-form-status.is-error { background: #fdece4; color: #8a2f0a; border: 1px solid #ff6b2c; }

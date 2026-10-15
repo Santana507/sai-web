@@ -1,0 +1,9 @@
+# Archivos originales de video de gran tamaño (resguardo local)
+assets/raw-originals/videos/
+
+# Archivos temporales y del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.log

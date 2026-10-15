@@ -2,6 +2,15 @@
 
 Historial cronológico de cambios aplicados en el repositorio y código fuente del sitio web del **Colegio Buen Pastor Voz de Alerta**.
 
+## Sesión #45 — Auditoría Web: Rendimiento, SEO, Optimización Multimedia y Formulario Funcional
+- **Objetivo**: Aplicar las 5 mejoras rápidas priorizadas tras la auditoría web integral sin alterar la estética ni la identidad aprobada del sitio:
+  1. **Formulario de Contacto Real**: Reemplazado el enlace fallido `mailto:` por el endpoint interactivo AJAX de FormSubmit (`data-contact-form`, destinatario de pruebas `jjose19santanaa@gmail.com`), con validación nativa, honeypot anti-spam y retroalimentación de estado accesible (`aria-live`).
+  2. **Compresión Multimedia de Gran Escala**: Re-codificación de videos crudos `mvi-9572.mp4` (de 62.6 MB a 1.6 MB), `mvi-9577.mp4` (de 60.3 MB a 1.4 MB) y `mvi-9573.mp4` (de 9.3 MB a 0.3 MB) en formato 720p H.264 CRF 26 con atom `+faststart` para streaming instantáneo. Archivos originales resguardados localmente e ignorados en `.gitignore` para no saturar el repositorio.
+  3. **Barra de Contacto Rápido Móvil**: Barra ergonómica inferior fija para pantallas ≤768px con botones directos "Llamar" (tel:+5073915811) y "WhatsApp" (wa.me) con objetivos táctiles de 48px y soporte de zona segura (`env(safe-area-inset-bottom)`).
+  4. **Optimización de Fuentes e Imágenes**: Sustituido el `@import` bloqueante de Google Fonts por `<link rel="preconnect">` directo en el `<head>`, inyección de `loading="lazy"` y `decoding="async"` en imágenes bajo el pliegue, enlaces externos seguros con `rel="noopener noreferrer"`, y sustitución automática por versiones `.webp` cuando existen.
+  5. **SEO Técnico y Metadatos**: Generación de `tools/apply-seo.mjs` con descripciones únicas de ≈150 caracteres, canonicals, etiquetas Open Graph completas, imagen social `assets/og.jpg` (1200x630, 161 KB), datos estructurados JSON-LD de `EducationalOrganization` en portada, y archivos canónicos `robots.txt` y `sitemap.xml`.
+- **Verificación**: `node tools/verify-integrity.mjs`: **0 enlaces rotos y 0 recursos multimedia faltantes**.
+
 ## Sesión #44 — Ajuste y Encuadre Fotográfico en Filosofía Institucional (`filosofia.html`)
 - **Objetivo**: Corregir el recorte fotográfico excesivo en el hero de `filosofia.html` (*Propósito BPVDA - Una educación con propósito*) sustituyendo la rotación vertical desproporcionada por una imagen estática panorámica institucional de alta nitidez, y reubicar la fotografía vertical del estudiante con uniforme y gafas BPVDA en la columna de la sección Visión.
 - **Cambios Realizados**:

@@ -560,4 +560,49 @@
     }
   });
 
+  /* ----------------------------------------------------------------------------
+   * FORMULARIO DE CONTACTO (contacto.html)
+   * ----------------------------------------------------------------------------
+   * Envío por fetch al endpoint AJAX de FormSubmit con mensaje de estado accesible
+   * (aria-live). Si fetch falla, se envía de forma nativa (action del formulario).
+   */
+  const contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    const statusEl = contactForm.querySelector('[data-form-status]');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const showStatus = function (msg, ok) {
+      if (!statusEl) return;
+      statusEl.hidden = false;
+      statusEl.textContent = msg;
+      statusEl.classList.toggle('is-ok', ok);
+      statusEl.classList.toggle('is-error', !ok);
+    };
+    contactForm.addEventListener('submit', function (e) {
+      if (!contactForm.checkValidity()) return;
+      if (!window.fetch) return;
+      e.preventDefault();
+      const recipient = contactForm.dataset.recipient;
+      if (submitBtn) submitBtn.disabled = true;
+      showStatus('Enviando tu consulta…', true);
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(recipient), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      }).then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      }).then(function (r) {
+        if (r.ok && String(r.data.success) !== 'false') {
+          contactForm.reset();
+          showStatus('¡Gracias! Recibimos tu consulta y nos comunicaremos contigo en menos de 24 horas hábiles.', true);
+        } else {
+          showStatus('No pudimos enviar tu consulta. Inténtalo de nuevo o escríbenos por WhatsApp al 6744-1351.', false);
+        }
+      }).catch(function () {
+        showStatus('Sin conexión con el servidor de envío. Inténtalo de nuevo o escríbenos por WhatsApp al 6744-1351.', false);
+      }).then(function () {
+        if (submitBtn) submitBtn.disabled = false;
+      });
+    });
+  }
+
 }());
