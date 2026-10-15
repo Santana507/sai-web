@@ -5552,7 +5552,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   line-height: 1.4 !important;
 }
 
-/* Distribución 2x2 de Secciones en Bloques Rectangulares */
+/* Distribución 2x2 Unificada y Contigua (Sin Espacios y Mismo Tamaño) */
 #menu-principal .menu-nav {
   display: block;
   width: 100%;
@@ -5561,35 +5561,54 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 #menu-principal .menu-panel__groups {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
   grid-auto-flow: row !important;
-  gap: clamp(16px, 2.2vh, 26px) clamp(24px, 3.2vw, 42px) !important;
+  gap: 0 !important;
   height: auto !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important;
+  background: rgba(3, 24, 44, 0.6) !important;
+  border: 1px solid rgba(34, 211, 238, 0.22) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
 }
 
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: clamp(16px, 2vh, 24px) clamp(20px, 2.4vw, 30px) !important;
-  background: rgba(3, 24, 44, 0.6) !important;
-  border: 1px solid rgba(34, 211, 238, 0.18) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  justify-content: flex-start !important;
+  height: 100% !important;
+  padding: clamp(14px, 1.8vh, 22px) clamp(22px, 2.6vw, 34px) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
   margin: 0 !important;
   min-height: 0 !important;
-  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease !important;
+  box-sizing: border-box !important;
+  transition: background 0.25s ease !important;
 }
 
 #menu-principal .menu-group:hover {
-  background: rgba(5, 34, 60, 0.72) !important;
-  border-color: rgba(34, 211, 238, 0.35) !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 16px rgba(34, 211, 238, 0.12) !important;
+  background: rgba(34, 211, 238, 0.04) !important;
+}
+
+#menu-principal .menu-group:nth-child(1) {
+  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+}
+
+#menu-principal .menu-group:nth-child(2) {
+  border-right: none !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+}
+
+#menu-principal .menu-group:nth-child(3) {
+  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
+  border-bottom: none !important;
+}
+
+#menu-principal .menu-group:nth-child(4) {
+  border: none !important;
 }
 
 #menu-principal .menu-group-title {
@@ -5810,11 +5829,19 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
   #menu-principal .menu-panel__groups {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    grid-template-rows: auto !important;
+    gap: 0 !important;
+    border-radius: 14px !important;
   }
 
   #menu-principal .menu-group {
     padding: 14px 18px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+  }
+
+  #menu-principal .menu-group:last-child {
+    border-bottom: none !important;
   }
 
   #menu-principal .menu-panel__foot {
