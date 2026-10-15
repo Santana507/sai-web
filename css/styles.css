@@ -5577,7 +5577,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   height: 100% !important;
   padding: clamp(14px, 1.8vh, 22px) clamp(22px, 2.6vw, 34px) !important;
   background: transparent !important;
@@ -5649,13 +5649,13 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(7px, 1.1vh, 12px) 0 !important;
+  padding: clamp(6px, 0.9vh, 10px) 0 !important;
   border-radius: 0 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   color: #f1f5f9 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(14px, 1.65vh, 16.5px) !important;
+  font-size: clamp(13.5px, 1.6vh, 16px) !important;
   line-height: 1.25 !important;
   background: transparent !important;
   transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease !important;
@@ -5836,7 +5836,6 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
   #menu-principal .menu-group {
     padding: 14px 18px !important;
-    justify-content: flex-start !important;
     border-right: none !important;
     border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
   }
