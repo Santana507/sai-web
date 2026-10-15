@@ -740,15 +740,21 @@
    ============================================================================== */
 .block-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -758,31 +764,32 @@
 .block-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .block-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .block-cta__container {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -799,22 +806,23 @@
 }
 
 .block-cta__title {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .block-cta__text {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .block-cta__buttons {
@@ -822,5 +830,20 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .block-cta {
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
+  }
+  .block-cta__title {
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+  }
+  .block-cta__text {
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
+  }
 }
