@@ -591,7 +591,6 @@ const quienesSomosHtml = `<!doctype html>
     <!-- Banner de Cierre: Llamado a la Acción Institucional -->
     <section class="qs-cta">
       <div class="qs-cta__inner">
-        <span class="qs-section-tag" style="color: var(--turquoise);">EL SIGUIENTE PASO</span>
         <h2>Forma parte de la familia del Buen Pastor</h2>
         <p>Te invitamos a visitar nuestras instalaciones en 24 de Diciembre, dialogar con nuestro equipo directivo y descubrir de cerca una propuesta educativa pensada para el futuro de tus hijos.</p>
         <div class="qs-cta__actions">
@@ -835,7 +834,6 @@ const instalacionesHtml = `<!doctype html>
     <!-- Banner de Cierre: Recorrido Presencial -->
     <section class="inst-cta">
       <div class="inst-cta__inner">
-        <span class="inst-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">VISITA EL CAMPUS</span>
         <h2>Conoce nuestras instalaciones en persona</h2>
         <p>Te abrimos las puertas de nuestro campus en 24 de Diciembre para que recorras las aulas, conozcas las medidas de seguridad y experimentes el ambiente familiar donde tus hijos crecerán.</p>
         <div class="inst-cta__actions">
@@ -1096,7 +1094,6 @@ const plantelHtml = `<!doctype html>
     <!-- Banner de Cierre Docente -->
     <section class="doc-cta">
       <div class="doc-cta__inner">
-        <span class="doc-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">DIÁLOGO Y COMUNIDAD</span>
         <h2>Conversa con nuestro equipo pedagógico</h2>
         <p>Te invitamos a coordinar una entrevista pedagógica para conocer a los educadores de tu hijo, resolver dudas curriculares y experimentar la calidez de nuestra familia escolar.</p>
         <div class="doc-cta__actions">
@@ -1326,7 +1323,6 @@ const saiHtml = `<!doctype html>
     <!-- Banner de Cierre: Acceso Inmediato -->
     <section class="sai-cta">
       <div class="sai-cta__inner">
-        <span class="sai-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">INGRESO DIRECTO</span>
         <h2>Comienza tu jornada de aprendizaje en SAI</h2>
         <p>Inicia sesión ahora y descubre todo lo que tus profesores han preparado para fortalecer tus materias y enriquecer tu aprendizaje.</p>
         <div class="sai-cta__actions">
@@ -1585,7 +1581,6 @@ const vidaEstudiantilHtml = `<!doctype html>
     <!-- Banner de Cierre -->
     <section class="ve-cta">
       <div class="ve-cta__inner">
-        <span class="ve-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">VIVE LA EXPERIENCIA</span>
         <h2>Descubre tu pasión en el Buen Pastor</h2>
         <p>Una comunidad escolar vibrante donde cada estudiante encuentra su vocación, desarrolla su carácter y forja amistades para toda la vida.</p>
         <div class="ve-cta__actions">
@@ -1827,7 +1822,6 @@ const ecosistemaDigitalHtml = `<!doctype html>
     <!-- Banner de Cierre -->
     <section class="eco-cta">
       <div class="eco-cta__inner">
-        <span class="eco-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">EL FUTURO HOY</span>
         <h2>Una educación moderna con cimientos eternos</h2>
         <p>Preparamos a tus hijos para prosperar en la sociedad del conocimiento, equipados con las mejores herramientas digitales y afianzados en la roca de los valores cristianos.</p>
         <div class="eco-cta__actions">
@@ -2229,7 +2223,6 @@ const portalPadresHtml = `<!doctype html>
     <!-- Banner de Soporte Final -->
     <section class="padres-support-banner">
       <div class="padres-support-inner">
-        <span class="padres-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">ESTAMOS PARA SERVIRTE</span>
         <h2>¿Necesitas asistencia adicional o atención personalizada?</h2>
         <p>Nuestro equipo de secretaría docente, tesorería y bienestar pastoral está a tu completa disposición para acompañar a tu familia en todo momento.</p>
         <div class="padres-support-actions">

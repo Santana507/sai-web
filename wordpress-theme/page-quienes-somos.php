@@ -164,7 +164,6 @@ get_header(); ?>
     <!-- Banner de Cierre: Llamado a la Acción Institucional -->
     <section class="qs-cta">
       <div class="qs-cta__inner">
-        <span class="qs-section-tag" style="color: var(--turquoise);">EL SIGUIENTE PASO</span>
         <h2>Forma parte de la familia del Buen Pastor</h2>
         <p>Te invitamos a visitar nuestras instalaciones en 24 de Diciembre, dialogar con nuestro equipo directivo y descubrir de cerca una propuesta educativa pensada para el futuro de tus hijos.</p>
         <div class="qs-cta__actions">

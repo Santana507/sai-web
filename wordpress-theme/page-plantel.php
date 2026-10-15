@@ -227,7 +227,6 @@ get_header(); ?>
     <!-- Banner de Cierre Docente -->
     <section class="doc-cta">
       <div class="doc-cta__inner">
-        <span class="doc-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">DIÁLOGO Y COMUNIDAD</span>
         <h2>Conversa con nuestro equipo pedagógico</h2>
         <p>Te invitamos a coordinar una entrevista pedagógica para conocer a los educadores de tu hijo, resolver dudas curriculares y experimentar la calidez de nuestra familia escolar.</p>
         <div class="doc-cta__actions">

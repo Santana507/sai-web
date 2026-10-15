@@ -225,7 +225,6 @@ get_header(); ?>
     <!-- Banner de Cierre -->
     <section class="ve-cta">
       <div class="ve-cta__inner">
-        <span class="ve-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">VIVE LA EXPERIENCIA</span>
         <h2>Descubre tu pasión en el Buen Pastor</h2>
         <p>Una comunidad escolar vibrante donde cada estudiante encuentra su vocación, desarrolla su carácter y forja amistades para toda la vida.</p>
         <div class="ve-cta__actions">

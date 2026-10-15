@@ -368,7 +368,6 @@ get_header(); ?>
     <!-- Banner de Soporte Final -->
     <section class="padres-support-banner">
       <div class="padres-support-inner">
-        <span class="padres-hero__eyebrow" style="color: var(--turquoise); justify-content: center;">ESTAMOS PARA SERVIRTE</span>
         <h2>¿Necesitas asistencia adicional o atención personalizada?</h2>
         <p>Nuestro equipo de secretaría docente, tesorería y bienestar pastoral está a tu completa disposición para acompañar a tu familia en todo momento.</p>
         <div class="padres-support-actions">
