@@ -8847,18 +8847,24 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .qs-bento-item--3 { grid-column: span 5; min-height: 360px; }
 .qs-bento-item--4 { grid-column: span 7; min-height: 360px; }
 
-/* Banner de Cierre / Visita Guiada a Pantalla Completa con Efecto Bloom */
+/* Banner de Cierre / Visita Guiada a Pantalla Completa (100vh) con Efecto Bloom */
 .qs-cta {
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -8868,53 +8874,54 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .qs-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .qs-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .qs-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .qs-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto 1.4rem;
   text-wrap: balance;
 }
 
 .qs-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
+  font-size: clamp(1.12rem, 1.4vw, 1.32rem);
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  max-width: 780px;
+  margin: 0 auto 2.8rem;
 }
 
 .qs-cta__actions {
@@ -8922,7 +8929,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 18px;
 }
 
 .qs-cta__actions .hero-btn-primary {
@@ -9071,7 +9078,9 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .qs-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: clamp(60px, 8vh, 90px) 24px;
   }
   .qs-cta h2 {
     font-size: clamp(1.9rem, 5.5vw, 2.7rem);
