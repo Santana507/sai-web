@@ -8899,29 +8899,30 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
 .qs-cta__inner {
   width: 100%;
-  max-width: 960px;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .qs-cta h2 {
-  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 900px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .qs-cta p {
-  font-size: clamp(1.12rem, 1.4vw, 1.32rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 780px;
-  margin: 0 auto 2.8rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .qs-cta__actions {
@@ -8929,14 +8930,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
 }
 
 .qs-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -8944,7 +8945,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -8957,8 +8958,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -8966,7 +8967,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -9083,11 +9084,11 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     padding: clamp(60px, 8vh, 90px) 24px;
   }
   .qs-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .qs-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
