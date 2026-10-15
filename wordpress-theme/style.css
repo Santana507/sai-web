@@ -9545,15 +9545,21 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre: Recorrido Presencial a Pantalla Completa con Efecto Bloom */
 .inst-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -9563,53 +9569,55 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .inst-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .inst-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .inst-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .inst-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .inst-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .inst-cta__actions {
@@ -9617,14 +9625,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .inst-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -9632,7 +9640,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -9645,8 +9653,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -9654,7 +9662,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -9751,14 +9759,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .inst-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .inst-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .inst-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
@@ -10272,15 +10282,21 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre Docente a Pantalla Completa con Efecto Bloom */
 .doc-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -10290,53 +10306,55 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .doc-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .doc-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .doc-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .doc-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .doc-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .doc-cta__actions {
@@ -10344,14 +10362,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .doc-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -10359,7 +10377,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -10372,8 +10390,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -10381,7 +10399,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -10512,14 +10530,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .doc-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .doc-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .doc-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
@@ -11016,15 +11036,21 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre SAI a Pantalla Completa con Efecto Bloom */
 .sai-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -11034,53 +11060,55 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .sai-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .sai-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .sai-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .sai-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .sai-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .sai-cta__actions {
@@ -11088,14 +11116,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .sai-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -11103,7 +11131,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -11116,8 +11144,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -11125,7 +11153,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -11213,14 +11241,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .sai-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .sai-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .sai-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
@@ -11768,15 +11798,21 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre: Vida Estudiantil a Pantalla Completa con Efecto Bloom */
 .ve-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -11786,53 +11822,55 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .ve-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .ve-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .ve-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .ve-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .ve-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .ve-cta__actions {
@@ -11840,14 +11878,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .ve-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -11855,7 +11893,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -11868,8 +11906,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -11877,7 +11915,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -12008,14 +12046,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .ve-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .ve-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .ve-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
@@ -12478,15 +12518,21 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre: Ecosistema Digital a Pantalla Completa con Efecto Bloom */
 .eco-cta {
   width: 100%;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background:
-    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(34, 211, 238, 0.18) 0%, rgba(0, 150, 214, 0.05) 45%, transparent 70%),
-    radial-gradient(ellipse 45% 45% at 100% 0%, rgba(16, 184, 176, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 45% at 0% 100%, rgba(34, 211, 238, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 65% at 0% 0%, rgba(34, 211, 238, 0.24) 0%, rgba(34, 211, 238, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 65% 65% at 100% 100%, rgba(34, 211, 238, 0.20) 0%, rgba(0, 150, 214, 0.06) 45%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(16, 184, 176, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
     linear-gradient(135deg, #021627 0%, #031c31 45%, #052a45 100%);
   color: #ffffff;
-  padding: clamp(96px, 13vh, 160px) clamp(24px, 5vw, 60px);
+  padding: clamp(80px, 8vh, 120px) clamp(24px, 5vw, 60px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -12496,53 +12542,55 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 .eco-cta::before {
   content: '';
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
+  top: -140px;
+  left: -140px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(34, 211, 238, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(65px);
   z-index: 1;
 }
 
 .eco-cta::after {
   content: '';
   position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
+  bottom: -140px;
+  right: -140px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(14, 130, 123, 0.08) 40%, transparent 70%);
   pointer-events: none;
-  filter: blur(55px);
+  filter: blur(70px);
   z-index: 1;
 }
 
 .eco-cta__inner {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
 .eco-cta h2 {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  max-width: 860px;
-  margin: 0 auto 1.4rem;
+  max-width: 1020px;
+  margin: 0 auto 1.6rem;
   text-wrap: balance;
 }
 
 .eco-cta p {
-  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.90);
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 860px;
+  margin: 0 auto 3rem;
+  text-wrap: pretty;
 }
 
 .eco-cta__actions {
@@ -12550,14 +12598,14 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .eco-cta__actions .hero-btn-primary {
   background: var(--turquoise, #10b8b0);
   color: var(--navy, #072b49);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 999px;
   box-shadow: 0 4px 24px rgba(16, 184, 176, 0.35);
@@ -12565,7 +12613,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -12578,8 +12626,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
-  padding: 1rem 2.3rem;
-  font-size: 1.05rem;
+  padding: 1.15rem 2.6rem;
+  font-size: 1.15rem;
   font-weight: 600;
   border-radius: 999px;
   backdrop-filter: blur(8px);
@@ -12587,7 +12635,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -12693,14 +12741,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .eco-cta {
-    padding: clamp(75px, 10vh, 110px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .eco-cta h2 {
-    font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
   }
   .eco-cta p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.25rem);
+    margin-bottom: 2.2rem;
   }
 }
 
