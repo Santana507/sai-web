@@ -1,0 +1,180 @@
+/**
+ * School Chatbot Light — puente privado WordPress → Apps Script → Drive.
+ * Configura SCL_SHARED_SECRET en Script Properties antes de desplegar.
+ */
+const SCL = {
+  SECRET_KEY: 'SCL_SHARED_SECRET',
+  MAIN_ID_KEY: 'SCL_MAIN_FOLDER_ID',
+  OFFICIAL_ID_KEY: 'SCL_OFFICIAL_FOLDER_ID',
+  IMPORTANT_ID_KEY: 'SCL_IMPORTANT_FOLDER_ID',
+  MAX_CONTENT_BYTES: 3 * 1024 * 1024,
+  FOLDER_MIME: 'application/vnd.google-apps.folder'
+};
+
+/** Ejecuta esta función una vez desde el editor para aprobar los permisos de Drive. */
+function authorizeProject() {
+  return DriveApp.getRootFolder().getId();
+}
+
+function doPost(e) {
+  try {
+    return json_({
+      success: true,
+      message: 'POST recibido correctamente',
+      parameter: e && e.parameter ? e.parameter : {},
+      postData: e && e.postData ? {
+        type: e.postData.type,
+        contents: e.postData.contents
+      } : {}
+    });
+  } catch (error) {
+    return json_({
+      success: false,
+      error: String(error.message || error)
+    });
+  }
+}
+
+function doGet() {
+  return json_({
+    success: true,
+    message: 'Apps Script está funcionando correctamente.'
+  });
+}
+
+function parseRequest_(e) {
+  if (!e) throw new Error('Solicitud POST requerida.');
+  try {
+    const raw = e.parameter && e.parameter.payload
+      ? e.parameter.payload
+      : (e.postData && e.postData.contents ? e.postData.contents : '');
+    if (!raw) throw new Error('Falta payload.');
+    const request = JSON.parse(raw);
+    if (!request || typeof request !== 'object') throw new Error('JSON inválido.');
+    return request;
+  } catch (error) {
+    throw new Error('JSON inválido.');
+  }
+}
+
+function authorize_(request) {
+  const expected = PropertiesService.getScriptProperties().getProperty(SCL.SECRET_KEY);
+  if (!expected) throw new Error('El secreto del proyecto no está configurado.');
+  if (!request.token || !constantTimeEquals_(String(request.token), expected)) {
+    throw new Error('No autorizado.');
+  }
+}
+
+function constantTimeEquals_(a, b) {
+  if (a.length !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < a.length; i++) result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return result === 0;
+}
+
+function createStructure_(names) {
+  const mainName = cleanName_(names.main, 'Chatbot WordPress');
+  const officialName = cleanName_(names.official, 'Información Oficial');
+  const importantName = cleanName_(names.important, 'Documentos Importantes');
+  const props = PropertiesService.getScriptProperties();
+  const main = savedOrNamedFolder_(props.getProperty(SCL.MAIN_ID_KEY), mainName, null);
+  const official = savedOrNamedFolder_(props.getProperty(SCL.OFFICIAL_ID_KEY), officialName, main);
+  const important = savedOrNamedFolder_(props.getProperty(SCL.IMPORTANT_ID_KEY), importantName, main);
+  props.setProperties({
+    [SCL.MAIN_ID_KEY]: main.getId(),
+    [SCL.OFFICIAL_ID_KEY]: official.getId(),
+    [SCL.IMPORTANT_ID_KEY]: important.getId()
+  });
+  return {
+    success: true,
+    main_folder_id: main.getId(),
+    official_folder_id: official.getId(),
+    important_folder_id: important.getId()
+  };
+}
+
+function savedOrNamedFolder_(savedId, name, parent) {
+  if (savedId) {
+    try {
+      const folder = DriveApp.getFolderById(savedId);
+      if (!folder.isTrashed()) return folder;
+    } catch (ignored) {}
+  }
+  const matches = parent ? parent.getFoldersByName(name) : DriveApp.getFoldersByName(name);
+  while (matches.hasNext()) {
+    const folder = matches.next();
+    if (!folder.isTrashed()) return folder;
+  }
+  return parent ? parent.createFolder(name) : DriveApp.createFolder(name);
+}
+
+function listDocuments_(kind) {
+  const folder = folder_(kind);
+  const files = [];
+  const iterator = folder.getFiles();
+  while (iterator.hasNext()) files.push(fileMeta_(iterator.next()));
+  return { success: true, files: files };
+}
+
+function getDocumentContent_(fileId) {
+  if (!fileId) throw new Error('Falta file_id.');
+  const official = folder_('official');
+  const file = DriveApp.getFileById(fileId);
+  if (!hasParent_(file, official.getId())) throw new Error('El archivo no pertenece a Información Oficial.');
+  if (file.isTrashed()) throw new Error('El archivo fue eliminado.');
+  if (file.getMimeType() === 'application/vnd.google-apps.document') {
+    const content = DocumentApp.openById(fileId).getBody().getText();
+    if (Utilities.newBlob(content, 'text/plain').getBytes().length > SCL.MAX_CONTENT_BYTES) {
+      throw new Error('El texto del documento excede el límite seguro de 3 MB.');
+    }
+    return { success: true, encoding: 'text', content: content };
+  }
+  const blob = file.getBlob();
+  const bytes = blob.getBytes();
+  if (bytes.length > SCL.MAX_CONTENT_BYTES) {
+    throw new Error('El archivo excede el límite seguro de 3 MB para una respuesta.');
+  }
+  return { success: true, encoding: 'base64', content: Utilities.base64Encode(bytes) };
+}
+
+function folder_(kind) {
+  const key = kind === 'official' ? SCL.OFFICIAL_ID_KEY : SCL.IMPORTANT_ID_KEY;
+  const id = PropertiesService.getScriptProperties().getProperty(key);
+  if (!id) throw new Error('La estructura de carpetas no ha sido creada.');
+  try {
+    const folder = DriveApp.getFolderById(id);
+    if (folder.isTrashed()) throw new Error('Carpeta eliminada.');
+    return folder;
+  } catch (error) {
+    throw new Error('No se encontró la carpeta configurada.');
+  }
+}
+
+function hasParent_(file, parentId) {
+  const parents = file.getParents();
+  while (parents.hasNext()) if (parents.next().getId() === parentId) return true;
+  return false;
+}
+
+function fileMeta_(file) {
+  const access = file.getSharingAccess();
+  const isPublic = access === DriveApp.Access.ANYONE || access === DriveApp.Access.ANYONE_WITH_LINK;
+  return {
+    id: file.getId(),
+    name: file.getName(),
+    mimeType: file.getMimeType(),
+    modifiedTime: file.getLastUpdated().toISOString(),
+    size: file.getSize(),
+    webViewLink: file.getUrl(),
+    isPublic: isPublic
+  };
+}
+
+function cleanName_(value, fallback) {
+  const name = String(value || '').trim();
+  return name ? name.slice(0, 120) : fallback;
+}
+
+function json_(value) {
+  return ContentService.createTextOutput(JSON.stringify(value)).setMimeType(ContentService.MimeType.JSON);
+}
