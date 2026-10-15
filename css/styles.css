@@ -200,11 +200,11 @@ em {
   height: 48px;
 }
 
-/* Ocultar logo cuando el menú está abierto */
+/* Mantener logo visible cuando el menú está abierto */
 .menu-is-open .brand {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .essential-nav {
@@ -2596,8 +2596,7 @@ footer {
     gap: 8px;
   }
 
-  .essential-nav > a,
-  .dev-menu-container {
+  .essential-nav > a {
     display: none !important;
   }
 
@@ -5392,24 +5391,13 @@ img, video {
 
 
 /* ==========================================================================
-   03. NAVEGACIÓN MODAL FLOTANTE (BENTO 2x2 — "Encuentra tu camino")
-   Tarjeta flotante con resplandor ambiental, logo oficial visible, cuadrícula
-   Bento 2x2 enmarcada y pie de contacto + redes sociales.
+   03. NAVEGACIÓN PRINCIPAL ANCLADA (2x2 — "Encuentra tu camino")
+   Navegación fija anclada a la cabecera superior con fondo original var(--deep),
+   logotipo oficial visible, distribución de contenido 2x2 abierta (sin tarjetas
+   cerradas) y pie de contacto con redes sociales.
    ========================================================================== */
 
-/* Fondo translúcido detrás de la tarjeta flotante del menú */
-body.menu-is-open::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background: rgba(2, 10, 20, 0.65);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  pointer-events: auto;
-}
-
-/* Cabecera superior integrada dentro de la tarjeta flotante cuando el menú está abierto */
+/* Cabecera superior anclada cuando el menú está abierto */
 body.menu-is-open .site-header,
 body.menu-is-open .site-header.is-scrolled,
 body.menu-is-open .site-header.is-scrolled-free {
@@ -5421,37 +5409,45 @@ body.menu-is-open .site-header.is-scrolled-free {
 body.menu-is-open .site-header .header-bar,
 body.menu-is-open .site-header.is-scrolled .header-bar,
 body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
-  width: calc(100vw - 36px) !important;
-  max-width: 1320px !important;
-  height: 74px !important;
-  margin: 14px auto 0 !important;
-  padding: 0 clamp(24px, 3.8vw, 48px) !important;
-  background: rgba(5, 19, 34, 0.92) !important;
-  border-radius: 20px 20px 0 0 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.14) !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 88px !important;
+  margin: 0 !important;
+  padding: 0 4vw !important;
+  background: rgba(6, 36, 59, 0.45) !important;
+  border-radius: 0 !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
   box-shadow: none !important;
   pointer-events: auto !important;
 }
 
-/* Mantener visible el logo oficial BPVDA y la navegación superior al abrir el menú */
+body.menu-is-open .site-header.is-scrolled .header-bar {
+  height: 68px !important;
+  background: rgba(4, 25, 42, 0.92) !important;
+}
+
+/* Mantener visible el logotipo oficial BPVDA y la navegación superior */
 body.menu-is-open .site-header .brand,
-body.menu-is-open .site-header.is-scrolled-free .brand {
+body.menu-is-open .site-header.is-scrolled-free .brand,
+body.menu-is-open .brand {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
 
-body.menu-is-open .site-header .brand-logo-img,
+body.menu-is-open .site-header .brand-logo-img {
+  height: 68px !important;
+}
+
 body.menu-is-open .site-header.is-scrolled .brand-logo-img {
-  height: 52px !important;
+  height: 48px !important;
 }
 
 body.menu-is-open .site-header .essential-nav,
 body.menu-is-open .site-header.is-scrolled .essential-nav,
-body.menu-is-open .site-header.is-scrolled.is-scrolled-free .essential-nav,
-.site-header.is-scrolled.is-scrolled-free:has(.dev-menu-container.is-open) .essential-nav {
+body.menu-is-open .site-header.is-scrolled.is-scrolled-free .essential-nav {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
@@ -5473,32 +5469,29 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Tarjeta Modal Flotante (No cubre toda la pantalla) */
+/* Panel del Menú Anclado (Color original de fondo y bordes originales) */
 #menu-principal.menu-panel {
   position: fixed !important;
   z-index: 31 !important;
-  top: 14px !important;
-  bottom: 18px !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: calc(100vw - 36px) !important;
-  max-width: 1320px !important;
-  height: calc(100vh - 32px) !important;
-  height: calc(100dvh - 32px) !important;
-  max-height: calc(100dvh - 32px) !important;
-  margin: 0 auto !important;
-  padding: clamp(78px, 8.8vh, 86px) clamp(24px, 3.8vw, 48px) clamp(12px, 1.8vh, 18px) !important;
+  top: 0 !important;
+  left: 14px !important;
+  right: 14px !important;
+  bottom: 14px !important;
+  inset: 0 14px 14px 14px !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 96px max(5vw, 34px) 24px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  background-color: #051322 !important;
-  background-image:
-    radial-gradient(ellipse 80% 80% at 50% -20%, rgba(14, 116, 144, 0.28), rgba(5, 19, 34, 0)),
-    radial-gradient(circle at 50% 25%, rgba(0, 150, 255, 0.09) 0%, rgba(5, 19, 34, 0) 70%),
-    radial-gradient(circle at 85% 80%, rgba(10, 40, 80, 0.22) 0%, rgba(5, 19, 34, 0) 60%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.22) !important;
-  border-radius: 20px !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(34, 211, 238, 0.08) !important;
+  background: linear-gradient(125deg, #031c31 0%, #072b49 62%, #075f70 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: none !important;
+  border-radius: 0 0 16px 16px !important;
+  box-shadow: 0 25px 70px rgba(3, 28, 49, 0.55) !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
   scrollbar-width: thin;
@@ -5509,9 +5502,9 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  gap: clamp(8px, 1.6vh, 20px) !important;
+  gap: clamp(14px, 2.2vh, 26px) !important;
   width: 100% !important;
-  max-width: 1120px !important;
+  max-width: 1140px !important;
   margin: auto !important;
   flex: 1 0 auto !important;
 }
@@ -5524,41 +5517,17 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   align-self: center !important;
   text-align: center !important;
   width: 100% !important;
-  max-width: 720px !important;
+  max-width: 760px !important;
   margin: 0 auto !important;
-  padding-bottom: clamp(6px, 1.3vh, 16px) !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.15) !important;
-}
-
-#menu-principal .menu-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 4px;
-}
-
-#menu-principal .menu-eyebrow span {
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.22em !important;
-  color: #22d3ee !important;
-  text-transform: uppercase !important;
-}
-
-#menu-principal .menu-eyebrow__line {
-  display: inline-block;
-  width: 32px;
-  height: 2px;
-  background: #22d3ee;
-  border-radius: 2px;
+  padding-bottom: clamp(8px, 1.4vh, 16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 #menu-principal .menu-panel__title h2 {
-  font-size: clamp(24px, 3.8vh, 46px) !important;
+  font-size: clamp(26px, 4vh, 46px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  line-height: 1.06 !important;
+  line-height: 1.08 !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
@@ -5575,21 +5544,15 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title p {
-  font-size: clamp(12px, 1.5vh, 15px) !important;
-  color: #cbd5e1 !important;
-  font-weight: 300 !important;
-  margin: 4px auto 0 !important;
+  font-size: clamp(13px, 1.6vh, 16px) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 400 !important;
+  margin: 6px auto 0 !important;
   max-width: 580px !important;
-  line-height: 1.38 !important;
+  line-height: 1.4 !important;
 }
 
-#menu-principal .menu-subtitle-accent {
-  color: #fb923c;
-  font-weight: 500;
-  font-style: italic;
-}
-
-/* Cuadrícula Bento 2x2 Enmarcada */
+/* Distribución 2x2 en Estilo Abierto Original (sin tarjetas ni cajas cerradas) */
 #menu-principal .menu-nav {
   display: block;
   width: 100%;
@@ -5599,56 +5562,38 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   grid-auto-flow: row !important;
-  gap: 0 !important;
+  gap: clamp(18px, 2.8vh, 32px) clamp(36px, 5vw, 84px) !important;
   height: auto !important;
-  background: rgba(7, 25, 45, 0.72) !important;
-  border: 1px solid rgba(56, 189, 248, 0.22) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28) !important;
-  overflow: hidden !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
 }
 
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: clamp(9px, 1.6vh, 22px) clamp(20px, 2.4vw, 30px) !important;
+  padding: 0 !important;
   background: transparent !important;
+  border: none !important;
   border-radius: 0 !important;
   margin: 0 !important;
   min-height: 0 !important;
-}
-
-#menu-principal .menu-group:nth-child(1) {
-  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
-}
-
-#menu-principal .menu-group:nth-child(2) {
-  border-right: none !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
-}
-
-#menu-principal .menu-group:nth-child(3) {
-  border-right: 1px solid rgba(34, 211, 238, 0.18) !important;
-  border-bottom: none !important;
-}
-
-#menu-principal .menu-group:nth-child(4) {
-  border: none !important;
 }
 
 #menu-principal .menu-group-title {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 clamp(3px, 0.7vh, 10px) 0 !important;
-  padding: 0 0 clamp(4px, 0.7vh, 9px) 0 !important;
+  margin: 0 0 clamp(6px, 1vh, 12px) 0 !important;
+  padding: 0 0 clamp(6px, 1vh, 10px) 0 !important;
   color: #22d3ee !important;
   font-size: 11px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.2em !important;
+  letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.2) !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.25) !important;
   min-height: 0 !important;
 }
 
@@ -5675,16 +5620,16 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(4px, 0.75vh, 9px) 2px !important;
+  padding: clamp(6px, 0.9vh, 11px) 0 !important;
   border-radius: 0 !important;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.1) !important;
-  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(13px, 1.65vh, 16px) !important;
-  line-height: 1.22 !important;
+  font-size: clamp(14px, 1.7vh, 17px) !important;
+  line-height: 1.25 !important;
   background: transparent !important;
-  transition: color 0.2s ease, border-color 0.2s ease !important;
+  transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease !important;
   opacity: 0;
   transform: translateY(8px);
 }
@@ -5693,7 +5638,6 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   animation: menuLinkIn .38s cubic-bezier(.22, 1, .36, 1) forwards;
 }
 
-/* Stagger animation por cuadrante */
 #menu-principal .menu-group:nth-child(1) .menu-link { animation-delay: .04s; }
 #menu-principal .menu-group:nth-child(2) .menu-link { animation-delay: .08s; }
 #menu-principal .menu-group:nth-child(3) .menu-link { animation-delay: .12s; }
@@ -5708,7 +5652,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 15px !important;
-  color: rgba(34, 211, 238, 0.6) !important;
+  color: rgba(34, 211, 238, 0.65) !important;
   opacity: 1 !important;
   transform: none !important;
   transition: transform 0.2s ease, color 0.2s ease !important;
@@ -5717,20 +5661,20 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 #menu-principal .menu-link:hover,
 #menu-principal .menu-link:focus-visible {
   background: transparent !important;
-  color: #ffffff !important;
-  border-bottom-color: rgba(34, 211, 238, 0.28) !important;
+  color: var(--orange) !important;
+  border-bottom-color: rgba(255, 107, 44, 0.35) !important;
+  padding-left: 4px !important;
   outline: none !important;
 }
 
 #menu-principal .menu-link:hover span,
 #menu-principal .menu-link:focus-visible span {
-  transform: none !important;
-  color: #ffffff !important;
+  color: var(--orange) !important;
 }
 
 #menu-principal .menu-link:hover .menu-chevron,
 #menu-principal .menu-link:focus-visible .menu-chevron {
-  color: #00e5ff !important;
+  color: var(--orange) !important;
   transform: translate(3px, -3px) !important;
 }
 
@@ -5741,11 +5685,11 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Pie del Menú (Contacto + Redes Sociales) */
 #menu-principal .menu-panel__foot {
   width: 100% !important;
-  max-width: 1120px !important;
-  margin: clamp(8px, 1.4vh, 18px) auto 0 !important;
-  padding: clamp(8px, 1.3vh, 16px) 0 0 !important;
+  max-width: 1140px !important;
+  margin: clamp(10px, 1.6vh, 20px) auto 0 !important;
+  padding: clamp(10px, 1.4vh, 18px) 0 0 !important;
   min-height: 0 !important;
-  border-top: 1px solid rgba(34, 211, 238, 0.15) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -5825,33 +5769,33 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   body.menu-is-open .site-header .header-bar,
   body.menu-is-open .site-header.is-scrolled .header-bar,
   body.menu-is-open .site-header.is-scrolled.is-scrolled-free .header-bar {
-    width: calc(100vw - 20px) !important;
-    margin: 10px auto 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
     height: 66px !important;
     padding: 0 18px !important;
-    border-radius: 16px 16px 0 0 !important;
+    border-radius: 0 !important;
   }
 
   #menu-principal.menu-panel {
-    top: 10px !important;
-    bottom: 12px !important;
-    width: calc(100vw - 20px) !important;
-    height: calc(100vh - 22px) !important;
-    height: calc(100dvh - 22px) !important;
-    max-height: calc(100dvh - 22px) !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
     padding: 78px 18px 18px !important;
-    border-radius: 16px !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
   }
 
   #menu-principal .menu-panel__groups {
     grid-template-columns: 1fr !important;
-  }
-
-  #menu-principal .menu-group:nth-child(1),
-  #menu-principal .menu-group:nth-child(2),
-  #menu-principal .menu-group:nth-child(3) {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(34, 211, 238, 0.18) !important;
+    gap: 20px !important;
   }
 
   #menu-principal .menu-panel__foot {
@@ -6235,226 +6179,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   }
 }
 
-/* ==========================================================================
-   06. TEMPORAL: MENÚ DE DESARROLLADOR (COMPARADOR DE PLANTILLAS)
-   Diseñado como herramienta de previsualización temporal para comparar
-   las plantillas de la Opción 1 y la Opción 2 directamente desde la web.
-   ========================================================================== */
-.dev-menu-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
 
-.dev-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(16, 184, 176, 0.15);
-  border: 1px solid var(--turquoise);
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s var(--ease-out-expo);
-  box-shadow: 0 2px 10px rgba(16, 184, 176, 0.2);
-}
-
-.dev-menu-btn:hover,
-.dev-menu-container.is-open .dev-menu-btn {
-  background: rgba(16, 184, 176, 0.3);
-  border-color: #2ee6dc;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(16, 184, 176, 0.35);
-}
-
-.dev-badge-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.dev-chevron {
-  font-size: 0.75rem;
-  transition: transform 0.25s ease;
-}
-
-.dev-menu-container.is-open .dev-chevron {
-  transform: rotate(180deg);
-}
-
-/* Menú Desplegable Flotante */
-.dev-menu-dropdown {
-  position: absolute;
-  top: calc(100% + 14px);
-  right: 0;
-  width: 640px;
-  max-width: 92vw;
-  max-height: calc(100vh - 100px);
-  max-height: calc(100dvh - 100px);
-  overflow-y: auto;
-  background: rgba(3, 28, 49, 0.97);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 184, 176, 0.45);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-  display: none;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  box-sizing: border-box;
-}
-
-.dev-menu-container.is-open .dev-menu-dropdown {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dev-menu-header {
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dev-menu-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--orange);
-  background: rgba(255, 107, 44, 0.15);
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-
-.dev-menu-header h4 {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 6px 0;
-}
-
-.dev-menu-header p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
-}
-
-.dev-menu-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.dev-menu-col {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.dev-col-title {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--turquoise);
-  padding-bottom: 4px;
-  display: block;
-  border-bottom: 2px solid rgba(16, 184, 176, 0.3);
-  margin-bottom: 4px;
-}
-
-.dev-menu-col--v2 .dev-col-title {
-  color: #ffa578;
-  border-bottom-color: rgba(255, 107, 44, 0.4);
-}
-
-.essential-nav .dev-menu-dropdown a::after,
-.dev-menu-dropdown a::after {
-  display: none !important;
-  content: none !important;
-}
-
-.essential-nav .dev-menu-link,
-.dev-menu-link {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 10px 14px !important;
-  border-radius: 8px;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.2s ease;
-}
-
-.dev-menu-link strong {
-  font-size: 0.88rem;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.dev-menu-link small {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.3;
-}
-
-.essential-nav .dev-menu-link:hover,
-.dev-menu-link:hover {
-  background: rgba(16, 184, 176, 0.18);
-  border-color: var(--turquoise);
-  transform: translateX(4px);
-}
-
-.essential-nav .dev-menu-col--v2 .dev-menu-link:hover,
-.dev-menu-col--v2 .dev-menu-link:hover {
-  background: rgba(255, 107, 44, 0.15);
-  border-color: var(--orange);
-}
-
-.dev-menu-footer {
-  margin-top: 18px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: right;
-}
-
-.essential-nav .dev-footer-link,
-.dev-footer-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 0 !important;
-  font-size: 0.8rem;
-  color: var(--turquoise);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.essential-nav .dev-footer-link:hover,
-.dev-footer-link:hover {
-  color: #2ee6dc;
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .dev-menu-dropdown {
-    width: 320px;
-    right: -40px;
-  }
-  .dev-menu-columns {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (max-width: 480px) {
   .carousel-v3__card {
@@ -8276,11 +8001,6 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
    Diseño de alta fidelidad: tarjetas táctiles, menú sin colisiones y UX fluida.
    ========================================================================== */
 @media (max-width: 992px) {
-  /* 1. Header en móvil: eliminar menú dev y mantener barra sólida al scrollear */
-  .dev-menu-container {
-    display: none !important;
-  }
-
   .site-header,
   .header-bar {
     height: 70px !important;
