@@ -136,6 +136,7 @@ function bpvda_create_pages() {
         'admisiones'          => 'Admisiones',
         'portal-padres'       => 'Portal de padres',
         'contacto'            => 'Contacto',
+        'prekinder-y-kinder'  => 'Prekinder y Kinder',
         'prekinder'           => 'Prekínder',
         'kinder'              => 'Kínder',
         'primaria'            => 'Primaria',
