@@ -8858,8 +8858,8 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 /* Banner de Cierre / Visita Guiada a Pantalla Completa (100vh) con Efecto Bloom */
 .qs-cta {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100vh + 80px);
+  min-height: calc(100dvh + 80px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -9087,9 +9087,9 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .qs-cta {
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding: clamp(60px, 8vh, 90px) 24px;
+    min-height: calc(100vh + 60px);
+    min-height: calc(100dvh + 60px);
+    padding: clamp(70px, 9vh, 110px) 24px;
   }
   .qs-cta h2 {
     font-size: clamp(2.1rem, 6vw, 3.2rem);
