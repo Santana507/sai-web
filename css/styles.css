@@ -774,7 +774,7 @@ h1,
 .slide-heading {
   margin: 0;
   font-size: clamp(52px, 6.8vw, 100px);
-  line-height: .95;
+  line-height: 1.5;
 }
 
 h1 em,
