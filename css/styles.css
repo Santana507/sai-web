@@ -5517,17 +5517,17 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   align-self: center !important;
   text-align: center !important;
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
-  padding-bottom: clamp(8px, 1.4vh, 16px) !important;
+  padding-bottom: clamp(10px, 1.8vh, 20px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 #menu-principal .menu-panel__title h2 {
-  font-size: clamp(26px, 4vh, 46px) !important;
+  font-size: clamp(34px, 5.2vh, 58px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.025em !important;
-  line-height: 1.08 !important;
+  line-height: 1.06 !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
@@ -5544,15 +5544,15 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 }
 
 #menu-principal .menu-panel__title p {
-  font-size: clamp(13px, 1.6vh, 16px) !important;
-  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: clamp(14px, 1.8vh, 18px) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-weight: 400 !important;
-  margin: 6px auto 0 !important;
-  max-width: 580px !important;
+  margin: 8px auto 0 !important;
+  max-width: 640px !important;
   line-height: 1.4 !important;
 }
 
-/* Distribución 2x2 en Estilo Abierto Original (sin tarjetas ni cajas cerradas) */
+/* Distribución 2x2 de Secciones en Bloques Rectangulares */
 #menu-principal .menu-nav {
   display: block;
   width: 100%;
@@ -5562,7 +5562,7 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   grid-auto-flow: row !important;
-  gap: clamp(18px, 2.8vh, 32px) clamp(36px, 5vw, 84px) !important;
+  gap: clamp(16px, 2.2vh, 26px) clamp(24px, 3.2vw, 42px) !important;
   height: auto !important;
   background: transparent !important;
   border: none !important;
@@ -5574,19 +5574,29 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 #menu-principal .menu-group {
   display: flex !important;
   flex-direction: column !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
+  padding: clamp(16px, 2vh, 24px) clamp(20px, 2.4vw, 30px) !important;
+  background: rgba(3, 24, 44, 0.6) !important;
+  border: 1px solid rgba(34, 211, 238, 0.18) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   margin: 0 !important;
   min-height: 0 !important;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+#menu-principal .menu-group:hover {
+  background: rgba(5, 34, 60, 0.72) !important;
+  border-color: rgba(34, 211, 238, 0.35) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 16px rgba(34, 211, 238, 0.12) !important;
 }
 
 #menu-principal .menu-group-title {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 clamp(6px, 1vh, 12px) 0 !important;
+  margin: 0 0 clamp(8px, 1.2vh, 14px) 0 !important;
   padding: 0 0 clamp(6px, 1vh, 10px) 0 !important;
   color: #22d3ee !important;
   font-size: 11px !important;
@@ -5620,18 +5630,23 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: clamp(6px, 0.9vh, 11px) 0 !important;
+  padding: clamp(6px, 0.9vh, 10px) 0 !important;
   border-radius: 0 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   color: #f1f5f9 !important;
   text-decoration: none !important;
   font-weight: 600 !important;
-  font-size: clamp(14px, 1.7vh, 17px) !important;
+  font-size: clamp(13.5px, 1.6vh, 16px) !important;
   line-height: 1.25 !important;
   background: transparent !important;
   transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease !important;
   opacity: 0;
   transform: translateY(8px);
+}
+
+#menu-principal .menu-list li:last-child .menu-link,
+#menu-principal .menu-link:last-child {
+  border-bottom: none !important;
 }
 
 #menu-principal.menu-panel.is-open .menu-link {
@@ -5795,7 +5810,11 @@ body.menu-is-open .site-header.is-scrolled.is-scrolled-free .menu-button:hover {
 
   #menu-principal .menu-panel__groups {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 16px !important;
+  }
+
+  #menu-principal .menu-group {
+    padding: 14px 18px !important;
   }
 
   #menu-principal .menu-panel__foot {
