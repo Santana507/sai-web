@@ -32,8 +32,7 @@
 
     <!-- Navegación Esencial Visible en Cabecera (Desktop / Top Scroll) -->
     <nav class="essential-nav" aria-label="Navegación esencial">
-      <a href="<?php echo esc_url( home_url( '/filosofia/' ) ); ?>">Filosofía</a>
-      <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>">Admisiones</a>
+      <a href="<?php echo esc_url( home_url( '/filosofia/' ) ); ?>">Propósito BPVDA</a>
       <a href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">Contacto</a>
 
       <a href="<?php echo esc_url( home_url( '/admisiones/' ) ); ?>" class="btn-matriculate">MATRICÚLATE AQUÍ</a>
