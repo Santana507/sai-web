@@ -446,12 +446,12 @@ $admissions .= bpvda_group(
     ]),
     'section-alertas section-pad', 'section'
 );
-$formsUrl = $url('formularios-admision');
+$formsUrl = 'https://script.google.com/macros/s/AKfycbzgLqWTXbA1c-3fi6G8CBxNDRvEMRocJMsw6S06yKpMRGcCBzYmLO3X5F2eBKQi2yrKHw/exec';
 $admissions .= bpvda_group(
-    bpvda_heading('Acceso a Formularios Oficiales 2027') . bpvda_paragraph('Seleccione el formulario correspondiente cuando tenga listo su comprobante de pago.')
+    bpvda_heading('Acceso al Formulario de Matrícula 2027') . bpvda_paragraph('Abre el formulario unificado y selecciona Nuevo ingreso o Reingreso. Ten listo tu comprobante de pago.')
     . bpvda_columns([
-        bpvda_button('Formulario de Nuevo Ingreso 2027', $formsUrl . '#nuevo-ingreso-form', 'btn-accent'),
-        bpvda_button('Formulario de Preingreso 2027', $formsUrl . '#preingreso-form', 'btn-accent'),
+        bpvda_button('Formulario de Nuevo Ingreso 2027', $formsUrl, 'btn-accent'),
+        bpvda_button('Formulario de Preingreso 2027', $formsUrl, 'btn-accent'),
     ], 'forms-grid'),
     'section-formularios section-pad', 'section'
 );
@@ -491,8 +491,8 @@ $linkMap = [
     'primaria.html' => $url('primaria'),
     'secundaria.html' => $url('secundaria'),
     'bachilleres.html' => $url('bachilleres'),
-    'form-nuevo-ingreso.html' => $formsUrl . '#nuevo-ingreso-form',
-    'form-preingreso.html' => $formsUrl . '#preingreso-form',
+    'form-nuevo-ingreso.html' => $formsUrl,
+    'form-preingreso.html' => $formsUrl,
 ];
 
 $normalizeHtml = static function (string $html) use ($themeUrl, $linkMap): string {
@@ -506,10 +506,7 @@ foreach ($staticFiles as $slug => $file) {
     bpvda_update_page($pageIds[$slug], '<!-- wp:html -->' . $normalizeHtml($fragment) . '<!-- /wp:html -->', false);
 }
 
-$newStudentForm = $normalizeHtml(bpvda_main_fragment($projectRoot . '/form-nuevo-ingreso.html'));
-$preEnrollmentForm = $normalizeHtml(bpvda_main_fragment($projectRoot . '/form-preingreso.html'));
-$formsContent = '<!-- wp:html --><section id="nuevo-ingreso-form" class="bpvda-form-page">' . $newStudentForm . '</section><!-- /wp:html -->'
-    . '<!-- wp:html --><section id="preingreso-form" class="bpvda-form-page">' . $preEnrollmentForm . '</section><!-- /wp:html -->';
+$formsContent = '<!-- wp:html --><section class="bpvda-form-page"><h1>Formulario de Matrícula 2027</h1><p>Este formulario reúne las solicitudes de nuevo ingreso y reingreso.</p><p><a href="' . htmlspecialchars($formsUrl, ENT_QUOTES, 'UTF-8') . '">Abrir y completar el formulario</a></p></section><!-- /wp:html -->';
 bpvda_update_page($pageIds['formularios-admision'], $formsContent, false);
 
 // Menú principal agrupado en cinco pilares.
